@@ -22,6 +22,7 @@
 10. [Dependency Graph](#10-dependency-graph-depsgraph)
 11. [Common Error Patterns](#11-common-error-patterns)
 12. [AI Common Mistakes](#12-ai-common-mistakes)
+13. [Real-World Usage: OpenAEC Projects](#13-real-world-usage-openaec-projects)
 
 ---
 
@@ -170,6 +171,135 @@ license = ["SPDX:GPL-3.0-or-later"]
 - `type` is `"add-on"` or `"theme"` (string, not category)
 - Permissions system for internet access: `[permissions] network = "Network access needed for..."`
 
+### Blender 4.1 — Python API Changes
+
+**Python version**: Upgraded to **Python 3.11** (VFX Platform 2024).
+
+#### Breaking Changes
+
+1. **Mesh Auto Smooth Removal** (HIGH impact)
+   - `Mesh.use_auto_smooth` — REMOVED in 4.1
+   - `Mesh.auto_smooth_angle` — REMOVED in 4.1
+   - `Mesh.create_normals_split()` — REMOVED in 4.1
+   - `Mesh.calc_normals_split()` — REMOVED in 4.1
+   - `Mesh.free_normals_split()` — REMOVED in 4.1
+   - `MeshLoop.normal` — now READ-ONLY in 4.1
+   - **Replacement**: Use `Mesh.corner_normals` collection (auto-updated). For angle-based smoothing, use the "Smooth by Angle" modifier node group asset.
+   - Custom normals MUST use `normals_split_custom_set()` or `normals_split_custom_set_from_vertices()`.
+
+   ```python
+   # BROKEN in Blender 4.1+ — use_auto_smooth removed
+   mesh.use_auto_smooth = True
+   mesh.auto_smooth_angle = 0.523599  # 30 degrees
+
+   # Blender 4.1+ — use corner_normals instead
+   # Auto smooth is now ALWAYS active; use "Smooth by Angle" modifier for angle control
+   corner_normals = mesh.corner_normals  # read-only, auto-updated
+   # For custom normals:
+   mesh.normals_split_custom_set(normals_list)
+   ```
+
+2. **Light Probe Type Renames** (MEDIUM impact)
+   - `CUBEMAP` → `SPHERE`
+   - `PLANAR` → `PLANE`
+   - `GRID` → `VOLUME`
+   - `show_data` deprecated → use `use_data_display`
+
+   ```python
+   # BROKEN in Blender 4.1+ — old enum values
+   if probe.type == 'CUBEMAP':
+       pass
+
+   # Blender 4.1+ — use new enum values
+   if probe.type == 'SPHERE':  # Blender 4.1+
+       pass
+   ```
+
+3. **Material Displacement Method** (MEDIUM impact)
+   - `displacement_method` moved from `CyclesMaterialSettings` to base `Material` class.
+
+   ```python
+   # BROKEN in Blender 4.1+ — Cycles-specific path removed
+   mat.cycles.displacement_method = 'BOTH'
+
+   # Blender 4.1+ — property on Material directly
+   mat.displacement_method = 'BOTH'  # Blender 4.1+
+   ```
+
+4. **foreach_set() Validation** (LOW impact)
+   - `foreach_set()` now raises `TypeError` for invalid data types that previously failed silently.
+   - Scripts that relied on silent failure MUST add proper type checking.
+
+5. **Sequencer Transform Filter Rename** (LOW impact)
+   - `SUBSAMPLING_3x3` renamed to `BOX`.
+
+6. **Node Socket Access** (MEDIUM impact)
+   - Dynamic socket types replaced static ones. Use socket **identifiers** instead of **indices** for reliable access.
+
+#### New Features (4.1)
+
+- **Layout Panels**: `layout.panel()` and `layout.panel_prop()` for collapsible UI sections without registration.
+- **Enum ID Properties**: Integer properties support enum items via `id_properties_ui()`.
+- **Asset Library API**: `Preferences.filepaths.asset_libraries` for programmatic asset library management.
+- **Session UIDs**: `ID.session_uid` for unique identification of datablocks within a session.
+- **Shape Key Points**: `ShapeKey.points` for direct point access.
+- **Translation Handler**: `handlers.translation_update_post` fires when UI language changes.
+
+### Blender 4.3 — Python API Changes
+
+**Python version**: **Python 3.11** (same as 4.1).
+
+#### Breaking Changes
+
+1. **AttributeGroup Split** (MEDIUM impact)
+   - `bpy.types.AttributeGroup` — REMOVED in 4.3
+   - Replaced by type-specific classes:
+     - `AttributeGroupMesh`
+     - `AttributeGroupPointCloud`
+     - `AttributeGroupCurves`
+     - `AttributeGroupGreasePencil`
+   - Mesh-only properties (`active_color`, `active_color_index`, `default_color_name`, `render_color_index`) are NOW accessible ONLY on `AttributeGroupMesh`.
+
+   ```python
+   # BROKEN in Blender 4.3+ — generic AttributeGroup
+   attrs = obj.data.attributes  # was bpy.types.AttributeGroup
+   color_name = attrs.active_color_name  # AttributeError in 4.3 if not mesh
+
+   # Blender 4.3+ — type-specific AttributeGroup
+   attrs = obj.data.attributes  # now AttributeGroupMesh for mesh objects
+   color_name = attrs.active_color_name  # ONLY works on AttributeGroupMesh
+   # Use domain_size() to check support:
+   size = attrs.domain_size('POINT')  # returns 0 if unsupported  # Blender 4.3+
+   ```
+
+2. **Grease Pencil Python API Rewrite** (CRITICAL impact for GP add-ons)
+   - The ENTIRE Grease Pencil Python API has been rewritten for the new data structure.
+   - NOT backward compatible: files saved in 4.3+ do NOT load correctly in 4.2 or lower.
+   - `pixel_factor` (Thickness Scale) — REMOVED in 4.3
+   - Screen Space thickness mode — REMOVED (strokes are ALWAYS in World Space)
+   - Selection order for stroke interpolation — REMOVED
+   - Draw Mode guides — NOT ported to 4.3
+   - See official migration guide: https://developer.blender.org/docs/release_notes/4.3/grease_pencil_migration/
+
+3. **Embedded ID Pointer Assignment** (LOW impact)
+   - Assigning embedded IDs (e.g., `scene.collection`, root node trees) to `PointerProperty` now raises `RuntimeError`.
+
+4. **Reroute Node Socket Changes** (LOW impact)
+   - Reroute node data type changes via `socket_idname` property instead of direct socket modification.
+
+5. **EEVEE Legacy Property Removal** (MEDIUM impact)
+   - REMOVED properties: contact shadows, SSR, volumetric lighting, GTAO, bokeh, bloom, and shadow settings.
+   - Scripts referencing these EEVEE properties MUST be updated.
+
+#### New Features (4.3)
+
+- **`bpy.app.python_args`**: Call Python in Blender's environment.
+- **Blend import handlers**: `blend_import_pre` and `blend_import_post` handlers with `BlendImportContext` parameter.
+- **`ID.rename()`**: Complex renaming behavior (direct `ID.name` assignment unchanged).
+- **`domain_size()`**: Returns attribute domain size (0 if unsupported).
+- **`foreach_set()` triggers updates**: Calling `foreach_set()` on attribute data now triggers property updates.
+- **Curves API**: `curves.remove_curves(indices=[])` and `curves.resize_curves(sizes, indices=[])`.
+
 ### Blender 5.0 — Additional Breaking Changes
 
 - **BGL completely removed**: ALL `bgl.*` calls must migrate to `gpu` module
@@ -178,10 +308,142 @@ license = ["SPDX:GPL-3.0-or-later"]
 - **VSE**: `Sequence.end_frame` replaced with `length` property
 - **Brush system**: Renamed `sculpt_tool` → `sculpt_brush_type`
 
+### BGL-to-gpu Migration Guide
+
+**Context**: The `bgl` module (OpenGL wrapper) is deprecated since Blender 3.5 and is **completely removed in Blender 5.0**. ALL drawing code MUST migrate to the `gpu` module. The `gpu` module provides a graphics-API-independent abstraction that works across OpenGL, Vulkan, and Metal.
+
+> **Note**: The IfcOpenShell/Bonsai project completed this migration (see [IfcOpenShell issue #2897](https://github.com/IfcOpenShell/IfcOpenShell/issues/2897)), demonstrating that this migration is essential for BIM/AEC add-ons.
+
+#### Before (bgl — Blender ≤ 4.x, BROKEN in 5.0)
+
+```python
+# bgl viewport overlay example — DEPRECATED since Blender 3.5
+# BROKEN on Apple M1/M2 (Metal backend), WILL BREAK on Vulkan backend
+import bpy
+import bgl
+from gpu_extras.batch import batch_for_shader
+import gpu
+
+coords = [
+    (0.0, 0.0, 0.0), (5.0, 0.0, 0.0),
+    (5.0, 0.0, 0.0), (5.0, 3.0, 0.0),
+    (5.0, 3.0, 0.0), (0.0, 3.0, 0.0),
+    (0.0, 3.0, 0.0), (0.0, 0.0, 0.0),
+]
+
+shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')  # REMOVED in Blender 4.0+
+batch = batch_for_shader(shader, 'LINES', {"pos": coords})
+
+
+def draw_callback():
+    bgl.glEnable(bgl.GL_BLEND)                    # DEPRECATED — use gpu.state.blend_set()
+    bgl.glEnable(bgl.GL_LINE_SMOOTH)               # DEPRECATED — no direct replacement
+    bgl.glLineWidth(2)                              # DEPRECATED — use gpu.state.line_width_set()
+    bgl.glEnable(bgl.GL_DEPTH_TEST)                 # DEPRECATED — use gpu.state.depth_test_set()
+    bgl.glDepthFunc(bgl.GL_LEQUAL)                  # DEPRECATED — use gpu.state.depth_test_set()
+
+    shader.bind()
+    shader.uniform_float("color", (1.0, 0.5, 0.0, 0.8))
+    batch.draw(shader)
+
+    bgl.glDisable(bgl.GL_BLEND)
+    bgl.glDisable(bgl.GL_LINE_SMOOTH)
+    bgl.glLineWidth(1)
+    bgl.glDisable(bgl.GL_DEPTH_TEST)
+
+
+_handle = bpy.types.SpaceView3D.draw_handler_add(
+    draw_callback, (), 'WINDOW', 'POST_VIEW'
+)
+```
+
+#### After (gpu — Blender 4.0+, REQUIRED for 5.0)
+
+```python
+# gpu viewport overlay example — Blender 4.0+
+# Works on ALL backends: OpenGL, Vulkan, Metal
+import bpy
+import gpu
+from gpu_extras.batch import batch_for_shader  # Blender 3.0+
+
+coords = [
+    (0.0, 0.0, 0.0), (5.0, 0.0, 0.0),
+    (5.0, 0.0, 0.0), (5.0, 3.0, 0.0),
+    (5.0, 3.0, 0.0), (0.0, 3.0, 0.0),
+    (0.0, 3.0, 0.0), (0.0, 0.0, 0.0),
+]
+
+# Blender 4.0+: use 'POLYLINE_UNIFORM_COLOR' (replaces '3D_UNIFORM_COLOR')
+shader = gpu.shader.from_builtin('POLYLINE_UNIFORM_COLOR')  # Blender 4.0+
+batch = batch_for_shader(shader, 'LINES', {"pos": coords})
+
+
+def draw_callback():
+    gpu.state.blend_set('ALPHA')                    # Replaces bgl.glEnable(bgl.GL_BLEND)
+    gpu.state.depth_test_set('LESS_EQUAL')          # Replaces bgl.glEnable(bgl.GL_DEPTH_TEST)
+    gpu.state.depth_mask_set(True)                  # Replaces bgl.glDepthMask(bgl.GL_TRUE)
+    gpu.state.line_width_set(2.0)                   # Replaces bgl.glLineWidth(2)
+
+    shader.bind()
+    # POLYLINE_UNIFORM_COLOR requires viewportSize and lineWidth uniforms
+    shader.uniform_float("viewportSize", gpu.state.viewport_get()[2:])  # Blender 4.0+
+    shader.uniform_float("lineWidth", 2.0)          # Line width in pixels  # Blender 4.0+
+    shader.uniform_float("color", (1.0, 0.5, 0.0, 0.8))
+    batch.draw(shader)
+
+    # Restore gpu state to defaults
+    gpu.state.blend_set('NONE')
+    gpu.state.depth_test_set('NONE')
+    gpu.state.depth_mask_set(False)
+    gpu.state.line_width_set(1.0)
+
+
+_handle = bpy.types.SpaceView3D.draw_handler_add(
+    draw_callback, (), 'WINDOW', 'POST_VIEW'
+)
+# To remove: bpy.types.SpaceView3D.draw_handler_remove(_handle, 'WINDOW')
+```
+
+#### BGL-to-gpu API Mapping Reference
+
+| bgl (DEPRECATED) | gpu replacement (Blender 3.5+) | Notes |
+|---|---|---|
+| `bgl.glEnable(bgl.GL_BLEND)` | `gpu.state.blend_set('ALPHA')` | Use `'ALPHA'`, `'ADDITIVE'`, `'ADDITIVE_PREMUL'`, or `'MULTIPLY'` |
+| `bgl.glDisable(bgl.GL_BLEND)` | `gpu.state.blend_set('NONE')` | |
+| `bgl.glLineWidth(w)` | `gpu.state.line_width_set(w)` | Also set `lineWidth` uniform for POLYLINE shaders |
+| `bgl.glEnable(bgl.GL_DEPTH_TEST)` | `gpu.state.depth_test_set('LESS_EQUAL')` | Options: `'NONE'`, `'LESS'`, `'LESS_EQUAL'`, `'EQUAL'`, `'GREATER'` |
+| `bgl.glDisable(bgl.GL_DEPTH_TEST)` | `gpu.state.depth_test_set('NONE')` | |
+| `bgl.glDepthMask(GL_TRUE)` | `gpu.state.depth_mask_set(True)` | |
+| `bgl.glEnable(bgl.GL_LINE_SMOOTH)` | *(no direct replacement)* | Use `POLYLINE_*` shaders for antialiased lines |
+| `bgl.glPointSize(s)` | `gpu.state.point_size_set(s)` | |
+| `gpu.shader.from_builtin('3D_UNIFORM_COLOR')` | `gpu.shader.from_builtin('POLYLINE_UNIFORM_COLOR')` | `3D_` prefix removed in Blender 4.0 |
+| `gpu.shader.from_builtin('3D_FLAT_COLOR')` | `gpu.shader.from_builtin('POLYLINE_FLAT_COLOR')` | `3D_` prefix removed in Blender 4.0 |
+| `image.gl_load()` / `bgl.glBindTexture()` | `gpu.texture.from_image(image)` | Completely different API |
+
+#### BGL Migration Checklist
+
+- Replace ALL `import bgl` statements — remove entirely
+- Replace `bgl.glEnable(bgl.GL_BLEND)` with `gpu.state.blend_set('ALPHA')`
+- Replace `bgl.glDisable(bgl.GL_BLEND)` with `gpu.state.blend_set('NONE')`
+- Replace `bgl.glLineWidth(n)` with `gpu.state.line_width_set(n)`
+- Replace `bgl.glEnable(bgl.GL_DEPTH_TEST)` with `gpu.state.depth_test_set('LESS_EQUAL')`
+- Replace `bgl.glDisable(bgl.GL_DEPTH_TEST)` with `gpu.state.depth_test_set('NONE')`
+- Replace `3D_UNIFORM_COLOR` with `POLYLINE_UNIFORM_COLOR` (Blender 4.0+)
+- Replace `3D_FLAT_COLOR` with `POLYLINE_FLAT_COLOR` (Blender 4.0+)
+- Replace `image.gl_load()` with `gpu.texture.from_image(image)`
+- ALWAYS restore `gpu.state` to defaults at end of draw callbacks
+- Test on Apple Silicon (Metal backend) — bgl is ALREADY non-functional there
+
 ### Sources
 - https://developer.blender.org/docs/release_notes/4.0/python_api/
+- https://developer.blender.org/docs/release_notes/4.1/python_api/
 - https://developer.blender.org/docs/release_notes/4.2/python_api/
+- https://developer.blender.org/docs/release_notes/4.3/python_api/
 - https://developer.blender.org/docs/release_notes/5.0/python_api/
+- https://docs.blender.org/api/current/change_log.html
+- https://developer.blender.org/docs/release_notes/
+- https://developer.blender.org/docs/release_notes/4.3/grease_pencil_migration/
+- https://github.com/IfcOpenShell/IfcOpenShell/issues/2897
 
 ---
 
@@ -1616,6 +1878,196 @@ bpy.data.lamps                            # 2.7x → bpy.data.lights
 
 ---
 
+## 13. Real-World Usage: OpenAEC Projects
+
+The OpenAEC Foundation maintains several repositories relevant to the Blender-Bonsai-IfcOpenShell-Sverchok skill package. Two repositories are directly referenced: GIS-to-Blender and aec-scripts. A third related repository, building-py, provides additional context for Blender integration within the OpenAEC ecosystem.
+
+### GIS-to-Blender (3D Environment Automation)
+
+**Repository**: https://github.com/OpenAEC-Foundation/GIS-to-Blender_3DEnvironment_Automation
+**Purpose**: Prompt LLMs (primarily Claude Code) to build 3D environments in Blender from GIS data.
+**Blender Version**: Not yet specified (repository is in early stage).
+**Status**: Pre-development. The repository contains only a README and LICENSE (LGPL 3.0) as of February 2026. No Python code exists yet.
+
+#### Key Findings
+
+The repository's README states: *"With this repo you can prompt LLM's to build a 3D environment in Blender. Mainly built for Claude Code."*
+
+This repository is the **direct target use case** for the skill package being developed. It represents the intended consumer of Claude skills that automate Blender via bpy. The fact that it contains no code yet confirms that the skill package MUST provide the foundational bpy patterns that this project will rely on.
+
+#### Architecture Notes
+
+- The repository is designed as an LLM-promptable project, NOT a traditional addon.
+- LGPL 3.0 license is consistent with the Blender ecosystem licensing requirements.
+- Created January 2026, last pushed February 2026 — active but early stage.
+
+---
+
+### AEC Scripts
+
+**Repository**: https://github.com/OpenAEC-Foundation/aec-scripts
+**Purpose**: Python scripts and Revit addins for AEC (Architecture, Engineering, Construction) workflows.
+
+#### Key Finding: No bpy Usage
+
+The aec-scripts repository contains **zero Blender/bpy code**. All Python scripts are pyRevit pushbutton scripts targeting Autodesk Revit via IronPython. The repository uses:
+
+- `clr` (Common Language Runtime) for .NET interop
+- `Autodesk.Revit.DB` for Revit API access
+- `pyrevit` framework for script hosting
+- `System.Windows.Forms` for UI
+
+#### Relevant GIS/Mesh Patterns (Transferable to Blender)
+
+Despite being Revit-targeted, the GIS2BIM pushbutton contains **CityJSON parsing and mesh creation patterns** that are directly transferable to Blender/bpy.
+
+##### Pattern 1: CityJSON Vertex Parsing and Coordinate Transformation
+
+```python
+# From aec-scripts GIS2BIM.pushbutton/cityjson_parser.py (Revit version)
+def transform_vertices(vertices, scale, translate, rd_x, rd_y):
+    """Transform CityJSON integer vertices to relative meters."""
+    converted = []
+    for vx, vy, vz in vertices:
+        x = float(vx) * scale[0] + translate[0]
+        y = float(vy) * scale[1] + translate[1]
+        z = float(vz) * scale[2] + translate[2]
+        converted.append((x - rd_x, y - rd_y, z))
+    return converted
+```
+
+The Blender equivalent ALWAYS uses `bpy.data.meshes.new()` and `mesh.from_pydata()`:
+
+```python
+# Blender equivalent pattern (Blender 4.x+)
+import bpy
+
+def cityjson_to_blender_mesh(name, vertices, faces):
+    """Create a Blender mesh from CityJSON vertices and faces."""
+    mesh = bpy.data.meshes.new(name)
+    mesh.from_pydata(vertices, [], faces)  # Blender 2.80+
+    mesh.update()
+    mesh.validate()
+
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    return obj
+```
+
+##### Pattern 2: Fan Triangulation (NOT Needed in Blender)
+
+In Blender, fan triangulation is NEVER necessary when using `from_pydata()` because Blender natively handles n-gons:
+
+```python
+# Blender 4.x+ — n-gons are natively supported
+mesh = bpy.data.meshes.new("building")
+mesh.from_pydata(vertices, [], polygon_faces)  # polygon_faces can have 3+ vertices
+mesh.update()
+```
+
+##### Pattern 3: CityJSON LOD Selection Strategy
+
+The GIS2BIM script implements a LOD preference hierarchy for 3D BAG data: LOD 2.2 > 1.3 > 1.2. This strategy ALWAYS applies regardless of target application:
+
+```python
+# LOD preference for 3D BAG data (application-independent)
+LOD_PREFERENCE = ['2.2', '1.3', '1.2']
+
+for geom in obj.get('geometry', []):
+    lod_str = str(geom.get('lod', ''))
+    if lod_str in LOD_PREFERENCE:
+        if best_lod is None or LOD_PREFERENCE.index(lod_str) < LOD_PREFERENCE.index(best_lod):
+            best_geom = geom
+            best_lod = lod_str
+```
+
+##### Pattern 4: Batch Building Import with Error Isolation
+
+```python
+# Blender 4.x+ batch import pattern
+import bpy
+
+def import_buildings_batch(buildings, collection_name="3D BAG"):
+    """Import multiple CityJSON buildings with per-building error isolation."""
+    collection = bpy.data.collections.new(collection_name)
+    bpy.context.scene.collection.children.link(collection)
+
+    count = 0
+    skipped = 0
+    for building in buildings:
+        try:
+            verts = building['vertices']
+            faces = building['polygon_faces']
+            obj_id = building.get('id', 'unknown')
+
+            mesh = bpy.data.meshes.new(f"3DBAG_{obj_id}")
+            mesh.from_pydata(verts, [], faces)
+            mesh.update()
+
+            obj = bpy.data.objects.new(f"3DBAG_{obj_id}", mesh)
+            collection.objects.link(obj)
+            count += 1
+        except Exception as e:
+            skipped += 1
+            print(f"Skipped {building.get('id', '?')}: {e}")
+
+    return count, skipped
+```
+
+---
+
+### Related: building-py Library
+
+**Repository**: https://github.com/OpenAEC-Foundation/building-py
+**Purpose**: Python library for creating buildings with export to multiple programs including Blender, Revit, FreeCAD, and Speckle.
+
+- The README explicitly lists **Blender** as a target export platform.
+- As of March 2026, the Blender exchange module does **NOT yet exist** (only FreeCAD, Revit, Speckle, IFC, DXF modules are implemented).
+- The skill package being developed will directly enable this planned integration.
+
+---
+
+### Cross-Cutting Patterns
+
+#### 1. GIS-to-3D Pipeline Architecture
+
+Both repositories demonstrate a consistent GIS-to-3D pipeline applicable to Blender:
+
+1. **Data acquisition**: HTTP requests to Dutch GIS APIs (3D BAG, PDOK, WFS/WMS services)
+2. **Coordinate transformation**: RD (Rijksdriehoekscoordinaten) to relative project coordinates
+3. **Geometry parsing**: CityJSON/GeoJSON to vertices + faces
+4. **Mesh creation**: Vertices + faces to application-specific mesh objects
+5. **Error-tolerant batch processing**: Per-object try/except with skip-and-continue
+
+The Blender equivalent of step 4 ALWAYS uses `bpy.data.meshes.new()` + `mesh.from_pydata()`.
+
+#### 2. No Existing bpy Code in Either Repository
+
+Neither GIS-to-Blender nor aec-scripts contains any `import bpy` statements. This means:
+- The skill package MUST define the canonical bpy patterns for the OpenAEC ecosystem from scratch.
+- The GIS-to-Blender repo is explicitly waiting for LLM-generated Blender code (Claude Code).
+
+#### 3. Licensing Consistency
+
+Both repositories use **LGPL 3.0**, which is compatible with Blender's GPL licensing. Any bpy code generated by the skill package MUST also be GPL/LGPL compatible.
+
+#### 4. Dutch AEC Domain Context
+
+The OpenAEC projects focus on Dutch AEC workflows with specific data sources:
+- **3D BAG** (3D Basisregistratie Adressen en Gebouwen): Dutch building registry with LOD 2.2 CityJSON
+- **PDOK** (Publieke Dienstverlening Op de Kaart): Dutch geodata platform
+- **BGT** (Basisregistratie Grootschalige Topografie): Large-scale topography
+- **Kadaster**: Dutch land registry
+
+The skill package MUST understand these data sources because Claude Code will be asked to create Blender scripts that import this Dutch GIS data.
+
+### Sources
+- https://github.com/OpenAEC-Foundation/GIS-to-Blender_3DEnvironment_Automation
+- https://github.com/OpenAEC-Foundation/aec-scripts
+- https://github.com/OpenAEC-Foundation/building-py
+
+---
+
 ## Sources
 
 ### Official Documentation
@@ -1627,10 +2079,15 @@ bpy.data.lamps                            # 2.7x → bpy.data.lights
 - BMesh Module: https://docs.blender.org/api/current/bmesh.html
 
 ### Release Notes (Breaking Changes)
+- Release Notes Index: https://developer.blender.org/docs/release_notes/
 - Blender 4.0 Python API: https://developer.blender.org/docs/release_notes/4.0/python_api/
+- Blender 4.1 Python API: https://developer.blender.org/docs/release_notes/4.1/python_api/
 - Blender 4.2 Python API: https://developer.blender.org/docs/release_notes/4.2/python_api/
+- Blender 4.3 Python API: https://developer.blender.org/docs/release_notes/4.3/python_api/
 - Blender 5.0 Python API: https://developer.blender.org/docs/release_notes/5.0/python_api/
+- Python API Changelog: https://docs.blender.org/api/current/change_log.html
 - Blender 4.0 Breaking Changes List: https://projects.blender.org/blender/blender/issues/105523
+- Grease Pencil 4.3 Migration Guide: https://developer.blender.org/docs/release_notes/4.3/grease_pencil_migration/
 
 ### Extension System
 - Addon Tutorial (Manual): https://docs.blender.org/manual/en/latest/advanced/scripting/addon_tutorial.html
