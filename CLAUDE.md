@@ -123,7 +123,14 @@ After EVERY completed phase/batch:
 2. Update LESSONS.md (new discoveries)
 3. Commit with descriptive message: "Phase X.Y: [action] [subject]"
 4. Push to GitHub
+5. Check if push changes the public face of the repo:
+   - README.md changed? -> Verify it reads well as the GitHub landing page
+   - New skill packages added? -> Update README skill count and status
+   - Description outdated? -> Update repo description via GitHub API
+   - Topics need updating? -> Add/remove relevant GitHub topics
+   - Major milestone reached? -> Consider updating repo description
 - Timing: IMMEDIATE, not deferred
+- The GitHub repo page IS the project's landing page. Keep it current.
 
 ## Session End Protocol (P-007)
 Before ending any session:
@@ -136,11 +143,18 @@ Before ending any session:
 ## Core Files
 | File | Purpose | When to Update |
 |------|---------|----------------|
-| ROADMAP.md | Single source of truth for status | After every phase/batch |
-| LESSONS.md | What we learned | When discovering patterns |
-| WAY_OF_WORK.md | Methodology reference | Rarely (methodology is stable) |
-| docs/masterplan/masterplan.md | Execution plan | After research phases |
-| INDEX.md | Skill catalog | After skill creation |
+| ROADMAP.md | Single source of truth for project status | After every phase/batch |
+| LESSONS.md | What we learned, numbered L-XXX | When discovering patterns |
+| DECISIONS.md | Architectural decisions, numbered D-XXX | When making decisions (immutable once recorded) |
+| REQUIREMENTS.md | What skills must achieve, quality guarantees | When scope changes |
+| SOURCES.md | Official docs, repos, reference materials | When adding/verifying sources |
+| WAY_OF_WORK.md | 7-phase methodology reference | Rarely (methodology is stable) |
+| CHANGELOG.md | Version history (Keep a Changelog format) | Every release/milestone |
+| CONTRIBUTING.md | How to contribute, skill guidelines | Rarely |
+| SECURITY.md | Vulnerability reporting policy | Rarely |
+| docs/masterplan/masterplan.md | Execution plan with prompts | After research phases |
+| INDEX.md | Complete skill catalog | After skill creation |
+| README.md | GitHub landing page | When pushing changes that affect public face |
 
 ## Skill Categories
 | Category | Purpose | Naming |
