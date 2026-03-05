@@ -376,11 +376,167 @@ Commit and push after completing.
 
 ---
 
+## PROMPT F: Deep Research - OpenAEC Ecosystem & Claude Platform Sources
+
+```
+PROJECT: Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
+REPO: https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
+WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
+
+TASK: Deep research on all supplementary sources in SOURCES.md that can contribute to
+the quality of our skill package. This includes OpenAEC Foundation projects, Claude/Anthropic
+skill development platform, and cross-technology patterns.
+
+READ FIRST:
+- SOURCES.md (especially "OpenAEC Foundation Projects" and "Claude / Anthropic" sections)
+- REQUIREMENTS.md (what our skills must achieve)
+- docs/masterplan/raw-masterplan.md (what skills we're planning)
+
+OUTPUT: docs/research/vooronderzoek-ecosystem-sources.md
+
+---
+
+### PART 1: OpenAEC Foundation Related Projects
+
+Research EACH of these repos. For each: clone/browse, understand what it does, and extract
+patterns, code examples, and insights relevant to our skill package.
+
+#### 1a. building.py
+URL: https://github.com/OpenAEC-Foundation/building-py
+RESEARCH:
+- What is it? Python library for buildings -> Blender/IFC export
+- How does it use IfcOpenShell? Extract API usage patterns
+- How does it generate Blender geometry? Extract bpy patterns
+- What IFC entities does it create? Map to our skill inventory
+- Code patterns we can reference in our skills as real-world examples
+- Any anti-patterns or lessons visible in issues/commits?
+
+#### 1b. GIS-to-Blender Automation
+URL: https://github.com/OpenAEC-Foundation/GIS-to-Blender_3DEnvironment_Automation
+RESEARCH:
+- How does it automate Blender via Python? Extract automation patterns
+- LLM-driven 3D environment generation - how does it prompt Blender?
+- Headless/CLI Blender usage patterns (relevant for blender-impl-automation skill)
+- Mesh generation patterns (relevant for blender-syntax-mesh skill)
+- Any integration with IFC?
+
+#### 1c. AEC Scripts
+URL: https://github.com/OpenAEC-Foundation/aec-scripts
+RESEARCH:
+- What Python scripts exist for AEC?
+- Which use IfcOpenShell? Extract patterns
+- Which use Blender? Extract patterns
+- Common operations that should be covered by our skills
+- Anti-patterns visible in the code
+
+#### 1d. Monty IFC Viewer
+URL: https://github.com/OpenAEC-Foundation/monty-ifc-viewer
+RESEARCH:
+- How does it load/display IFC files?
+- IfcOpenShell usage patterns for reading/parsing
+- Geometry extraction patterns (ifcopenshell.geom usage)
+- Any web-based patterns (could inform future skills)
+
+#### 1e. INB Template
+URL: https://github.com/OpenAEC-Foundation/inb-template
+RESEARCH:
+- What is the Dutch IFC template structure?
+- Property set definitions used (relevant for bonsai-syntax-properties)
+- Classification system used (relevant for bonsai-impl-classification)
+- NL-SfB integration patterns
+- Schema version used (IFC2x3? IFC4? IFC4.3?)
+
+#### 1f. Nextcloud Check-in/out
+URL: https://github.com/OpenAEC-Foundation/Nextcloud-Check-in-Check-out-feature
+RESEARCH:
+- File locking patterns for shared Claude Code projects
+- Relevant for our multi-agent workflow (agents shouldn't conflict on files)
+- Any patterns for concurrent file access that inform our batch strategy?
+
+---
+
+### PART 2: Claude / Anthropic Skill Development Platform
+
+#### 2a. Claude Platform Docs
+URL: https://platform.claude.com/docs/en/home
+RESEARCH:
+- Current skill format specification
+- YAML frontmatter requirements (are there fields we're missing?)
+- Skill loading behavior (how does Claude discover and load skills?)
+- Skill triggering mechanism (how does description field drive selection?)
+- Any best practices for skill organization?
+- Size limits or recommendations?
+
+#### 2b. Agent SDK / Skills Docs
+URL: https://platform.claude.com/docs/en/agent-sdk/skills
+RESEARCH:
+- Detailed skill specification
+- Reference file conventions
+- How multiple skills interact when loaded
+- Priority/ordering between skills
+- Any new features or conventions since ERPNext was developed?
+
+#### 2c. Build with Claude
+URL: https://www.anthropic.com/learn/build-with-claude
+RESEARCH:
+- Development guides relevant to skill authoring
+- Best practices for instruction design (our skills ARE instructions)
+- Prompt engineering patterns that apply to SKILL.md content
+- Any case studies of skill packages?
+
+---
+
+### PART 3: Cross-Technology Patterns
+
+Based on all the above research, identify:
+
+1. COMMON PATTERNS across OpenAEC projects:
+   - How do they typically use IfcOpenShell? (create vs read vs modify)
+   - How do they typically use Blender? (scripting vs addon vs automation)
+   - What IFC operations are most common?
+   - What Blender operations are most common?
+
+2. GAPS in our skill inventory:
+   - Are there operations used in real OpenAEC projects that our skills don't cover?
+   - Are there common workflows we should add skills for?
+
+3. REAL-WORLD EXAMPLES to include in skills:
+   - Collect specific code snippets from these repos that demonstrate correct patterns
+   - Note which skill each example belongs to
+   - These become references/examples.md content
+
+4. ANTI-PATTERNS found in the wild:
+   - Common mistakes visible in these repos
+   - These become references/anti-patterns.md content
+
+5. CLAUDE SKILL FORMAT INSIGHTS:
+   - Any changes to the skill spec since ERPNext?
+   - Optimization opportunities for our SKILL.md files
+   - Better trigger word patterns based on platform docs
+
+---
+
+FORMAT:
+- Markdown with clear sections per source
+- Code snippets extracted from repos (with attribution)
+- Tables mapping findings to our skill inventory
+- "Skill Relevance" annotation for each finding: which skill(s) benefit
+- Summary table at the end: source -> key findings -> impacted skills
+
+After completing:
+1. Commit and push docs/research/vooronderzoek-ecosystem-sources.md
+2. Update SOURCES.md "Last Verified" dates for all researched sources
+3. Update LESSONS.md with key discoveries
+4. If skill inventory changes needed, note them for Phase 3 masterplan refinement
+```
+
+---
+
 ## Usage Order
 
-1. **Now**: Prompt A (Bonsai research) - blocks Phase 2
-2. **Optional parallel**: Prompt A2 + A3 (enrich existing research with new sources)
-3. **Optional parallel**: Prompt E (verify all sources)
-4. **After all research complete**: Prompt B (Masterplan refinement - Phase 3)
+1. **DONE**: Prompt A (Bonsai research) - Phase 2 complete
+2. **NOW (parallel)**: Prompt F (ecosystem sources deep research) + Prompt B (masterplan refinement)
+3. **Optional parallel**: Prompt A2 + A3 (enrich existing research)
+4. **Optional parallel**: Prompt E (verify all source URLs)
 5. **After masterplan**: Prompt C (repeated per skill, in batches of 3)
 6. **After each batch**: Prompt D (validation)
