@@ -69,6 +69,55 @@ CRITICAL: This session is an ORCHESTRATOR, not a worker.
 - Quality gate after every batch
 - Orchestrator does QA, NEVER does the work itself
 
+### Open-Agents CLI Reference (oa-cli)
+
+> **IMPORTANT**: oa-cli runs ONLY in WSL Ubuntu, NOT in Windows PowerShell/CMD/Git Bash.
+> The tool depends on `fcntl` (Unix file locking) and `tmux` which are Linux-only.
+> All `oa` commands below must be executed in a WSL Ubuntu terminal.
+
+**Spawning agents:**
+```bash
+oa run "<task description>" --name <agent-name>        # Spawn single worker
+oa run "<task>" --name <name> --model claude/opus      # Specify model
+oa run "<task>" --name <name> --parent <orchestrator>  # Set parent (hierarchy)
+oa delegate "<task>"                                    # Spawn orchestrator + auto-manage workers
+oa pipeline "<task>"                                    # Planner -> parallel subtasks -> combiner
+```
+
+**Monitoring & collecting:**
+```bash
+oa status                    # Show all agents with hierarchy and status
+oa watch <name>              # Stream agent output in real-time
+oa attach <name>             # Switch to agent's tmux window (interactive)
+oa collect <name>            # Display completed agent's output
+oa dashboard                 # Interactive TUI with rich tables
+```
+
+**Communication between agents:**
+```bash
+oa send <recipient> "<message>"              # Direct message to agent
+oa send <recipient> "<msg>" --from <sender>  # Message with custom sender
+oa inbox <name>                              # Read agent's messages
+oa inbox <name> --unread                     # Only unread messages
+oa broadcast "<message>"                     # Send to ALL running agents
+```
+
+**Lifecycle:**
+```bash
+oa start                     # Initialize tmux session + dashboard
+oa kill <name>               # Stop a running agent
+oa clean                     # Clean up finished agent workspaces
+```
+
+**Key rules (from Open-Agents LESSONS.md):**
+- L-001: Orchestrator delegates, never does work itself
+- L-003: Two agents NEVER write the same file
+- L-004: QA after each batch before starting next
+- L-010: Claude Code = relay, delegate via `oa run`
+- L-025: Optimal 3-5 agents per batch, 5-6 tasks per agent max
+
+**Source**: https://github.com/OpenAEC-Foundation/Open-Agents
+
 ---
 
 ## Quality Control Protocol (P-003)
