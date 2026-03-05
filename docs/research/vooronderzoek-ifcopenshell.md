@@ -21,6 +21,8 @@
 12. [Performance Considerations](#12-performance-considerations)
 13. [AI Common Mistakes](#13-ai-common-mistakes)
 14. [Sources](#14-sources)
+15. [bSDD Integration with IfcOpenShell Classification](#15-bsdd-integration-with-ifcopenshell-classification)
+16. [Real-World Usage: OpenAEC Projects](#16-real-world-usage-openaec-projects)
 
 ---
 
@@ -37,6 +39,8 @@ IfcOpenShell is an open-source library for reading, writing, and manipulating IF
 - **Extensive geometry support** including parametric shapes, boolean operations, and tessellation
 - **Production-ready** with active maintenance (v0.8.4 current)
 - **LGPL-3.0-or-later license** for open-source use
+
+The [IfcOpenShell Academy](https://academy.ifcopenshell.org/) provides hands-on tutorials for learning IfcOpenShell. The tutorial [Using IfcOpenShell to parse IFC files with Python](https://academy.ifcopenshell.org/posts/using-ifcopenshell-to-parse-ifc-files-with-python/) by Dion Moult covers foundational techniques for reading and processing IFC data structures programmatically, and serves as the recommended starting point for new users. The tutorial [Using the parsing functionality of IfcOpenShell interactively](https://academy.ifcopenshell.org/posts/using-the-parsing-functionality-of-ifcopenshell-interactively/) by Thomas Krijnen demonstrates interactive Python and IfcOpenShell workflows using a REPL environment.
 
 ### Library Components
 
@@ -84,6 +88,10 @@ python -c "import ifcopenshell; print(ifcopenshell.version)"
 ---
 
 ## 2. File I/O Operations
+
+> **See also:** For complete function signatures, parameter tables, return values, and extended code examples covering `ifcopenshell.open()`, `ifcopenshell.file()`, `file.write()`, `file.create_entity()`, and auxiliary file methods, see [fragments/ifcos-core-operations.md](fragments/ifcos-core-operations.md). For deep research on streaming mode, anti-patterns, and version-specific file I/O behavior, see [topic-research/ifcos-core-operations.md](topic-research/ifcos-core-operations.md).
+
+The [IfcOpenShell Academy](https://academy.ifcopenshell.org/) tutorial [Using IfcOpenShell to parse IFC files with Python](https://academy.ifcopenshell.org/posts/using-ifcopenshell-to-parse-ifc-files-with-python/) demonstrates the complete file opening and parsing workflow. For zero-setup experimentation, the tutorial [Using IfcOpenShell in Binder Notebooks](https://academy.ifcopenshell.org/posts/using-ifcopenshell-in-binder-notebook-with-viewer-and-graph/) by Jakob Beetz provides interactive Jupyter notebooks that run directly in the browser without local installation.
 
 ### Opening an IFC File
 
@@ -157,6 +165,8 @@ wall = model.createIfcWall(
 ---
 
 ## 3. ifcopenshell.api.run() Complete Category Overview
+
+> **See also:** For the complete reference of all 35 API modules with individual function signatures, parameters, return values, and code examples for every function, see [fragments/ifcos-api-categories.md](fragments/ifcos-api-categories.md). That document covers every module from `aggregate` through `void`, including the `classification` module relevant to bSDD integration.
 
 The `ifcopenshell.api.run()` function is the **primary** way to modify IFC files. It ensures proper relationship creation, GUID generation, and schema compliance.
 
@@ -350,6 +360,8 @@ element_type = ifcopenshell.util.element.get_type(wall)
 
 ## 4. Element Traversal
 
+> **See also:** For comprehensive research on element traversal including `by_type()`, `by_id()`, `by_guid()`, inverse attribute traversal, `ifcopenshell.util.element` query functions, and anti-patterns to avoid, see [topic-research/ifcos-core-operations.md](topic-research/ifcos-core-operations.md).
+
 ### by_type -- Query by IFC Class
 
 ```python
@@ -413,6 +425,8 @@ info_recursive = wall.get_info(recursive=True)
 ---
 
 ## 5. ifcopenshell.util.* Modules
+
+> **See also:** For deep research on all 29 utility submodules including `ifcopenshell.util.element`, `ifcopenshell.util.unit`, `ifcopenshell.util.placement`, `ifcopenshell.util.shape`, `ifcopenshell.util.selector`, `ifcopenshell.util.date`, and others with working code examples and anti-patterns, see [topic-research/ifcos-core-operations.md](topic-research/ifcos-core-operations.md).
 
 The `ifcopenshell.util` package contains 29 utility submodules that simplify complex IFC relationship traversal.
 
@@ -555,6 +569,10 @@ extrusion = builder.extrude(rectangle, magnitude=3.0)
 
 ## 6. ifcopenshell.geom Module
 
+> **See also:** For detailed research on the geometry module including `ifcopenshell.geom.settings()` configuration options, `create_shape()` vs `iterator` performance comparison, multi-threaded geometry processing, OpenCASCADE vs CGAL geometry engines, and mesh data extraction patterns, see [topic-research/ifcos-core-operations.md](topic-research/ifcos-core-operations.md).
+
+The [IfcOpenShell Academy](https://academy.ifcopenshell.org/) provides several geometry-focused tutorials. [Using IfcOpenShell and pythonOCC to construct new geometry](https://academy.ifcopenshell.org/posts/using-ifcopenshell-and-pythonocc-to-construct-new-geometry/) by Thomas Krijnen demonstrates constructing geometry and calculating volumetric properties. [Using IfcOpenShell and pythonOCC to generate cross sections](https://academy.ifcopenshell.org/posts/using-ifcopenshell-and-pythonocc-to-generate-cross-sections-directly-from-an-ifc-file/) by Emiel van Strien covers deriving section information. [Read geometry as Boundary Representation in FreeCAD](https://academy.ifcopenshell.org/posts/read-geometry-as-boundary-representation-in-freecad/) and [Read IFC geometry as triangle meshes in FreeCAD](https://academy.ifcopenshell.org/posts/read-ifc-geometry-as-triangle-meshes-in-freecad/) by Cyril Waechter cover BREP and mesh geometry processing respectively. [Understanding placements in IFC](https://academy.ifcopenshell.org/posts/understanding-placements-in-ifc-using-ifcopenshell-and-freecad/) by Cyril Waechter provides essential guidance on coordinate systems and placement handling.
+
 ### Geometry Processing Engine
 
 The `ifcopenshell.geom` module uses OpenCASCADE Technology (OCCT) to convert IFC geometric representations into processable geometry (meshes or BRep solids).
@@ -693,6 +711,10 @@ ifcopenshell.api.run("geometry.assign_representation", model,
 ---
 
 ## 7. IFC Schema Versions
+
+> **See also:** For a complete schema version reference including entity counts, ISO standard identifiers, and IfcOpenShell schema identifier mappings, see [fragments/ifcos-schema-versions.md](fragments/ifcos-schema-versions.md). For exhaustive schema comparison research including version timelines, Express schema introspection with `ifcopenshell.schema_by_name()`, and attribute-level differences, see [topic-research/ifcos-schema-version-comparison.md](topic-research/ifcos-schema-version-comparison.md).
+
+The [IfcOpenShell Academy](https://academy.ifcopenshell.org/) tutorial [Using IfcOpenShell and C++ to generate Alignments through the IFC 4x1 schema](https://academy.ifcopenshell.org/posts/using-ifcopenshell-and-c%2B%2B-to-generate-alignments-through-the-ifc-4x1-schema/) by Francisco Navarrete Mandly demonstrates schema code generation for custom IFC versions, relevant for understanding how IfcOpenShell handles schema differences internally.
 
 ### Schema Overview
 
@@ -879,6 +901,8 @@ ifcpatch.write(output, "output_ifc4x3.ifc")
 ---
 
 ## 8. Entity Hierarchy and Inheritance
+
+> **See also:** For the full entity hierarchy tree diagrams across IFC2x3, IFC4, and IFC4.3, including spatial structure hierarchy changes and IfcBuiltElement subtypes, see [fragments/ifcos-schema-versions.md](fragments/ifcos-schema-versions.md). For deeper research on type objects, IfcElement subtype trees, and spatial structure evolution with code examples, see [topic-research/ifcos-schema-version-comparison.md](topic-research/ifcos-schema-version-comparison.md).
 
 ### Core Inheritance Chain
 
@@ -1070,6 +1094,8 @@ wall.is_a("IfcSlab")     # False
 ---
 
 ## 9. Relationship Types
+
+> **See also:** For the complete IfcRelationship hierarchy tree, detailed documentation of all relationship variants, and relationship availability across IFC versions, see [fragments/ifcos-schema-versions.md](fragments/ifcos-schema-versions.md). For in-depth research with code examples for every relationship type and version-specific behavior, see [topic-research/ifcos-schema-version-comparison.md](topic-research/ifcos-schema-version-comparison.md).
 
 IFC uses **objectified relationships** -- relationships are first-class entities with their own attributes. NEVER try to set relationships by assigning attributes directly.
 
@@ -1293,6 +1319,10 @@ for fill_rel in opening.HasFillings:
 
 ## 10. Common Operations
 
+> **See also:** For additional common operation patterns including creating minimal valid IFC files, extracting data, and modifying properties, see [fragments/ifcos-errors-performance.md](fragments/ifcos-errors-performance.md). For complete workflow examples covering high-level API and low-level approaches, see [fragments/ifcos-core-operations.md](fragments/ifcos-core-operations.md).
+
+The [IfcOpenShell Academy](https://academy.ifcopenshell.org/) tutorial [Creating a simple wall with property set and quantity information](https://academy.ifcopenshell.org/posts/creating-a-simple-wall-with-property-set-and-quantity-information/) by Kianwee Chen provides a step-by-step walkthrough of procedural IFC wall creation. The [IfcOpenShell Optimizer tutorial](https://academy.ifcopenshell.org/posts/ifcopenshell-optimizer-tutorial/) by Johan Luttun covers reducing IFC file size by eliminating duplicate entity instances. The [Calculate Differences of IFC files with Hashing](https://academy.ifcopenshell.org/posts/calculate-differences-of-ifc-files-with-hashing/) tutorial by Johan Luttun demonstrates comparing successive IFC exports.
+
 ### Create a Minimal Valid IFC File
 
 ```python
@@ -1444,6 +1474,8 @@ ifcopenshell.api.run("aggregate.assign_object", model43,
 
 ## 11. Common Error Patterns
 
+> **See also:** For the comprehensive error pattern reference covering schema mismatch errors, missing required attributes, incorrect relationship creation, geometry processing failures, unit conversion issues, GUID errors, property set errors, type assignment errors, and file corruption patterns, see [fragments/ifcos-errors-performance.md](fragments/ifcos-errors-performance.md). For deep research on error patterns with expanded examples, edge cases, and version-specific error behavior, see [topic-research/ifcos-errors-performance-research.md](topic-research/ifcos-errors-performance-research.md).
+
 ### Error 1: AttributeError on IfcWallStandardCase in IFC4.3
 
 ```python
@@ -1582,6 +1614,10 @@ else:
 
 ## 12. Performance Considerations
 
+> **See also:** For detailed performance guidance including memory usage tables for files from 10MB to 2GB+, efficient querying strategies, batch vs individual operation patterns, geometry processing optimization with `ifcopenshell.geom.iterator`, and memory management strategies, see [fragments/ifcos-errors-performance.md](fragments/ifcos-errors-performance.md). For extended performance research including profiling techniques, caching strategies, and community-reported optimization patterns, see [topic-research/ifcos-errors-performance-research.md](topic-research/ifcos-errors-performance-research.md).
+
+The [IfcOpenShell Academy](https://academy.ifcopenshell.org/) tutorial [IfcOpenShell Optimizer tutorial](https://academy.ifcopenshell.org/posts/ifcopenshell-optimizer-tutorial/) by Johan Luttun covers file size optimization by eliminating duplicate entity instances, which directly impacts memory usage and loading performance for large models.
+
 ### File Loading
 
 - `ifcopenshell.open()` loads the **entire file into memory**. For files > 500MB, this takes significant RAM.
@@ -1669,6 +1705,8 @@ ifcopenshell.api.run("spatial.assign_container", model,
 
 ## 13. AI Common Mistakes
 
+> **See also:** For the complete AI mistake reference covering hallucinated API methods, wrong parameter orders, `api.run()` vs direct entity creation confusion, schema version assumptions, missing owner history, incorrect geometry creation, and a quick-reference table of correct vs hallucinated method names, see [fragments/ifcos-errors-performance.md](fragments/ifcos-errors-performance.md). For deep research on AI pitfalls with expanded examples and a summary of critical rules for AI code generation, see [topic-research/ifcos-errors-performance-research.md](topic-research/ifcos-errors-performance-research.md).
+
 These are mistakes that AI code generators (including LLMs) frequently make when generating IfcOpenShell code:
 
 1. **Inventing API functions that do not exist.** AI models fabricate function names like `ifcopenshell.api.run("wall.create", ...)` or `ifcopenshell.create_wall()`. ALWAYS use the documented `root.create_entity` with `ifc_class` parameter.
@@ -1722,3 +1760,271 @@ These are mistakes that AI code generators (including LLMs) frequently make when
 - [IfcOpenShell GitHub Repository](https://github.com/IfcOpenShell/IfcOpenShell)
 - [IfcOpenShell PyPI Package](https://pypi.org/project/ifcopenshell/)
 - [IfcOpenShell Conda Package](https://anaconda.org/ifcopenshell/ifcopenshell)
+
+### Academy Tutorials
+- [Using IfcOpenShell to parse IFC files with Python (Academy)](https://academy.ifcopenshell.org/posts/using-ifcopenshell-to-parse-ifc-files-with-python/) - Foundational parsing tutorial by Dion Moult
+- [Using IfcOpenShell in Binder Notebooks (Academy)](https://academy.ifcopenshell.org/posts/using-ifcopenshell-in-binder-notebook-with-viewer-and-graph/) - Zero-setup Jupyter notebooks with viewer by Jakob Beetz
+- [Using the parsing functionality interactively (Academy)](https://academy.ifcopenshell.org/posts/using-the-parsing-functionality-of-ifcopenshell-interactively/) - Interactive REPL tutorial by Thomas Krijnen
+- [IfcOpenShell Optimizer tutorial (Academy)](https://academy.ifcopenshell.org/posts/ifcopenshell-optimizer-tutorial/) - File size reduction by Johan Luttun
+- [Calculate Differences of IFC files with Hashing (Academy)](https://academy.ifcopenshell.org/posts/calculate-differences-of-ifc-files-with-hashing/) - IFC diff comparison by Johan Luttun
+- [Understanding placements in IFC (Academy)](https://academy.ifcopenshell.org/posts/understanding-placements-in-ifc-using-ifcopenshell-and-freecad/) - Coordinate systems and placement handling by Cyril Waechter
+- [Using IfcOpenShell and pythonOCC to construct new geometry (Academy)](https://academy.ifcopenshell.org/posts/using-ifcopenshell-and-pythonocc-to-construct-new-geometry/) - Geometry construction by Thomas Krijnen
+- [Using IfcOpenShell and pythonOCC to generate cross sections (Academy)](https://academy.ifcopenshell.org/posts/using-ifcopenshell-and-pythonocc-to-generate-cross-sections-directly-from-an-ifc-file/) - Section generation by Emiel van Strien
+- [Read geometry as Boundary Representation in FreeCAD (Academy)](https://academy.ifcopenshell.org/posts/read-geometry-as-boundary-representation-in-freecad/) - BREP geometry processing by Cyril Waechter
+- [Read IFC geometry as triangle meshes in FreeCAD (Academy)](https://academy.ifcopenshell.org/posts/read-ifc-geometry-as-triangle-meshes-in-freecad/) - Mesh geometry processing by Cyril Waechter
+- [Using IfcOpenShell and C++ for IFC 4x1 Alignments (Academy)](https://academy.ifcopenshell.org/posts/using-ifcopenshell-and-c%2B%2B-to-generate-alignments-through-the-ifc-4x1-schema/) - Schema code generation by Francisco Navarrete Mandly
+- [Creating a simple wall with property set and quantity information (Academy)](https://academy.ifcopenshell.org/posts/creating-a-simple-wall-with-property-set-and-quantity-information/) - Procedural wall creation by Kianwee Chen
+
+### bSDD References
+- [bSDD Search Portal](https://search.bsdd.buildingsmart.org/)
+- [bSDD API Usage Guide](https://technical.buildingsmart.org/services/bsdd/using-the-bsdd-api/)
+- [bSDD Data Structure](https://technical.buildingsmart.org/services/bsdd/data-structure/)
+- [bSDD GitHub Repository](https://github.com/buildingSMART/bSDD)
+- [IfcOpenShell bSDD Module Source](https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bsdd)
+- [IFC Classification Libraries](https://github.com/Moult/IfcClassification)
+
+### OpenAEC Foundation
+- [building.py - Python Building Library with IFC Export](https://github.com/OpenAEC-Foundation/building-py)
+- [INB Template - Dutch IFC Component Library](https://github.com/OpenAEC-Foundation/inb-template)
+- [Monty IFC Viewer - Web-based IFC Viewer](https://github.com/OpenAEC-Foundation/monty-ifc-viewer)
+
+---
+
+## 15. bSDD Integration with IfcOpenShell Classification
+
+The **buildingSMART Data Dictionary (bSDD)** is an online, centralized RESTful API operated by buildingSMART International. It serves as a standardized repository for construction industry classifications, properties, and material definitions. Organizations worldwide publish their classification systems (called "dictionaries") to bSDD, making them programmatically accessible via a single API.
+
+bSDD solves a critical interoperability problem: instead of downloading classification spreadsheets or PDFs and manually entering codes, software ALWAYS retrieves up-to-date classification data directly from the API.
+
+### bSDD Core Data Model
+
+| Entity | Description | IFC Mapping |
+|--------|-------------|-------------|
+| **Dictionary** | A classification system published by an organization (e.g., NL-SfB, Uniclass) | `IfcClassification` |
+| **Class** | A set of objects sharing characteristics (e.g., "External Wall", "Concrete Column") | `IfcClassificationReference` |
+| **Property** | An inherent feature of a Class (e.g., thermal conductivity, fire rating) | `IfcPropertySingleValue` |
+| **ClassProperty** | A Property instantiated within a specific Class, with context-specific constraints | `IfcPropertySingleValue` with constraints |
+| **AllowedValue** | Enumerated value restrictions for properties (e.g., fire ratings: REI30, REI60, REI90) | `IfcPropertyEnumeratedValue` |
+
+### bSDD API Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/Dictionary/v1` | GET | List all available dictionaries |
+| `/api/Class/v1` | GET | Retrieve class details including properties |
+| `/api/SearchList/v1` | GET | Search for classes by text within a dictionary |
+| `/api/Property/v1` | GET | Retrieve individual property details |
+
+**Base URL**: `https://api.bsdd.buildingsmart.org/`
+
+### IfcOpenShell Classification Module
+
+The `ifcopenshell.api.classification` module provides six functions:
+
+| Function | Purpose |
+|----------|---------|
+| `add_classification(file, classification)` | Create a new classification system in the IFC project |
+| `add_reference(file, products, reference, identification, name, classification, is_lightweight)` | Associate a classification reference with IFC products |
+| `edit_classification(file, classification, attributes)` | Modify attributes of an existing `IfcClassification` |
+| `edit_reference(file, reference, attributes)` | Modify attributes of an existing `IfcClassificationReference` |
+| `remove_classification(file, classification)` | Delete a classification system and ALL associated references |
+| `remove_reference(file, reference, products)` | Unassign a classification reference from specified products |
+
+### The IfcOpenShell `bsdd` Module
+
+IfcOpenShell includes a dedicated `bsdd` Python package (located at `src/bsdd/` in the repository). This package was developed as a Google Summer of Code (GSoC) project and completed in February 2023. It is a standalone library that does NOT depend on IfcOpenShell core.
+
+```python
+from bsdd import Client
+
+client = Client()
+# client.baseurl = "https://api.bsdd.buildingsmart.org/api/"
+```
+
+### Complete Workflow: bSDD Lookup + IfcOpenShell Classification
+
+```python
+from bsdd import Client, apply_ifc_classification_properties
+import ifcopenshell
+import ifcopenshell.api
+
+# Step 1: Connect to bSDD
+client = Client()
+
+# Step 2: Search for classification codes
+# Example: search the Dutch NL-SfB 2005 for wall-related codes
+results = client.search_in_dictionary(
+    "https://identifier.buildingsmart.org/uri/nlsfb/nlsfb2005/2.2",
+    related_ifc_entity="IfcWall"
+)
+
+# Step 3: Retrieve full class data including properties
+class_data = client.get_class(
+    "https://identifier.buildingsmart.org/uri/nlsfb/nlsfb2005/2.2/class/21.21"
+)
+
+# Step 4: Open IFC model and add classification
+model = ifcopenshell.open("my_building.ifc")
+wall = model.by_type("IfcWall")[0]
+
+classification = ifcopenshell.api.run(
+    "classification.add_classification",
+    model,
+    classification="NL-SfB 2005"
+)
+
+ifcopenshell.api.run(
+    "classification.edit_classification",
+    model,
+    classification=classification,
+    attributes={
+        "Source": "BIM Loket",
+        "Edition": "2.2",
+        "Location": "https://identifier.buildingsmart.org/uri/nlsfb/nlsfb2005/2.2"
+    }
+)
+
+# Step 5: Add the classification reference to the element
+ifcopenshell.api.run(
+    "classification.add_reference",
+    model,
+    products=[wall],
+    identification="21.21",
+    name="Buitenwanden",
+    classification=classification
+)
+
+# Step 6: Apply bSDD properties to the element AUTOMATICALLY
+if class_data.get("classProperties"):
+    apply_ifc_classification_properties(
+        model, wall, class_data["classProperties"]
+    )
+
+# Step 7: Save the model
+model.write("my_building_classified.ifc")
+```
+
+### bSDD-to-IFC Entity Mapping
+
+| bSDD Concept | IFC Entity | IFC Attribute |
+|--------------|------------|---------------|
+| Dictionary name | `IfcClassification` | `.Name` |
+| Dictionary URI | `IfcClassification` | `.Specification` (IFC4x3) or `.Location` (IFC4) |
+| Dictionary version | `IfcClassification` | `.Edition` |
+| Class name | `IfcClassificationReference` | `.Name` |
+| Class code | `IfcClassificationReference` | `.Identification` (IFC4+) |
+| Class URI | `IfcClassificationReference` | `.Location` |
+| Property code | `IfcPropertySingleValue` | `.Name` |
+| Predefined value | `IfcPropertySingleValue` | `.NominalValue` |
+| Allowed values | `IfcPropertyEnumeratedValue` | `.EnumerationValues` |
+
+### Common Classification Systems on bSDD
+
+| System | Region | Dictionary URI |
+|--------|--------|---------------|
+| NL-SfB 2005 | Netherlands | `https://identifier.buildingsmart.org/uri/nlsfb/nlsfb2005/2.2` |
+| Uniclass 2015 | United Kingdom | Available via bSDD search |
+| OmniClass | North America | Available via bSDD search |
+| MasterFormat | North America | Available via bSDD search |
+| ETIM | International | Available via bSDD search |
+| CCI | International | Available via bSDD search |
+| IFC (buildingSMART) | International | `https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3` |
+
+### bSDD Anti-patterns
+
+- NEVER use `identifier.buildingsmart.org` URIs for API calls -- use `api.bsdd.buildingsmart.org` endpoints
+- NEVER hardcode classification codes without verifying them against bSDD
+- NEVER skip the `related_ifc_entity` filter when searching -- it prevents incorrect classifications
+- NEVER assume a bSDD class has IFC-specific property sets -- check `classProperties` first
+
+---
+
+## 16. Real-World Usage: OpenAEC Projects
+
+The [OpenAEC Foundation](https://github.com/OpenAEC-Foundation) maintains open-source repositories that demonstrate real-world IfcOpenShell usage patterns. Analysis of these projects reveals common practices and two distinct integration strategies.
+
+### building.py
+
+**Repository:** https://github.com/OpenAEC-Foundation/building-py
+**Description:** Python library for creating buildings and objects, then exporting to multiple platforms including Blender, Revit, Speckle, FreeCAD, and IFC (via IfcOpenShell).
+
+**IfcOpenShell modules used:** `ifcopenshell` (core), `ifcopenshell.api.run`, `ifcopenshell.geom`, `ifcopenshell.util.element`
+
+**Key pattern -- Wrapper-class abstraction:**
+```python
+# building.py wraps IfcOpenShell behind domain-specific classes
+ifc_project = CreateIFC()
+ifc_project.add_project("My Project")
+ifc_project.add_site("My Site")
+ifc_project.add_building("Building A")
+ifc_project.add_storey("Ground Floor")
+ifc_project.export("output.ifc")
+# End users NEVER call ifcopenshell.api.run() directly
+```
+
+Each wrapper method internally calls `ifcopenshell.api.run()`, demonstrating that IfcOpenShell can serve as a backend behind a domain-specific API -- users create "beams" and "panels," not "IfcBeamType" entities.
+
+### INB Template (Ifc NL Bouw)
+
+**Repository:** https://github.com/OpenAEC-Foundation/inb-template
+**Description:** Experimental IFC template and component library for the Dutch construction sector. Generates standardized Dutch building components from spreadsheet data using IFC4x3.
+
+**IfcOpenShell modules used:** `ifcopenshell` (core), `ifcopenshell.api.run` (root, material, geometry, spatial, aggregate, type, project, owner), `ifcopenshell.util.element`, `ifcopenshell.util.placement`, `ifcopenshell.util.unit`, `ifcopenshell.validate`, plus `bonsai.bim` and `bonsai.tool` for Blender integration.
+
+**Key pattern -- Data-driven IFC generation:**
+```python
+# INB Template reads construction data from ODS spreadsheets
+# and generates IFC library files programmatically
+ifcopenshell.api.run("root.create_entity", file, ifc_class="IfcWall", name=name)
+ifcopenshell.api.run("material.add_material", file, name=name, category=category)
+ifcopenshell.api.run("material.assign_material", file, product=element, type="IfcMaterialLayerSet")
+ifcopenshell.api.run("geometry.add_wall_representation", file, context=model_body,
+                     length=length, height=height, thickness=thickness)
+```
+
+This project uses the WIDEST range of `ifcopenshell.api.run()` categories of any analyzed repository and includes `ifcopenshell.validate` for model validation -- a best practice rarely seen elsewhere.
+
+**Key pattern -- Focused utility scripts (pile operations):**
+```python
+import ifcopenshell
+import ifcopenshell.util.placement
+
+ifc_file = ifcopenshell.open(ifc_file_path)
+piles = ifc_file.by_type('IfcPile')
+
+for pile in piles:
+    matrix = ifcopenshell.util.placement.get_local_placement(pile.ObjectPlacement)
+    z_coordinate = matrix[2][3]     # Z from 4x4 transformation matrix
+    name = pile.Name                # Direct attribute access
+```
+
+### Monty IFC Viewer
+
+**Repository:** https://github.com/OpenAEC-Foundation/monty-ifc-viewer
+**Description:** Web-based and desktop (Tauri) IFC viewer with construction sequence visualization.
+
+**IfcOpenShell modules used:** None. This project uses `web-ifc` (JavaScript/WebAssembly) for IFC parsing in the browser. This demonstrates the boundary: browser-based IFC viewers ALWAYS use web-ifc, not IfcOpenShell. IfcOpenShell is ALWAYS the choice for server-side or desktop Python applications.
+
+### AEC Scripts
+
+**Repository:** https://github.com/OpenAEC-Foundation/aec-scripts
+**Status:** Does NOT exist as a public repository (HTTP 404).
+
+### Cross-Cutting Patterns
+
+| Pattern | building.py | INB Template | Monty Viewer |
+|---------|------------|--------------|--------------|
+| `ifcopenshell.api.run()` | Primary write API | Primary write API | Not used |
+| `ifcopenshell.open()` | For loading | For loading | Not used (uses web-ifc) |
+| `ifcopenshell.geom` | Shape conversion | Not observed | Not used |
+| `ifcopenshell.util.placement` | Not observed | Coordinate extraction | Not used |
+| `ifcopenshell.validate` | Not observed | Model validation | Not used |
+| Abstraction layer | Yes (wrapper classes) | No (direct API calls) | Not applicable |
+| Data-driven generation | No (programmatic) | Yes (spreadsheet-driven) | Not applicable |
+
+**Universal patterns across all IfcOpenShell-using projects:**
+1. `ifcopenshell.api.run()` is the universal write interface
+2. `ifc_file.by_type()` is the universal read/query interface
+3. Direct attribute access (`entity.Name`, `entity.GlobalId`) is the standard reading pattern
+4. Spatial hierarchy ALWAYS follows: Project -> Site -> Building -> Storey -> Elements
+5. Unit assignment happens immediately after project creation

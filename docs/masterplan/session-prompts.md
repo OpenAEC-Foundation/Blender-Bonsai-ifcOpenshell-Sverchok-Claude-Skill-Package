@@ -3,9 +3,23 @@
 Copy-paste these prompts to start new Claude sessions or oa agents.
 All prompts reference SOURCES.md for approved documentation URLs.
 
+## Prompt Status Overview
+
+| Prompt | Purpose | Status |
+|--------|---------|--------|
+| A | Bonsai vooronderzoek | DONE (2026-03-05) |
+| A2 | Blender research enrichment | TODO (optional) |
+| A3 | IfcOpenShell research enrichment | TODO (optional) |
+| B | Masterplan refinement (Phase 3) | TODO — run AFTER G + F |
+| C | Skill writer template (Phase 5) | TODO — run after B |
+| D | Batch validator (Phase 6) | TODO — run after each C batch |
+| E | Sources URL verification | TODO (optional) |
+| F | Ecosystem sources deep research | TODO |
+| G | Supplementary research: gap domains | TODO — PRIORITY |
+
 ---
 
-## PROMPT A: Bonsai Vooronderzoek (URGENT - blocks Phase 2 completion)
+## PROMPT A: Bonsai Vooronderzoek — DONE (completed 2026-03-05)
 
 ```
 PROJECT: Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
@@ -532,18 +546,262 @@ After completing:
 
 ---
 
+## PROMPT G: Supplementary Research — Gap Domains + Python Runtime Quirks
+
+```
+PROJECT: Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
+REPO: https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
+WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
+
+TASK: Supplementary deep research to fill critical gaps identified in scope-analysis.md.
+Our existing vooronderzoeken cover ~40% of the total Python API surface.
+This session fills the remaining gaps that are AEC-relevant.
+
+READ FIRST:
+- docs/research/scope-analysis.md (the gap analysis — THIS defines what to research)
+- docs/research/vooronderzoek-blender.md (what's already covered — DON'T duplicate)
+- docs/research/vooronderzoek-ifcopenshell.md (what's already covered)
+- docs/research/vooronderzoek-bonsai.md (what's already covered)
+- SOURCES.md (approved sources)
+- REQUIREMENTS.md (quality requirements — now includes 5.x, node systems, animation, etc.)
+
+OUTPUT FILES:
+- docs/research/supplementary-blender-gaps.md
+- docs/research/supplementary-ifcos-gaps.md
+- docs/research/supplementary-bonsai-gaps.md
+
+---
+
+### PART 1: Blender Gap Domains (AEC-relevant)
+
+For EACH domain below, document:
+- Python API patterns (how to script it)
+- Key classes/types involved
+- Version differences (3.x vs 4.x vs 5.x)
+- Common errors and anti-patterns
+- AEC-specific use cases
+
+#### 1a. Node Systems via Python
+SOURCES: https://docs.blender.org/api/current/bpy.types.NodeTree.html
+         https://docs.blender.org/api/current/bpy.ops.node.html
+RESEARCH:
+- Creating/modifying Geometry Node groups via Python
+- Accessing GN modifier inputs/outputs (Socket_0, Socket_1 pattern)
+- Building Shader Node trees programmatically (material scripting)
+- Compositor node tree automation
+- Node group I/O (inputs, outputs, sockets)
+- bpy.data.node_groups collection
+- Version differences: GN changes between 3.x/4.x/5.x
+
+#### 1b. Animation & Rigging via Python
+SOURCES: https://docs.blender.org/api/current/bpy.types.FCurve.html
+         https://docs.blender.org/api/current/bpy.types.Action.html
+         https://docs.blender.org/api/current/bpy.types.Armature.html
+RESEARCH:
+- Keyframe insertion (obj.keyframe_insert)
+- FCurve access and manipulation
+- Driver expressions and variables
+- Constraint setup via Python (all constraint types)
+- Armature/Bone/PoseBone hierarchy
+- Action and NLA strip management
+- Bone collections (4.0+ replacement for bone layers)
+- AEC use cases: animated construction sequences, solar studies
+
+#### 1c. Materials & Shading via Python
+SOURCES: https://docs.blender.org/api/current/bpy.types.Material.html
+         https://docs.blender.org/api/current/bpy.types.ShaderNode.html
+RESEARCH:
+- Material creation and assignment
+- Building shader node trees (Principled BSDF setup)
+- Texture node creation and image assignment
+- UV mapping via Python
+- EEVEE vs Cycles material settings
+- AEC use cases: material libraries, automated material assignment by IFC type
+
+#### 1d. Rendering via Python
+SOURCES: https://docs.blender.org/api/current/bpy.types.RenderSettings.html
+RESEARCH:
+- Scene.render settings (resolution, output, file format)
+- EEVEE vs Cycles engine selection and config
+- Camera setup and animation
+- Light types and configuration
+- Batch rendering (multiple viewpoints, animations)
+- bpy.ops.render.render() vs render API
+- AEC use cases: automated render pipelines, VR/panorama output
+
+#### 1e. I/O Formats via Python
+SOURCES: https://docs.blender.org/api/current/bpy.ops.import_scene.html
+         https://docs.blender.org/api/current/bpy.ops.export_scene.html
+RESEARCH:
+- FBX import/export operators and settings
+- glTF/GLB import/export
+- OBJ import/export
+- USD import/export (Blender 4.0+)
+- Alembic import/export
+- STL import/export
+- IFC import via Bonsai/IfcOpenShell
+- AEC use cases: interop with Revit (FBX), web viewers (glTF), 3D printing (STL)
+
+#### 1f. Collections, Libraries & Assets via Python
+SOURCES: https://docs.blender.org/api/current/bpy.types.Collection.html
+         https://docs.blender.org/api/current/bpy.types.BlendDataLibraries.html
+RESEARCH:
+- Collection creation, nesting, visibility, render toggles
+- Library linking vs appending (bpy.data.libraries.load)
+- Asset Browser API (marking assets, catalogs, tags)
+- Library overrides (4.0+)
+- AEC use cases: component libraries, BIM object libraries
+
+#### 1g. mathutils & Standalone Modules
+SOURCES: https://docs.blender.org/api/current/mathutils.html
+         https://docs.blender.org/api/current/gpu.html
+RESEARCH:
+- Vector, Matrix, Quaternion, Euler — creation and operations
+- KDTree for nearest-point queries
+- BVHTree for raycasting and intersection
+- bl_math helpers (lerp, clamp, smoothstep)
+- gpu module: shader creation, batch drawing, texture handling
+- AEC use cases: distance calculations, spatial queries, custom overlays
+
+#### 1h. Python Runtime Quirks in Blender
+RESEARCH (from experience + docs):
+- Embedded CPython: no direct threading (use bpy.app.timers for async)
+- Restricted context: what you CAN'T do in handlers, draw callbacks, timers
+- Undo invalidates ALL Python references to Blender data
+- Garbage collection of dynamic enum items
+- Reference counting and orphaned data
+- bpy.ops requires correct context (area, region, space)
+- Main thread only for bpy.ops — how to work around
+- bpy.app.timers for deferred execution
+- bpy.msgbus for reactive programming
+
+---
+
+### PART 2: IfcOpenShell Gap Domains
+
+#### 2a. Cost Management (ifcopenshell.api.cost)
+SOURCE: https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/cost/index.html
+RESEARCH:
+- Cost items, cost schedules, cost rates
+- Quantity-cost relationships
+- Currency and value handling
+
+#### 2b. 4D Scheduling (ifcopenshell.api.sequence)
+SOURCE: https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/sequence/index.html
+RESEARCH:
+- Work plans, work schedules, work calendars
+- Task creation and sequencing
+- Task-element relationships (4D linking)
+- Gantt chart data extraction
+
+#### 2c. MEP Systems (ifcopenshell.api.system)
+SOURCE: https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/system/index.html
+RESEARCH:
+- Distribution systems (HVAC, plumbing, electrical)
+- Ports and flow connections
+- System traversal
+
+#### 2d. Drawing/2D (ifcopenshell.api.drawing)
+SOURCE: https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/drawing/index.html
+RESEARCH:
+- 2D drawing generation from 3D model
+- Annotations, dimensions
+- Sheet layout
+
+#### 2e. Profiles (ifcopenshell.api.profile)
+SOURCE: https://docs.ifcopenshell.org/autoapi/ifcopenshell/api/profile/index.html
+RESEARCH:
+- Parametric profiles (I-beam, C-channel, etc.)
+- Custom profiles
+- Profile-element relationships
+
+#### 2f. Validation & Georeferencing
+SOURCES: ifcopenshell.validate, ifcopenshell.api.georeference
+RESEARCH:
+- Schema validation rules
+- Coordinate reference systems
+- Map conversion
+
+#### 2g. Python Runtime: IfcOpenShell-specific
+RESEARCH:
+- C++ binding behavior (what happens when C++ objects go out of scope?)
+- File object lifecycle (when does garbage collection break things?)
+- Schema-specific entity availability (what errors when wrong schema?)
+- Performance: by_type() vs iteration vs selector
+- Thread safety (can multiple threads access same file?)
+- Memory patterns for large models (100K+ entities)
+
+---
+
+### PART 3: Bonsai Gap Domains
+
+#### 3a. Drawing Module
+SOURCE: https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/bonsai/bim/module/drawing
+RESEARCH:
+- How Bonsai generates 2D drawings from 3D BIM model
+- Drawing sheet management
+- Annotation tools
+- Dimension tools
+
+#### 3b. Quantity Takeoff (QTO)
+SOURCE: https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/bonsai/bim/module/qto
+RESEARCH:
+- Calculator module
+- Quantity rules
+- BaseQto patterns
+
+#### 3c. BCF (BIM Collaboration Format)
+SOURCE: https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/bonsai/bim/module/bcf
+RESEARCH:
+- BCF topic creation
+- Viewpoint management
+- Issue tracking workflow
+
+#### 3d. Clash Detection
+SOURCE: https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/bonsai/bim/module/clash
+RESEARCH:
+- Clash detection setup
+- Clash set management
+- Result interpretation
+
+#### 3e. Python Runtime: Bonsai-specific
+RESEARCH:
+- Bonsai's tool/core/ui pattern — what CAN you call from scripts?
+- How to access Bonsai functionality from outside the UI
+- Blender operator vs direct API call
+- When to use Bonsai operators vs ifcopenshell.api directly
+- State management: IfcStore singleton pattern
+
+---
+
+### FORMAT:
+- Same depth as existing vooronderzoeken (code examples, version notes, anti-patterns)
+- DO NOT duplicate content already in existing vooronderzoeken
+- For each domain: key classes, patterns, errors, AEC use cases
+- Cross-reference to existing research where relevant
+- Mark what's AEC-relevant vs general (helps Phase 3 scope decisions)
+
+After completing:
+1. Commit all 3 supplementary research files
+2. Update scope-analysis.md coverage columns
+3. Update ROADMAP.md status
+4. Update LESSONS.md with new discoveries
+```
+
+---
+
 ## Usage Order
 
 1. **DONE**: Prompt A (Bonsai research) - Phase 2 complete
-2. **NOW**: Prompt F (ecosystem sources deep research) - this IS vooronderzoek, feeds into masterplan
-3. **Optional parallel with F**: Prompt A2 + A3 (enrich existing Blender/IfcOpenShell research)
-4. **Optional parallel with F**: Prompt E (verify all source URLs)
-5. **AFTER F completes**: Prompt B (masterplan refinement) - needs ALL research including F's findings
-6. **After masterplan**: Prompt C (repeated per skill, in batches of 3)
-7. **After each batch**: Prompt D (validation)
+2. **PRIORITY**: Prompt G (supplementary research on gap domains) - fills critical gaps
+3. **Parallel with G**: Prompt F (ecosystem sources deep research)
+4. **Optional parallel**: Prompt A2 + A3 (enrich existing research)
+5. **Optional parallel**: Prompt E (verify all source URLs)
+6. **AFTER G + F complete**: Prompt B (masterplan refinement) - needs ALL research
+7. **After masterplan**: Prompt C (repeated per skill, in batches of 3)
+8. **After each batch**: Prompt D (validation)
 
-NOTE: Prompt B (masterplan) should run AFTER Prompt F because F may reveal:
-- New skills needed (gaps found in real OpenAEC projects)
-- Skills to merge/remove (overlapping with existing tooling)
-- Real code examples that change skill scope
-- Claude platform insights that affect skill format
+NOTE: Prompt B (masterplan) should run AFTER Prompt G AND F because:
+- G fills the 60% of API surface not covered by initial vooronderzoeken
+- F reveals real-world usage patterns and Claude platform insights
+- Both feed into the definitive skill inventory

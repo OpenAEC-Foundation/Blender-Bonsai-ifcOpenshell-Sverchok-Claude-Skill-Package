@@ -267,7 +267,7 @@ When Agent B depends on Agent A's output:
 ## Technology Scope
 | Tech | Prefix | Versions |
 |------|--------|----------|
-| Blender | blender- | 3.x, 4.x |
+| Blender | blender- | 3.x, 4.x, 5.x |
 | Bonsai | bonsai- | Current (ex-BlenderBIM) |
 | IfcOpenShell | ifcos- | Latest + IFC2x3/IFC4/IFC4.3 |
 | Sverchok | sverchok- | Current (later phase) |

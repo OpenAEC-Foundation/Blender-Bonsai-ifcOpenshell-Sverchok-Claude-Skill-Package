@@ -28,11 +28,19 @@ Enable Claude to write correct, version-aware, production-quality code for Blend
 ### Blender
 | Requirement | Detail |
 |-------------|--------|
-| Versions | Blender 3.x and 4.x (document breaking changes) |
-| API coverage | bpy.types, bpy.props, bpy.ops, bpy.data, bpy.context |
-| Key areas | Operators, Properties, Panels, Addons, Mesh/BMesh, Modifiers |
+| Versions | Blender 3.x, 4.x, and 5.x (document ALL breaking changes per version) |
+| API coverage | bpy.types, bpy.props, bpy.ops, bpy.data, bpy.context, bpy.msgbus, bpy.app |
+| Core areas | Operators, Properties, Panels, Addons/Extensions, Mesh/BMesh, Modifiers |
+| Node systems | Geometry Nodes (scripting, node groups, inputs/outputs), Shader Nodes (material scripting), Compositor Nodes |
+| Animation | Keyframes, FCurves, Drivers, Constraints, Armatures/Bones, NLA, Actions |
+| Rendering | Scene render settings, EEVEE vs Cycles via Python, camera/light scripting, batch rendering |
+| Data management | Collections, Libraries (append/link), Asset Browser API, ID data lifecycle |
+| Drawing/GPU | gpu module (REQUIRED for 5.0+, replaces bgl), overlays, gizmos |
+| Event system | Application handlers, timers, msgbus subscriptions |
 | Critical | Context system errors (the #1 AI mistake in Blender) |
 | Critical | 4.0 extension system vs legacy addon format |
+| Critical | 5.0 BGL removal — ALL drawing code MUST use gpu module |
+| Critical | Grease Pencil API rewrite in 4.3 |
 
 ### Bonsai
 | Requirement | Detail |

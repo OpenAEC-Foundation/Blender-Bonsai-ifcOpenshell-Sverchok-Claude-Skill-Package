@@ -16,42 +16,52 @@ Create a comprehensive Claude Skill Package for AEC (Architecture, Engineering, 
 
 ## Preliminary Skill Inventory
 
-### Blender (~15 skills)
+### Blender (~25 skills)
 
-#### Syntax (6)
+#### Syntax (10)
 | Skill | Scope |
 |-------|-------|
 | blender-syntax-operators | bpy.types.Operator, execute/invoke/modal, polling, bl_idname, bl_options |
 | blender-syntax-properties | bpy.props.*, PropertyGroups, update callbacks, dynamic enums |
-| blender-syntax-panels | bpy.types.Panel, draw(), UILayout API, bl_space_type |
-| blender-syntax-addons | bl_info, register/unregister, preferences, sub-modules, multi-file |
-| blender-syntax-mesh | Mesh data, BMesh, vertices/edges/faces, bpy.data.meshes |
-| blender-syntax-modifiers | Modifier stack, obj.modifiers, apply vs preview, GN modifier |
+| blender-syntax-panels | bpy.types.Panel, draw(), UILayout API, bl_space_type, sub-panels |
+| blender-syntax-addons | bl_info (legacy), blender_manifest.toml (4.2+), register/unregister, preferences, multi-file |
+| blender-syntax-mesh | Mesh data, BMesh, vertices/edges/faces, UV layers, vertex colors, normals |
+| blender-syntax-modifiers | Modifier stack, obj.modifiers, apply vs preview, evaluated mesh |
+| blender-syntax-nodes | Geometry Nodes via Python, Shader Nodes scripting, Compositor Nodes, node trees, node groups, socket I/O, custom node groups |
+| blender-syntax-animation | Keyframes, FCurves, Drivers, Constraints, Armatures/Bones/Pose, Actions, NLA strips |
+| blender-syntax-rendering | Scene.render settings, EEVEE vs Cycles config, camera/light scripting, output format, batch render |
+| blender-syntax-data | Collections, library append/link, Asset Browser API, ID data lifecycle, user count, fake user |
 
-#### Implementation (4)
+#### Implementation (6)
 | Skill | Scope |
 |-------|-------|
-| blender-impl-operators | When to use which operator type, undo/redo, modal patterns |
-| blender-impl-addons | Full addon dev workflow, packaging, distribution, testing |
-| blender-impl-mesh | Mesh creation/modification workflows, BMesh vs direct, performance |
-| blender-impl-automation | Batch ops, headless rendering, CLI Blender, background scripts |
+| blender-impl-operators | When to use which operator type, undo/redo, modal patterns, timers |
+| blender-impl-addons | Full addon/extension dev workflow, packaging, distribution, testing, migration 3.x→4.2+ |
+| blender-impl-mesh | Mesh creation/modification workflows, BMesh vs direct, performance, from_pydata patterns |
+| blender-impl-automation | Batch ops, headless rendering, CLI Blender, background scripts, subprocess |
+| blender-impl-nodes | Building Geometry Node groups via Python, procedural material creation, parametric workflows |
+| blender-impl-animation | Rigging workflows, constraint setup, driver expressions, animation baking, NLA workflow |
 
-#### Errors (3)
+#### Errors (4)
 | Skill | Scope |
 |-------|-------|
-| blender-errors-context | Context override errors, wrong context, restricted context |
-| blender-errors-operators | Poll failures, return values, registration errors |
-| blender-errors-data | Orphaned data, reference counting, memory management |
+| blender-errors-context | Context override errors, wrong context, restricted context, temp_override |
+| blender-errors-operators | Poll failures, return values, registration errors, wrong bl_options |
+| blender-errors-data | Orphaned data, reference counting, memory management, stale references, undo invalidation |
+| blender-errors-version | Version-specific pitfalls: BGL→gpu (5.0), bone.layers→collections (4.0), EEVEE changes, GP rewrite (4.3) |
 
-#### Core (1)
+#### Core (3)
 | Skill | Scope |
 |-------|-------|
-| blender-core-api | bpy module overview, context system, depsgraph, 3.x vs 4.x changes |
+| blender-core-api | bpy module overview, context system, depsgraph, event system (handlers/timers/msgbus) |
+| blender-core-versions | Complete version matrix 3.x/4.0/4.1/4.2/4.3/5.0, ALL breaking changes, migration paths |
+| blender-core-gpu | gpu module (replaces bgl), shader creation, batch drawing, overlays, gizmos, SpaceView3D draw handlers |
 
-#### Agents (1)
+#### Agents (2)
 | Skill | Scope |
 |-------|-------|
 | blender-code-validator | Validate Blender Python scripts, context usage, API version compat |
+| blender-version-migrator | Auto-detect version issues, suggest migration from 3.x→4.x→5.x, flag deprecated API |
 
 ---
 
@@ -128,12 +138,46 @@ Create a comprehensive Claude Skill Package for AEC (Architecture, Engineering, 
 
 ---
 
-### Cross-Technology (~3 skills)
+### Sverchok (~8 skills, later phase — research pending)
+
+#### Syntax (3)
+| Skill | Scope |
+|-------|-------|
+| sverchok-syntax-nodes | Core node types (Generators, Transforms, Analyzers, Modifiers), socket types (Vertices/Strings/Matrix), node tree creation via Python |
+| sverchok-syntax-scripting | Scripted Node (SN), Script Node Lite (SNL), Formula Node, custom node development |
+| sverchok-syntax-data | Data flow patterns, list nesting levels, socket connections, node group I/O |
+
+#### Implementation (2)
+| Skill | Scope |
+|-------|-------|
+| sverchok-impl-parametric | Parametric design workflows, parameter-driven geometry, node graph patterns |
+| sverchok-impl-ifcsverchok | IfcSverchok nodes: IFC file generation from node trees, geometry modes (Blender objects vs Sverchok verts/edges/faces), Bonsai integration |
+
+#### Errors (1)
+| Skill | Scope |
+|-------|-------|
+| sverchok-errors-nodes | Common node errors, data mismatch, socket type issues, performance with complex trees |
+
+#### Core (1)
+| Skill | Scope |
+|-------|-------|
+| sverchok-core-overview | Node categories (25+), extension system (IfcSverchok, Topologic, Extra), socket types, data model |
+
+#### Agents (1)
+| Skill | Scope |
+|-------|-------|
+| sverchok-node-advisor | Suggest optimal node combinations for AEC parametric tasks |
+
+---
+
+### Cross-Technology (~5 skills)
 
 | Skill | Scope |
 |-------|-------|
 | aec-core-ifc-fundamentals | IFC standard, MVD, schema versions, buildingSMART ecosystem |
 | aec-core-bim-workflows | BIM workflow patterns, LOD/LOI, coordination, clash detection |
+| aec-core-python-runtime | Python runtime quirks per technology: Blender embedded CPython restrictions, IfcOpenShell C++ bindings, threading, memory, undo |
+| aec-cross-sverchok-bonsai | IfcSverchok bridge: parametric Sverchok geometry → IFC output → Bonsai import, bidirectional workflow |
 | aec-workflow-orchestrator | Auto-detect which skill set to use based on user request |
 
 ---

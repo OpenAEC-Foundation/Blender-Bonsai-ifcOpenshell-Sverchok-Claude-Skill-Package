@@ -156,6 +156,21 @@ Official documentation, repositories, and reference materials used in this proje
 | Sverchok GitHub | https://github.com/nortikin/sverchok | Source code and node implementations (tested with Blender 5.1) |
 | Sverchok Releases | https://github.com/nortikin/sverchok/releases | Release history (latest: v1.3.0, Sep 2024) |
 
+### IfcSverchok (IFC/BIM Nodes for Sverchok)
+| Source | URL | Purpose |
+|--------|-----|---------|
+| IfcSverchok Source | https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/ifcsverchok | IFC nodes source (inside IfcOpenShell mono-repo) |
+| IfcSverchok Releases | https://github.com/IfcOpenShell/IfcOpenShell/releases?q=ifcsverchok | IfcSverchok release builds |
+| GSoC 2022 Proposal | https://github.com/opencax/GSoC/issues/43 | Visual programming nodes for BIM data |
+| OSArch Discussion | https://community.osarch.org/discussion/284/sverchok-ifc | Community discussion and examples |
+
+### Sverchok Extensions
+| Source | URL | Purpose |
+|--------|-----|---------|
+| TopologicSverchok | https://github.com/wassimj/TopologicSverchok | Non-manifold topology for architecture |
+| Sverchok-Extra | https://github.com/portnov/sverchok-extra | Additional NURBS/advanced geometry nodes |
+| Sverchok Extensions Docs | https://nortikin.github.io/sverchok/docs/introduction/sverchok_extensions.html | Extension system documentation |
+
 ---
 
 ## Claude / Anthropic (Skill Development Platform)
