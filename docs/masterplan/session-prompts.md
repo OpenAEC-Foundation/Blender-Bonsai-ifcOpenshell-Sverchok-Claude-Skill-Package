@@ -1,6 +1,7 @@
 # Session Prompts - Ready to Use
 
 Copy-paste these prompts to start new Claude sessions or oa agents.
+All prompts reference SOURCES.md for approved documentation URLs.
 
 ---
 
@@ -17,20 +18,34 @@ OUTPUT FILE: docs/research/vooronderzoek-bonsai.md
 
 CONTEXT:
 - Bonsai is the BIM addon for Blender (formerly called BlenderBIM)
-- It lives INSIDE the IfcOpenShell repository: https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai
+- It lives INSIDE the IfcOpenShell mono-repo
 - We already have vooronderzoek-blender.md (54KB) and vooronderzoek-ifcopenshell.md (35KB)
 - This is the LAST missing research before we can refine our masterplan
+- Read the existing vooronderzoeken first to understand depth/format expected
 
-APPROVED SOURCES (from SOURCES.md):
+APPROVED SOURCES (from SOURCES.md - USE THESE, not random blogs):
+Official docs:
 - Bonsai Documentation: https://docs.bonsaibim.org/
-- BlenderBIM (legacy): https://blenderbim.org/
-- Bonsai source code: https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai
-- Bonsai Core modules: same repo /src/bonsai/bonsai/core/
-- Bonsai Tool modules: same repo /src/bonsai/bonsai/tool/
+- BlenderBIM (legacy, historical only): https://blenderbim.org/
+
+Source code (PRIMARY for Bonsai - docs are sparse):
+- Bonsai source: https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai
+- Bonsai Core: (same repo)/src/bonsai/bonsai/core/
+- Bonsai Tool: (same repo)/src/bonsai/bonsai/tool/
+- Bonsai UI:   (same repo)/src/bonsai/bonsai/bim/module/
+
+IFC Standard (for context):
+- buildingSMART IFC specs: https://standards.buildingsmart.org/IFC/
+- IFC4.3 docs: https://ifc43-docs.standards.buildingsmart.org/
+- bSDD (classifications): https://search.bsdd.buildingsmart.org/
+
+Related OpenAEC projects (for cross-references):
+- building.py: https://github.com/OpenAEC-Foundation/building-py (Python buildings -> Blender/IFC)
+- INB Template: https://github.com/OpenAEC-Foundation/inb-template (Dutch IFC template)
 
 REQUIREMENTS (from REQUIREMENTS.md):
 - Minimum 2000 words, English only
-- Must include version matrix
+- Must include version/feature matrix
 - Must include API structure overview
 - Must include minimum 10 key concepts
 - Must include minimum 5 common error patterns
@@ -38,63 +53,112 @@ REQUIREMENTS (from REQUIREMENTS.md):
 
 CONTENT MUST COVER:
 1. Bonsai overview: what it is, relationship to BlenderBIM, current status
-2. Architecture: tool/core/ui module separation pattern (CRITICAL - this is unique to Bonsai)
-   - How bonsai/core/ defines business logic
+2. Architecture: tool/core/ui module separation pattern (CRITICAL)
+   - How bonsai/core/ defines business logic (read actual source files)
    - How bonsai/tool/ implements Blender-specific operations
-   - How bonsai/bim/module/ organizes UI panels
+   - How bonsai/bim/module/ organizes UI panels and operators
+   - The dependency inversion pattern between core and tool
 3. IFC integration: how Bonsai bridges Blender objects and IFC entities
    - tool.Ifc interface
    - How Blender objects map to IFC elements
    - The "active IFC file" concept
-4. Spatial structure management:
-   - IfcSite, IfcBuilding, IfcBuildingStorey, IfcSpace
-   - Creating and navigating spatial hierarchy
-   - Containment vs aggregation relationships
-5. Property sets and quantity sets:
-   - Creating, editing, applying property sets
-   - Pset templates
-   - Quantity takeoff via Bonsai
-6. Type system:
-   - IfcWallType, IfcSlabType, IfcColumnType etc.
-   - Type assignment and inheritance
-   - Parametric type definitions
-7. Modeling workflow:
-   - Walls, slabs, columns, beams, openings
-   - Profile-based vs extrusion-based geometry
-   - Void/opening creation
-8. Classification systems:
-   - Uniclass, OmniClass, NL-SfB integration
-   - How to apply classifications via Bonsai
-9. Geometry representations:
-   - Body, mapped items, bounding box
-   - Representation contexts
-   - Boolean operations (openings/voids)
-10. IFC export pipeline:
-    - MVD selection (Coordination View, Design Transfer View)
-    - Validation and quality checks before export
-    - Schema version selection
-11. Bonsai Python API for scripting:
-    - How to automate Bonsai operations via Python
-    - Key operators (bim.*)
-    - Core module function signatures
-12. Common error patterns (minimum 5 with code examples):
-    - Schema violations
-    - Missing required attributes
-    - Geometry errors
-    - Spatial structure mistakes
-    - Type assignment issues
-13. AI Common Mistakes section:
-    - What Claude typically gets wrong about Bonsai
-    - Confusion between Blender operations and BIM operations
-    - Missing IFC context when scripting
+4. Spatial structure: IfcSite/IfcBuilding/IfcBuildingStorey/IfcSpace
+5. Property sets and quantity sets
+6. Type system: IfcWallType, IfcSlabType, etc.
+7. Modeling workflow: walls, slabs, columns, beams, openings
+8. Classification systems: Uniclass, OmniClass, NL-SfB (use bSDD for verification)
+9. Geometry representations: body, mapped items, openings/voids
+10. IFC export pipeline: MVD, validation, schema version
+11. Bonsai Python API: operators (bim.*), core module functions
+12. Common error patterns (min 5 with code)
+13. AI Common Mistakes section
 
 FORMAT:
-- Markdown with tables for version/feature matrices
-- Code examples for each major feature area
-- Source references (URLs to official docs or source code)
+- Markdown with tables
+- Code examples verified against source code
+- Source references with URLs
 - Deterministic language (facts, not suggestions)
 
-After completing, commit to the repo and push to GitHub.
+After completing:
+1. Commit to repo and push to GitHub
+2. Update SOURCES.md "Last Verified" table for Bonsai
+3. Log any key discoveries in LESSONS.md
+```
+
+---
+
+## PROMPT A2: Blender Research Verrijking (verbeter bestaand vooronderzoek met nieuwe bronnen)
+
+```
+PROJECT: Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
+WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
+
+TASK: Review and enrich the existing Blender vooronderzoek with newly identified sources.
+
+INPUT: docs/research/vooronderzoek-blender.md (54KB, already written)
+
+NEW SOURCES TO VERIFY AGAINST (recently added to SOURCES.md):
+- Blender Source (GitHub mirror): https://github.com/blender/blender (use for code search)
+- Blender Developer Docs: https://developer.blender.org/ (architecture, release notes)
+- Release Notes Index: https://developer.blender.org/docs/release_notes/
+- 4.0 Python API: https://developer.blender.org/docs/release_notes/4.0/python_api/
+- 4.1 Python API: https://developer.blender.org/docs/release_notes/4.1/python_api/
+- 4.2 Python API: https://developer.blender.org/docs/release_notes/4.2/python_api/ (LTS, extension system!)
+- 4.3 Python API: https://developer.blender.org/docs/release_notes/4.3/python_api/
+- 5.0 Python API: https://developer.blender.org/docs/release_notes/5.0/python_api/ (BGL removal!)
+- Python API Changelog: https://docs.blender.org/api/current/change_log.html
+
+Related OpenAEC projects:
+- GIS-to-Blender: https://github.com/OpenAEC-Foundation/GIS-to-Blender_3DEnvironment_Automation
+- AEC Scripts: https://github.com/OpenAEC-Foundation/aec-scripts
+
+CHECK AND ENRICH:
+1. Is the version matrix complete? Add 4.1, 4.2, 4.3, 5.0 breaking changes if missing
+2. Is the 4.2 extension system documented? (This is the NEW addon format!)
+3. Is Blender 5.0 BGL removal mentioned? (Major breaking change for 3D viewport scripts)
+4. Are per-version release note URLs included as references?
+5. Cross-reference with OpenAEC projects for real-world usage patterns
+
+OUTPUT: Update docs/research/vooronderzoek-blender.md in-place (append new sections, don't delete existing content)
+
+After completing, commit and push. Update SOURCES.md "Last Verified" for Blender.
+```
+
+---
+
+## PROMPT A3: IfcOpenShell Research Verrijking
+
+```
+PROJECT: Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
+WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
+
+TASK: Review and enrich the existing IfcOpenShell research with newly identified sources.
+
+INPUT FILES:
+- docs/research/vooronderzoek-ifcopenshell.md (35KB)
+- docs/research/fragments/ (4 files, ~146KB total)
+- docs/research/topic-research/ (3 files, ~153KB total)
+
+NEW SOURCES TO VERIFY AGAINST (recently added to SOURCES.md):
+- IfcOpenShell Academy: https://academy.ifcopenshell.org/ (tutorials, learning paths)
+- Python API Reference: https://ifcopenshell.github.io/ifcopenshell-python/ (auto-generated)
+- IfcOpenShell GitHub Org: https://github.com/orgs/IfcOpenShell/repositories (discover sub-projects)
+- IFC4.3 Documentation: https://ifc43-docs.standards.buildingsmart.org/
+- bSDD: https://search.bsdd.buildingsmart.org/ (classification/property lookup)
+
+Related OpenAEC projects:
+- building.py: https://github.com/OpenAEC-Foundation/building-py (Python -> IFC export)
+- Monty IFC Viewer: https://github.com/OpenAEC-Foundation/monty-ifc-viewer
+- INB Template: https://github.com/OpenAEC-Foundation/inb-template (Dutch IFC)
+
+CHECK AND ENRICH:
+1. Is the Academy content referenced? It has step-by-step tutorials
+2. Is IFC4.3 fully covered with the new docs URL?
+3. Are the auto-generated API docs cross-referenced?
+4. Are OpenAEC projects mentioned as real-world usage examples?
+5. Is bSDD integration documented (for classification lookups)?
+
+OUTPUT: Update vooronderzoek-ifcopenshell.md in-place. Update SOURCES.md "Last Verified".
 ```
 
 ---
@@ -106,43 +170,56 @@ PROJECT: Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
 REPO: https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
 WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
 
-TASK: Refine the masterplan based on completed research. This is Phase 3 of the 7-phase methodology.
+TASK: Refine the masterplan based on completed research. This is Phase 3.
 
-BEFORE STARTING, READ:
-1. ROADMAP.md (current status)
-2. REQUIREMENTS.md (quality guarantees)
-3. DECISIONS.md (architectural decisions)
-4. SOURCES.md (approved sources)
-5. docs/masterplan/raw-masterplan.md (preliminary skill inventory)
-6. docs/research/vooronderzoek-blender.md (Blender research)
-7. docs/research/vooronderzoek-bonsai.md (Bonsai research)
-8. docs/research/vooronderzoek-ifcopenshell.md (IfcOpenShell research)
+BEFORE STARTING, READ THESE FILES IN ORDER:
+1. ROADMAP.md → current status
+2. REQUIREMENTS.md → quality guarantees per technology
+3. DECISIONS.md → architectural constraints (D-001 through D-009)
+4. SOURCES.md → approved sources (recently enriched with per-version release notes, OpenAEC projects, Claude platform docs)
+5. WAY_OF_WORK.md → skill structure and methodology
+6. docs/masterplan/raw-masterplan.md → preliminary skill inventory
+7. docs/research/vooronderzoek-blender.md → Blender research (54KB)
+8. docs/research/vooronderzoek-bonsai.md → Bonsai research
+9. docs/research/vooronderzoek-ifcopenshell.md → IfcOpenShell research (35KB)
+10. docs/research/fragments/ → IfcOpenShell deep research (4 files)
+11. docs/research/topic-research/ → IfcOpenShell topic research (3 files)
 
 DELIVERABLES:
-1. docs/masterplan/masterplan.md - REFINED masterplan containing:
-   a. DEFINITIVE skill inventory (add/merge/remove skills based on research)
-   b. Per skill: exact scope, which vooronderzoek sections it draws from
-   c. Dependencies between skills mapped
-   d. Build order per technology (core -> syntax -> impl -> errors -> agents)
-   e. Parallel execution batches (3 agents per batch, separated file scopes)
-   f. Ready-to-use PROMPT per skill (so agents can execute directly)
+
+1. docs/masterplan/masterplan.md - REFINED masterplan:
+   a. DEFINITIVE skill inventory (add/merge/remove based on actual API surface from research)
+   b. Per skill: exact scope, source sections from vooronderzoek, SOURCES.md URLs
+   c. Dependency graph between skills
+   d. Build order: core -> syntax -> impl -> errors -> agents (per technology)
+   e. Parallel batches (3 agents each, separated file scopes)
+   f. Ready-to-use PROMPT per skill with:
+      - Specific SOURCES.md URLs for that skill
+      - Specific vooronderzoek sections to read
+      - REQUIREMENTS.md criteria
+      - DECISIONS.md constraints
    g. Quality gate criteria per batch
 
-2. Updated ROADMAP.md with:
+2. Updated ROADMAP.md:
    - Definitive skill count per technology
-   - Phase 3 marked complete
-   - Phase 4/5 detailed next steps
+   - Phase 3 marked COMPLETE
+   - Phase 4/5 detailed with batch schedule
 
-3. Updated DECISIONS.md with any new decisions from the refinement
+3. Updated DECISIONS.md: any new decisions from refinement
 
-CONSTRAINTS:
-- Skills must be per-technology packages (D-002)
-- SKILL.md < 500 lines each (D-009)
-- English only (D-003)
-- Each skill prompt must reference SOURCES.md URLs
-- Each skill prompt must include REQUIREMENTS.md criteria
+CONSTRAINTS (from DECISIONS.md):
+- D-002: Separate packages per technology
+- D-003: English only
+- D-005: MIT License
+- D-008: Build order Blender -> Bonsai -> IfcOpenShell
+- D-009: SKILL.md < 500 lines
 
-After completing, commit and push to GitHub. Update README.md if skill counts changed.
+IMPORTANT: Each skill prompt in the masterplan must include:
+- The exact SOURCES.md URLs relevant to that skill
+- The exact vooronderzoek sections that provide input
+- Version annotations required (from REQUIREMENTS.md)
+
+After completing, commit and push. Update README.md with definitive skill counts.
 ```
 
 ---
@@ -155,42 +232,53 @@ WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-
 
 TASK: Create skill: {SKILL_NAME}
 
+BEFORE STARTING, READ:
+- REQUIREMENTS.md → quality criteria
+- SOURCES.md → approved documentation URLs
+- WAY_OF_WORK.md → skill structure specification
+- DECISIONS.md → D-003 (English), D-009 (500 lines)
+
 OUTPUT DIRECTORY: skills/{TECHNOLOGY}/{CATEGORY}/{SKILL_NAME}/
 
 CREATE THESE FILES:
+
 1. SKILL.md (< 500 lines) with:
    ---
    name: {SKILL_NAME}
    description: "{TRIGGER_DESCRIPTION}"
    ---
-   - Quick Reference section (critical warnings, decision trees)
+   - Quick Reference (critical warnings, decision trees)
    - Essential Patterns (with version annotations)
-   - Common Operations (code snippets)
+   - Common Operations (verified code snippets)
    - Reference Links (to references/ files)
 
 2. references/methods.md - Complete API signatures
-3. references/examples.md - Working code examples (verified)
-4. references/anti-patterns.md - What NOT to do with explanations
+3. references/examples.md - Working code examples (VERIFIED against sources)
+4. references/anti-patterns.md - What NOT to do (from real issues)
 
 RESEARCH INPUT: {PATH_TO_RESEARCH_DOC}
-APPROVED SOURCES: {RELEVANT_URLS_FROM_SOURCES_MD}
 
-REQUIREMENTS (from REQUIREMENTS.md):
-- English only
-- Deterministic language: "ALWAYS use X when Y" / "NEVER do X because Y"
-- Version-explicit: {VERSION_ANNOTATIONS}
-- All code verified against official documentation
-- Anti-patterns identified from real issues
+APPROVED SOURCES FOR THIS SKILL (from SOURCES.md):
+{RELEVANT_URLS}
 
-STRUCTURE REFERENCE: See WAY_OF_WORK.md for detailed skill structure.
+VERSION ANNOTATIONS REQUIRED: {VERSIONS}
 
-After completing, verify:
-- [ ] SKILL.md has valid YAML frontmatter
+STYLE RULES:
+- English only (DECISIONS.md D-003)
+- Deterministic: "ALWAYS use X when Y" / "NEVER do X because Y"
+- Version-explicit on ALL code blocks
+- Verified against official documentation only
+- NEVER use: "you might", "consider", "perhaps", "often", "usually"
+
+VERIFICATION CHECKLIST:
+- [ ] SKILL.md has valid YAML frontmatter (name + description with trigger words)
 - [ ] SKILL.md < 500 lines
-- [ ] English only, no Dutch
+- [ ] English only, zero Dutch
 - [ ] Deterministic language throughout
-- [ ] Version annotations on all code
+- [ ] Version annotations on all code blocks
 - [ ] All references/ files exist and are linked from SKILL.md
+- [ ] Code examples verified against SOURCES.md URLs
+- [ ] Anti-patterns file has at least 3 entries with explanations
 ```
 
 ---
@@ -203,46 +291,96 @@ WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-
 
 TASK: Validate batch of skills created by worker agents.
 
+BEFORE STARTING, READ:
+- REQUIREMENTS.md → validation criteria
+- DECISIONS.md → constraints (D-003 English, D-009 line limit)
+- SOURCES.md → approved source URLs for verification
+
 SKILLS TO VALIDATE:
 {LIST_OF_SKILL_DIRECTORIES}
 
-VALIDATION CHECKLIST (from REQUIREMENTS.md + DECISIONS.md):
-For EACH skill directory:
+VALIDATION CHECKLIST:
 
 1. STRUCTURAL:
    - [ ] SKILL.md exists in directory root
    - [ ] YAML frontmatter has 'name' and 'description' fields
+   - [ ] description contains trigger words (when Claude should load this skill)
    - [ ] SKILL.md < 500 lines (count with `wc -l`)
-   - [ ] references/ directory exists
+   - [ ] references/ directory exists with at least methods.md, examples.md, anti-patterns.md
    - [ ] All files referenced in SKILL.md exist in references/
 
 2. CONTENT:
-   - [ ] English only (grep for common Dutch words: "gebruik", "voor", "niet", "moet")
-   - [ ] Deterministic language (no "you might", "consider", "perhaps", "often")
+   - [ ] English only (grep for Dutch: "gebruik", "voor", "niet", "moet", "deze", "wordt")
+   - [ ] Deterministic language (grep for banned: "you might", "consider", "perhaps", "often", "usually")
    - [ ] ALWAYS/NEVER used for critical patterns
-   - [ ] Version annotations present (Blender 3.x/4.x or IFC2x3/IFC4/IFC4.3)
+   - [ ] Version annotations on code blocks (Blender 3.x/4.x/5.x or IFC2x3/IFC4/IFC4.3)
 
-3. CROSS-REFERENCES:
+3. SOURCE VERIFICATION:
+   - [ ] Code examples traceable to SOURCES.md approved URLs
+   - [ ] No patterns from unverified blog posts
+   - [ ] API signatures match official documentation
+
+4. CROSS-REFERENCES:
    - [ ] Skill name in frontmatter matches directory name
    - [ ] References to other skills use correct names
    - [ ] No broken links to reference files
 
-4. QUALITY:
-   - [ ] Code examples are syntactically correct
-   - [ ] Anti-patterns file has at least 3 entries
+5. QUALITY:
+   - [ ] Code examples are syntactically correct Python
+   - [ ] Anti-patterns file has at least 3 entries with WHY explanations
    - [ ] Decision trees use clear if/then logic
+   - [ ] Quick Reference section exists at top of SKILL.md
 
-OUTPUT: Write validation report to docs/research/validation-batch-{N}.md
-Flag any failures with severity: BLOCKER (must fix) or WARNING (should fix).
+OUTPUT: Write validation report to docs/validation/validation-batch-{N}.md
+Severity levels: BLOCKER (must fix before merge) | WARNING (should fix) | INFO (nice to have)
 
-If blockers found, list specific fix instructions per skill.
+If blockers found, generate specific fix prompts per skill that can be copy-pasted.
+```
+
+---
+
+## PROMPT E: Sources Verification Session
+
+```
+PROJECT: Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
+WORKSPACE: C:\Users\Freek Heijting\Documents\GitHub\Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package
+
+TASK: Verify and enrich SOURCES.md by checking all listed URLs and discovering new relevant sources.
+
+READ FIRST: SOURCES.md (current state)
+
+FOR EACH TECHNOLOGY SECTION:
+
+1. CHECK all URLs are still valid and current
+2. VERIFY the "Purpose" column is accurate
+3. DISCOVER new official sources not yet listed:
+   - Check GitHub org pages for sub-projects
+   - Check official docs for newly added pages
+   - Look for migration guides between versions
+   - Find official example repositories
+4. ADD any newly discovered sources to the appropriate section
+5. UPDATE the "Last Verified" table with today's date
+
+SPECIFIC CHECKS:
+- Blender: Are there newer release notes (5.1+)? Any new developer docs?
+- Bonsai: Is docs.bonsaibim.org still the primary? Any new guides?
+- IfcOpenShell: Any new Academy courses? API docs updates?
+- IFC Standard: Any new buildingSMART publications?
+- Sverchok: Is the ReadTheDocs still maintained?
+- Claude/Anthropic: Any new skill development documentation?
+- OpenAEC: Any new repos in the org?
+
+OUTPUT: Updated SOURCES.md with verified/new sources and updated dates.
+Commit and push after completing.
 ```
 
 ---
 
 ## Usage Order
 
-1. **Now**: Use Prompt A (Bonsai research) - blocks everything else
-2. **After Bonsai research**: Use Prompt B (Masterplan refinement)
-3. **After masterplan**: Use Prompt C (repeated per skill, in batches of 3)
-4. **After each batch**: Use Prompt D (validation)
+1. **Now**: Prompt A (Bonsai research) - blocks Phase 2
+2. **Optional parallel**: Prompt A2 + A3 (enrich existing research with new sources)
+3. **Optional parallel**: Prompt E (verify all sources)
+4. **After all research complete**: Prompt B (Masterplan refinement - Phase 3)
+5. **After masterplan**: Prompt C (repeated per skill, in batches of 3)
+6. **After each batch**: Prompt D (validation)
