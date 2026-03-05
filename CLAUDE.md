@@ -6,12 +6,38 @@
 - Methodology: 7-phase research-first development (proven in ERPNext Skill Package)
 - Reference project: https://github.com/OpenAEC-Foundation/ERPNext_Anthropic_Claude_Development_Skill_Package
 
+## Core Files Map
+| File | Domain | Role |
+|------|--------|------|
+| ROADMAP.md | Status | Single source of truth for project status, progress, next steps |
+| LESSONS.md | Knowledge | Numbered lessons (L-XXX) discovered during development |
+| DECISIONS.md | Architecture | Numbered decisions (D-XXX) with rationale, immutable once recorded |
+| REQUIREMENTS.md | Scope | What skills must achieve, quality guarantees per technology |
+| SOURCES.md | References | Official documentation URLs, verification rules, last-verified dates |
+| WAY_OF_WORK.md | Methodology | 7-phase process, skill structure, content standards |
+| CHANGELOG.md | History | Version history in Keep a Changelog format |
+| CONTRIBUTING.md | Community | How to contribute, skill development guidelines |
+| SECURITY.md | Security | Vulnerability reporting policy |
+| docs/masterplan/masterplan.md | Planning | Execution plan with phases, prompts, dependencies |
+| INDEX.md | Catalog | Complete skill catalog with trigger scenarios |
+| README.md | Public | GitHub landing page - the project's public face |
+
+---
+
 ## Session Start Protocol (P-001)
-1. Read ROADMAP.md (single source of truth for project status)
-2. Read LESSONS.md (check recent lessons)
-3. Read docs/masterplan/masterplan.md (current execution plan)
-4. Identify current phase and next action
-5. Confirm with user before proceeding
+EVERY session begins with this sequence:
+
+1. **Read ROADMAP.md** → Determine current phase, progress percentage, and "Next Steps" section
+2. **Read LESSONS.md** → Check recent lessons that may affect your work
+3. **Read DECISIONS.md** → Know all architectural decisions (D-001+) and their constraints
+4. **Read REQUIREMENTS.md** → Understand quality guarantees and per-technology requirements
+5. **Read docs/masterplan/masterplan.md** → Know the execution plan and current phase details
+6. **If researching**: Read **SOURCES.md** → Know approved sources per technology, verification rules
+7. **If creating skills**: Read **WAY_OF_WORK.md** → Know skill structure, content standards, naming
+8. Identify next action from ROADMAP.md "Next Steps"
+9. Confirm with user before proceeding
+
+---
 
 ## Delegation Protocol (P-002)
 CRITICAL: This session is an ORCHESTRATOR, not a worker.
@@ -19,142 +45,166 @@ CRITICAL: This session is an ORCHESTRATOR, not a worker.
 ### Rules:
 - NEVER do research/writing work directly in this session
 - ALWAYS delegate via `oa run` or `oa delegate`
-- Each delegated task gets a clear scope and output file
-- Monitor workers via `oa status`
-- Collect results via `oa collect`
 - Validate before accepting (validator-before-apply)
 
+### What to include in EVERY agent prompt:
+- Quality criteria from **REQUIREMENTS.md** (relevant to their task)
+- Approved source URLs from **SOURCES.md** (what docs to consult)
+- Current status from **ROADMAP.md** (what's done, what's needed)
+- Relevant constraints from **DECISIONS.md** (D-003: English-only, D-009: 500 line limit, etc.)
+- Skill structure from **WAY_OF_WORK.md** (if writing skills)
+
 ### Delegation Flow:
-1. Define task scope + expected output
-2. Write task prompt (specific, scoped, with output path)
+1. Define task scope + expected output path
+2. Write task prompt with core file references (see above)
 3. Spawn worker: `oa run "<task>" --name <name>`
 4. Monitor: `oa status`
 5. Collect: `oa collect <name>`
-6. VALIDATE output against quality criteria
+6. VALIDATE output against **REQUIREMENTS.md** quality criteria
 7. Accept or respawn with corrections
 
 ### Batch Strategy:
-- 3-5 agents per batch (optimaal)
-- Gescheiden file scopes (NOOIT twee agents op zelfde file)
-- Quality gate na elke batch
-- Orchestrator doet QA, NIET zelf werk
+- 3-5 agents per batch (optimal per Open-Agents lessons)
+- Separated file scopes (NEVER two agents on same file)
+- Quality gate after every batch
+- Orchestrator does QA, NEVER does the work itself
+
+---
+
+## Quality Control Protocol (P-003)
+### Validation criteria sourced from core files:
+
+**From REQUIREMENTS.md:**
+- Skill format requirements (YAML frontmatter, structure)
+- Per-technology version coverage
+- Package independence (each tech standalone)
+
+**From DECISIONS.md:**
+- D-003: English-only content
+- D-005: MIT License
+- D-009: SKILL.md < 500 lines
+
+**From SOURCES.md:**
+- All code verified against listed official sources only
+- No unverified blog posts or outdated content
+
+### Validator-Before-Apply checklist:
+1. File exists and is complete
+2. YAML frontmatter valid (name, description with trigger words)
+3. Line count < 500 (SKILL.md)
+4. English-only (no Dutch or other languages)
+5. Deterministic language (ALWAYS/NEVER, not "you might consider")
+6. Version-explicit (Blender 3.x/4.x, IFC2x3/IFC4/IFC4.3)
+7. All references/ files exist and are linked from SKILL.md
+8. Sources traceable to **SOURCES.md** approved URLs
+
+### Correction Flow:
+If validation fails:
+1. Document what failed in agent feedback
+2. Spawn fix-agent with specific correction instructions
+3. Re-validate after fix
+4. NEVER accept below quality bar defined in **REQUIREMENTS.md**
+
+---
+
+## Research Protocol (P-004)
+### Before ANY research:
+1. Read **SOURCES.md** → Know approved sources for the technology
+2. Read **REQUIREMENTS.md** → Know what the research must cover
+3. Read **DECISIONS.md** → Know constraints (D-003 English-only, etc.)
+
+### During research:
+- Use ONLY sources listed in **SOURCES.md** (or add new ones there)
+- Verify code examples against official documentation
+- Identify anti-patterns from real GitHub issues
+
+### After research:
+1. Update **SOURCES.md** "Last Verified" table with verification date
+2. Log new discoveries in **LESSONS.md** (numbered L-XXX)
+3. If new architectural decisions emerge, record in **DECISIONS.md** (numbered D-XXX)
+
+### Research output location:
+- Vooronderzoek: `docs/research/vooronderzoek-{technology}.md`
+- Topic research: `docs/research/topic-research/{skill-name}-research.md`
+- Research fragments: `docs/research/fragments/`
+
+---
+
+## Skill Standards (P-005)
+Defined in detail in **WAY_OF_WORK.md** and **REQUIREMENTS.md**. Quick reference:
+
+- English-only (per **DECISIONS.md** D-003)
+- Deterministic: "ALWAYS use X when Y" / "NEVER do X because Y"
+- Version-explicit: mark all code with supported versions (per **REQUIREMENTS.md**)
+- SKILL.md < 500 lines (per **DECISIONS.md** D-009), heavy content in references/
+- YAML frontmatter: name + description with trigger words
+- Structure: Quick Reference > Decision Trees > Patterns > Reference Links
+- Verify against **SOURCES.md** approved URLs only
+
+---
+
+## Document Sync Protocol (P-006)
+After EVERY completed phase/batch, update these files:
+
+1. **ROADMAP.md** → Status, percentage, changelog entry, next steps (MANDATORY)
+2. **LESSONS.md** → New patterns or discoveries (if any)
+3. **DECISIONS.md** → New architectural decisions (if any)
+4. **SOURCES.md** → New sources verified or dates updated (if researching)
+5. **CHANGELOG.md** → Milestone entries (for significant completions)
+6. Commit with message: `Phase X.Y: [action] [subject]`
+7. Push to GitHub
+8. **README.md** → Check if landing page needs updating:
+   - Skill count changed? Update package table
+   - Phase milestone reached? Update "Current Progress" section
+   - New documentation added? Update docs table
+   - If significant: update repo description/topics via GitHub API
+
+Timing: IMMEDIATE after completion, not deferred.
+
+---
+
+## Session End Protocol (P-007)
+Before ending ANY session:
+
+1. **ROADMAP.md** → Update current phase status + "Next Steps" section (CRITICAL - this is how the next session knows where to continue)
+2. **LESSONS.md** → Log anything learned during this session
+3. **DECISIONS.md** → Record any decisions made
+4. **CHANGELOG.md** → Add entry if milestone reached
+5. Commit all changes with descriptive message
+6. Push to GitHub
+7. Verify **README.md** reflects current project state
+
+---
 
 ## Inter-Agent Communication Protocol (P-008)
 Agents communicate via `oa send`, `oa inbox`, and `oa broadcast`.
 
-### Communication Patterns:
-
-#### Pattern 1: Dependency Validation
+### Pattern 1: Dependency Validation
 When Agent B depends on Agent A's output:
-1. Agent A completes work, sends: `oa send validator-b "Work complete, output at [path]. Ready for review."`
-2. Agent B reads Agent A's output directory
-3. Agent B validates against quality criteria
-4. Agent B sends feedback: `oa send agent-a "QA passed"` or `"QA failed: [issues]"`
-5. If failed: Agent A fixes and re-notifies
+1. Agent A completes, sends: `oa send validator-b "Done. Output at [path]."`
+2. Agent B reads output, validates against **REQUIREMENTS.md** criteria
+3. Agent B sends: `oa send agent-a "QA passed"` or `"QA failed: [issues]"`
 
-#### Pattern 2: Broadcast for Phase Transitions
-When a batch completes:
-1. Orchestrator broadcasts: `oa broadcast "Batch 3A complete. Quality gate passed. Starting 3B."`
-2. All agents receive notification
-3. Next batch agents know they can reference previous batch output
+### Pattern 2: Broadcast for Phase Transitions
+1. Orchestrator: `oa broadcast "Batch 3A complete. Starting 3B."`
+2. All agents receive; next batch can reference previous output
 
-#### Pattern 3: Peer Review Between Writers
-Within a batch of skill writers:
-1. Writer A finishes syntax/ skill, sends to Writer B
-2. Writer B checks cross-references are consistent with their impl/ skill
-3. Writer B confirms or flags inconsistencies
-4. Both correct before batch closes
+### Pattern 3: Peer Review Between Writers
+1. Writer A (syntax/) sends to Writer B (impl/)
+2. Writer B checks cross-references consistency
+3. Both correct before batch closes
 
-#### Pattern 4: Research Sharing
-Research agents share findings that benefit others:
-1. Blender researcher discovers pattern relevant to Bonsai
-2. Sends: `oa send researcher-bonsai "Found that Blender 4.x changed [X], relevant for Bonsai integration"`
-3. Bonsai researcher incorporates finding
+### Pattern 4: Research Sharing
+1. Agent discovers finding relevant to another technology
+2. Sends finding via `oa send` to relevant peer
+3. Peer incorporates into their research
 
-### Message Flow Rules:
-- Orchestrator NEVER does work, only coordinates and validates
-- Workers send completion notifications to orchestrator
-- Workers send dependency-relevant findings to peer workers
-- Broadcasts for status updates only (not for task content)
-- `oa inbox --unread` to check for pending messages before starting new work
+### Rules:
+- Orchestrator coordinates only, NEVER does work
+- Workers notify orchestrator on completion
+- `oa inbox --unread` before starting new work
 
-## Quality Control Protocol (P-003)
-### Validator-Before-Apply:
-Before accepting ANY agent output:
-1. Check file exists and is complete
-2. Check YAML frontmatter (name, description)
-3. Check line count (SKILL.md < 500 lines)
-4. Check language (English-only)
-5. Check style (deterministic: ALWAYS/NEVER, not "consider")
-6. Check version-explicit (Blender 3.x/4.x, IFC2x3/IFC4/IFC4.3)
-7. Check references/ files exist and are referenced
-
-### Correction Flow:
-If validation fails:
-1. Document what failed
-2. Spawn fix-agent with specific correction instructions
-3. Re-validate after fix
-4. NEVER accept below quality bar
-
-## Research Protocol (P-004)
-### Before creating ANY skill:
-1. Topic research document must exist
-2. Research must be verified against official docs
-3. Code examples must be tested/validated
-4. Anti-patterns must be identified from real issues
-
-### Research Sources (priority):
-1. Official documentation (docs.blender.org, ifcopenshell.org, blenderbim.org)
-2. Source code (GitHub repos)
-3. Official examples/tutorials
-4. NEVER: random blog posts, outdated StackOverflow
-
-## Skill Standards (P-005)
-- English-only (Claude reads English, responds in any language)
-- Deterministic: "ALWAYS use X when Y" / "NEVER do X because Y"
-- Version-explicit: mark all code with supported versions
-- SKILL.md < 500 lines, heavy content in references/
-- YAML frontmatter: name + description with trigger words
-- Structure: Quick Reference > Decision Trees > Patterns > Reference Links
-
-## Document Sync Protocol (P-006)
-After EVERY completed phase/batch:
-1. Update ROADMAP.md (status, percentage, next steps)
-2. Update LESSONS.md (new discoveries)
-3. Commit with descriptive message: "Phase X.Y: [action] [subject]"
-4. Push to GitHub
-5. Check if push changes the public face of the repo:
-   - README.md changed? -> Verify it reads well as the GitHub landing page
-   - New skill packages added? -> Update README skill count and status
-   - Description outdated? -> Update repo description via GitHub API
-   - Topics need updating? -> Add/remove relevant GitHub topics
-   - Major milestone reached? -> Consider updating repo description
-- Timing: IMMEDIATE, not deferred
-- The GitHub repo page IS the project's landing page. Keep it current.
-
-## Session End Protocol (P-007)
-Before ending any session:
-1. Update ROADMAP.md with current status
-2. Log any new lessons in LESSONS.md
-3. Commit all changes
-4. Push to GitHub
-5. Note next action for next session
-
-## Core Files
-| File | Purpose | When to Update |
-|------|---------|----------------|
-| ROADMAP.md | Single source of truth for project status | After every phase/batch |
-| LESSONS.md | What we learned, numbered L-XXX | When discovering patterns |
-| DECISIONS.md | Architectural decisions, numbered D-XXX | When making decisions (immutable once recorded) |
-| REQUIREMENTS.md | What skills must achieve, quality guarantees | When scope changes |
-| SOURCES.md | Official docs, repos, reference materials | When adding/verifying sources |
-| WAY_OF_WORK.md | 7-phase methodology reference | Rarely (methodology is stable) |
-| CHANGELOG.md | Version history (Keep a Changelog format) | Every release/milestone |
-| CONTRIBUTING.md | How to contribute, skill guidelines | Rarely |
-| SECURITY.md | Vulnerability reporting policy | Rarely |
-| docs/masterplan/masterplan.md | Execution plan with prompts | After research phases |
-| INDEX.md | Complete skill catalog | After skill creation |
-| README.md | GitHub landing page | When pushing changes that affect public face |
+---
 
 ## Skill Categories
 | Category | Purpose | Naming |
@@ -177,24 +227,26 @@ Before ending any session:
 ## Repository Structure
 ```
 project-root/
-├── CLAUDE.md, ROADMAP.md, WAY_OF_WORK.md, LESSONS.md
-├── docs/masterplan/          # Masterplan versions
-├── docs/research/            # Vooronderzoek + topic research
-└── skills/                   # SEPARATE PACKAGES per technology
-    ├── blender/              # Blender skill package (standalone)
-    │   ├── syntax/
-    │   ├── impl/
-    │   ├── errors/
-    │   ├── core/
-    │   └── agents/
-    ├── bonsai/               # Bonsai skill package (standalone)
-    │   └── [same structure]
-    ├── ifcopenshell/          # IfcOpenShell skill package (standalone)
-    │   └── [same structure]
-    ├── sverchok/              # Sverchok skill package (standalone, later)
-    │   └── [same structure]
-    └── aec-cross-tech/        # Cross-technology skills
-        ├── core/
-        └── agents/
+├── CLAUDE.md                    # THIS FILE - protocols and instructions
+├── ROADMAP.md                   # Status (single source of truth)
+├── REQUIREMENTS.md              # Quality guarantees
+├── DECISIONS.md                 # Architectural decisions
+├── SOURCES.md                   # Official reference URLs
+├── WAY_OF_WORK.md               # 7-phase methodology
+├── LESSONS.md                   # Lessons learned
+├── CHANGELOG.md                 # Version history
+├── CONTRIBUTING.md              # Contribution guidelines
+├── SECURITY.md                  # Security policy
+├── README.md                    # GitHub landing page
+├── INDEX.md                     # Skill catalog (after Phase 5)
+├── docs/
+│   ├── masterplan/              # raw-masterplan.md, masterplan.md
+│   └── research/                # vooronderzoek-*.md, topic-research/, fragments/
+└── skills/                      # SEPARATE PACKAGES per technology
+    ├── blender/{syntax,impl,errors,core,agents}/
+    ├── bonsai/{syntax,impl,errors,core,agents}/
+    ├── ifcopenshell/{syntax,impl,errors,core,agents}/
+    ├── sverchok/{syntax,impl,errors,core,agents}/
+    └── aec-cross-tech/{core,agents}/
 ```
 Each technology is a SEPARATE package that can be installed independently.
