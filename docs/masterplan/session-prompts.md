@@ -535,8 +535,15 @@ After completing:
 ## Usage Order
 
 1. **DONE**: Prompt A (Bonsai research) - Phase 2 complete
-2. **NOW (parallel)**: Prompt F (ecosystem sources deep research) + Prompt B (masterplan refinement)
-3. **Optional parallel**: Prompt A2 + A3 (enrich existing research)
-4. **Optional parallel**: Prompt E (verify all source URLs)
-5. **After masterplan**: Prompt C (repeated per skill, in batches of 3)
-6. **After each batch**: Prompt D (validation)
+2. **NOW**: Prompt F (ecosystem sources deep research) - this IS vooronderzoek, feeds into masterplan
+3. **Optional parallel with F**: Prompt A2 + A3 (enrich existing Blender/IfcOpenShell research)
+4. **Optional parallel with F**: Prompt E (verify all source URLs)
+5. **AFTER F completes**: Prompt B (masterplan refinement) - needs ALL research including F's findings
+6. **After masterplan**: Prompt C (repeated per skill, in batches of 3)
+7. **After each batch**: Prompt D (validation)
+
+NOTE: Prompt B (masterplan) should run AFTER Prompt F because F may reveal:
+- New skills needed (gaps found in real OpenAEC projects)
+- Skills to merge/remove (overlapping with existing tooling)
+- Real code examples that change skill scope
+- Claude platform insights that affect skill format
