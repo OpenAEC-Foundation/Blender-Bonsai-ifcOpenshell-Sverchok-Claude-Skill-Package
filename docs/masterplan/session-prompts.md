@@ -8,14 +8,14 @@ All prompts reference SOURCES.md for approved documentation URLs.
 | Prompt | Purpose | Status |
 |--------|---------|--------|
 | A | Bonsai vooronderzoek | DONE (2026-03-05) |
-| A2 | Blender research enrichment | TODO (optional) |
-| A3 | IfcOpenShell research enrichment | TODO (optional) |
-| B | Masterplan refinement (Phase 3) | TODO — run AFTER G + F |
-| C | Skill writer template (Phase 5) | TODO — run after B |
+| A2 | Blender research enrichment | DONE (2026-03-06) — verified merged into vooronderzoek-blender.md |
+| A3 | IfcOpenShell research enrichment | DONE (2026-03-06) — verified merged into vooronderzoek-ifcopenshell.md |
+| B | Masterplan refinement (Phase 3) | DONE (2026-03-06) — see docs/masterplan/masterplan.md (60 skills, 13 batches) |
+| C | Skill writer template (Phase 5) | TODO — run after B, use masterplan per-skill prompts |
 | D | Batch validator (Phase 6) | TODO — run after each C batch |
-| E | Sources URL verification | TODO (optional) |
-| F | Ecosystem sources deep research | TODO |
-| G | Supplementary research: gap domains | TODO — PRIORITY |
+| E | Sources URL verification | DONE (2026-03-06) — 96 URLs checked, 9 new added, 2 broken marked |
+| F | Ecosystem sources deep research | DONE (2026-03-06) — consolidated in vooronderzoek-ecosystem-sources.md |
+| G | Supplementary research: gap domains | DONE (2026-03-06) — 3 supplementary docs (5177 lines total) |
 
 ---
 
@@ -792,16 +792,13 @@ After completing:
 
 ## Usage Order
 
-1. **DONE**: Prompt A (Bonsai research) - Phase 2 complete
-2. **PRIORITY**: Prompt G (supplementary research on gap domains) - fills critical gaps
-3. **Parallel with G**: Prompt F (ecosystem sources deep research)
-4. **Optional parallel**: Prompt A2 + A3 (enrich existing research)
-5. **Optional parallel**: Prompt E (verify all source URLs)
-6. **AFTER G + F complete**: Prompt B (masterplan refinement) - needs ALL research
-7. **After masterplan**: Prompt C (repeated per skill, in batches of 3)
+1. **DONE**: Prompt A (Bonsai research) — 2026-03-05
+2. **DONE**: Prompt G (supplementary research) — 2026-03-06, 3 files, 5177 lines
+3. **DONE**: Prompt F (ecosystem research) — 2026-03-06, consolidated 1678 lines
+4. **DONE**: Prompt A2 + A3 (enrich existing research) — 2026-03-06, verified merged
+5. **DONE**: Prompt E (verify all source URLs) — 2026-03-06, 96 URLs checked
+6. **DONE**: Prompt B (masterplan refinement) — 2026-03-06, 60 skills, 13 batches, reviewed by 3 agents
+7. **NEXT**: Prompt C (repeated per skill, in batches of 3-5) — use masterplan per-skill prompts
 8. **After each batch**: Prompt D (validation)
 
-NOTE: Prompt B (masterplan) should run AFTER Prompt G AND F because:
-- G fills the 60% of API surface not covered by initial vooronderzoeken
-- F reveals real-world usage patterns and Claude platform insights
-- Both feed into the definitive skill inventory
+ALL RESEARCH AND PLANNING PROMPTS ARE COMPLETE. Next phase is skill creation (Phase 5).

@@ -70,3 +70,17 @@ Architectural and process decisions with rationale. Each decision is numbered an
 **Context**: Skills need to be concise enough for Claude to load efficiently
 **Decision**: SKILL.md must be under 500 lines. Heavy content goes in references/
 **Rationale**: Anthropic convention. ERPNext skills ranged 180-427 lines, all well under 500. Keeps the main skill focused on decision trees and quick reference.
+
+## D-010: Cross-Tech Skills Minimal — No Redundancy with Per-Technology Skills
+**Date**: 2026-03-06
+**Status**: ACTIVE
+**Context**: Phase 3 masterplan refinement identified overlap between proposed cross-tech skills and per-technology skills
+**Decision**: Cross-tech package contains only 2 skills: `aec-core-bim-workflows` (cross-cutting BIM patterns) and `aec-workflow-orchestrator` (routing agent). IFC fundamentals and Python runtime are covered by their respective technology packages.
+**Rationale**: `aec-core-ifc-fundamentals` is redundant with `ifcos-core-concepts`. `aec-core-python-runtime` is redundant with `blender-core-runtime` and `ifcos-core-runtime`. Keeping redundant cross-tech skills would violate the DRY principle and create maintenance burden.
+
+## D-011: Blender and IfcOpenShell Built in Parallel
+**Date**: 2026-03-06
+**Status**: ACTIVE
+**Context**: D-008 specifies Blender → Bonsai → IfcOpenShell build order, but Blender and IfcOpenShell have no mutual dependencies
+**Decision**: Blender and IfcOpenShell skills are built in parallel within each batch. Bonsai waits for both. This refines D-008 without contradicting it.
+**Rationale**: IfcOpenShell does not depend on Blender. Building them in parallel cuts total batch count from ~20 to 13. Bonsai depends on both, so it starts only after both have core + syntax skills ready.
