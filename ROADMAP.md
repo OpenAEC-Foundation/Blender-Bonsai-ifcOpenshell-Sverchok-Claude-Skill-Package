@@ -1,7 +1,7 @@
 # ROADMAP
 
-## Current Phase: 7 — Publication (IN PROGRESS)
-## Overall Progress: 95%
+## Current Phase: ALL PHASES COMPLETE
+## Overall Progress: 100%
 
 ## Phase Status
 | Phase | Status | Progress |
@@ -12,7 +12,8 @@
 | 4. Topic-Specific Research | COMPLETE | 100% |
 | 5. Skill Creation | COMPLETE (61/61 skills created) | 100% |
 | 6. Validation | COMPLETE (61/61 validated, 0 blockers) | 100% |
-| 7. Publication | IN PROGRESS | 0% |
+| 7. Publication | COMPLETE | 100% |
+| 8. Workspace Setup | COMPLETE | 100% |
 
 ## Phase 2 Detail: Research Status (ALL COMPLETE)
 | Technology | Vooronderzoek | Size | Status |
@@ -80,11 +81,11 @@ Key findings from complete API surface mapping:
 - 2026-03-06: Phase 5 Batches 12-13 complete (8 skills: bonsai-impl-bcf, bonsai-impl-clash, ifcos-agents-code-validator, blender-agents-code-validator, blender-agents-version-migrator, bonsai-agents-ifc-validator, aec-agents-workflow-orchestrator, bonsai-errors-common)
 - 2026-03-06: Phase 5 COMPLETE — 61/61 skills created across 13 batches
 - 2026-03-06: Phase 6 validation COMPLETE — 61/61 pass, 2 blockers fixed, 7 refs added, 2 content fixes
+- 2026-03-06: Phase 8 COMPLETE — Workspace deployed to Computational-Design-Day-Delft-March-2026
+- 2026-03-06: 61 skills + Blender MCP + CLAUDE.md + SETUP.md deployed to workshop workspace
 
 ## Next Steps
-1. **Phase 7 — Publication**:
-   - Create/update INDEX.md (skill directory with categories and descriptions)
-   - Update README.md (project overview, installation, usage instructions)
-   - Write CHANGELOG.md (full release history)
-   - Create release tag (v1.0.0)
-2. **Future**: Sverchok skill package (requires dedicated research phase)
+All phases (1–8) are complete. The skill package has been published and deployed to the Computational Design Day Delft workshop workspace.
+
+1. **Future**: Sverchok skill package (requires dedicated research phase)
+2. **Future**: Expand coverage for Blender, Bonsai, and IfcOpenShell API surfaces beyond current ~35–50%

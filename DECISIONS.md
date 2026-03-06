@@ -84,3 +84,31 @@ Architectural and process decisions with rationale. Each decision is numbered an
 **Context**: D-008 specifies Blender → Bonsai → IfcOpenShell build order, but Blender and IfcOpenShell have no mutual dependencies
 **Decision**: Blender and IfcOpenShell skills are built in parallel within each batch. Bonsai waits for both. This refines D-008 without contradicting it.
 **Rationale**: IfcOpenShell does not depend on Blender. Building them in parallel cuts total batch count from ~20 to 13. Bonsai depends on both, so it starts only after both have core + syntax skills ready.
+
+## D-012: Skills Deployed As-Is to Workshop Workspace
+**Date**: 2026-03-06
+**Status**: ACTIVE
+**Context**: Need to deploy skills to the CDD workshop workspace
+**Decision**: Copy entire skills/{technology} subtree as-is into workspace .claude/skills/. No restructuring.
+**Rationale**: Claude Code discovers skills recursively. Technology-package hierarchy preserves D-002 independence. Flattening would lose organization with zero benefit.
+
+## D-013: Dual CLAUDE.md Pattern for Workshops
+**Date**: 2026-03-06
+**Status**: ACTIVE
+**Context**: Workshop workspace needs both technical runtime guide and workshop context
+**Decision**: Two CLAUDE.md files: root CLAUDE.md (workshop instructions, ~40 lines) + .claude/skills/CLAUDE.md (technical Python runtime guide, 119 lines)
+**Rationale**: Different concerns. Root is loaded at conversation start for context. Skills CLAUDE.md is loaded when Claude browses skills directory. No duplication needed.
+
+## D-014: No Setup Script for Workshops
+**Date**: 2026-03-06
+**Status**: ACTIVE
+**Context**: Considered automated setup script for workshop participants
+**Decision**: Use SETUP.md with numbered steps instead of a shell script
+**Rationale**: Shell scripts fail silently on different OS/shell/path configurations. A step-by-step guide is more reliable for a one-day workshop and can be read by both humans and Claude.
+
+## D-015: Blender MCP Only — No Additional MCP Servers
+**Date**: 2026-03-06
+**Status**: ACTIVE
+**Context**: Could add filesystem, memory, or other MCP servers
+**Decision**: Only Blender MCP in the workshop .mcp.json
+**Rationale**: Workshop focuses on Blender + BIM. Additional servers add complexity without workshop value. Participants can add servers locally if needed.
