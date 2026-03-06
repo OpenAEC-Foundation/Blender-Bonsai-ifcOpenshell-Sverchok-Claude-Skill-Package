@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0] - 2026-03-06
+
+### Added
+- 61 skills across 4 technology packages (Blender 26, IfcOpenShell 19, Bonsai 14, Cross-Tech 2)
+- Complete skill catalog (INDEX.md)
+- Phase 6 validation reports (docs/validation/)
+- Skills CLAUDE.md for project-level Claude configuration
+
+### Skill Categories
+- 19 syntax skills (API patterns and code reference)
+- 22 implementation skills (workflows and best practices)
+- 7 error handling skills (diagnostics and recovery)
+- 8 core skills (concepts, runtime, versions)
+- 5 agent skills (code validators, version migrator, workflow orchestrator)
+
+### Quality
+- All 61 skills validated: <500 lines, 3+ reference files, English only, deterministic language
+- 244 reference files (methods.md, examples.md, anti-patterns.md)
+- Zero Dutch content, zero banned hedging language
+
 ## [Unreleased]
 
 ### Added

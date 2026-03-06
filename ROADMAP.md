@@ -1,7 +1,7 @@
 # ROADMAP
 
-## Current Phase: 4/5 - Topic Research + Skill Creation (READY TO START)
-## Overall Progress: 45%
+## Current Phase: 7 — Publication (IN PROGRESS)
+## Overall Progress: 95%
 
 ## Phase Status
 | Phase | Status | Progress |
@@ -9,10 +9,10 @@
 | 1. Setup + Raw Masterplan | COMPLETE | 100% |
 | 2. Deep Research (vooronderzoek) | COMPLETE | 100% |
 | 3. Masterplan Refinement | COMPLETE | 100% |
-| 4. Topic-Specific Research | PARTIALLY STARTED | 15% |
-| 5. Skill Creation | TODO | 0% |
-| 6. Validation | TODO | 0% |
-| 7. Publication | TODO | 0% |
+| 4. Topic-Specific Research | COMPLETE | 100% |
+| 5. Skill Creation | COMPLETE (61/61 skills created) | 100% |
+| 6. Validation | COMPLETE (61/61 validated, 0 blockers) | 100% |
+| 7. Publication | IN PROGRESS | 0% |
 
 ## Phase 2 Detail: Research Status (ALL COMPLETE)
 | Technology | Vooronderzoek | Size | Status |
@@ -36,12 +36,12 @@
 ## Skill Inventory (DEFINITIVE — finalized in Phase 3, fixed post-review)
 | Technology | Skills | Status | Notes |
 |------------|--------|--------|-------|
-| Blender | 26 | Defined in masterplan | 11 syntax, 6 impl, 3 errors, 4 core, 2 agents |
-| Bonsai | 14 | Defined in masterplan | 4 syntax, 7 impl, 1 errors, 1 core, 1 agents |
-| IfcOpenShell | 19 | Defined in masterplan | 4 syntax, 9 impl, 3 errors, 2 core, 1 agents |
+| Blender | 26 | ALL CREATED & VALIDATED | 11 syntax, 6 impl, 3 errors, 4 core, 2 agents |
+| Bonsai | 14 | ALL CREATED & VALIDATED | 4 syntax, 7 impl, 1 errors, 1 core, 1 agents |
+| IfcOpenShell | 19 | ALL CREATED & VALIDATED | 4 syntax, 9 impl, 3 errors, 2 core, 1 agents |
 | Sverchok | ~8 | DEFERRED (later phase) | Requires dedicated research phase |
-| Cross-Tech | 2 | Defined in masterplan | 1 core (bim-workflows), 1 agents (orchestrator) |
-| **Total** | **61** | **0% skills created** | See docs/masterplan/masterplan.md |
+| Cross-Tech | 2 | ALL CREATED & VALIDATED | 1 core (bim-workflows), 1 agents (orchestrator) |
+| **Total** | **61** | **100% created & validated** | See docs/masterplan/masterplan.md |
 
 ## Scope Analysis (2026-03-05)
 Key findings from complete API surface mapping:
@@ -77,12 +77,14 @@ Key findings from complete API surface mapping:
 - 2026-03-06: Masterplan reviewed (3 agents), fixed: 4 batch dependency blockers, +1 skill (ifcos-impl-validation), naming conventions, arithmetic
 - 2026-03-06: CLAUDE.md + Blender MCP research completed (research-claude-md-and-mcp.md, research-blender-mcp.md)
 - 2026-03-06: Total skills: 61 (26 Blender + 19 IfcOpenShell + 14 Bonsai + 2 Cross-tech)
+- 2026-03-06: Phase 5 Batches 12-13 complete (8 skills: bonsai-impl-bcf, bonsai-impl-clash, ifcos-agents-code-validator, blender-agents-code-validator, blender-agents-version-migrator, bonsai-agents-ifc-validator, aec-agents-workflow-orchestrator, bonsai-errors-common)
+- 2026-03-06: Phase 5 COMPLETE — 61/61 skills created across 13 batches
+- 2026-03-06: Phase 6 validation COMPLETE — 61/61 pass, 2 blockers fixed, 7 refs added, 2 content fixes
 
 ## Next Steps
-1. **IMMEDIATE**: Design template CLAUDE.md for the skills package (guides Claude when using Blender/Bonsai/IfcOpenShell)
-2. **Phase 5**: Begin skill creation using masterplan batch plan (13 batches, 3-5 agents per batch)
-   - Start with Batch 1: foundation skills (blender-core-api, blender-core-versions, ifcos-core-concepts, ifcos-syntax-fileio)
-   - Use Prompt C template with skill-specific parameters from masterplan §5
-   - Quality gate after each batch using Prompt D / masterplan §6
-3. **Blender MCP integration**: Research Blender MCP server for live Claude-to-Blender interaction
-4. **All research prompts DONE**: A, A2, A3, B, E, F, G complete — see session-prompts.md
+1. **Phase 7 — Publication**:
+   - Create/update INDEX.md (skill directory with categories and descriptions)
+   - Update README.md (project overview, installation, usage instructions)
+   - Write CHANGELOG.md (full release history)
+   - Create release tag (v1.0.0)
+2. **Future**: Sverchok skill package (requires dedicated research phase)
