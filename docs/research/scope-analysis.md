@@ -135,24 +135,24 @@
 | Domain | Sub-areas | Current Coverage |
 |--------|-----------|-----------------|
 | **Modeling** | Mesh, BMesh, Curves, NURBS, Text, Lattice, Metaball | GOOD (mesh/BMesh) |
-| **Node Systems** | Geometry Nodes, Shader Nodes, Compositor, World Nodes | POOR |
-| **Animation** | Keyframes, FCurves, Drivers, NLA, Actions, Shape Keys | POOR |
-| **Rigging** | Armatures, Bones, Constraints, Pose Mode, IK/FK | POOR |
-| **Materials** | Shader node trees, Material settings, Textures, Images | POOR |
-| **Rendering** | EEVEE, Cycles, Output settings, Camera, Lights, World | POOR |
-| **Simulation** | Particles, Cloth, Fluid, Rigid Body, Dynamic Paint, Boids | NONE |
-| **Sculpting** | Sculpt mode, Brushes, Multires, Dynamic Topology | NONE |
-| **UV/Texturing** | UV editing, Texture painting, Baking | POOR |
-| **Compositing** | Compositor nodes, Render layers, Post-processing | NONE |
-| **Motion Tracking** | Camera tracking, Object tracking, Plane track | NONE |
+| **Node Systems** | Geometry Nodes, Shader Nodes, Compositor, World Nodes | GOOD (supplementary-blender-gaps §1) |
+| **Animation** | Keyframes, FCurves, Drivers, NLA, Actions, Shape Keys | GOOD (supplementary-blender-gaps §2) |
+| **Rigging** | Armatures, Bones, Constraints, Pose Mode, IK/FK | GOOD (supplementary-blender-gaps §2) |
+| **Materials** | Shader node trees, Material settings, Textures, Images | GOOD (supplementary-blender-gaps §3) |
+| **Rendering** | EEVEE, Cycles, Output settings, Camera, Lights, World | GOOD (supplementary-blender-gaps §4) |
+| **Simulation** | Particles, Cloth, Fluid, Rigid Body, Dynamic Paint, Boids | NONE (out of AEC scope) |
+| **Sculpting** | Sculpt mode, Brushes, Multires, Dynamic Topology | NONE (out of AEC scope) |
+| **UV/Texturing** | UV editing, Texture painting, Baking | PARTIAL (UV in supplementary-blender-gaps §3) |
+| **Compositing** | Compositor nodes, Render layers, Post-processing | PARTIAL (supplementary-blender-gaps §1) |
+| **Motion Tracking** | Camera tracking, Object tracking, Plane track | NONE (out of AEC scope) |
 | **Grease Pencil** | 2D animation, GP objects, Layers, Frames | POOR (migration only) |
-| **Video Editing** | VSE sequences, Strips, Effects, Audio | NONE |
-| **Asset System** | Asset Browser, Asset libraries, Tags, Catalogs | NONE |
-| **I/O Formats** | FBX, OBJ, glTF, USD, Alembic, STL, PLY, SVG | NONE |
+| **Video Editing** | VSE sequences, Strips, Effects, Audio | NONE (out of AEC scope) |
+| **Asset System** | Asset Browser, Asset libraries, Tags, Catalogs | GOOD (supplementary-blender-gaps §6) |
+| **I/O Formats** | FBX, OBJ, glTF, USD, Alembic, STL, PLY, SVG | GOOD (supplementary-blender-gaps §5) |
 | **Addon/Extension** | bl_info, manifest, register, preferences, sub-modules | GOOD |
-| **Context/Event** | Context, Handlers, Timers, msgbus, Modal | GOOD |
-| **Drawing/GPU** | gpu module, Shaders, Batches, Overlays, Gizmos | PARTIAL |
-| **Scripting** | Text editor, Console, Script running, bpy as module | NONE |
+| **Context/Event** | Context, Handlers, Timers, msgbus, Modal | GOOD (expanded in supplementary-blender-gaps §8) |
+| **Drawing/GPU** | gpu module, Shaders, Batches, Overlays, Gizmos | GOOD (supplementary-blender-gaps §7) |
+| **Scripting** | Text editor, Console, Script running, bpy as module | PARTIAL (background mode in supplementary-blender-gaps §8) |
 
 ---
 
@@ -169,7 +169,7 @@
 | `ifcopenshell.express` | EXPRESS schema parsing | NO |
 | `ifcopenshell.guid` | GUID generation/compression | NO |
 | `ifcopenshell.template` | IFC file templates | PARTIAL |
-| `ifcopenshell.validate` | IFC validation | NO |
+| `ifcopenshell.validate` | IFC validation | YES (supplementary-ifcos-gaps §6) |
 | `ifcopenshell.draw` | 2D drawing generation | NO |
 
 ### ifcopenshell.api Sub-modules (COMPLETE — 30+ categories)
@@ -180,11 +180,11 @@
 | `api.classification` | Classification systems | PARTIAL |
 | `api.constraint` | Design constraints | NO |
 | `api.context` | Geometric representation contexts | YES |
-| `api.cost` | Cost items, schedules, rates | NO |
+| `api.cost` | Cost items, schedules, rates | YES (supplementary-ifcos-gaps §1) |
 | `api.document` | Document references | NO |
-| `api.drawing` | 2D drawing generation, annotations | NO |
+| `api.drawing` | 2D drawing generation, annotations | YES (supplementary-ifcos-gaps §4) |
 | `api.geometry` | Geometry creation, representations | YES |
-| `api.georeference` | Map coordinates, georeferencing | NO |
+| `api.georeference` | Map coordinates, georeferencing | YES (supplementary-ifcos-gaps §6) |
 | `api.group` | Grouping elements | NO |
 | `api.grid` | Grid systems | NO |
 | `api.layer` | Presentation layers | NO |
@@ -192,16 +192,16 @@
 | `api.material` | Materials, material sets | YES |
 | `api.nest` | Nesting relationships | NO |
 | `api.owner` | Ownership, history tracking | PARTIAL |
-| `api.profile` | Cross-section profiles | NO |
+| `api.profile` | Cross-section profiles | YES (supplementary-ifcos-gaps §5) |
 | `api.project` | Project creation/setup | YES |
 | `api.pset` | Property sets (add/edit/remove) | YES |
 | `api.resource` | Construction resources | NO |
 | `api.root` | Entity creation (create_entity) | YES |
-| `api.sequence` | Work schedules, tasks, 4D simulation | NO |
+| `api.sequence` | Work schedules, tasks, 4D simulation | YES (supplementary-ifcos-gaps §2) |
 | `api.spatial` | Spatial containment, structure | YES |
 | `api.structural` | Structural analysis models | NO |
 | `api.style` | Visual styles, surface styles | NO |
-| `api.system` | MEP systems, distribution | NO |
+| `api.system` | MEP systems, distribution | YES (supplementary-ifcos-gaps §3) |
 | `api.type` | Type assignment | YES |
 | `api.unit` | Unit assignment | YES |
 | `api.void` | Openings, voids | PARTIAL |
@@ -214,15 +214,15 @@
 | `util.placement` | Local placement calculations | YES |
 | `util.selector` | CSS-like element selection | YES |
 | `util.date` | Date/duration parsing | YES |
-| `util.cost` | Cost calculations | NO |
-| `util.sequence` | Schedule analysis | NO |
+| `util.cost` | Cost calculations | YES (supplementary-ifcos-gaps §1) |
+| `util.sequence` | Schedule analysis | YES (supplementary-ifcos-gaps §2) |
 | `util.classification` | Classification lookups | NO |
 | `util.constraint` | Constraint utilities | NO |
-| `util.geolocation` | Coordinate transformations | NO |
+| `util.geolocation` | Coordinate transformations | YES (supplementary-ifcos-gaps §6) |
 | `util.pset` | Property set utilities | PARTIAL |
 | `util.representation` | Representation utilities | PARTIAL |
 | `util.shape` | Shape analysis | PARTIAL |
-| `util.system` | System traversal | NO |
+| `util.system` | System traversal | YES (supplementary-ifcos-gaps §3) |
 | `util.type` | Type utilities | PARTIAL |
 | `util.doc` | Documentation generation | NO |
 
@@ -246,15 +246,15 @@
 | **Materials** (single, sets, layers, constituents) | PARTIAL |
 | **Types** (type assignment, occurrences) | GOOD |
 | **Classification** (systems, references) | PARTIAL |
-| **Cost Management** (cost items, schedules) | NONE |
-| **4D Scheduling** (tasks, work plans, calendars) | NONE |
-| **MEP Systems** (distribution, ports, flow) | NONE |
+| **Cost Management** (cost items, schedules) | GOOD (supplementary-ifcos-gaps §1) |
+| **4D Scheduling** (tasks, work plans, calendars) | GOOD (supplementary-ifcos-gaps §2) |
+| **MEP Systems** (distribution, ports, flow) | GOOD (supplementary-ifcos-gaps §3) |
 | **Structural Analysis** (loads, reactions, models) | NONE |
-| **Drawing/2D** (annotations, dimensions, sheets) | NONE |
+| **Drawing/2D** (annotations, dimensions, sheets) | PARTIAL (supplementary-ifcos-gaps §4) |
 | **Documents** (references, information) | NONE |
-| **Profiles** (cross-sections, parametric profiles) | NONE |
-| **Georeferencing** (coordinates, CRS) | NONE |
-| **Validation** (schema compliance, rules) | NONE |
+| **Profiles** (cross-sections, parametric profiles) | GOOD (supplementary-ifcos-gaps §5) |
+| **Georeferencing** (coordinates, CRS) | GOOD (supplementary-ifcos-gaps §6) |
+| **Validation** (schema compliance, rules) | GOOD (supplementary-ifcos-gaps §6) |
 
 ---
 
@@ -264,19 +264,19 @@
 | Module | Purpose | In Current Research? |
 |--------|---------|---------------------|
 | `aggregate` | Spatial aggregation | PARTIAL |
-| `bcf` | BIM Collaboration Format | NO |
+| `bcf` | BIM Collaboration Format | YES (supplementary-bonsai-gaps §3) |
 | `blenderbim` | Legacy bridge | NO |
 | `boundary` | Space boundaries | NO |
 | `brick` | Brickschema (IoT/building data) | NO |
 | `classification` | Classification systems | YES |
-| `clash` | Clash detection | NO |
+| `clash` | Clash detection | YES (supplementary-bonsai-gaps §4) |
 | `constraint` | IFC constraints | NO |
 | `context` | Geometric contexts | PARTIAL |
 | `cost` | Cost management | NO |
 | `covering` | Coverings (finishes) | NO |
 | `debug` | Debugging tools | NO |
 | `document` | Document management | NO |
-| `drawing` | 2D drawing generation | NO |
+| `drawing` | 2D drawing generation | YES (supplementary-bonsai-gaps §1) |
 | `fm` | Facility management | NO |
 | `georeference` | Georeferencing | NO |
 | `geometry` | Geometry operations | YES |
@@ -293,7 +293,7 @@
 | `profile` | Profile definitions | NO |
 | `project` | Project setup | YES |
 | `pset` | Property sets | YES |
-| `qto` | Quantity takeoff | NO |
+| `qto` | Quantity takeoff | YES (supplementary-bonsai-gaps §2) |
 | `resource` | Resource management | NO |
 | `root` | Root entity operations | YES |
 | `search` | Element search/filter | NO |
@@ -315,16 +315,16 @@
 | **Properties & quantities** | GOOD |
 | **Classification** | PARTIAL |
 | **Materials** | PARTIAL |
-| **Drawing/2D** (sheets, annotations, dimensions) | NONE |
+| **Drawing/2D** (sheets, annotations, dimensions) | GOOD (supplementary-bonsai-gaps §1) |
 | **Cost management** | NONE |
 | **4D scheduling** | NONE |
 | **MEP systems** | NONE |
-| **Clash detection** | NONE |
-| **BCF** (issue tracking) | NONE |
+| **Clash detection** | GOOD (supplementary-bonsai-gaps §4) |
+| **BCF** (issue tracking) | GOOD (supplementary-bonsai-gaps §3) |
 | **Facility management** | NONE |
 | **Structural analysis** | NONE |
 | **Georeferencing** | NONE |
-| **Quantity takeoff** | NONE |
+| **Quantity takeoff** | GOOD (supplementary-bonsai-gaps §2) |
 | **Brickschema** (IoT) | NONE |
 
 ---

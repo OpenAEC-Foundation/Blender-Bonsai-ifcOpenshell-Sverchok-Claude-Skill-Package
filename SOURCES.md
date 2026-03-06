@@ -76,7 +76,7 @@ Official documentation, repositories, and reference materials used in this proje
 | Source | URL | Purpose |
 |--------|-----|---------|
 | OSArch Forum (Bonsai) | https://community.osarch.org/discussions/tagged/bonsai-bim/p1 | Community discussions and Q&A |
-| OSArch Wiki (Bonsai) | https://wiki.osarch.org/index.php/BlenderBIM_Add-on | Community wiki page |
+| OSArch Wiki (Bonsai) | https://wiki.osarch.org/index.php/BlenderBIM_Add-on | [BROKEN] Community wiki page (HTTP 403 since March 2026) |
 
 ---
 
@@ -88,8 +88,8 @@ Official documentation, repositories, and reference materials used in this proje
 | IfcOpenShell Website | https://ifcopenshell.org/ | Main website (v0.8.4 current) |
 | IfcOpenShell Documentation Hub | https://docs.ifcopenshell.org/ | Unified docs for all tools (Python API, C++ API, utilities) |
 | Python API Reference | https://docs.ifcopenshell.org/ifcopenshell-python.html | Auto-generated API docs (replaces old GitHub Pages URL) |
-| IfcOpenShell Academy | https://academy.ifcopenshell.org/ | Tutorials (archived, last content Oct 2021) |
-| IfcOpenShell on PyPI | https://pypi.org/project/ifcopenshell/ | Python package (v0.8.4, supports Python 3.9-3.14) |
+| IfcOpenShell Academy | https://academy.ifcopenshell.org/ | Tutorials and Binder notebooks (IFC parsing, geometry, placements, walls) |
+| IfcOpenShell on PyPI | https://pypi.org/project/ifcopenshell/ | Python package (v0.8.4.post1, supports Python 3.9-3.14) |
 
 ### Source Code
 | Source | URL | Purpose |
@@ -106,6 +106,9 @@ Official documentation, repositories, and reference materials used in this proje
 | IfcTester Documentation | https://docs.ifcopenshell.org/ifctester.html | IDS authoring and IFC validation |
 | IfcDiff Documentation | https://docs.ifcopenshell.org/ifcdiff.html | Comparing changes between IFC models |
 | IfcPatch Documentation | https://docs.ifcopenshell.org/ifcpatch.html | Predetermined modifications on IFC files |
+| IfcCSV Documentation | https://docs.ifcopenshell.org/ifccsv.html | Extract/edit IFC data via spreadsheets (CSV, ODS, XLSX) |
+| IfcClash Documentation | https://docs.ifcopenshell.org/ifcclash.html | Geometric collision/clash detection across IFC models |
+| IfcFM Documentation | https://docs.ifcopenshell.org/ifcfm.html | Facility management data extraction (COBie 2.4/3.0) |
 
 ---
 
@@ -119,7 +122,8 @@ Official documentation, repositories, and reference materials used in this proje
 | IFC Specifications | https://standards.buildingsmart.org/IFC/ | Schema specifications |
 | IFC4.3 Documentation | https://ifc43-docs.standards.buildingsmart.org/ | IFC 4.3.2.0 standard docs (current ISO standard) |
 | bSDD (Data Dictionary) | https://search.bsdd.buildingsmart.org/ | Classification and property lookup |
-| IDS Standard | https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specification-ids/ | Information Delivery Specification v1.0 (approved) |
+| IDS Standard | https://www.buildingsmart.org/standards/bsi-standards/information-delivery-specification-ids/ | Information Delivery Specification v1.0 (approved June 2024, 40+ implementations) |
+| IFC Schema Specifications | https://technical.buildingsmart.org/standards/ifc/ifc-schema-specifications/ | All IFC versions overview (IFC2.0 through IFC5 dev status) |
 
 ### Schema Files
 | Source | URL | Purpose |
@@ -154,7 +158,7 @@ Official documentation, repositories, and reference materials used in this proje
 | Source | URL | Purpose |
 |--------|-----|---------|
 | Sverchok GitHub | https://github.com/nortikin/sverchok | Source code and node implementations (tested with Blender 5.1) |
-| Sverchok Releases | https://github.com/nortikin/sverchok/releases | Release history (latest: v1.3.0, Sep 2024) |
+| Sverchok Releases | https://github.com/nortikin/sverchok/releases | Release history (latest: v1.4.0, March 2025) |
 
 ### IfcSverchok (IFC/BIM Nodes for Sverchok)
 | Source | URL | Purpose |
@@ -208,6 +212,12 @@ Official documentation, repositories, and reference materials used in this proje
 | Agent SDK TypeScript Reference | https://platform.claude.com/docs/en/agent-sdk/typescript | TypeScript SDK API reference |
 | Agent SDK Python Reference | https://platform.claude.com/docs/en/agent-sdk/python | Python SDK API reference |
 
+### Agent SDK Source Code
+| Source | URL | Purpose |
+|--------|-----|---------|
+| Agent SDK TypeScript | https://github.com/anthropics/claude-agent-sdk-typescript | TypeScript SDK source and changelog |
+| Agent SDK Python | https://github.com/anthropics/claude-agent-sdk-python | Python SDK source and changelog |
+
 ---
 
 ## OpenAEC Foundation Projects
@@ -215,9 +225,9 @@ Official documentation, repositories, and reference materials used in this proje
 ### This Project
 | Source | URL | Purpose |
 |--------|-----|---------|
-| This Skill Package | https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package | This repository (may be private/renamed - verify) |
-| OpenAEC Foundation (org) | https://github.com/orgs/OpenAEC-Foundation/repositories | All foundation repositories (35 repos) |
-| OpenAEC Foundation Website | https://openaec-foundation.github.io/website/ | Official OpenAEC Foundation website |
+| This Skill Package | https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package | [BROKEN] This repository (HTTP 404 — may be private/renamed) |
+| OpenAEC Foundation (org) | https://github.com/orgs/OpenAEC-Foundation/repositories | All foundation repositories (36 repos) |
+| OpenAEC Foundation Website | https://open-aec.com/ | Official OpenAEC Foundation website (redirected from openaec-foundation.github.io) |
 
 ### Methodology & Tooling
 | Source | URL | Purpose |
@@ -235,6 +245,9 @@ Official documentation, repositories, and reference materials used in this proje
 | Open PDF Studio | https://github.com/OpenAEC-Foundation/open-pdf-studio | Open-source PDF editor/annotator (Tauri 2) |
 | warmteverliesberekening | https://github.com/OpenAEC-Foundation/warmteverliesberekening | Heat loss calculations per ISSO 51:2023 (Rust) |
 | dynlex | https://github.com/OpenAEC-Foundation/dynlex | Natural-language programming language compiler (LLVM) |
+| Open 2D Studio | https://github.com/OpenAEC-Foundation/open-2d-studio | Open-source 2D CAD/drawing application |
+| Open Pointcloud Studio | https://github.com/OpenAEC-Foundation/open-pointcloud-studio | Point cloud processing and visualization |
+| Nextcloud Claude Bot | https://github.com/OpenAEC-Foundation/nextcloud-claude-bot | Claude AI integration for Nextcloud |
 
 ---
 
@@ -251,10 +264,10 @@ Official documentation, repositories, and reference materials used in this proje
 ## Last Verified
 | Technology | Date | By | Notes |
 |------------|------|----|-------|
-| Blender | 2026-03-05 | e-blender-sources | All URLs OK. Added 4.4/4.5/5.1/5.2 release notes, compatibility index, extension dev docs |
-| Bonsai | 2026-03-05 | e-bonsai-ifcos-sources | blenderbim.org→bonsaibim.org redirect. v0.8.4 stable. Added Extensions listing, OSArch community |
-| IfcOpenShell | 2026-03-05 | e-bonsai-ifcos-sources | FIXED: Python API docs URL (moved to docs.ifcopenshell.org). v0.8.4 stable. Academy archived |
-| IFC Standard | 2026-03-05 | e-bonsai-ifcos-sources | IFC 4.3.2.0 current. IFC5 alpha in development. IDS v1.0 approved. Added buildingSMART GitHub |
-| Sverchok | 2026-03-05 | e-sverchok-claude-openaec-sources | ReadTheDocs removed (stale v0.5). GitHub Pages is canonical (v1.4.0). Tested with Blender 5.1 |
-| Claude/Anthropic | 2026-03-05 | e-sverchok-claude-openaec-sources | Added Agent Skills standard, Claude Code docs, Agent SDK references. docs.anthropic.com→platform.claude.com |
-| OpenAEC Foundation | 2026-03-05 | e-sverchok-claude-openaec-sources | Removed 4 broken repos. Added 4 new repos. 35 repos total in org |
+| Blender | 2026-03-06 | e-sources-verify | All 26 URLs OK. No new release notes beyond 5.2. Compatibility index covers through 6.0 |
+| Bonsai | 2026-03-06 | e-sources-verify | All OK except OSArch Wiki [BROKEN] (403). v0.8.5-alpha in development. docs.bonsaibim.org confirmed primary |
+| IfcOpenShell | 2026-03-06 | e-sources-verify | All OK. v0.8.4.post1 on PyPI. Added IfcCSV, IfcClash, IfcFM tool docs. Academy has active tutorials |
+| IFC Standard | 2026-03-06 | e-sources-verify | All 13 URLs OK. Added IFC Schema Specifications page. IFC5 Core Project Plan under review |
+| Sverchok | 2026-03-06 | e-sources-verify | All OK. Updated release to v1.4.0 (March 2025). GitHub Pages docs maintained at v1.4.0 |
+| Claude/Anthropic | 2026-03-06 | e-sources-verify, f-consolidator | All 17 URLs OK. Agent Skills spec, skill-creator patterns, progressive disclosure model verified. Claude Opus 4.6 latest |
+| OpenAEC Foundation | 2026-03-06 | e-sources-verify, f-consolidator | Skill Package repo [BROKEN] (404). Website→open-aec.com. 36 repos total. Ecosystem deep-dive: building.py, aec-scripts, monty-ifc-viewer, inb-template, ifcgit-4-nextcloud |
