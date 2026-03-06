@@ -319,7 +319,7 @@ conda install -c conda-forge ifcopenshell
 ```
 
 - Better dependency resolution for OpenCASCADE
-- Often more up-to-date than pip
+- More up-to-date than pip releases
 
 ### Blender Integration
 

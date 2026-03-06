@@ -309,182 +309,16 @@ def visualize_ifc_element(ifc_file, element, collection=None):
 
 ## Common Operations
 
-### Building Floor Plan from Coordinates
+See [references/examples.md](references/examples.md) for complete working code examples including:
 
-```python
-# Blender 3.x/4.x/5.x
-import bpy
-
-def create_floor_plan(name, outline_coords, height=3.0):
-    """Create extruded floor plan from 2D outline coordinates.
-
-    Args:
-        name: Building name
-        outline_coords: List of (x, y) tuples defining the floor outline
-        height: Wall height in meters
-    Returns:
-        The created bpy.types.Object
-    """
-    import bmesh
-
-    bm = bmesh.new()
-    base_verts = [bm.verts.new((x, y, 0.0)) for x, y in outline_coords]
-    bm.verts.ensure_lookup_table()
-
-    # Create floor face
-    floor = bm.faces.new(base_verts)
-
-    # Extrude walls
-    result = bmesh.ops.extrude_face_region(bm, geom=[floor])
-    top_verts = [e for e in result['geom'] if isinstance(e, bmesh.types.BMVert)]
-    bmesh.ops.translate(bm, vec=(0, 0, height), verts=top_verts)
-
-    # Recalculate normals (outward)
-    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
-
-    mesh = bpy.data.meshes.new(name)
-    bm.to_mesh(mesh)
-    bm.free()
-    mesh.update()
-
-    obj = bpy.data.objects.new(name, mesh)
-    bpy.context.collection.objects.link(obj)
-    return obj
-```
-
-### Mesh Analysis: Area, Volume, Bounds
-
-```python
-# Blender 3.x/4.x/5.x
-import bpy
-import bmesh
-from mathutils import Vector
-
-def analyze_mesh(obj):
-    """Calculate mesh statistics for AEC analysis.
-
-    Args:
-        obj: bpy.types.Object with mesh data
-    Returns:
-        Dict with 'total_area', 'volume', 'bounds_min', 'bounds_max',
-        'dimensions', 'vert_count', 'face_count'
-    """
-    bm = bmesh.new()
-    bm.from_mesh(obj.data)
-    bm.transform(obj.matrix_world)  # Apply world transform
-
-    total_area = sum(f.calc_area() for f in bm.faces)
-    volume = bm.calc_volume()  # Only valid for closed (watertight) meshes
-
-    all_coords = [v.co for v in bm.verts]
-    bounds_min = Vector((
-        min(c.x for c in all_coords),
-        min(c.y for c in all_coords),
-        min(c.z for c in all_coords),
-    ))
-    bounds_max = Vector((
-        max(c.x for c in all_coords),
-        max(c.y for c in all_coords),
-        max(c.z for c in all_coords),
-    ))
-
-    result = {
-        'total_area': total_area,
-        'volume': volume,
-        'bounds_min': bounds_min,
-        'bounds_max': bounds_max,
-        'dimensions': bounds_max - bounds_min,
-        'vert_count': len(bm.verts),
-        'face_count': len(bm.faces),
-    }
-
-    bm.free()
-    return result
-```
-
-### Bulk Vertex Read with foreach_get
-
-```python
-# Blender 3.x/4.x/5.x
-import bpy
-import numpy as np
-
-def get_mesh_vertices_fast(mesh):
-    """Read all vertex coordinates using foreach_get.
-
-    Args:
-        mesh: bpy.types.Mesh
-    Returns:
-        numpy array of shape (N, 3), dtype float64
-    """
-    count = len(mesh.vertices)
-    coords = np.empty(count * 3, dtype=np.float64)
-    mesh.vertices.foreach_get("co", coords)
-    return coords.reshape(-1, 3)
-
-def get_mesh_normals_fast(mesh):
-    """Read all vertex normals using foreach_get.
-
-    Args:
-        mesh: bpy.types.Mesh
-    Returns:
-        numpy array of shape (N, 3), dtype float64
-    """
-    count = len(mesh.vertices)
-    normals = np.empty(count * 3, dtype=np.float64)
-    mesh.vertices.foreach_get("normal", normals)
-    return normals.reshape(-1, 3)
-```
-
-### Custom Attributes (Blender 3.2+/4.x/5.x)
-
-```python
-# Blender 3.2+/4.x/5.x
-import bpy
-
-def add_custom_float_attribute(mesh, attr_name, domain, values):
-    """Add a custom float attribute to mesh.
-
-    Args:
-        mesh: bpy.types.Mesh
-        attr_name: Attribute name string
-        domain: 'POINT', 'EDGE', 'FACE', or 'CORNER'
-        values: Flat list/array of float values
-    """
-    if attr_name not in mesh.attributes:
-        mesh.attributes.new(name=attr_name, type='FLOAT', domain=domain)
-    attr = mesh.attributes[attr_name]
-    attr.data.foreach_set("value", values)
-    mesh.update()
-```
-
-### Material Assignment
-
-```python
-# Blender 3.x/4.x/5.x
-import bpy
-
-def assign_material_to_faces(obj, material, face_indices):
-    """Assign a material to specific faces by index.
-
-    Args:
-        obj: bpy.types.Object with mesh data
-        material: bpy.types.Material
-        face_indices: List of polygon indices
-    """
-    mesh = obj.data
-
-    # Add material slot if not present
-    if material.name not in [s.material.name for s in obj.material_slots if s.material]:
-        obj.data.materials.append(material)
-
-    # Find the material index
-    mat_idx = list(obj.data.materials).index(material)
-
-    # Assign to faces
-    for fi in face_indices:
-        mesh.polygons[fi].material_index = mat_idx
-```
+- Building floor plans from 2D coordinates with BMesh extrusion
+- Mesh analysis (area, volume, bounding box) for quantity takeoff
+- Bulk vertex read/write with foreach_get/foreach_set and numpy
+- Custom float attributes (Blender 3.2+/4.x/5.x)
+- Material assignment to specific faces
+- Parametric column generation
+- Window openings via BMesh inset
+- Planar UV mapping
 
 ---
 
@@ -499,20 +333,7 @@ def assign_material_to_faces(obj, material, face_indices):
 | Custom attributes | `mesh.vertex_colors`, `mesh.uv_layers` (legacy) | `mesh.attributes` (preferred), legacy still works |
 | Mesh boolean | `bpy.ops.mesh.intersect_boolean()` | Same API, improved solver |
 
-### Blender 4.0+ Attribute Migration
-
-```python
-# Blender 3.x — edge bevel weight
-for edge in mesh.edges:
-    edge.bevel_weight = 1.0  # REMOVED in 4.0
-
-# Blender 4.0+ — edge bevel weight via attributes
-if "bevel_weight_edge" not in mesh.attributes:
-    mesh.attributes.new(name="bevel_weight_edge", type='FLOAT', domain='EDGE')
-attr = mesh.attributes["bevel_weight_edge"]
-for i in range(len(mesh.edges)):
-    attr.data[i].value = 1.0
-```
+See [references/methods.md](references/methods.md) for Blender 4.0+ attribute migration code examples.
 
 ---
 
@@ -527,8 +348,6 @@ for i in range(len(mesh.edges)):
 | Create large mesh (> 10K verts) | Pre-allocate + `foreach_set` | Fastest |
 | Topology changes | BMesh | Required |
 | Interactive edits | `bmesh.from_edit_mesh()` | Best for Edit Mode |
-
-### Performance Rule
 
 For AEC models exceeding 10,000 vertices, ALWAYS use `foreach_get`/`foreach_set` with numpy arrays. Per-element Python loops on large meshes cause unacceptable latency in Blender's main thread.
 

@@ -406,3 +406,53 @@ collection.objects.link(obj)               # Link to specific collection
 bpy.data.objects.remove(obj)               # Remove object
 bpy.data.meshes.remove(mesh)               # Remove mesh data block
 ```
+
+---
+
+## Blender 4.0+ Attribute Migration
+
+Edge properties `bevel_weight` and `crease` were moved to the generic attributes system in Blender 4.0. Face Maps were removed entirely.
+
+### Edge Bevel Weight
+
+```python
+# Blender 3.x — direct property (REMOVED in 4.0)
+for edge in mesh.edges:
+    edge.bevel_weight = 1.0
+
+# Blender 4.0+/5.x — via attributes
+if "bevel_weight_edge" not in mesh.attributes:
+    mesh.attributes.new(name="bevel_weight_edge", type='FLOAT', domain='EDGE')
+attr = mesh.attributes["bevel_weight_edge"]
+for i in range(len(mesh.edges)):
+    attr.data[i].value = 1.0
+```
+
+### Edge Crease
+
+```python
+# Blender 3.x — direct property (REMOVED in 4.0)
+for edge in mesh.edges:
+    edge.crease = 0.5
+
+# Blender 4.0+/5.x — via attributes
+if "crease_edge" not in mesh.attributes:
+    mesh.attributes.new(name="crease_edge", type='FLOAT', domain='EDGE')
+attr = mesh.attributes["crease_edge"]
+for i in range(len(mesh.edges)):
+    attr.data[i].value = 0.5
+```
+
+### Face Maps Replacement
+
+```python
+# Blender 3.x — Face Maps (REMOVED in 4.0)
+# obj.face_maps.new(name="zone_A")
+
+# Blender 4.0+/5.x — use integer face attribute
+if "face_zone" not in mesh.attributes:
+    mesh.attributes.new(name="face_zone", type='INT', domain='FACE')
+attr = mesh.attributes["face_zone"]
+for i in range(len(mesh.polygons)):
+    attr.data[i].value = 0  # Zone ID
+```

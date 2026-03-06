@@ -562,3 +562,224 @@ def add_planar_uv(obj, uv_name="UVMap"):
 # Usage
 add_planar_uv(bpy.context.active_object)
 ```
+
+---
+
+## Example 11: Building Floor Plan from Coordinates
+
+Creates an extruded floor plan from 2D outline coordinates using BMesh.
+
+```python
+# Blender 3.x/4.x/5.x
+import bpy
+import bmesh
+
+def create_floor_plan(name, outline_coords, height=3.0):
+    """Create extruded floor plan from 2D outline coordinates.
+
+    Args:
+        name: Building name
+        outline_coords: List of (x, y) tuples defining the floor outline
+        height: Wall height in meters
+    Returns:
+        The created bpy.types.Object
+    """
+    bm = bmesh.new()
+    base_verts = [bm.verts.new((x, y, 0.0)) for x, y in outline_coords]
+    bm.verts.ensure_lookup_table()
+
+    # Create floor face
+    floor = bm.faces.new(base_verts)
+
+    # Extrude walls
+    result = bmesh.ops.extrude_face_region(bm, geom=[floor])
+    top_verts = [e for e in result['geom'] if isinstance(e, bmesh.types.BMVert)]
+    bmesh.ops.translate(bm, vec=(0, 0, height), verts=top_verts)
+
+    # Recalculate normals (outward)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+
+    mesh = bpy.data.meshes.new(name)
+    bm.to_mesh(mesh)
+    bm.free()
+    mesh.update()
+
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+# Usage
+plan = create_floor_plan("Building_001", [(0,0), (10,0), (10,8), (0,8)], height=3.0)
+```
+
+---
+
+## Example 12: Mesh Analysis — Area, Volume, Bounds
+
+Calculates mesh statistics for AEC quantity analysis.
+
+```python
+# Blender 3.x/4.x/5.x
+import bpy
+import bmesh
+from mathutils import Vector
+
+def analyze_mesh(obj):
+    """Calculate mesh statistics for AEC analysis.
+
+    Args:
+        obj: bpy.types.Object with mesh data
+    Returns:
+        Dict with 'total_area', 'volume', 'bounds_min', 'bounds_max',
+        'dimensions', 'vert_count', 'face_count'
+    """
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    bm.transform(obj.matrix_world)  # Apply world transform
+
+    total_area = sum(f.calc_area() for f in bm.faces)
+    volume = bm.calc_volume()  # Only valid for closed (watertight) meshes
+
+    all_coords = [v.co for v in bm.verts]
+    bounds_min = Vector((
+        min(c.x for c in all_coords),
+        min(c.y for c in all_coords),
+        min(c.z for c in all_coords),
+    ))
+    bounds_max = Vector((
+        max(c.x for c in all_coords),
+        max(c.y for c in all_coords),
+        max(c.z for c in all_coords),
+    ))
+
+    result = {
+        'total_area': total_area,
+        'volume': volume,
+        'bounds_min': bounds_min,
+        'bounds_max': bounds_max,
+        'dimensions': bounds_max - bounds_min,
+        'vert_count': len(bm.verts),
+        'face_count': len(bm.faces),
+    }
+
+    bm.free()
+    return result
+
+# Usage
+stats = analyze_mesh(bpy.context.active_object)
+print(f"Area: {stats['total_area']:.2f}m², Volume: {stats['volume']:.2f}m³")
+```
+
+---
+
+## Example 13: Bulk Vertex Read with foreach_get
+
+Reads vertex coordinates and normals using foreach_get for high performance.
+
+```python
+# Blender 3.x/4.x/5.x
+import bpy
+import numpy as np
+
+def get_mesh_vertices_fast(mesh):
+    """Read all vertex coordinates using foreach_get.
+
+    Args:
+        mesh: bpy.types.Mesh
+    Returns:
+        numpy array of shape (N, 3), dtype float64
+    """
+    count = len(mesh.vertices)
+    coords = np.empty(count * 3, dtype=np.float64)
+    mesh.vertices.foreach_get("co", coords)
+    return coords.reshape(-1, 3)
+
+def get_mesh_normals_fast(mesh):
+    """Read all vertex normals using foreach_get.
+
+    Args:
+        mesh: bpy.types.Mesh
+    Returns:
+        numpy array of shape (N, 3), dtype float64
+    """
+    count = len(mesh.vertices)
+    normals = np.empty(count * 3, dtype=np.float64)
+    mesh.vertices.foreach_get("normal", normals)
+    return normals.reshape(-1, 3)
+
+# Usage
+mesh = bpy.context.active_object.data
+coords = get_mesh_vertices_fast(mesh)
+normals = get_mesh_normals_fast(mesh)
+print(f"Read {len(coords)} vertices, bounding box: {coords.min(axis=0)} to {coords.max(axis=0)}")
+```
+
+---
+
+## Example 14: Custom Float Attributes (Blender 3.2+/4.x/5.x)
+
+Adds and sets custom float attributes on mesh elements.
+
+```python
+# Blender 3.2+/4.x/5.x
+import bpy
+
+def add_custom_float_attribute(mesh, attr_name, domain, values):
+    """Add a custom float attribute to mesh.
+
+    Args:
+        mesh: bpy.types.Mesh
+        attr_name: Attribute name string
+        domain: 'POINT', 'EDGE', 'FACE', or 'CORNER'
+        values: Flat list/array of float values
+    """
+    if attr_name not in mesh.attributes:
+        mesh.attributes.new(name=attr_name, type='FLOAT', domain=domain)
+    attr = mesh.attributes[attr_name]
+    attr.data.foreach_set("value", values)
+    mesh.update()
+
+# Usage — assign per-face thermal values
+mesh = bpy.context.active_object.data
+face_count = len(mesh.polygons)
+thermal_values = [20.0 + i * 0.5 for i in range(face_count)]
+add_custom_float_attribute(mesh, "thermal_zone", "FACE", thermal_values)
+```
+
+---
+
+## Example 15: Material Assignment to Specific Faces
+
+Assigns a material to selected faces by polygon index.
+
+```python
+# Blender 3.x/4.x/5.x
+import bpy
+
+def assign_material_to_faces(obj, material, face_indices):
+    """Assign a material to specific faces by index.
+
+    Args:
+        obj: bpy.types.Object with mesh data
+        material: bpy.types.Material
+        face_indices: List of polygon indices
+    """
+    mesh = obj.data
+
+    # Add material slot if not present
+    if material.name not in [s.material.name for s in obj.material_slots if s.material]:
+        obj.data.materials.append(material)
+
+    # Find the material index
+    mat_idx = list(obj.data.materials).index(material)
+
+    # Assign to faces
+    for fi in face_indices:
+        mesh.polygons[fi].material_index = mat_idx
+
+# Usage
+obj = bpy.context.active_object
+mat = bpy.data.materials.new("Wall_Exterior")
+mat.diffuse_color = (0.8, 0.75, 0.65, 1.0)
+assign_material_to_faces(obj, mat, [0, 1, 2, 3])  # Assign to first 4 faces
+```

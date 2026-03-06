@@ -364,7 +364,7 @@ else:
 
 ## Material + Style Integration
 
-Materials define physical properties. Styles define visual appearance. These are separate concepts in IFC but often applied together.
+Materials define physical properties. Styles define visual appearance. These are separate concepts in IFC. ALWAYS apply both together for visual BIM models.
 
 ### Workflow: Material + Visual Style
 
