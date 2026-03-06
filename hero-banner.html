@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Package Banner</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1280px;
+    height: 640px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #16161e;
+    position: relative;
+  }
+
+  /* Rainbow gradient top bar - thin like original */
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+      #e74c3c 0%, #e67e22 15%, #f1c40f 30%, #2ecc71 45%,
+      #3498db 60%, #9b59b6 75%, #e74c3c 90%, #e67e22 100%);
+  }
+
+  /* Very subtle grid */
+  .grid-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Left content area */
+  .left-content {
+    position: absolute;
+    top: 72px;
+    left: 72px;
+    z-index: 2;
+  }
+
+  /* Big number - condensed heavy font like original */
+  .big-number {
+    font-family: 'Oswald', Impact, sans-serif;
+    font-weight: 700;
+    font-size: 180px;
+    line-height: 0.85;
+    color: #ffffff;
+    letter-spacing: -2px;
+  }
+
+  /* DETERMINISTIC SKILLS - condensed, red, wide tracking */
+  .subtitle {
+    font-family: 'Oswald', Impact, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 5px;
+    color: #d94436;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  /* Tagline - thin, muted */
+  .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 21px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 24px;
+    max-width: 480px;
+    line-height: 1.35;
+  }
+
+  /* Badge row */
+  .badges {
+    display: flex;
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  .badge {
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    min-width: 128px;
+    background: transparent;
+  }
+
+  .badge-blender {
+    border: 1.5px solid #e67e22;
+    color: #e67e22;
+  }
+
+  .badge-ifcos {
+    border: 1.5px solid #6b8fa3;
+    color: #8ab4cc;
+  }
+
+  .badge-bonsai {
+    border: 1.5px solid #2ecc71;
+    color: #2ecc71;
+  }
+
+  /* Version string */
+  .versions {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    margin-top: 22px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Code window */
+  .code-window {
+    position: absolute;
+    top: 88px;
+    right: 64px;
+    width: 480px;
+    background: #1e2028;
+    border-radius: 8px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .code-titlebar {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    background: #282a36;
+  }
+
+  .code-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .code-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: #ff5f56; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #27c93f; }
+
+  .code-filename {
+    flex: 1;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-right: 30px;
+  }
+
+  .code-body {
+    padding: 18px 22px 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #c9d1d9;
+    white-space: pre;
+  }
+
+  .c  { color: #6a737d; }           /* comment */
+  .k  { color: #ff7b72; }           /* keyword */
+  .f  { color: #d2a8ff; }           /* function */
+  .s  { color: #a5d6ff; }           /* string */
+  .m  { color: #79c0ff; }           /* module/var */
+  .p  { color: #ffa657; }           /* param */
+  .ci { color: #555d66; font-style: italic; }  /* comment italic / warn */
+
+  .cursor-block {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: #e67e22;
+    border-radius: 1px;
+    margin-top: 4px;
+    vertical-align: middle;
+  }
+
+  /* OpenAEC branding bottom right */
+  .branding {
+    position: absolute;
+    bottom: 56px;
+    right: 64px;
+    text-align: right;
+    z-index: 2;
+  }
+
+  .brand-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.8px;
+  }
+
+  .brand-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+<div class="grid-bg"></div>
+
+<div class="left-content">
+  <div class="big-number">61</div>
+  <div class="subtitle">Deterministic Skills</div>
+  <div class="tagline">for flawless Blender/BIM/IFC code generation</div>
+  <div class="badges">
+    <div class="badge badge-blender">Blender</div>
+    <div class="badge badge-ifcos">IfcOpenShell</div>
+    <div class="badge badge-bonsai">Bonsai</div>
+  </div>
+  <div class="versions">Blender 3.x–5.x &nbsp;|&nbsp; IFC2X3 / IFC4 / IFC4X3 &nbsp;|&nbsp; Bonsai v0.8</div>
+</div>
+
+<div class="code-window">
+  <div class="code-titlebar">
+    <div class="code-dots">
+      <div class="code-dot dot-red"></div>
+      <div class="code-dot dot-yellow"></div>
+      <div class="code-dot dot-green"></div>
+    </div>
+    <div class="code-filename">ifc_skills.py</div>
+  </div>
+  <div class="code-body">
+<span class="c"># IFC Element — Correct Pattern</span>
+<span class="k">import</span> <span class="m">ifcopenshell</span>
+<span class="k">import</span> <span class="m">ifcopenshell.api</span>
+
+<span class="m">ifc</span> = <span class="m">ifcopenshell.api</span>.<span class="f">run</span>(<span class="s">"project.create_file"</span>,
+        <span class="p">schema</span>=<span class="s">"IFC4"</span>)
+
+<span class="ci"># NOT: ifc.create_entity("IfcWall")</span>
+<span class="ci"># API ensures valid relationships!</span>
+
+<span class="m">wall</span> = <span class="m">ifcopenshell.api</span>.<span class="f">run</span>(
+    <span class="s">"root.create_entity"</span>, <span class="m">ifc</span>,
+    <span class="p">ifc_class</span>=<span class="s">"IfcWall"</span>,
+    <span class="p">name</span>=<span class="s">"Wall_001"</span>
+)
+<span class="cursor-block"></span>
+  </div>
+</div>
+
+<div class="branding">
+  <div class="brand-name">OpenAEC</div>
+  <div class="brand-sub">Foundation</div>
+</div>
+
+</body>
+</html>

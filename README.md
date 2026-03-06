@@ -1,16 +1,39 @@
-# Blender-Bonsai-IfcOpenShell-Sverchok Claude Skill Package
+<p align="center">
+  <img src="docs/social-preview.png" alt="61 Deterministic Claude AI Skills for Blender, Bonsai, IfcOpenShell & Sverchok" width="100%">
+</p>
 
-> **61 deterministic Claude Skills** for AEC (Architecture, Engineering, Construction) — enabling Claude to write correct, version-aware code for Blender, Bonsai, IfcOpenShell, and Sverchok.
+<p align="center">
+  <a href="#installation"><img src="https://img.shields.io/badge/Claude_Code-Ready-27ca40?style=for-the-badge" alt="Claude Code Ready"></a>
+  <a href="#version-compatibility"><img src="https://img.shields.io/badge/Blender-3.x_|_4.x_|_5.x-E87D0D?style=for-the-badge" alt="Blender Versions"></a>
+  <a href="#version-compatibility"><img src="https://img.shields.io/badge/IFC-2X3_|_4_|_4X3-6B8FA3?style=for-the-badge" alt="IFC Schema Versions"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge" alt="MIT License"></a>
+</p>
 
-[![Skills](https://img.shields.io/badge/skills-61-blue)]() [![Packages](https://img.shields.io/badge/packages-4-green)]() [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<p align="center">
+  <strong>61 deterministic skills</strong> enabling Claude AI to generate flawless Blender/BIM/IFC code.<br>
+  Built with the <a href="https://github.com/OpenAEC-Foundation/Open-Agents">Open-Agents</a> multi-agent orchestration framework.
+</p>
 
 ---
 
-## Overview
+## Why This Exists
 
-This skill package gives Claude deep, structured knowledge of four core AEC technologies. Each skill is research-backed and version-aware — no hallucinated APIs, no deprecated patterns, no guesswork.
+Claude is powerful, but without domain-specific guidance it generates BIM/IFC code that *looks* correct but **fails in production**.
 
-**What skills do:** They provide Claude with exact API syntax, implementation workflows, error diagnostics, and architectural context so it produces correct code on the first attempt.
+**The #1 cause of AI-generated IFC failures:**
+
+```python
+# WRONG - This creates an orphan entity with no relationships
+wall = ifc_file.create_entity("IfcWall")
+
+# CORRECT - API ensures valid ownership, relationships, and GlobalId
+wall = ifcopenshell.api.run("root.create_entity", ifc_file,
+    ifc_class="IfcWall", name="Wall_001")
+```
+
+**This skill package solves it** by giving Claude exact API syntax, decision trees, error diagnostics, and version-aware patterns for every operation.
+
+---
 
 ## Skill Packages
 
@@ -22,9 +45,11 @@ This skill package gives Claude deep, structured knowledge of four core AEC tech
 | [Cross-Tech](skills/aec-cross-tech/) | **2** | — | — | — | 1 | 1 |
 | **Total** | **61** | **19** | **22** | **7** | **8** | **5** |
 
+Each package is **standalone** — install only the technologies you work with.
+
 See [INDEX.md](INDEX.md) for the full skill catalog with descriptions.
 
-## Skill Categories
+### Skill Categories
 
 | Category | Purpose | Example |
 |----------|---------|---------|
@@ -33,6 +58,8 @@ See [INDEX.md](INDEX.md) for the full skill catalog with descriptions.
 | `errors/` | Error handling, diagnostics, anti-patterns | `ifcos-errors-schema` |
 | `core/` | Cross-cutting: API overview, version matrix, concepts | `blender-core-api` |
 | `agents/` | Intelligent orchestration, validation | `aec-agents-workflow-orchestrator` |
+
+---
 
 ## Installation
 
@@ -70,9 +97,26 @@ cp -r skills/bonsai/ ~/.claude/skills/bonsai/
 cp -r skills/aec-cross-tech/ ~/.claude/skills/aec-cross-tech/
 ```
 
-Each package is standalone — install only the technologies you work with.
+---
 
-## Project Status
+## Version Compatibility
+
+| Technology | Supported Versions |
+|------------|--------------------|
+| Blender | 3.x, 4.x, 5.x |
+| IfcOpenShell | Latest (IFC2X3, IFC4, IFC4X3 schemas) |
+| Bonsai | v0.8 (formerly BlenderBIM) |
+| Sverchok | Current |
+
+---
+
+## Methodology
+
+Built using the **7-phase research-first methodology** proven in the [ERPNext Skill Package](https://github.com/OpenAEC-Foundation/ERPNext_Anthropic_Claude_Development_Skill_Package):
+
+> **Core principle**: Research first, then build. Never create skills based on assumptions.
+
+Skills were created in parallel via [Open-Agents](https://github.com/OpenAEC-Foundation/Open-Agents) multi-agent orchestration, with each skill validated against official documentation and real-world usage.
 
 | Phase | Description | Status |
 |:-----:|-------------|:------:|
@@ -82,15 +126,9 @@ Each package is standalone — install only the technologies you work with.
 | 4 | Topic-Specific Research | Complete |
 | 5 | Skill Creation | Complete |
 | 6 | Validation | Complete |
-| 7 | Publication | **In Progress** |
+| 7 | Publication | Complete |
 
-## Methodology
-
-Built using the **7-phase research-first methodology** proven in the [ERPNext Skill Package](https://github.com/OpenAEC-Foundation/ERPNext_Anthropic_Claude_Development_Skill_Package):
-
-> **Core principle**: Research first, then build. Never create skills based on assumptions.
-
-Skills were created in parallel via [Open-Agents](https://github.com/OpenAEC-Foundation/Open-Agents) multi-agent orchestration, with each skill validated against official documentation and real-world usage.
+---
 
 ## Documentation
 
