@@ -79,6 +79,36 @@ Without these, agents produce inconsistent output, write to wrong locations, or 
 **Finding**: The 7-phase methodology doesn't require strict sequential execution. When a skill has NO dependencies on later phases, it can start before the phase is "officially" complete. Example: `sverchok-core-concepts` (Batch 1, no deps) was started while the definitive masterplan was still being written — the research was sufficient.
 **Implication**: Critical path analysis of the dependency graph determines what can be parallelized. Foundation skills can always start early.
 
+## L-012: Skill-Backed Atomic Agents — 1:1 Mapping
+**Date**: 2026-03-07
+**Context**: Generating OA agent templates from the 73-skill package
+**Finding**: Each skill maps cleanly to exactly one atomic agent template. The skill's SKILL.md becomes the agent's system prompt, and the skill's references/ become the agent's context files. This 1:1 mapping eliminates ambiguity about agent scope and responsibility.
+**Implication**: Skill design quality directly determines agent quality. Well-scoped skills produce well-scoped agents.
+
+## L-013: Meta-Orchestrator Pattern — Human + Claude as Strategic Brain
+**Date**: 2026-03-07
+**Context**: Designing multi-agent workflows for the AEC skill package
+**Finding**: The most effective pattern is: human + Claude = strategic brain (deciding what to do, reviewing results), atomic agents = hands (executing specific tasks). The meta-orchestrator never does work directly — it only delegates, validates, and decides.
+**Implication**: Orchestration agents should focus on routing and validation, not on domain knowledge. Domain knowledge lives in the atomic agents.
+
+## L-014: Model Tiering — Right Model for Right Task
+**Date**: 2026-03-07
+**Context**: Assigning model hints to 73 agent templates
+**Finding**: Three-tier model assignment works well: haiku for syntax validation (fast, cheap, pattern-matching), sonnet for implementation tasks (balanced cost/capability), opus for orchestration and cross-domain reasoning (needs full context understanding). This reduces cost ~60% vs. running everything on opus.
+**Implication**: Agent templates should include model hints so orchestrators can optimize cost without sacrificing quality.
+
+## L-015: Cross-Validation — Agents Check Each Other's Output
+**Date**: 2026-03-07
+**Context**: Quality assurance in multi-agent skill workflows
+**Finding**: Having a second agent validate the first agent's output before final acceptance catches errors that self-review misses. Example: syntax agent generates code, validator agent checks it against API rules. This peer-review pattern mirrors the Phase 6 validation methodology.
+**Implication**: Orchestration flows should always include a validation step with a different agent than the producer.
+
+## L-016: Workspace as Product — Skill Package is Source, Workspace is Assembly
+**Date**: 2026-03-07
+**Context**: Creating the Linkedin_Showcase_Skillpackage workspace
+**Finding**: The skill package repository is source code; the workspace is the assembled product. Just like compiled software differs from source code, the workspace selects, configures, and deploys skills for a specific audience. Multiple workspaces can be assembled from the same skill package.
+**Implication**: Keep skill package repo clean and generic. Audience-specific customization belongs in workspace repos only.
+
 ## L-009: Skill Template Needs Additional Frontmatter Fields
 **Date**: 2026-03-06
 **Context**: Ecosystem research — gap analysis against Agent Skills open standard (Prompt F)

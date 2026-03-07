@@ -126,3 +126,31 @@ Architectural and process decisions with rationale. Each decision is numbered an
 **Context**: The 7-phase methodology was executed manually with significant orchestrator-user interaction
 **Decision**: Document the entire 0-to-100 workflow in `docs/workflow/skill-package-workflow.md` with copy-paste-ready oa commands
 **Rationale**: Enables fully autonomous execution. An orchestrator agent can follow the workflow document without human interaction. Captures all lessons learned from 61+ skills.
+
+## D-018: Skill-Backed Agent Architecture — 1:1 Skill-to-Agent Mapping
+**Date**: 2026-03-07
+**Status**: ACTIVE
+**Context**: Need to bridge skill package with Open-Agents agent templates
+**Decision**: Each skill maps to exactly one atomic agent template in the Open-Agents repo at `agents/library/aec-{blender,ifcopenshell,bonsai,sverchok,cross}/`
+**Rationale**: 1:1 mapping eliminates scope ambiguity. The skill defines what the agent knows; the agent template defines how it executes. 73 skills → 73 agent templates, no gaps, no overlaps.
+
+## D-019: Model Hints Per Agent Category
+**Date**: 2026-03-07
+**Status**: ACTIVE
+**Context**: Running all 73 agents on opus is expensive and unnecessary
+**Decision**: Assign model tiers by agent category: syntax agents → haiku, implementation agents → sonnet, orchestration/agents agents → opus
+**Rationale**: Syntax validation is pattern-matching (haiku sufficient). Implementation requires balanced reasoning (sonnet). Orchestration needs full context understanding and cross-domain reasoning (opus). Estimated ~60% cost reduction vs. all-opus.
+
+## D-020: Showcase Workspace Separate from Skill Package Repo
+**Date**: 2026-03-07
+**Status**: ACTIVE
+**Context**: Created Linkedin_Showcase_Skillpackage as demonstration product
+**Decision**: Showcase workspace lives in its own repo/directory, not merged into the skill package repo
+**Rationale**: Skill package is source; workspace is assembled product (L-016). Merging audience-specific assembly into the generic source would violate separation of concerns. Multiple workspaces can be assembled from the same skill package.
+
+## D-021: Cross-Tech Agents as Future Skill-Flow Planners
+**Date**: 2026-03-07
+**Status**: ACTIVE
+**Context**: Cross-tech skills (aec-core-bim-workflows, aec-workflow-orchestrator) need agent equivalents
+**Decision**: Cross-tech agent templates serve as skill-flow planners and routers, not as atomic domain agents
+**Rationale**: Cross-tech agents coordinate between technology-specific atomic agents. They decide which agents to invoke and in what order, but never perform domain work themselves. This aligns with the meta-orchestrator pattern (L-013).

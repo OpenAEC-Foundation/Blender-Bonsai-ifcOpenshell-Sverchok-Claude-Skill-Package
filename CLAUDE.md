@@ -39,13 +39,28 @@ EVERY session begins with this sequence:
 
 ---
 
-## Delegation Protocol (P-002)
-CRITICAL: This session is an ORCHESTRATOR, not a worker.
+## Meta-Orchestrator Protocol (P-002)
+
+### Identity
+This Claude Code session + the human user together ARE the **meta-orchestrator**.
+We are NOT a relay/passthrough. We are the strategic brain.
+
+**What we do HERE (the brain):**
+- THINK: Analyze problems, design solutions, make architectural decisions
+- STRATEGIZE: Plan agent batches, define task decomposition, choose approaches
+- DECIDE: Accept/reject agent output, resolve conflicts, set direction
+- COMPOSE: Craft precise agent prompts with full context from core files
+
+**What agents do THERE (the hands):**
+- EXECUTE: Research, write, code, validate — the actual work
+- CROSS-VALIDATE: Agents check each other's output before it comes back to us
+- REPORT: Deliver refined, verified output to the meta-orchestrator
 
 ### Rules:
-- NEVER do research/writing work directly in this session
-- ALWAYS delegate via `oa run` or `oa delegate`
+- Delegate EXECUTION via `oa run` or `oa delegate` — thinking stays here
 - Validate before accepting (validator-before-apply)
+- Strategic reasoning, planning, and decision-making happen in THIS session
+- Agents receive complete context (core file references) so they can work autonomously
 
 ### What to include in EVERY agent prompt:
 - Quality criteria from **REQUIREMENTS.md** (relevant to their task)
@@ -55,19 +70,26 @@ CRITICAL: This session is an ORCHESTRATOR, not a worker.
 - Skill structure from **WAY_OF_WORK.md** (if writing skills)
 
 ### Delegation Flow:
-1. Define task scope + expected output path
-2. Write task prompt with core file references (see above)
-3. Spawn worker: `oa run "<task>" --name <name>`
-4. Monitor: `oa status`
-5. Collect: `oa collect <name>`
-6. VALIDATE output against **REQUIREMENTS.md** quality criteria
-7. Accept or respawn with corrections
+1. **Think** — Define task scope, expected output, success criteria
+2. **Compose** — Write task prompt with core file references (see above)
+3. **Spawn** — `oa run "<task>" --name <name> --direct`
+4. **Monitor** — `oa status`
+5. **Collect** — `oa collect <name>`
+6. **Judge** — VALIDATE output against **REQUIREMENTS.md** quality criteria
+7. **Iterate** — Accept, or respawn with corrections
 
 ### Batch Strategy:
 - 3-5 agents per batch (optimal per Open-Agents lessons)
 - Separated file scopes (NEVER two agents on same file)
 - Quality gate after every batch
-- Orchestrator does QA, NEVER does the work itself
+- Cross-validation: agents review each other's output before final acceptance
+
+### Atomic Agent Templates
+Each skill in this package maps 1:1 to an atomic agent template in the Open-Agents repo.
+- Templates: `Open-Agents/agents/library/aec-{technology}/`
+- Format: JSON with `skillRef` pointing back to the SKILL.md
+- The agent's systemPrompt incorporates the skill's domain knowledge
+- Presets: Composed flows of atomic agents for complex workflows (e.g., "building from brief")
 
 ### Open-Agents CLI Reference (oa-cli)
 

@@ -112,9 +112,27 @@ Key findings from complete API surface mapping:
 - 2026-03-07: Cross-references added to 6 existing skills + skills/CLAUDE.md (Sverchok runtime rules)
 - 2026-03-07: Coverage gap analysis: 12 skills = sufficient, bidirectional cross-refs fixed
 - 2026-03-07: Total: 73 skills (26 Blender + 19 IfcOpenShell + 14 Bonsai + 12 Sverchok + 2 Cross-tech)
+- 2026-03-07: Phase 9 started — Atomic Agent Templates: 73/73 generated and validated
+- 2026-03-07: Agent templates stored in Open-Agents repo: agents/library/aec-{blender,ifcopenshell,bonsai,sverchok,cross}/
+- 2026-03-07: Model-tiered flow design: haiku (syntax), sonnet (impl), opus (orchestration)
+- 2026-03-07: Linkedin_Showcase_Skillpackage workspace created as showcase product
+
+## Phase 9: Atomic Agent Templates
+| Step | Status | Progress |
+|------|--------|----------|
+| 9.1 Agent template generation | COMPLETE | 73/73 templates generated |
+| 9.2 Agent template validation | COMPLETE | 73/73 validated |
+| 9.3 Model-tiered flow design | IN PROGRESS | Architecture defined, flows pending |
+| 9.4 Showcase workspace | COMPLETE | Linkedin_Showcase_Skillpackage created |
+
+### Details
+- **Architecture**: Each skill maps 1:1 to an atomic OA agent template
+- **Templates location**: `agents/library/aec-{blender,ifcopenshell,bonsai,sverchok,cross}/` in Open-Agents repo
+- **Model tiering**: syntax agents → haiku, implementation agents → sonnet, orchestration agents → opus
+- **Showcase**: Linkedin_Showcase_Skillpackage workspace assembled as demonstration product
 
 ## Next Steps
-1. **NOW**: Commit and push all Sverchok changes
-2. **NEXT**: Update GitHub repository metadata (topics, description) to reflect 73 skills
+1. **NOW**: Complete model-tiered flow design for agent orchestration
+2. **NEXT**: Update GitHub repository metadata (topics, description) to reflect 73 skills + 73 agent templates
 3. **FUTURE**: Expand coverage for Blender, Bonsai, and IfcOpenShell API surfaces beyond current ~35–50%
 4. **FUTURE**: Deploy updated skill package to workshop workspace
