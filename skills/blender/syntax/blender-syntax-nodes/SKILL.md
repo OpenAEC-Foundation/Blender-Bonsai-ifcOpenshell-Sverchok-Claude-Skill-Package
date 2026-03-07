@@ -59,6 +59,7 @@ NodeSocket
 | `'ShaderNodeTree'` | Material/World shaders | `material.node_tree` or `bpy.data.node_groups.new(name, 'ShaderNodeTree')` |
 | `'CompositorNodeTree'` | Compositor | `scene.node_tree` (3.x/4.x) or `scene.compositing_node_group` (5.0+) |
 | `'TextureNodeTree'` | Legacy texture nodes | `bpy.data.node_groups.new(name, 'TextureNodeTree')` |
+| `'SverchCustomTreeType'` | Sverchok parametric nodes (third-party addon) | `bpy.data.node_groups` (filter by `bl_idname=='SverchCustomTreeType'`). Requires Sverchok addon enabled. See `sverchok-core-concepts` skill. |
 
 ### Decision Tree: Which Node API?
 

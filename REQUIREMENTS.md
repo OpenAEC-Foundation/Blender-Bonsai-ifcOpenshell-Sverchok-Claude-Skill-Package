@@ -60,11 +60,25 @@ Enable Claude to write correct, version-aware, production-quality code for Blend
 | Critical | Schema version differences (entity availability, attribute changes) |
 | Critical | Correct use of ifcopenshell.api.run() vs direct entity manipulation |
 
-### Sverchok (later phase)
+### Sverchok
 | Requirement | Detail |
 |-------------|--------|
-| Versions | Current Sverchok |
-| Key areas | Node creation, data flow, parametric design |
+| Versions | Sverchok v1.4.0+ on Blender 4.0+/5.x |
+| API coverage | Node tree API, socket types, data nesting system, scripting nodes (SNLite, Functor B, Formula Mk5, Profile Mk3) |
+| Core areas | Node system architecture, 18+ node categories, 500+ nodes, update triggers, socket data cache |
+| Socket system | All 16 socket types, implicit type conversions, data processing flags |
+| Data model | Nesting levels (vertices level 3, edges/faces level 2, matrices level 1), 5 list matching modes |
+| Scripting | SNLite socket declaration syntax, type identifiers, built-in aliases, template system |
+| Programmatic API | Creating/connecting nodes from Python, parameter sweeps, batch processing |
+| Custom nodes | Full node lifecycle, socket creation, property management, BMesh integration, registration |
+| Parametric AEC | Structural grids, facade panels, parametric stairs, roof geometry, MEP routing, terrain generation |
+| IfcSverchok | 31 IFC nodes, SvIfcStore, geometry conversion modes, 6-step IFC workflow, Bonsai integration |
+| Topologic | TopologicSverchok CellComplex workflows, space adjacency graphs, dual graphs, energy simulation |
+| Extensions | Sverchok-Extra (surfaces, fields, solids, SDF), Open3d integration, custom extension development |
+| Critical | Data nesting errors (the #1 AI mistake in Sverchok) |
+| Critical | Missing updateNode() callbacks causing silent failures |
+| Critical | Socket data mutation (MUST deep copy before modifying) |
+| Critical | List matching mode selection for correct data pairing |
 
 ---
 

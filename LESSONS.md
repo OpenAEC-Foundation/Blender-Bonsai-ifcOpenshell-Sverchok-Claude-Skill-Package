@@ -61,6 +61,24 @@
 **Finding**: building.py exports to IFC, Speckle, FreeCAD, Revit, and DXF but has zero Blender (bpy) integration. The GIS-to-Blender repo is an empty placeholder. This confirms our skill package fills a real gap: providing Claude with the knowledge to generate Blender/bpy code for AEC workflows.
 **Implication**: The Blender skills are not redundant with existing OpenAEC tooling — they address an unserved need.
 
+## L-010: Effective oa Agent Task Prompts Need 5 Elements
+**Date**: 2026-03-07
+**Context**: Spawning research and skill-creation agents via oa run --direct
+**Finding**: oa agents perform significantly better when their task prompt includes ALL 5 elements:
+1. **Absolute file paths** for both INPUT (what to read) and OUTPUT (where to write)
+2. **Explicit scope** with bullet points of what to cover (not vague "research X")
+3. **Reference files** to follow for format/structure (e.g., "read this existing skill for format")
+4. **Quality rules** inline (English-only, < 500 lines, deterministic language, version-explicit)
+5. **Source URLs** from SOURCES.md (approved official docs only)
+Without these, agents produce inconsistent output, write to wrong locations, or miss critical content. The --direct flag is essential to prevent output getting lost in /tmp.
+**Implication**: The task prompt IS the agent's full context. There's no "conversation" — it must be self-contained.
+
+## L-011: Phases Can Be Overlapped When Dependencies Allow
+**Date**: 2026-03-07
+**Context**: Sverchok skill package development — Phase S3 + S5 overlap
+**Finding**: The 7-phase methodology doesn't require strict sequential execution. When a skill has NO dependencies on later phases, it can start before the phase is "officially" complete. Example: `sverchok-core-concepts` (Batch 1, no deps) was started while the definitive masterplan was still being written — the research was sufficient.
+**Implication**: Critical path analysis of the dependency graph determines what can be parallelized. Foundation skills can always start early.
+
 ## L-009: Skill Template Needs Additional Frontmatter Fields
 **Date**: 2026-03-06
 **Context**: Ecosystem research — gap analysis against Agent Skills open standard (Prompt F)

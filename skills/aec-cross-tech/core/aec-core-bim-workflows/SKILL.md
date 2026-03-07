@@ -98,6 +98,22 @@ Starting from scratch or enriching existing?
 
 ---
 
+## Sverchok Parametric Design Step
+
+When workflows involve parametric, generative, or data-driven geometry (arrays, facades, repetitive elements), insert a **Sverchok step** before BIM authoring:
+
+```
+[Sverchok: Parametric Geometry] --> [IfcSverchok: Generate IFC] --> [Bonsai: Review/Enrich]
+```
+
+- **Sverchok** generates geometry via visual node trees (`SverchCustomTreeType`)
+- **IfcSverchok** (31 nodes) converts parametric geometry to IFC entities within the node tree
+- Enable `use_bonsai_file` on `SvIfcCreateProject` to write directly into Bonsai's active IFC file
+- **Warning**: `SvIfcStore` is transient — purged on every full tree update. Persist via Bonsai or `model.write()`
+- Refer to: `sverchok-impl-parametric`, `sverchok-impl-ifcsverchok`
+
+---
+
 ## Essential Patterns
 
 ### Pattern 1: Standalone IFC Creation (No Blender)

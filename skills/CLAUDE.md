@@ -28,6 +28,14 @@
 - Bonsai operators live under `bpy.ops.bim.*` — check `poll()` before calling
 - Bonsai extends Blender's property system with IFC-backed custom properties
 
+### Sverchok Runtime (when addon is enabled)
+- Sverchok uses its own node tree type (`SverchCustomTreeType`) — access via `bpy.data.node_groups` filtered by `bl_idname`
+- **CRITICAL**: Data nesting levels must be correct — vertices=level 3 `[[[x,y,z]]]`, edges/strings=level 2, matrices=level 1. Wrong nesting = silent wrong results
+- **ALWAYS** use `updateNode` callback on node `bpy.props` properties — without it, property changes won't trigger node re-evaluation
+- IfcSverchok nodes share a single transient IFC file via `SvIfcStore` — purged on every full tree update. Use `use_bonsai_file` to persist to Bonsai's file
+- Socket data is cached in `socket_data_cache` — **ALWAYS** use `deepcopy=True` on `sv_get()` if you mutate data, or you corrupt upstream nodes
+- Sverchok availability check: `addon_utils.check("sverchok")` returns `(is_enabled, is_loaded)`
+
 ## Version Detection
 ```python
 # Blender version

@@ -60,6 +60,20 @@ What does the task require?
 |   --> No IfcOpenShell or Bonsai needed
 |   --> Refer to blender-core-api skill
 |
++-- Parametric/generative design (arrays, patterns, data-driven geometry)?
+|   |
+|   +-- Visual node-based workflow?
+|   |   --> Sverchok (SverchCustomTreeType node trees)
+|   |   --> Refer to sverchok-core-concepts, sverchok-impl-parametric
+|   |
+|   +-- Generate IFC from parametric geometry?
+|   |   --> IfcSverchok (31-node IFC bridge inside Sverchok)
+|   |   --> Refer to sverchok-impl-ifcsverchok
+|   |
+|   +-- Building topology analysis (adjacency, envelope, dual graph)?
+|       --> TopologicSverchok
+|       --> Refer to sverchok-impl-topologic
+|
 +-- Headless automation (CI/CD, server, batch)?
     |
     +-- IFC-only operations?
@@ -391,6 +405,9 @@ def detect_context():
 | Quantity takeoff | Bonsai OR IfcOpenShell | — | Bonsai QTO or standalone |
 | IFC to CSV/JSON report | IfcOpenShell | Python stdlib | `ifcopenshell.util.element` |
 | Custom Blender addon with BIM | Blender + Bonsai | IfcOpenShell | Follow Bonsai module pattern |
+| Parametric/generative design | Sverchok | Blender | Node-based visual programming |
+| IFC from parametric geometry | IfcSverchok (Sverchok) | IfcOpenShell | 31-node visual IFC pipeline |
+| Building topology analysis | TopologicSverchok | IfcOpenShell | Adjacency, envelope, dual graph |
 | CI/CD model validation | IfcOpenShell | — | Standalone, no GUI |
 
 ---

@@ -1,6 +1,6 @@
 # Skill Catalog
 
-Complete index of all Claude Code skills in this package for Blender, IfcOpenShell, Bonsai, and Cross-Technology AEC workflows.
+Complete index of all Claude Code skills in this package for Blender, IfcOpenShell, Bonsai, Sverchok, and Cross-Technology AEC workflows.
 
 ## Summary
 
@@ -9,8 +9,9 @@ Complete index of all Claude Code skills in this package for Blender, IfcOpenShe
 | Blender | 26 |
 | IfcOpenShell | 19 |
 | Bonsai | 14 |
+| Sverchok | 12 |
 | Cross-Tech | 2 |
-| **Total** | **61** |
+| **Total** | **73** |
 
 ---
 
@@ -160,6 +161,47 @@ Complete index of all Claude Code skills in this package for Blender, IfcOpenShe
 
 ---
 
+## Sverchok
+
+### Agents
+
+| Skill Name | Description | Directory |
+|---|---|---|
+| sverchok-agents-code-validator | Validation agent for Sverchok code — runs 19 automated checks on generated Sverchok node code covering data nesting correctness, updateNode callbacks, list matching patterns, socket consistency, import validation, and IfcSverchok compliance. | skills/sverchok/agents/sverchok-agents-code-validator |
+
+### Core
+
+| Skill Name | Description | Directory |
+|---|---|---|
+| sverchok-core-concepts | Explains Sverchok parametric node system architecture including node tree execution, data flow between nodes, socket data cache, update triggers, and the 18+ node categories with 500+ nodes. | skills/sverchok/core/sverchok-core-concepts |
+
+### Errors
+
+| Skill Name | Description | Directory |
+|---|---|---|
+| sverchok-errors-common | Documents the 17 most common Sverchok error patterns and AI mistakes — covering data nesting errors, missing updateNode callbacks, socket data mutation, list matching misunderstandings, and IfcSverchok-specific pitfalls. | skills/sverchok/errors/sverchok-errors-common |
+
+### Impl
+
+| Skill Name | Description | Directory |
+|---|---|---|
+| sverchok-impl-custom-nodes | Complete guide to developing custom Sverchok nodes including the full node lifecycle, socket creation, property management, BMesh integration, and registration patterns. | skills/sverchok/impl/sverchok-impl-custom-nodes |
+| sverchok-impl-parametric | Guides AEC parametric design workflows in Sverchok including structural grids, facade panel systems, parametric stairs, roof geometry generation, MEP routing layouts, and terrain generation from data. | skills/sverchok/impl/sverchok-impl-parametric |
+| sverchok-impl-ifcsverchok | Covers IfcSverchok BIM integration — generating IFC files from Sverchok geometry using 31 specialized nodes. Explains SvIfcStore transient file management, two geometry conversion modes, the 6-step IFC generation workflow, and Bonsai integration. | skills/sverchok/impl/sverchok-impl-ifcsverchok |
+| sverchok-impl-topologic | Covers TopologicSverchok for building topology analysis — non-manifold topology operations, CellComplex workflows, space adjacency graphs, dual graphs, and energy simulation integration. | skills/sverchok/impl/sverchok-impl-topologic |
+| sverchok-impl-extensions | Covers the Sverchok extension ecosystem and extension development pattern. Includes Sverchok-Extra for advanced geometry (surfaces, fields, solids, SDF), Open3d integration, and a guide to developing and registering custom extensions. | skills/sverchok/impl/sverchok-impl-extensions |
+
+### Syntax
+
+| Skill Name | Description | Directory |
+|---|---|---|
+| sverchok-syntax-sockets | Covers all 16 Sverchok socket types including choosing the right socket for geometry, numbers, matrices, curves, surfaces, and fields. Explains socket properties, implicit type conversions, and data processing flags. | skills/sverchok/syntax/sverchok-syntax-sockets |
+| sverchok-syntax-data | Explains Sverchok's critical data nesting system and list matching — the #1 source of errors. Covers nesting levels for vertices (level 3), edges/faces (level 2), matrices (level 1), plus the 5 list matching modes. | skills/sverchok/syntax/sverchok-syntax-data |
+| sverchok-syntax-scripting | Covers Sverchok Python scripting nodes — SNLite, SN Functor B, Formula Mk5, and Profile Mk3. Explains socket declaration syntax, type identifiers, built-in aliases, special functions, and template system. | skills/sverchok/syntax/sverchok-syntax-scripting |
+| sverchok-syntax-api | Guides programmatic control of Sverchok node trees from Python including creating nodes, connecting sockets, setting parameters, triggering updates, and batch processing with parameter sweeps. | skills/sverchok/syntax/sverchok-syntax-api |
+
+---
+
 ## Cross-Tech
 
 ### Agents
@@ -176,4 +218,4 @@ Complete index of all Claude Code skills in this package for Blender, IfcOpenShe
 
 ---
 
-**Total skills: 61**
+**Total skills: 73**

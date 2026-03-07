@@ -112,3 +112,17 @@ Architectural and process decisions with rationale. Each decision is numbered an
 **Context**: Could add filesystem, memory, or other MCP servers
 **Decision**: Only Blender MCP in the workshop .mcp.json
 **Rationale**: Workshop focuses on Blender + BIM. Additional servers add complexity without workshop value. Participants can add servers locally if needed.
+
+## D-016: Sverchok Skills as Full Package (Not Deferred)
+**Date**: 2026-03-07
+**Status**: ACTIVE
+**Context**: Sverchok was initially deferred as "later phase" but is AEC-critical due to IfcSverchok bridge
+**Decision**: Execute full 7-phase methodology for Sverchok. IfcSverchok becomes `sverchok-impl-ifcsverchok` (Sverchok package, not cross-tech).
+**Rationale**: Sverchok + IfcSverchok enables parametric BIM authoring — a core AEC workflow. Keeping IfcSverchok as a Sverchok skill maintains package independence (D-002).
+
+## D-017: Consolidated Workflow Document for Reusable Skill Package Creation
+**Date**: 2026-03-07
+**Status**: ACTIVE
+**Context**: The 7-phase methodology was executed manually with significant orchestrator-user interaction
+**Decision**: Document the entire 0-to-100 workflow in `docs/workflow/skill-package-workflow.md` with copy-paste-ready oa commands
+**Rationale**: Enables fully autonomous execution. An orchestrator agent can follow the workflow document without human interaction. Captures all lessons learned from 61+ skills.

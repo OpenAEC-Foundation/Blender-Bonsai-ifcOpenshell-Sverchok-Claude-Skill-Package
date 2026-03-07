@@ -318,6 +318,18 @@ def unregister():
     unregister_classes(classes)
 ```
 
+## IfcSverchok Integration (`use_bonsai_file`)
+
+IfcSverchok (Sverchok's IFC bridge) can operate on Bonsai's active IFC file instead of its own transient `SvIfcStore`:
+
+- **Toggle**: `use_bonsai_file` on `SvIfcCreateProject` node
+- **When enabled**: `SvIfcStore.get_file()` returns `tool.Ifc.get()` (Bonsai's live IFC)
+- **Effect**: Sverchok node tree writes IFC entities directly into Bonsai's model
+- **Dependency**: Bonsai addon MUST be enabled and have an active IFC project loaded
+- **Warning**: Undo/redo with simultaneous Sverchok + Bonsai modifications can crash. Save before combining.
+
+Refer to: `sverchok-impl-ifcsverchok`
+
 ## Source Code Paths (IfcOpenShell Monorepo)
 
 | Component | Path |

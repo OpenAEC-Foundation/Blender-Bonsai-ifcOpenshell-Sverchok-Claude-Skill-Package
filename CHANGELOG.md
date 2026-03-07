@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.0] - 2026-03-07
+
+### Added
+- Sverchok skill package: 12 skills across 5 categories (syntax 4, impl 5, errors 1, core 1, agents 1)
+- New skills: sverchok-core-concepts, sverchok-syntax-sockets, sverchok-syntax-data, sverchok-syntax-scripting, sverchok-syntax-api, sverchok-impl-custom-nodes, sverchok-impl-parametric, sverchok-impl-ifcsverchok, sverchok-impl-topologic, sverchok-impl-extensions, sverchok-errors-common, sverchok-agents-code-validator
+- Total skill count increased from 61 to 73 across 5 technology packages
+
+### Changed
+- Updated INDEX.md, README.md, REQUIREMENTS.md to reflect Sverchok completion
+- Package table now shows 5 technology packages (Blender, IfcOpenShell, Bonsai, Sverchok, Cross-Tech)
+
 ## [1.1.0] - 2026-03-06
 
 ### Added

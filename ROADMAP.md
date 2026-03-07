@@ -1,9 +1,9 @@
 # ROADMAP
 
-## Current Phase: ALL PHASES COMPLETE
-## Overall Progress: 100%
+## Current Phase: COMPLETE — All 73 skills created & validated
+## Overall Progress: 73/73 skills (ALL COMPLETE)
 
-## Phase Status
+## Phase Status — Original Package (Blender/Bonsai/IfcOpenShell)
 | Phase | Status | Progress |
 |-------|--------|----------|
 | 1. Setup + Raw Masterplan | COMPLETE | 100% |
@@ -15,13 +15,24 @@
 | 7. Publication | COMPLETE | 100% |
 | 8. Workspace Setup | COMPLETE | 100% |
 
+## Phase Status — Sverchok Package
+| Phase | Status | Progress |
+|-------|--------|----------|
+| S1. Deep Research (vooronderzoek) | COMPLETE | 2,352 lines, 78KB |
+| S2. Raw Masterplan | COMPLETE | 327 lines, 11 skills proposed |
+| S3. Masterplan Refinement | COMPLETE | 413 lines, 12 skills definitive |
+| S4. Topic-Specific Research | SKIPPED | Vooronderzoek sufficient |
+| S5. Skill Creation | COMPLETE | 12/12 skills, 7 batches |
+| S6. Validation | COMPLETE | 12/12 pass, 0 blockers |
+| S7. Publication | COMPLETE | INDEX, README, CHANGELOG updated |
+
 ## Phase 2 Detail: Research Status (ALL COMPLETE)
 | Technology | Vooronderzoek | Size | Status |
 |------------|--------------|------|--------|
 | Blender | vooronderzoek-blender.md | 54KB | COMPLETE |
 | Bonsai | vooronderzoek-bonsai.md | 54KB | COMPLETE |
 | IfcOpenShell | vooronderzoek-ifcopenshell.md | 35KB | COMPLETE |
-| Sverchok | - | - | LATER PHASE |
+| Sverchok | vooronderzoek-sverchok.md | 78KB | COMPLETE |
 
 ## Phase 4 Early Start: IfcOpenShell Topic Research
 | Document | Size | Status |
@@ -40,9 +51,9 @@
 | Blender | 26 | ALL CREATED & VALIDATED | 11 syntax, 6 impl, 3 errors, 4 core, 2 agents |
 | Bonsai | 14 | ALL CREATED & VALIDATED | 4 syntax, 7 impl, 1 errors, 1 core, 1 agents |
 | IfcOpenShell | 19 | ALL CREATED & VALIDATED | 4 syntax, 9 impl, 3 errors, 2 core, 1 agents |
-| Sverchok | ~8 | DEFERRED (later phase) | Requires dedicated research phase |
+| Sverchok | 12 | ALL CREATED & VALIDATED | 4 syntax, 5 impl, 1 errors, 1 core, 1 agents |
 | Cross-Tech | 2 | ALL CREATED & VALIDATED | 1 core (bim-workflows), 1 agents (orchestrator) |
-| **Total** | **61** | **100% created & validated** | See docs/masterplan/masterplan.md |
+| **Total** | **73** | **100% created & validated** | See docs/masterplan/masterplan.md + sverchok-masterplan.md |
 
 ## Scope Analysis (2026-03-05)
 Key findings from complete API surface mapping:
@@ -83,9 +94,27 @@ Key findings from complete API surface mapping:
 - 2026-03-06: Phase 6 validation COMPLETE — 61/61 pass, 2 blockers fixed, 7 refs added, 2 content fixes
 - 2026-03-06: Phase 8 COMPLETE — Workspace deployed to Computational-Design-Day-Delft-March-2026
 - 2026-03-06: 61 skills + Blender MCP + CLAUDE.md + SETUP.md deployed to workshop workspace
+- 2026-03-07: Sverchok skill package development started (D-016, D-017)
+- 2026-03-07: 3 research agents spawned via oa-cli for Sverchok vooronderzoek
+- 2026-03-07: Consolidated workflow document created (docs/workflow/skill-package-workflow.md)
+- 2026-03-07: Phase S1 COMPLETE — vooronderzoek-sverchok.md merged (2,352 lines, 78KB)
+- 2026-03-07: Phase S2 COMPLETE — raw masterplan (327 lines, 11 skills, 6 batches)
+- 2026-03-07: Phase S3 COMPLETE — 2 reviews (technical + practical), definitive masterplan (413 lines, 12 skills, 7 batches)
+- 2026-03-07: Phase S4 SKIPPED — vooronderzoek depth sufficient for all 12 skills
+- 2026-03-07: Phase S5 Batch 1 COMPLETE — sverchok-core-concepts (SKILL.md + 3 reference files)
+- 2026-03-07: Phase S5 Batch 2 COMPLETE — sverchok-syntax-sockets + sverchok-syntax-data
+- 2026-03-07: Phase S5 Batch 3 COMPLETE — sverchok-syntax-scripting + sverchok-syntax-api + sverchok-impl-custom-nodes
+- 2026-03-07: Phase S5 Batch 4+5 COMPLETE — sverchok-impl-parametric + sverchok-impl-ifcsverchok + sverchok-impl-topologic + sverchok-impl-extensions
+- 2026-03-07: Phase S5 Batch 6+7 COMPLETE — sverchok-errors-common + sverchok-agents-code-validator
+- 2026-03-07: Phase S5 COMPLETE — 12/12 Sverchok skills created
+- 2026-03-07: Phase S6 COMPLETE — 12/12 validated, 0 blockers
+- 2026-03-07: Phase S7 COMPLETE — INDEX.md, README.md, CHANGELOG.md, REQUIREMENTS.md updated
+- 2026-03-07: Cross-references added to 6 existing skills + skills/CLAUDE.md (Sverchok runtime rules)
+- 2026-03-07: Coverage gap analysis: 12 skills = sufficient, bidirectional cross-refs fixed
+- 2026-03-07: Total: 73 skills (26 Blender + 19 IfcOpenShell + 14 Bonsai + 12 Sverchok + 2 Cross-tech)
 
 ## Next Steps
-All phases (1–8) are complete. The skill package has been published and deployed to the Computational Design Day Delft workshop workspace.
-
-1. **Future**: Sverchok skill package (requires dedicated research phase)
-2. **Future**: Expand coverage for Blender, Bonsai, and IfcOpenShell API surfaces beyond current ~35–50%
+1. **NOW**: Commit and push all Sverchok changes
+2. **NEXT**: Update GitHub repository metadata (topics, description) to reflect 73 skills
+3. **FUTURE**: Expand coverage for Blender, Bonsai, and IfcOpenShell API surfaces beyond current ~35–50%
+4. **FUTURE**: Deploy updated skill package to workshop workspace

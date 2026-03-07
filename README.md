@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/social-preview.png" alt="61 Deterministic Claude AI Skills for Blender, Bonsai, IfcOpenShell & Sverchok" width="100%">
+  <img src="docs/social-preview.png" alt="73 Deterministic Claude AI Skills for Blender, Bonsai, IfcOpenShell & Sverchok" width="100%">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <strong>61 deterministic skills</strong> enabling Claude AI to generate flawless Blender/BIM/IFC code.<br>
+  <strong>73 deterministic skills</strong> enabling Claude AI to generate flawless Blender/BIM/IFC/Sverchok code.<br>
   Built with the <a href="https://github.com/OpenAEC-Foundation/Open-Agents">Open-Agents</a> multi-agent orchestration framework.
 </p>
 
@@ -42,8 +42,9 @@ wall = ifcopenshell.api.run("root.create_entity", ifc_file,
 | [Blender](skills/blender/) | **26** | 11 | 6 | 3 | 4 | 2 |
 | [IfcOpenShell](skills/ifcopenshell/) | **19** | 4 | 9 | 3 | 2 | 1 |
 | [Bonsai](skills/bonsai/) | **14** | 4 | 7 | 1 | 1 | 1 |
+| [Sverchok](skills/sverchok/) | **12** | 4 | 5 | 1 | 1 | 1 |
 | [Cross-Tech](skills/aec-cross-tech/) | **2** | — | — | — | 1 | 1 |
-| **Total** | **61** | **19** | **22** | **7** | **8** | **5** |
+| **Total** | **73** | **23** | **27** | **8** | **9** | **6** |
 
 Each package is **standalone** — install only the technologies you work with.
 
@@ -92,6 +93,9 @@ cp -r skills/ifcopenshell/ ~/.claude/skills/ifcopenshell/
 
 # Only Bonsai skills
 cp -r skills/bonsai/ ~/.claude/skills/bonsai/
+
+# Only Sverchok skills
+cp -r skills/sverchok/ ~/.claude/skills/sverchok/
 
 # Cross-technology workflows
 cp -r skills/aec-cross-tech/ ~/.claude/skills/aec-cross-tech/
