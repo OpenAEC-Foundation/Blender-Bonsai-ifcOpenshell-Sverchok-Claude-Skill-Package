@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Preview Banner</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d1117;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  .banner {
+    width: 1280px;
+    height: 640px;
+    background: linear-gradient(160deg, #0d1117 0%, #161b22 40%, #1a1f2b 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Subtle grid pattern */
+  .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Glow accents */
+  .glow-1 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(234,124,42,0.08) 0%, transparent 70%);
+    top: -150px;
+    right: -100px;
+    pointer-events: none;
+  }
+  .glow-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(88,166,255,0.06) 0%, transparent 70%);
+    bottom: -100px;
+    left: -50px;
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    text-align: center;
+    padding: 0 60px;
+  }
+
+  /* Top decorative line */
+  .top-line {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #ea7c2a, #58a6ff);
+    border-radius: 2px;
+    margin-bottom: 36px;
+  }
+
+  .number {
+    font-size: 96px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 4px;
+    text-shadow: 0 0 60px rgba(234,124,42,0.3);
+  }
+
+  .title {
+    font-size: 34px;
+    font-weight: 600;
+    color: #e6edf3;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: #8b949e;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 44px;
+  }
+
+  .subtitle span {
+    color: #8b949e;
+    margin: 0 6px;
+  }
+
+  /* Breakdown bar */
+  .breakdown {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 44px;
+  }
+
+  .breakdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .breakdown-item:last-child {
+    border-right: none;
+  }
+
+  .breakdown-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .breakdown-label {
+    font-size: 15px;
+    color: #8b949e;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .breakdown-count {
+    font-size: 20px;
+    font-weight: 700;
+    color: #e6edf3;
+    margin-left: 2px;
+  }
+
+  /* Technology colors */
+  .color-blender     { background-color: #ea7c2a; }
+  .color-ifcopenshell { background-color: #58a6ff; }
+  .color-bonsai      { background-color: #3fb950; }
+  .color-sverchok    { background-color: #d2a8ff; }
+  .color-crosstech   { background-color: #f0883e; }
+
+  /* Bottom decorative line */
+  .bottom-line {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #58a6ff, #3fb950);
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .foundation {
+    font-size: 14px;
+    color: #484f58;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  /* Left accent bar */
+  .accent-bar {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    bottom: 80px;
+    width: 4px;
+    background: linear-gradient(
+      180deg,
+      #ea7c2a 0%,
+      #ea7c2a 35%,
+      #58a6ff 35%,
+      #58a6ff 61%,
+      #3fb950 61%,
+      #3fb950 80%,
+      #d2a8ff 80%,
+      #d2a8ff 97%,
+      #f0883e 97%,
+      #f0883e 100%
+    );
+    border-radius: 0 2px 2px 0;
+  }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="accent-bar"></div>
+
+    <div class="content">
+      <div class="top-line"></div>
+
+      <div class="number">73</div>
+      <div class="title">Deterministic Claude AI Skills</div>
+      <div class="subtitle">Blender <span>&middot;</span> Bonsai <span>&middot;</span> IfcOpenShell <span>&middot;</span> Sverchok</div>
+
+      <div class="breakdown">
+        <div class="breakdown-item">
+          <div class="breakdown-dot color-blender"></div>
+          <span class="breakdown-label">Blender</span>
+          <span class="breakdown-count">26</span>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-dot color-ifcopenshell"></div>
+          <span class="breakdown-label">IfcOpenShell</span>
+          <span class="breakdown-count">19</span>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-dot color-bonsai"></div>
+          <span class="breakdown-label">Bonsai</span>
+          <span class="breakdown-count">14</span>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-dot color-sverchok"></div>
+          <span class="breakdown-label">Sverchok</span>
+          <span class="breakdown-count">12</span>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-dot color-crosstech"></div>
+          <span class="breakdown-label">Cross-Tech</span>
+          <span class="breakdown-count">2</span>
+        </div>
+      </div>
+
+      <div class="bottom-line"></div>
+      <div class="foundation">OpenAEC Foundation</div>
+    </div>
+  </div>
+</body>
+</html>
