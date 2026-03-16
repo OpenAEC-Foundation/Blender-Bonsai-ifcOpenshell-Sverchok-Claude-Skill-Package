@@ -5,167 +5,170 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Preview Banner</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #0d1117;
+    background: #2A2A32;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   }
 
   .banner {
     width: 1280px;
     height: 640px;
-    background: linear-gradient(160deg, #0d1117 0%, #161b22 40%, #1a1f2b 100%);
+    background: #2A2A32;
     position: relative;
     overflow: hidden;
     display: flex;
   }
 
-  /* Rainbow top bar */
-  .rainbow-bar {
+  /* Amber gradient top strip */
+  .top-strip {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg,
-      #ea7c2a 0%, #ea7c2a 25%,
-      #58a6ff 25%, #58a6ff 50%,
-      #3fb950 50%, #3fb950 75%,
-      #d2a8ff 75%, #d2a8ff 100%
-    );
+    background: linear-gradient(90deg, #D97706 0%, #F59E0B 40%, #EA580C 100%);
   }
 
-  /* Subtle grid pattern */
+  /* Subtle blueprint grid */
   .banner::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(rgba(250,250,249,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250,250,249,0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
     pointer-events: none;
   }
 
-  /* Left content area */
+  /* Left content */
   .left {
     position: relative;
     z-index: 1;
     width: 50%;
-    padding: 70px 50px 50px 70px;
+    padding: 72px 40px 56px 72px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
   .number {
-    font-family: 'Inter', sans-serif;
-    font-size: 130px;
-    font-weight: 900;
-    color: #ffffff;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 140px;
+    font-weight: 700;
+    color: #FAFAF9;
     line-height: 0.85;
-    letter-spacing: -5px;
-    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
   }
 
   .title {
-    font-family: 'Inter', sans-serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: #ea7c2a;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #D97706;
     letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
 
   .subtitle {
-    font-size: 18px;
-    color: #8b949e;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px;
+    color: #A1A1AA;
     font-weight: 400;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
+    line-height: 1.5;
   }
 
-  /* Technology badges */
+  /* Technology badges — ghost style per brand */
   .badges {
     display: flex;
-    gap: 14px;
-    margin-bottom: 36px;
+    gap: 12px;
+    margin-bottom: 32px;
     flex-wrap: wrap;
   }
 
   .badge {
-    padding: 8px 22px;
-    border-radius: 6px;
-    font-size: 14px;
+    font-family: 'Inter', system-ui, sans-serif;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
     font-weight: 600;
-    color: #e6edf3;
     background: transparent;
-    border: 1.5px solid;
-    letter-spacing: 0.5px;
+    border: 2px solid;
   }
 
-  .badge-blender { border-color: #ea7c2a; color: #ea7c2a; }
-  .badge-ifcos   { border-color: #58a6ff; color: #58a6ff; }
-  .badge-bonsai  { border-color: #3fb950; color: #3fb950; }
-  .badge-sverchok { border-color: #d2a8ff; color: #d2a8ff; }
+  .badge-blender   { border-color: #D97706; color: #D97706; }
+  .badge-ifcos     { border-color: #2563EB; color: #2563EB; }
+  .badge-bonsai    { border-color: #16A34A; color: #16A34A; }
+  .badge-sverchok  { border-color: #F59E0B; color: #F59E0B; }
 
   .versions {
-    font-size: 13px;
-    color: #484f58;
-    font-weight: 400;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #A1A1AA;
+    letter-spacing: 0.05em;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
   }
 
-  .versions span {
-    color: #30363d;
+  .versions .sep {
+    color: #36363E;
   }
 
-  /* Right code area */
+  /* Right code window */
   .right {
     position: relative;
     z-index: 1;
     width: 50%;
-    padding: 55px 50px 50px 20px;
+    padding: 56px 56px 56px 16px;
     display: flex;
     align-items: center;
   }
 
   .code-window {
     width: 100%;
-    background: rgba(22, 27, 34, 0.9);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 10px;
+    background: rgba(54, 54, 62, 0.8);
+    border: 1px solid rgba(250,250,249,0.06);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+    max-height: 100%;
+  }
+
+  .code-window * {
+    overflow: hidden;
   }
 
   .code-titlebar {
-    background: rgba(30, 35, 44, 0.95);
+    background: rgba(42, 42, 50, 0.95);
     padding: 12px 16px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(250,250,249,0.04);
   }
 
   .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .dot-red { background: #ff5f57; }
-  .dot-yellow { background: #febc2e; }
-  .dot-green { background: #28c840; }
+  .dot-red    { background: #DC2626; }
+  .dot-yellow { background: #F59E0B; }
+  .dot-green  { background: #16A34A; }
 
   .code-filename {
-    color: #8b949e;
+    color: #A1A1AA;
     font-size: 13px;
     font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
     margin-left: auto;
     margin-right: auto;
   }
@@ -173,44 +176,47 @@
   .code-body {
     padding: 20px 24px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13.5px;
+    font-size: 13px;
     line-height: 1.7;
-    color: #e6edf3;
+    color: #FAFAF9;
   }
 
-  .comment { color: #8b949e; }
-  .keyword { color: #ff7b72; }
-  .function { color: #d2a8ff; }
-  .string { color: #a5d6ff; }
-  .import-name { color: #ffa657; }
-  .operator { color: #79c0ff; }
+  .comment  { color: #A1A1AA; }
+  .keyword  { color: #F59E0B; }
+  .function { color: #D97706; }
+  .string   { color: #34D399; }
+  .operator { color: #2563EB; }
   .cursor {
     display: inline-block;
     width: 8px;
-    height: 18px;
-    background: #ea7c2a;
+    height: 17px;
+    background: #D97706;
     vertical-align: text-bottom;
   }
 
-  /* Bottom right foundation */
+  /* Foundation branding bottom-right */
   .foundation {
     position: absolute;
     bottom: 28px;
-    right: 40px;
+    right: 44px;
     text-align: right;
     z-index: 1;
   }
 
   .foundation-name {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     font-size: 18px;
-    font-weight: 800;
-    color: #e6edf3;
+    font-weight: 700;
     letter-spacing: 0.5px;
   }
 
+  .foundation-name .open { color: #FAFAF9; }
+  .foundation-name .aec  { color: #D97706; }
+
   .foundation-sub {
-    font-size: 12px;
-    color: #484f58;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    color: #A1A1AA;
     font-weight: 500;
     letter-spacing: 1px;
   }
@@ -218,7 +224,7 @@
 </head>
 <body>
   <div class="banner">
-    <div class="rainbow-bar"></div>
+    <div class="top-strip"></div>
 
     <!-- Left: text content -->
     <div class="left">
@@ -234,7 +240,7 @@
       </div>
 
       <div class="versions">
-        Blender 3.x–5.x <span>│</span> IFC2X3 / IFC4 / IFC4X3 <span>│</span> Bonsai v0.8
+        Blender 3.x–5.x <span class="sep">│</span> IFC2X3 / IFC4 / IFC4X3 <span class="sep">│</span> Bonsai v0.8
       </div>
     </div>
 
@@ -249,16 +255,16 @@
         </div>
         <div class="code-body">
           <span class="comment"># IFC Element — Correct Pattern</span><br>
-          <span class="keyword">import</span> <span class="import-name">ifcopenshell</span><br>
-          <span class="keyword">import</span> <span class="import-name">ifcopenshell.api</span><br>
+          <span class="keyword">import</span> ifcopenshell<br>
+          <span class="keyword">import</span> ifcopenshell.api<br>
           <br>
-          ifc <span class="operator">=</span> <span class="import-name">ifcopenshell.api</span>.<span class="function">run</span>(<span class="string">"project.create_file"</span>,<br>
+          ifc <span class="operator">=</span> ifcopenshell.api.<span class="function">run</span>(<span class="string">"project.create_file"</span>,<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schema<span class="operator">=</span><span class="string">"IFC4"</span>)<br>
           <br>
           <span class="comment"># NOT: ifc.create_entity("IfcWall")</span><br>
           <span class="comment"># API ensures valid relationships!</span><br>
           <br>
-          wall <span class="operator">=</span> <span class="import-name">ifcopenshell.api</span>.<span class="function">run</span>(<br>
+          wall <span class="operator">=</span> ifcopenshell.api.<span class="function">run</span>(<br>
           &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"root.create_entity"</span>, ifc,<br>
           &nbsp;&nbsp;&nbsp;&nbsp;ifc_class<span class="operator">=</span><span class="string">"IfcWall"</span>,<br>
           &nbsp;&nbsp;&nbsp;&nbsp;name<span class="operator">=</span><span class="string">"Wall_001"</span><br>
@@ -268,9 +274,9 @@
       </div>
     </div>
 
-    <!-- Foundation logo -->
+    <!-- Foundation brand -->
     <div class="foundation">
-      <div class="foundation-name">OpenAEC</div>
+      <div class="foundation-name"><span class="open">Open</span><span class="aec">AEC</span></div>
       <div class="foundation-sub">Foundation</div>
     </div>
   </div>
