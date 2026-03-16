@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Preview Banner</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800;900&display=swap');
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -13,7 +15,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   }
 
   .banner {
@@ -23,9 +25,21 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  }
+
+  /* Rainbow top bar */
+  .rainbow-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+      #ea7c2a 0%, #ea7c2a 25%,
+      #58a6ff 25%, #58a6ff 50%,
+      #3fb950 50%, #3fb950 75%,
+      #d2a8ff 75%, #d2a8ff 100%
+    );
   }
 
   /* Subtle grid pattern */
@@ -34,218 +48,230 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
   }
 
-  /* Glow accents */
-  .glow-1 {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(234,124,42,0.08) 0%, transparent 70%);
-    top: -150px;
-    right: -100px;
-    pointer-events: none;
-  }
-  .glow-2 {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(88,166,255,0.06) 0%, transparent 70%);
-    bottom: -100px;
-    left: -50px;
-    pointer-events: none;
-  }
-
-  .content {
+  /* Left content area */
+  .left {
     position: relative;
     z-index: 1;
+    width: 50%;
+    padding: 70px 50px 50px 70px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0;
-    text-align: center;
-    padding: 0 60px;
-  }
-
-  /* Top decorative line */
-  .top-line {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #ea7c2a, #58a6ff);
-    border-radius: 2px;
-    margin-bottom: 36px;
+    justify-content: center;
   }
 
   .number {
-    font-size: 96px;
-    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    font-size: 130px;
+    font-weight: 900;
     color: #ffffff;
-    line-height: 1;
-    letter-spacing: -3px;
-    margin-bottom: 4px;
-    text-shadow: 0 0 60px rgba(234,124,42,0.3);
+    line-height: 0.85;
+    letter-spacing: -5px;
+    margin-bottom: 8px;
   }
 
   .title {
-    font-size: 34px;
-    font-weight: 600;
-    color: #e6edf3;
-    letter-spacing: 1.5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #ea7c2a;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
   }
 
   .subtitle {
-    font-size: 20px;
+    font-size: 18px;
     color: #8b949e;
     font-weight: 400;
-    letter-spacing: 3px;
-    margin-bottom: 44px;
+    margin-bottom: 32px;
   }
 
-  .subtitle span {
-    color: #8b949e;
-    margin: 0 6px;
-  }
-
-  /* Breakdown bar */
-  .breakdown {
+  /* Technology badges */
+  .badges {
     display: flex;
-    align-items: center;
-    gap: 0;
-    margin-bottom: 44px;
+    gap: 14px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
   }
 
-  .breakdown-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 24px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .breakdown-item:last-child {
-    border-right: none;
-  }
-
-  .breakdown-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .breakdown-label {
-    font-size: 15px;
-    color: #8b949e;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  .breakdown-count {
-    font-size: 20px;
-    font-weight: 700;
-    color: #e6edf3;
-    margin-left: 2px;
-  }
-
-  /* Technology colors */
-  .color-blender     { background-color: #ea7c2a; }
-  .color-ifcopenshell { background-color: #58a6ff; }
-  .color-bonsai      { background-color: #3fb950; }
-  .color-sverchok    { background-color: #d2a8ff; }
-  .color-crosstech   { background-color: #f0883e; }
-
-  /* Bottom decorative line */
-  .bottom-line {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #58a6ff, #3fb950);
-    border-radius: 2px;
-    margin-bottom: 20px;
-  }
-
-  .foundation {
+  .badge {
+    padding: 8px 22px;
+    border-radius: 6px;
     font-size: 14px;
+    font-weight: 600;
+    color: #e6edf3;
+    background: transparent;
+    border: 1.5px solid;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-blender { border-color: #ea7c2a; color: #ea7c2a; }
+  .badge-ifcos   { border-color: #58a6ff; color: #58a6ff; }
+  .badge-bonsai  { border-color: #3fb950; color: #3fb950; }
+  .badge-sverchok { border-color: #d2a8ff; color: #d2a8ff; }
+
+  .versions {
+    font-size: 13px;
+    color: #484f58;
+    font-weight: 400;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .versions span {
+    color: #30363d;
+  }
+
+  /* Right code area */
+  .right {
+    position: relative;
+    z-index: 1;
+    width: 50%;
+    padding: 55px 50px 50px 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .code-window {
+    width: 100%;
+    background: rgba(22, 27, 34, 0.9);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .code-titlebar {
+    background: rgba(30, 35, 44, 0.95);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+
+  .code-filename {
+    color: #8b949e;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .code-body {
+    padding: 20px 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #e6edf3;
+  }
+
+  .comment { color: #8b949e; }
+  .keyword { color: #ff7b72; }
+  .function { color: #d2a8ff; }
+  .string { color: #a5d6ff; }
+  .import-name { color: #ffa657; }
+  .operator { color: #79c0ff; }
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: #ea7c2a;
+    vertical-align: text-bottom;
+  }
+
+  /* Bottom right foundation */
+  .foundation {
+    position: absolute;
+    bottom: 28px;
+    right: 40px;
+    text-align: right;
+    z-index: 1;
+  }
+
+  .foundation-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #e6edf3;
+    letter-spacing: 0.5px;
+  }
+
+  .foundation-sub {
+    font-size: 12px;
     color: #484f58;
     font-weight: 500;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-  }
-
-  /* Left accent bar */
-  .accent-bar {
-    position: absolute;
-    left: 0;
-    top: 80px;
-    bottom: 80px;
-    width: 4px;
-    background: linear-gradient(
-      180deg,
-      #ea7c2a 0%,
-      #ea7c2a 35%,
-      #58a6ff 35%,
-      #58a6ff 61%,
-      #3fb950 61%,
-      #3fb950 80%,
-      #d2a8ff 80%,
-      #d2a8ff 97%,
-      #f0883e 97%,
-      #f0883e 100%
-    );
-    border-radius: 0 2px 2px 0;
+    letter-spacing: 1px;
   }
 </style>
 </head>
 <body>
   <div class="banner">
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
-    <div class="accent-bar"></div>
+    <div class="rainbow-bar"></div>
 
-    <div class="content">
-      <div class="top-line"></div>
-
+    <!-- Left: text content -->
+    <div class="left">
       <div class="number">73</div>
-      <div class="title">Deterministic Claude AI Skills</div>
-      <div class="subtitle">Blender <span>&middot;</span> Bonsai <span>&middot;</span> IfcOpenShell <span>&middot;</span> Sverchok</div>
+      <div class="title">Deterministic Skills</div>
+      <div class="subtitle">for flawless Blender/BIM/IFC code generation</div>
 
-      <div class="breakdown">
-        <div class="breakdown-item">
-          <div class="breakdown-dot color-blender"></div>
-          <span class="breakdown-label">Blender</span>
-          <span class="breakdown-count">26</span>
-        </div>
-        <div class="breakdown-item">
-          <div class="breakdown-dot color-ifcopenshell"></div>
-          <span class="breakdown-label">IfcOpenShell</span>
-          <span class="breakdown-count">19</span>
-        </div>
-        <div class="breakdown-item">
-          <div class="breakdown-dot color-bonsai"></div>
-          <span class="breakdown-label">Bonsai</span>
-          <span class="breakdown-count">14</span>
-        </div>
-        <div class="breakdown-item">
-          <div class="breakdown-dot color-sverchok"></div>
-          <span class="breakdown-label">Sverchok</span>
-          <span class="breakdown-count">12</span>
-        </div>
-        <div class="breakdown-item">
-          <div class="breakdown-dot color-crosstech"></div>
-          <span class="breakdown-label">Cross-Tech</span>
-          <span class="breakdown-count">2</span>
-        </div>
+      <div class="badges">
+        <div class="badge badge-blender">Blender</div>
+        <div class="badge badge-ifcos">IfcOpenShell</div>
+        <div class="badge badge-bonsai">Bonsai</div>
+        <div class="badge badge-sverchok">Sverchok</div>
       </div>
 
-      <div class="bottom-line"></div>
-      <div class="foundation">OpenAEC Foundation</div>
+      <div class="versions">
+        Blender 3.x–5.x <span>│</span> IFC2X3 / IFC4 / IFC4X3 <span>│</span> Bonsai v0.8
+      </div>
+    </div>
+
+    <!-- Right: code window -->
+    <div class="right">
+      <div class="code-window">
+        <div class="code-titlebar">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="code-filename">ifc_skills.py</span>
+        </div>
+        <div class="code-body">
+          <span class="comment"># IFC Element — Correct Pattern</span><br>
+          <span class="keyword">import</span> <span class="import-name">ifcopenshell</span><br>
+          <span class="keyword">import</span> <span class="import-name">ifcopenshell.api</span><br>
+          <br>
+          ifc <span class="operator">=</span> <span class="import-name">ifcopenshell.api</span>.<span class="function">run</span>(<span class="string">"project.create_file"</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schema<span class="operator">=</span><span class="string">"IFC4"</span>)<br>
+          <br>
+          <span class="comment"># NOT: ifc.create_entity("IfcWall")</span><br>
+          <span class="comment"># API ensures valid relationships!</span><br>
+          <br>
+          wall <span class="operator">=</span> <span class="import-name">ifcopenshell.api</span>.<span class="function">run</span>(<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"root.create_entity"</span>, ifc,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;ifc_class<span class="operator">=</span><span class="string">"IfcWall"</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;name<span class="operator">=</span><span class="string">"Wall_001"</span><br>
+          )<br>
+          <span class="cursor"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Foundation logo -->
+    <div class="foundation">
+      <div class="foundation-name">OpenAEC</div>
+      <div class="foundation-sub">Foundation</div>
     </div>
   </div>
 </body>
