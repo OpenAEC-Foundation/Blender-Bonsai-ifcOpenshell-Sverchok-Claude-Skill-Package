@@ -2,6 +2,13 @@
 CLAUDE.local.md
 .claude/settings.local.json
 
+# Session artifacts (not for repo)
+HANDOVER.md
+MIGRATION-AGENT-SKILLS-STANDARD.md
+linkedin-post-*.md
+Fresh_Skill_Package_RELEASE_YAY.png
+image.png
+
 # OS files
 .DS_Store
 Thumbs.db
