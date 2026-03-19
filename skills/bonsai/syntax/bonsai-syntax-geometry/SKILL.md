@@ -1,6 +1,13 @@
 ---
 name: bonsai-syntax-geometry
-description: "Provides Bonsai geometry creation and editing syntax including IFC representation management, profile extrusion, boolean operations, mesh-to-IFC geometry conversion, and Bonsai-specific geometry tools. Covers IfcExtrudedAreaSolid creation, IfcShapeRepresentation assignment, geometry context setup, and the relationship between Blender mesh data and IFC geometric representations."
+description: >
+  Use when creating or editing IFC geometry representations in Bonsai -- profile extrusions,
+  boolean operations, mesh-to-IFC conversion, or geometry context setup. Prevents the common
+  mistake of creating geometry without specifying the representation context (Body/Axis/
+  FootPrint). Covers IfcExtrudedAreaSolid, IfcShapeRepresentation, and the relationship
+  between Blender mesh data and IFC geometric representations.
+  Keywords: IFC geometry, extrusion, IfcExtrudedAreaSolid, IfcShapeRepresentation, boolean,
+  geometry context, Body, Axis, mesh to IFC, profile.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

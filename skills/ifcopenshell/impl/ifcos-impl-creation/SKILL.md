@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-creation
-description: "Guides IFC model creation workflows using ifcopenshell.api including creating projects, spatial structure (site/building/storey), walls, slabs, columns, openings, property sets, and type assignments. Covers IFC2X3 OwnerHistory requirements. Activates when building IFC models from scratch, creating BIM elements, or setting up spatial hierarchies."
+description: >
+  Use when building IFC models from scratch -- creating projects, spatial structure, walls,
+  slabs, columns, openings, property sets, and type assignments. Prevents the critical mistake
+  of skipping IfcOwnerHistory (required in IFC2X3) or not establishing spatial containment.
+  Covers the complete creation workflow using ifcopenshell.api from project to element level.
+  Keywords: IFC creation, create project, spatial structure, IfcWall, IfcSlab, IfcColumn,
+  IfcOwnerHistory, api.run, root.create_entity, model from scratch.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

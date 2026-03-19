@@ -1,6 +1,13 @@
 ---
 name: bonsai-impl-qto
-description: "Implements Bonsai quantity takeoff (QTO) workflows including calculating quantities from IFC element geometry, using QtoCalculator for automated base quantity computation, managing IfcElementQuantity sets (area, length, volume, weight), custom quantity set definitions, and bulk quantity operations across building elements. Covers the complete QTO pipeline from geometry analysis to quantity export."
+description: >
+  Use when calculating quantities from IFC elements in Bonsai -- area, length, volume,
+  weight, or custom quantity sets. Prevents the common mistake of manually computing
+  quantities instead of using QtoCalculator for automated base quantity extraction from
+  geometry. Covers IfcElementQuantity sets, bulk quantity operations, and the complete
+  QTO pipeline from geometry analysis to export.
+  Keywords: quantity takeoff, QTO, IfcElementQuantity, area, volume, length, weight,
+  QtoCalculator, base quantities, cost estimation.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

@@ -1,6 +1,13 @@
 ---
 name: ifcos-core-concepts
-description: "Explains IFC data model fundamentals including entity hierarchy (IfcRoot to IfcElement), spatial structure, ownership model, placement system, representation system, and relationship model across IFC2X3, IFC4, and IFC4X3 schemas. Activates when working with IFC files, understanding BIM data structures, or navigating IFC entity relationships."
+description: >
+  Use when learning IFC data model fundamentals or navigating IFC entity relationships.
+  Prevents the common mistake of creating flat element structures without proper spatial
+  hierarchy (Project > Site > Building > Storey). Covers entity hierarchy from IfcRoot to
+  IfcElement, spatial structure, ownership model, placement system, representation system,
+  and relationships across IFC2X3, IFC4, and IFC4X3 schemas.
+  Keywords: IFC data model, entity hierarchy, spatial structure, IfcRoot, IfcElement,
+  IfcProject, placement, representation, IFC schema, BIM fundamentals.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

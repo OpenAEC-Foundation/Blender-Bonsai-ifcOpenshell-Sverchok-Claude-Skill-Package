@@ -1,6 +1,12 @@
 ---
 name: blender-syntax-nodes
-description: "Explains Blender node tree system including Geometry Nodes, Shader Nodes, Compositor Nodes, NodeTreeInterface API (4.0+), creating and linking nodes programmatically, and node group management. Activates when building node trees via Python, creating Geometry Nodes setups, or managing shader node connections."
+description: >
+  Use when building node trees via Python -- Geometry Nodes, Shader Nodes, or Compositor
+  Nodes. Prevents the breaking change of using node.inputs/outputs by index instead of
+  NodeTreeInterface (4.0+) for node group I/O. Covers node creation, linking, group
+  management, and the NodeTreeInterface API migration.
+  Keywords: node tree, Geometry Nodes, Shader Nodes, Compositor, NodeTreeInterface,
+  node_group, links, nodes.new, node sockets, procedural geometry.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

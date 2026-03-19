@@ -1,6 +1,13 @@
 ---
 name: bonsai-syntax-elements
-description: "Provides Bonsai IFC element access syntax including tool.Ifc.get() for file access, element-to-Blender-object mapping, IfcStore element retrieval, relating IFC entities to scene objects, and the Bonsai data bridge between bpy.types.Object and IFC elements. Covers core patterns for reading and navigating IFC data within the Bonsai addon context."
+description: >
+  Use when accessing IFC elements from Blender objects in Bonsai -- getting the IFC entity
+  behind a selected object, or finding which Blender object represents an IFC element.
+  Prevents the common mistake of using ifcopenshell.open() instead of tool.Ifc.get() to
+  access the live Bonsai file. Covers element-to-object mapping, IfcStore retrieval, and
+  the Bonsai data bridge between bpy.types.Object and IFC entities.
+  Keywords: tool.Ifc.get(), IfcStore, element mapping, Blender object to IFC, IFC entity,
+  selected element, data bridge, Bonsai elements.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

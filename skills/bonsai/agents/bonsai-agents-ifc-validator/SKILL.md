@@ -1,6 +1,13 @@
 ---
 name: bonsai-agents-ifc-validator
-description: "Provides a systematic validation process for IFC models in Bonsai, checking spatial hierarchy completeness, property set compliance, geometry validity, classification correctness, and IDS (Information Delivery Specification) conformance using ifctester. Activates when validating, auditing, checking, or verifying IFC model quality in Bonsai projects."
+description: >
+  Use when validating, auditing, or verifying IFC model quality in Bonsai projects.
+  Provides systematic checks for spatial hierarchy completeness, property set compliance,
+  geometry validity, classification correctness, and IDS (Information Delivery Specification)
+  conformance using ifctester. Prevents shipping models with missing spatial containment
+  or incomplete property sets.
+  Keywords: IFC validation, audit, quality check, spatial hierarchy, property set, IDS,
+  ifctester, model quality, Bonsai validation, compliance.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

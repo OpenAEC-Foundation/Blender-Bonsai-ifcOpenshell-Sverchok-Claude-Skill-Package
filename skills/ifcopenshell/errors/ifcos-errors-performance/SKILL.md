@@ -1,6 +1,12 @@
 ---
 name: ifcos-errors-performance
-description: "Covers IfcOpenShell performance optimization including geometry iterator vs create_shape, by_type caching, batch processing patterns, memory management for large models (100MB+), multiprocessing strategies, and profiling IFC operations. Activates when processing large IFC files, optimizing slow IFC scripts, or debugging memory issues with IfcOpenShell."
+description: >
+  Use when processing large IFC files (100MB+) or optimizing slow IfcOpenShell scripts.
+  Prevents the #1 performance mistake: calling create_shape() per element instead of using
+  the geometry iterator for batch processing. Covers geometry iterator, by_type caching,
+  batch patterns, memory management, multiprocessing strategies, and profiling.
+  Keywords: performance, large IFC, geometry iterator, create_shape, batch processing,
+  memory, multiprocessing, optimization, slow, 100MB, profiling.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

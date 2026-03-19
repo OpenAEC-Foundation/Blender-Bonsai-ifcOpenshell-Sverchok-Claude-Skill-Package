@@ -1,6 +1,13 @@
 ---
 name: ifcos-agents-code-validator
-description: "Provides a systematic validation checklist for reviewing IfcOpenShell Python code, checking for schema compatibility errors, incorrect API usage, entity reference invalidation, performance anti-patterns, missing error handling, and IFC standard compliance. Activates when Claude reviews, validates, audits, or checks IfcOpenShell code quality."
+description: >
+  Use when reviewing, validating, or auditing IfcOpenShell Python code for correctness.
+  Runs systematic checks for schema compatibility errors, incorrect API usage (direct
+  attribute modification vs api.run), entity reference invalidation, performance anti-patterns,
+  and IFC standard compliance. Prevents shipping code that works on one schema but fails
+  on another.
+  Keywords: code review, validation, audit, IfcOpenShell, API usage, schema compatibility,
+  entity reference, performance, code quality.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

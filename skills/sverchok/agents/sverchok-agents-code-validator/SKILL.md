@@ -1,6 +1,12 @@
 ---
 name: sverchok-agents-code-validator
-description: "Validation agent for Sverchok code — runs 19 automated checks on generated Sverchok node code covering data nesting correctness, updateNode callbacks, list matching patterns, socket consistency, import validation, and IfcSverchok compliance. Activates when Claude reviews, validates, audits, or checks Sverchok node code quality."
+description: >
+  Use when reviewing, validating, or auditing Sverchok node code for correctness. Runs 19
+  automated checks covering data nesting correctness, updateNode callbacks, list matching
+  patterns, socket consistency, import validation, and IfcSverchok compliance. Prevents
+  shipping node code with silent data corruption or missing update triggers.
+  Keywords: Sverchok validation, code review, data nesting check, updateNode check,
+  socket consistency, import validation, IfcSverchok compliance, code quality.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

@@ -1,6 +1,13 @@
 ---
 name: blender-syntax-properties
-description: 'Defines all bpy.props types (Bool/Int/Float/String/Enum/Vector/Pointer/Collection), PropertyGroup registration, subtypes, units, update callbacks, dynamic enum items, and getter/setter patterns. Activates when adding custom properties to Blender objects, creating PropertyGroups, or handling property update callbacks.'
+description: >
+  Use when adding custom properties to Blender objects -- BoolProperty, IntProperty,
+  FloatProperty, EnumProperty, PointerProperty, or PropertyGroup. Prevents the common
+  mistake of not using update callbacks (changes not reflected in UI) or returning stale
+  items from dynamic EnumProperty. Covers all bpy.props types, subtypes, units, getters/
+  setters, and CollectionProperty patterns.
+  Keywords: bpy.props, PropertyGroup, BoolProperty, IntProperty, FloatProperty, EnumProperty,
+  PointerProperty, CollectionProperty, update callback, dynamic enum.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

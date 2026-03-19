@@ -1,6 +1,12 @@
 ---
 name: blender-syntax-rendering
-description: "Covers Blender rendering API including render engine selection (EEVEE/Cycles/Workbench), RenderSettings configuration, output format setup, batch rendering via Python, camera setup, scene.render.*, and EEVEE identifier changes across versions. Activates when configuring render settings, automating renders, setting up cameras, or scripting batch render pipelines."
+description: >
+  Use when configuring render settings or automating renders in Blender Python. Prevents
+  the version pitfall of using 'BLENDER_EEVEE' (renamed to 'BLENDER_EEVEE_NEXT' in 4.2).
+  Covers render engine selection (EEVEE/Cycles/Workbench), output format setup, camera
+  configuration, batch rendering, and scene.render.* settings.
+  Keywords: render, EEVEE, Cycles, Workbench, render settings, output format, camera,
+  batch render, scene.render, BLENDER_EEVEE_NEXT, resolution.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

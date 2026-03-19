@@ -1,6 +1,12 @@
 ---
 name: ifcos-errors-patterns
-description: 'Catalogs common IfcOpenShell error patterns including RuntimeError on invalid entities, AttributeError from wrong PascalCase, TypeError from wrong parameter types, entity invalidation after removal, and debugging strategies for IFC processing scripts. Activates when debugging IfcOpenShell errors, handling exceptions, or troubleshooting IFC processing failures.'
+description: >
+  Use when debugging IfcOpenShell errors -- RuntimeError on invalid entities, AttributeError
+  from wrong PascalCase, TypeError from wrong parameter types, or entity invalidation after
+  removal. Prevents wasting time on symptoms by providing a diagnostic decision tree for
+  common error patterns. Covers error messages, root causes, and recovery strategies.
+  Keywords: RuntimeError, AttributeError, TypeError, invalid entity, PascalCase error,
+  entity removed, IfcOpenShell error, debugging, exception handling.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

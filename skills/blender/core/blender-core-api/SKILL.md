@@ -1,6 +1,12 @@
 ---
 name: blender-core-api
-description: "Guides Blender Python API usage including bpy module structure, RNA data access, context system, dependency graph, and operator invocation. Activates when writing bpy scripts, creating Blender addons, or accessing Blender data blocks programmatically."
+description: >
+  Use when writing Blender Python scripts that access bpy module structure, RNA data,
+  the context system, dependency graph, or operator invocation. Prevents the common mistake
+  of accessing context attributes outside their valid scope or calling operators without
+  checking poll(). Covers bpy.data, bpy.context, bpy.ops, depsgraph evaluation, and
+  RNA property access patterns across Blender 3.x/4.x/5.x.
+  Keywords: bpy, Blender Python, RNA, context, depsgraph, operator, bpy.data, bpy.ops.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

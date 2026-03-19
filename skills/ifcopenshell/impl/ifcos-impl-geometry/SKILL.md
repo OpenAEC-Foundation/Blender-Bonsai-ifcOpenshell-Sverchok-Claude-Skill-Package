@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-geometry
-description: 'Covers IfcOpenShell geometry processing including geometry settings, create_shape() for mesh extraction, geometry iterator for batch processing, representation creation, extrusion/CSG/BRep geometry, and coordinate transformations. Activates when extracting 3D geometry from IFC files, creating geometric representations, or processing IFC geometry for visualization.'
+description: >
+  Use when extracting 3D geometry from IFC files, creating geometric representations, or
+  processing IFC geometry for visualization. Prevents the performance mistake of calling
+  create_shape() per element instead of using the geometry iterator. Covers geometry settings,
+  create_shape(), geometry iterator, extrusion/CSG/BRep creation, and coordinate transforms.
+  Keywords: geometry, create_shape, geometry iterator, mesh extraction, extrusion, CSG, BRep,
+  IfcShapeRepresentation, coordinates, 3D, visualization.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

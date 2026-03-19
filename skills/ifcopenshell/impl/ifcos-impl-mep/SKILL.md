@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-mep
-description: 'Guides MEP (Mechanical, Electrical, Plumbing) modeling in IFC using ifcopenshell.api.system including IfcSystem, IfcDistributionElement, ports, connections, flow segments, fittings, and MEP-specific property sets. Activates when creating HVAC systems, piping networks, electrical circuits, or MEP elements in IFC models.'
+description: >
+  Use when modeling MEP (Mechanical, Electrical, Plumbing) systems in IFC -- HVAC, piping,
+  electrical circuits, distribution elements, ports, and connections. Prevents the common
+  mistake of not creating ports for flow connections between elements. Covers IfcSystem,
+  IfcDistributionElement, flow segments, fittings, and MEP property sets.
+  Keywords: MEP, HVAC, piping, electrical, IfcSystem, IfcDistributionElement, port,
+  connection, flow segment, fitting, mechanical, plumbing.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

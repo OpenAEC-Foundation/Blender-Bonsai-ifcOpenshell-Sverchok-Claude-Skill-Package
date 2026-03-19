@@ -1,6 +1,14 @@
 ---
 name: aec-core-bim-workflows
-description: "Orchestrates end-to-end BIM workflows combining IfcOpenShell for IFC manipulation, Bonsai for native BIM authoring in Blender, and Blender for 3D operations. Covers common AEC automation patterns: IFC file creation and enrichment, model validation pipelines, geometry extraction workflows, property set management across tools, and batch processing of building models."
+description: >
+  Use when implementing end-to-end BIM workflows that combine IfcOpenShell, Bonsai, and Blender
+  -- such as IFC creation from scratch, model enrichment, validation pipelines, geometry
+  extraction, or batch processing of building models. Prevents the common mistake of skipping
+  unit and context setup before creating geometry, or directly modifying IFC attributes instead
+  of using ifcopenshell.api.run(). Covers property set management across tools, spatial hierarchy
+  patterns, and version compatibility for IFC2X3/IFC4/IFC4X3.
+  Keywords: BIM workflow, IFC creation, model validation, property extraction, batch processing,
+  spatial hierarchy, cross-technology, IfcOpenShell Bonsai Blender, pset management.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

@@ -1,6 +1,12 @@
 ---
 name: ifcos-syntax-api
-description: "Documents the ifcopenshell.api module system with all 30+ API modules, invocation patterns via api.run() and direct module calls, parameter conventions, and module categorization. Activates when creating IFC entities, modifying properties, managing spatial structure, or using any ifcopenshell.api function."
+description: >
+  Use when writing IfcOpenShell Python code that creates, modifies, or deletes IFC entities.
+  Prevents the #1 AI mistake: using create_entity() or direct attribute assignment instead
+  of ifcopenshell.api.run(). Covers all 30+ API modules, invocation patterns, parameter
+  conventions, and the difference between api.run() and direct module calls.
+  Keywords: ifcopenshell.api, api.run, create_entity, IFC, BIM, IfcWall, IfcSlab,
+  API modules, ifcopenshell Python.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

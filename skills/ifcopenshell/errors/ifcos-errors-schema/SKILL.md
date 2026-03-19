@@ -1,6 +1,12 @@
 ---
 name: ifcos-errors-schema
-description: "Documents IFC schema-related errors and pitfalls across IFC2X3, IFC4, and IFC4X3 including entity availability differences, attribute type changes, removed/added entities, IfcOpenShell ifcpatch for schema migration, and common SchemaError debugging. Activates when encountering IFC schema errors, migrating between IFC versions, or debugging entity not found errors."
+description: >
+  Use when encountering IFC schema errors or migrating between IFC2X3, IFC4, and IFC4X3.
+  Prevents the common mistake of using IFC4-only entities (e.g., IfcMaterialConstituentSet)
+  in IFC2X3 files. Covers entity availability differences, attribute type changes,
+  ifcpatch for schema migration, and common SchemaError debugging.
+  Keywords: SchemaError, IFC2X3, IFC4, IFC4X3, schema migration, ifcpatch, entity not found,
+  schema compatibility, IFC version.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

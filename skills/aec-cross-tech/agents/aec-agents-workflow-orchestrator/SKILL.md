@@ -1,6 +1,14 @@
 ---
 name: aec-agents-workflow-orchestrator
-description: "Orchestrates complex AEC workflows spanning multiple technologies (Blender Python, IfcOpenShell, Bonsai), providing decision trees for technology selection, workflow sequencing for multi-step BIM operations, and coordination patterns for tasks like IFC creation to Blender visualization to Bonsai authoring. Activates when Claude handles cross-technology AEC tasks, multi-step BIM pipelines, or needs to choose between Blender/IfcOpenShell/Bonsai approaches."
+description: >
+  Use when a task spans multiple AEC technologies (Blender, IfcOpenShell, Bonsai, Sverchok)
+  and you need to decide which tool handles which step, or when orchestrating multi-step BIM
+  pipelines such as IFC creation to visualization to authoring. Prevents the common mistake of
+  mixing IfcStore.get_file() with ifcopenshell.open() in the same context, or calling Bonsai
+  operators outside a Bonsai-loaded session. Provides decision trees for technology selection,
+  workflow sequencing, and bridge patterns between tools.
+  Keywords: cross-technology, workflow orchestration, BIM pipeline, technology selection,
+  Blender IfcOpenShell Bonsai integration, multi-step AEC, bridge pattern.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

@@ -1,6 +1,13 @@
 ---
 name: blender-syntax-addons
-description: "Defines Blender addon and extension development patterns including legacy bl_info dict, blender_manifest.toml (4.2+), register/unregister lifecycle, multi-file addon structure, AddonPreferences, class naming conventions, and extension packaging for extensions.blender.org. Activates when creating Blender addons, packaging extensions, or migrating from legacy bl_info to manifest format."
+description: >
+  Use when creating a Blender addon or extension, or migrating from legacy bl_info to
+  blender_manifest.toml (required in 5.0). Prevents the common mistake of using bl_info
+  in Blender 5.0+ where only the manifest format is supported. Covers register/unregister
+  lifecycle, multi-file addon structure, AddonPreferences, class naming, and extension
+  packaging for extensions.blender.org.
+  Keywords: addon, extension, bl_info, blender_manifest.toml, register, unregister,
+  AddonPreferences, packaging, extensions.blender.org.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

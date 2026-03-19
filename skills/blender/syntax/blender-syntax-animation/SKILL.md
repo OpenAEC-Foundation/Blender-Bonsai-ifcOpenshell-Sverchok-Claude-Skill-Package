@@ -1,6 +1,12 @@
 ---
 name: blender-syntax-animation
-description: "Covers Blender animation API including keyframe insertion, FCurve access, Action data blocks, NLA system, BoneCollection (4.0+), armature bone layers migration, driver expressions, and timeline control. Activates when creating animations programmatically, managing keyframes, working with armatures, or setting up drivers."
+description: >
+  Use when creating animations programmatically in Blender -- keyframes, FCurves, Actions,
+  NLA strips, drivers, or armature operations. Prevents the breaking change pitfall of using
+  bone.layers (removed in 4.0) instead of BoneCollection. Covers keyframe_insert, FCurve
+  access, Action data blocks, NLA system, driver expressions, and timeline control.
+  Keywords: keyframe, FCurve, Action, NLA, BoneCollection, armature, driver, animation,
+  bone layers, timeline, bpy.ops.anim.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

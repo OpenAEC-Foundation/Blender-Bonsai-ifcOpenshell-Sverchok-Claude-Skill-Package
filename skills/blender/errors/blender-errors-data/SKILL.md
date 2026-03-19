@@ -1,6 +1,12 @@
 ---
 name: blender-errors-data
-description: "Diagnoses and resolves Blender Python data access errors including ReferenceError from removed objects, undo-invalidated bpy.data references, stale ID pointers after file operations, and data lifecycle management. Covers safe data access patterns, ID reference caching pitfalls, and proper use of bpy.data collections across all Blender versions."
+description: >
+  Use when debugging Blender ReferenceError from removed objects, undo-invalidated bpy.data
+  references, or stale ID pointers. Prevents the common crash of caching bpy.data references
+  across undo/redo operations (references become invalid). Covers safe data access patterns,
+  ID reference caching pitfalls, data lifecycle management, and bpy.data collections.
+  Keywords: ReferenceError, undo, stale reference, bpy.data, ID pointer, data invalidation,
+  removed object, data lifecycle, StructRNA, Blender crash.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

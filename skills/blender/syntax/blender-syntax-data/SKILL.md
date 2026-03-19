@@ -1,6 +1,12 @@
 ---
 name: blender-syntax-data
-description: 'Covers Blender data management including collections, library overrides, asset system, linked libraries, BlendDataLibraries, data block creation and removal, fake users, and data transfer between files. Activates when managing Blender collections, linking/appending data, working with library overrides, or using the asset system.'
+description: >
+  Use when managing Blender data blocks -- collections, linked libraries, library overrides,
+  or the asset system. Prevents the common mistake of not handling fake users when removing
+  data blocks, or using append when link+override is needed. Covers bpy.data collections,
+  BlendDataLibraries, library overrides, asset system, and data transfer between files.
+  Keywords: bpy.data, collections, library overrides, linked library, asset system,
+  append, link, fake user, data block, BlendDataLibraries.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

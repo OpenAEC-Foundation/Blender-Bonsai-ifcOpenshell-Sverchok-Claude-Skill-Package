@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-profiles
-description: "Covers IFC profile definitions using ifcopenshell.api.profile including parametric profiles (I-beam, C-channel, rectangle, circle), arbitrary profiles from polylines, profile-based extrusions for structural elements, and material profile sets. Activates when creating structural cross-sections, defining beam/column profiles, or working with IfcProfileDef entities."
+description: >
+  Use when creating structural cross-sections or profile-based extrusions in IFC -- I-beams,
+  C-channels, rectangles, circles, or arbitrary polyline profiles. Prevents the common mistake
+  of defining profiles without proper placement (profile origin misalignment). Covers
+  parametric profiles, arbitrary profiles, profile-based extrusions, and material profile sets.
+  Keywords: profile, IfcProfileDef, I-beam, C-channel, rectangle, circle, extrusion,
+  cross-section, material profile set, structural profile.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

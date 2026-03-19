@@ -1,6 +1,12 @@
 ---
 name: blender-core-gpu
-description: "Guides GPU drawing in Blender Python using the gpu module, built-in shaders, batch rendering, gpu.state management, SpaceView3D draw handlers, and offscreen rendering. Covers BGL-to-gpu migration. Activates when drawing custom overlays, creating viewport visualizations, or migrating from deprecated bgl module."
+description: >
+  Use when drawing custom overlays, viewport visualizations, or offscreen renders in
+  Blender Python. Prevents the critical mistake of using the deprecated bgl module
+  (removed in Blender 5.0) instead of the gpu module. Covers gpu.shader, gpu.batch,
+  gpu.state, SpaceView3D draw handlers, built-in shaders, and BGL-to-gpu migration.
+  Keywords: gpu module, bgl, draw handler, viewport overlay, offscreen rendering,
+  SpaceView3D, shader, UNIFORM_COLOR, Blender Python drawing.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

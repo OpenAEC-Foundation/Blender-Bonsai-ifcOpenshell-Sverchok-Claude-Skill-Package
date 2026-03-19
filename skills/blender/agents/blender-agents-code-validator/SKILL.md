@@ -1,6 +1,12 @@
 ---
 name: blender-agents-code-validator
-description: "Provides a systematic validation checklist for reviewing Blender Python code, checking for deprecated API usage, context errors, version compatibility issues, threading violations, data reference invalidation, incorrect operator calls, and addon/extension structure compliance. Activates when Claude reviews, validates, audits, or checks Blender Python code quality."
+description: >
+  Use when reviewing, validating, or auditing Blender Python code for correctness. Runs
+  systematic checks for deprecated API usage, context errors, version compatibility issues,
+  threading violations, data reference invalidation, incorrect operator calls, and addon
+  structure compliance. Prevents shipping code with silent version-dependent failures.
+  Keywords: code review, validation, audit, deprecated API, context error, version
+  compatibility, threading, addon structure, code quality, Blender Python.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

@@ -1,6 +1,13 @@
 ---
 name: ifcos-syntax-elements
-description: "Covers IfcOpenShell element traversal and querying including by_type, by_id, by_guid, inverse references, entity attributes, get_info(), is_a(), GUID utilities, and the universal IFC property extraction pattern. Activates when querying IFC elements, extracting properties, traversing relationships, or searching for specific entities in IFC models."
+description: >
+  Use when querying, traversing, or extracting data from IFC elements -- by_type, by_id,
+  by_guid, inverse references, or property extraction. Prevents the common mistake of
+  manually traversing relationships instead of using the universal property extraction
+  pattern (IsDefinedBy -> HasProperties). Covers get_info(), is_a(), GUID utilities,
+  and attribute access patterns.
+  Keywords: by_type, by_id, by_guid, get_info, is_a, inverse, IsDefinedBy, HasProperties,
+  IFC query, element traversal, property extraction.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

@@ -1,6 +1,13 @@
 ---
 name: blender-core-runtime
-description: "Covers Blender Python runtime behavior including mathutils module (Vector, Matrix, Quaternion, KDTree, BVHTree), threading restrictions, undo/redo invalidation of bpy references, application handlers with @persistent, bpy.app.timers, bpy.msgbus subscriptions, and background mode limitations. Activates when dealing with math operations, handlers, timers, or runtime crashes in Blender scripts."
+description: >
+  Use when dealing with Blender Python runtime behavior -- mathutils, threading, handlers,
+  timers, or crashes after undo/redo. Prevents the #1 runtime crash: using threading for
+  bpy operations instead of bpy.app.timers, or caching bpy.data references across undo
+  boundaries. Covers Vector/Matrix/Quaternion, KDTree, BVHTree, @persistent handlers,
+  bpy.msgbus subscriptions, and background mode limitations.
+  Keywords: mathutils, threading, undo, ReferenceError, bpy.app.timers, @persistent,
+  bpy.msgbus, KDTree, BVHTree, background mode, Blender crash.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

@@ -1,6 +1,12 @@
 ---
 name: sverchok-syntax-api
-description: 'Guides programmatic control of Sverchok node trees from Python including creating nodes, connecting sockets, setting parameters, triggering updates, and batch processing with parameter sweeps. Use this when automating Sverchok, generating trees from scripts, running batch parametric studies, or building Sverchok workflows programmatically.'
+description: >
+  Use when automating Sverchok from Python -- creating node trees programmatically, connecting
+  sockets, setting parameters, or running batch parametric studies. Prevents the common
+  mistake of not calling process_from_nodes() after modifying parameters (tree won't update).
+  Covers node creation, socket connections, parameter sweeps, and batch processing.
+  Keywords: Sverchok API, programmatic, node creation, socket connection, batch processing,
+  parameter sweep, process_from_nodes, automation, Python scripting.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

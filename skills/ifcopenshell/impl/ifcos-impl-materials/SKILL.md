@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-materials
-description: "Guides IFC material assignment using ifcopenshell.api including IfcMaterial, IfcMaterialLayerSet, IfcMaterialConstituentSet (IFC4+), IfcMaterialProfileSet, material properties, and style/presentation. Activates when assigning materials to IFC elements, creating material layers, or working with material properties in BIM models."
+description: >
+  Use when assigning materials to IFC elements -- single materials, layer sets (walls),
+  profile sets (beams/columns), or constituent sets (IFC4+). Prevents the common mistake
+  of using IfcMaterialConstituentSet in IFC2X3 (not available). Covers IfcMaterial,
+  IfcMaterialLayerSet, IfcMaterialProfileSet, material properties, and presentation.
+  Keywords: material, IfcMaterial, layer set, profile set, constituent set, material
+  assignment, IfcMaterialLayerSet, IfcMaterialProfileSet, material properties.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

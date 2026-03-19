@@ -1,6 +1,13 @@
 ---
 name: blender-impl-mesh
-description: 'Provides implementation workflows for Blender mesh operations including creating buildings from vertices, IFC geometry visualization, mesh analysis tools, custom mesh generation for AEC, BMesh algorithms, and performance optimization with foreach_get/set. Activates when generating mesh geometry for architecture, implementing custom mesh tools, or creating parametric building elements.'
+description: >
+  Use when generating mesh geometry for AEC applications -- buildings from vertices,
+  IFC geometry visualization, parametric elements, or custom mesh tools. Prevents the
+  performance mistake of creating vertices one-by-one instead of using from_pydata or
+  BMesh batch operations. Covers mesh creation, BMesh algorithms, foreach_get/set
+  optimization, and mesh analysis tools.
+  Keywords: mesh generation, from_pydata, BMesh, parametric, building geometry, mesh
+  analysis, foreach_get, foreach_set, vertices, AEC mesh, custom mesh tool.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

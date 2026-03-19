@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-validation
-description: "Implements IfcOpenShell validation workflows including ifcopenshell.validate for schema compliance checking, ifctester for IDS (Information Delivery Specification) validation, georeference validation across IFC2X3 vs IFC4+ differences, and custom validation rule creation. Covers file-level validation, entity-level checks, property set completeness verification, and automated quality assurance pipelines for IFC models."
+description: >
+  Use when validating IFC files for schema compliance, IDS conformance, or custom quality
+  rules. Prevents the common mistake of only checking schema validity without verifying
+  property set completeness or spatial hierarchy correctness. Covers ifcopenshell.validate,
+  ifctester for IDS validation, georeference validation, and custom validation pipelines.
+  Keywords: validation, IDS, ifctester, ifcopenshell.validate, schema compliance, quality
+  assurance, property set check, spatial hierarchy check, IFC validation.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

@@ -1,6 +1,12 @@
 ---
 name: sverchok-syntax-sockets
-description: 'Covers all 16 Sverchok socket types including choosing the right socket for geometry, numbers, matrices, curves, surfaces, and fields. Explains socket properties, implicit type conversions, and data processing flags. Use this when connecting nodes, understanding type conversions, debugging socket compatibility errors, or choosing the right socket type for your data.'
+description: >
+  Use when connecting Sverchok nodes, debugging socket compatibility errors, or choosing
+  the right socket type. Prevents the common mistake of connecting incompatible socket types
+  without understanding implicit conversions. Covers all 16 socket types (vertices, strings,
+  matrices, curves, surfaces, fields), socket properties, and type conversion rules.
+  Keywords: socket type, SvVerticesSocket, SvStringsSocket, SvMatrixSocket, socket conversion,
+  compatible sockets, data processing flags, Sverchok sockets.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

@@ -1,6 +1,12 @@
 ---
 name: bonsai-syntax-properties
-description: "Provides Bonsai property set management syntax for creating, reading, and editing IFC property sets (Pset) and quantity sets (Qto). Covers IfcPropertySingleValue, IfcPropertyEnumeratedValue, IfcQuantityArea/Length/Volume, predefined property set templates, and Bonsai-specific pset tools for bulk property management and custom property definitions."
+description: >
+  Use when creating, reading, or editing IFC property sets (Pset) and quantity sets (Qto)
+  in Bonsai. Prevents the common mistake of creating property sets without associating them
+  to elements via IfcRelDefinesByProperties. Covers IfcPropertySingleValue, IfcPropertyEnumeratedValue,
+  IfcQuantityArea/Length/Volume, predefined pset templates, and bulk property management.
+  Keywords: property set, Pset, Qto, IfcPropertySingleValue, IfcPropertyEnumeratedValue,
+  IfcRelDefinesByProperties, custom properties, bulk property, pset template.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

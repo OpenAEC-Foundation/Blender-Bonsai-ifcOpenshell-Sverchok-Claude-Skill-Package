@@ -1,6 +1,13 @@
 ---
 name: blender-errors-context
-description: "Diagnoses and resolves Blender Python context errors including RuntimeError from restricted context access, operator poll() failures, wrong context for bpy.ops calls, and modal operator context issues. Covers context override removal in 4.0+, temp_override migration, and context-dependent attribute access patterns across Blender 3.x-5.x."
+description: >
+  Use when debugging Blender RuntimeError from restricted context, operator poll() failures,
+  or wrong context for bpy.ops calls. Prevents the #1 Blender Python error: calling operators
+  or accessing context attributes from wrong areas (e.g., timer callbacks, draw handlers).
+  Covers context override removal in 4.0+, temp_override migration, and context-dependent
+  attribute access patterns.
+  Keywords: RuntimeError, restricted context, poll failure, context override, temp_override,
+  bpy.ops error, wrong context, modal context, Blender context error.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

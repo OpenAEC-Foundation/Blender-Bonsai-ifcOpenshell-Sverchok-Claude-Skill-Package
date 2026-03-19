@@ -1,6 +1,12 @@
 ---
 name: bonsai-impl-classification
-description: "Implements Bonsai classification workflows including applying classification systems (Uniclass 2015, OmniClass, NL-SfB, CCI), bSDD (buildingSMART Data Dictionary) integration for property lookups, managing IfcClassificationReference assignments, and bulk classification operations. Covers classification library import, element-to-classification mapping, and cross-referencing between classification systems."
+description: >
+  Use when classifying IFC elements in Bonsai with systems like Uniclass 2015, OmniClass,
+  NL-SfB, or CCI. Prevents the common mistake of assigning classifications without importing
+  the classification library first. Covers bSDD integration, IfcClassificationReference
+  assignment, bulk classification operations, and cross-referencing between systems.
+  Keywords: classification, Uniclass, OmniClass, NL-SfB, CCI, bSDD, IfcClassificationReference,
+  bulk classification, classification library.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

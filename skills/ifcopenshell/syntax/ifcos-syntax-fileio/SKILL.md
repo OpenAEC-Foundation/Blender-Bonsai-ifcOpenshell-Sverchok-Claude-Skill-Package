@@ -1,6 +1,12 @@
 ---
 name: ifcos-syntax-fileio
-description: "Handles IfcOpenShell file I/O operations including opening, creating, writing, and serializing IFC files, plus transaction management with undo/redo support. Activates when reading IFC files, creating new IFC models, saving IFC output, or managing IFC file transactions."
+description: >
+  Use when opening, creating, writing, or serializing IFC files with IfcOpenShell.
+  Prevents the common mistake of not using transactions for multi-step operations
+  (no undo on failure). Covers ifcopenshell.open(), file.create(), file.write(),
+  transaction management with undo/redo, and schema selection.
+  Keywords: ifcopenshell.open, file.write, create file, IFC file, transaction,
+  undo, redo, serialize, IFC I/O, file operations.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

@@ -1,6 +1,12 @@
 ---
 name: blender-core-versions
-description: "Provides complete Blender Python API version matrix from 3.x through 5.1 with all breaking changes, migration paths, and version-safe coding patterns. Activates when writing version-compatible scripts, migrating addons between Blender versions, or checking API deprecations."
+description: >
+  Use when writing Blender Python code that must work across multiple versions (3.x/4.x/5.x),
+  or when migrating scripts between Blender versions. Prevents breakage from renamed APIs,
+  removed modules (bgl in 5.0), and changed function signatures. Provides the complete
+  breaking changes matrix, deprecation timeline, and version-safe coding patterns.
+  Keywords: Blender version, migration, deprecated, breaking change, bgl removal,
+  bpy.app.version, version compatibility, 3.x, 4.x, 5.x, API changes.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

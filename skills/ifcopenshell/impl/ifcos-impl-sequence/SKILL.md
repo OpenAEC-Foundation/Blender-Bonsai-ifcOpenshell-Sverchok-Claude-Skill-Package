@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-sequence
-description: 'Guides IFC scheduling and 4D BIM using ifcopenshell.api.sequence including work schedules, tasks, task time relationships, Gantt chart data extraction, and construction sequence modeling. Activates when implementing construction schedules in IFC, creating 4D BIM timelines, or extracting scheduling data.'
+description: >
+  Use when implementing construction schedules or 4D BIM timelines in IFC -- work schedules,
+  tasks, task dependencies, and Gantt chart data extraction. Prevents the common mistake of
+  not linking tasks to elements (no 4D visualization possible). Covers ifcopenshell.api.sequence,
+  work schedules, task time relationships, and construction sequence modeling.
+  Keywords: schedule, 4D BIM, work schedule, task, Gantt, timeline, construction sequence,
+  IfcWorkSchedule, IfcTask, task dependency.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

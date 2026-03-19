@@ -1,6 +1,13 @@
 ---
 name: sverchok-impl-parametric
-description: 'Guides AEC parametric design workflows in Sverchok including structural grids, facade panel systems, parametric stairs, roof geometry generation, MEP routing layouts, and terrain generation from data. Covers matrix-based transforms, Blender object integration, and data-driven geometry generation.'
+description: >
+  Use when designing parametric AEC geometry in Sverchok -- structural grids, facade panels,
+  parametric stairs, roof geometry, MEP routing, or terrain from data. Prevents the common
+  mistake of not using matrix transforms for element placement (using vertex offsets instead,
+  which breaks with rotation). Covers matrix-based transforms, Blender object integration,
+  and data-driven geometry generation.
+  Keywords: parametric design, structural grid, facade panel, stairs, roof, terrain,
+  matrix transform, data-driven, AEC geometry, Sverchok parametric.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

@@ -1,6 +1,13 @@
 ---
 name: sverchok-errors-common
-description: 'Documents the 17 most common Sverchok error patterns and AI mistakes — covering data nesting errors, missing updateNode callbacks, socket data mutation, list matching misunderstandings, and IfcSverchok-specific pitfalls. Activates when writing Sverchok node code, debugging silent data corruption, fixing custom node lifecycle issues, or working with IfcSverchok entity management.'
+description: >
+  Use when debugging Sverchok node code errors -- silent data corruption, missing updateNode
+  callbacks, socket data mutation, or IfcSverchok entity management issues. Prevents the
+  17 most common Sverchok mistakes including wrong data nesting, forgetting deepcopy=True
+  on sv_get() when mutating data, and missing updateNode on bpy.props. Covers diagnostic
+  patterns and fixes for each error type.
+  Keywords: Sverchok error, data nesting, updateNode, deepcopy, sv_get, socket mutation,
+  IfcSverchok error, silent corruption, debugging, common mistakes.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

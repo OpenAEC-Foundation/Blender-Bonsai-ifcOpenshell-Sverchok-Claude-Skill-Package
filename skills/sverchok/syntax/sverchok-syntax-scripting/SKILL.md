@@ -1,6 +1,13 @@
 ---
 name: sverchok-syntax-scripting
-description: 'Covers Sverchok Python scripting nodes — SNLite, SN Functor B, Formula Mk5, and Profile Mk3. Explains socket declaration syntax, type identifiers, built-in aliases, special functions, and template system. Use this when writing SNLite scripts, creating formulas, defining parametric profiles, or embedding custom Python logic in Sverchok node trees.'
+description: >
+  Use when writing SNLite scripts, Formula Mk5 expressions, Profile Mk3 definitions, or
+  embedding custom Python logic in Sverchok node trees. Prevents the common mistake of
+  wrong socket declaration syntax in SNLite (must use specific type identifiers like 'v'
+  for vertices, 's' for strings). Covers all scripting nodes, built-in aliases, special
+  functions, and the template system.
+  Keywords: SNLite, Formula, Profile, scripting node, SN Functor B, socket declaration,
+  type identifier, custom Python, Sverchok scripting.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

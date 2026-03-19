@@ -1,6 +1,12 @@
 ---
 name: blender-syntax-materials
-description: 'Covers Blender material and shader node API including Principled BSDF input name changes (4.0), material slot assignment, UV mapping, texture node setup, material_slot_add, and node-based material creation. Activates when creating materials programmatically, assigning textures, setting up shaders, or migrating material code between Blender versions.'
+description: >
+  Use when creating or modifying Blender materials and shader nodes via Python. Prevents
+  the breaking change of using old Principled BSDF input names (e.g., "Subsurface" renamed
+  to "Subsurface Weight" in 4.0). Covers material creation, node tree setup, Principled BSDF
+  input mapping, UV assignment, texture loading, and material slot management.
+  Keywords: material, shader, Principled BSDF, node tree, texture, UV map, material_slot,
+  ShaderNodeBsdfPrincipled, node links, Blender materials.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

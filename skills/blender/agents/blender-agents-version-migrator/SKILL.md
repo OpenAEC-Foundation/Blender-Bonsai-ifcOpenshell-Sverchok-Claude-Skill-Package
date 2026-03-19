@@ -1,6 +1,13 @@
 ---
 name: blender-agents-version-migrator
-description: "Provides a systematic migration process for updating Blender Python scripts and addons across major versions (3.x to 4.x to 5.x), covering API renames, removed functions, changed parameters, extension system migration, BGL to GPU module conversion, and bone collection migration. Activates when migrating, porting, updating, or upgrading Blender Python code between versions."
+description: >
+  Use when migrating, porting, or upgrading Blender Python scripts and addons across major
+  versions (3.x to 4.x to 5.x). Provides a systematic migration process covering API
+  renames, removed functions, changed parameters, extension system migration, BGL to GPU
+  module conversion, and bone collection migration. Prevents incomplete migrations that
+  compile but fail at runtime.
+  Keywords: migration, porting, upgrade, version, 3.x to 4.x, 4.x to 5.x, API rename,
+  bgl to gpu, extension migration, bl_info to manifest, bone collection.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

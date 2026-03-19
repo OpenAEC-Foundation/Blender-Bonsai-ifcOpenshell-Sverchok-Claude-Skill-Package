@@ -1,6 +1,12 @@
 ---
 name: sverchok-core-concepts
-description: 'Explains Sverchok parametric node system architecture including node tree execution, data flow between nodes, socket data cache, update triggers, and the 18+ node categories with 500+ nodes. Activates when understanding how Sverchok processes node graphs, debugging update issues, learning Sverchok fundamentals, or creating a first Sverchok node tree.'
+description: >
+  Use when learning Sverchok fundamentals or debugging node tree execution issues.
+  Prevents the common mistake of expecting immediate execution (Sverchok uses deferred
+  tree-level updates, not per-node). Covers node tree architecture, data flow, socket
+  data cache, update triggers, and the 18+ node categories with 500+ nodes.
+  Keywords: Sverchok, node tree, data flow, socket cache, update trigger, node categories,
+  SverchCustomTreeType, parametric design, node execution.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

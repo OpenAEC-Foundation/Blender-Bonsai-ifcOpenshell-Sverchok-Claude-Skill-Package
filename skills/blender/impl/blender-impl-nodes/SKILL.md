@@ -1,6 +1,13 @@
 ---
 name: blender-impl-nodes
-description: 'Provides implementation workflows for Blender node systems including creating Geometry Nodes modifiers from Python, building shader node trees programmatically, custom node groups, and linking node setups for AEC visualization. Activates when building node-based setups for parametric modeling, material generation, or procedural geometry.'
+description: >
+  Use when building Geometry Nodes or Shader Nodes setups programmatically for AEC
+  applications -- parametric modeling, material generation, or procedural geometry.
+  Prevents the common mistake of not using node_tree.interface for Geometry Nodes
+  modifier inputs (4.0+). Covers creating node groups, linking nodes, custom node
+  groups, and AEC-specific node setups.
+  Keywords: Geometry Nodes, Shader Nodes, node group, parametric modeling, procedural,
+  node tree, modifier inputs, material generation, node_tree.interface.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

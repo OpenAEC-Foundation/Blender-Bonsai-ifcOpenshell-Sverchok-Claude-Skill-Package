@@ -1,6 +1,13 @@
 ---
 name: blender-syntax-modifiers
-description: "Covers Blender modifier stack API including adding/removing modifiers, applying modifiers via operators, evaluated mesh access via depsgraph, Geometry Nodes modifier input identifiers, and common AEC modifiers (Array, Boolean, Solidify). Activates when working with modifiers programmatically, applying modifiers to meshes, or accessing Geometry Nodes inputs."
+description: >
+  Use when working with Blender modifiers via Python -- adding, configuring, or applying
+  modifiers, or accessing Geometry Nodes inputs. Prevents the common mistake of reading
+  mesh data before applying modifiers (getting unmodified geometry) instead of using
+  depsgraph.evaluated_get(). Covers modifier stack, Geometry Nodes input identifiers,
+  common AEC modifiers (Array, Boolean, Solidify), and evaluated mesh access.
+  Keywords: modifier, Array, Boolean, Solidify, Geometry Nodes, depsgraph, evaluated_get,
+  modifier.apply, modifier stack, input identifier.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

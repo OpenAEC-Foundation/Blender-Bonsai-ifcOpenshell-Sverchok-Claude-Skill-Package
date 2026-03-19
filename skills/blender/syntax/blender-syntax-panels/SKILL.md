@@ -1,6 +1,12 @@
 ---
 name: blender-syntax-panels
-description: 'Defines Blender UI panel creation including bpy.types.Panel, draw() method, UILayout API (row/column/box/split), bl_space_type, bl_region_type, bl_category, sub-panels, draw_header, menus, and UIList. Activates when creating custom Blender panels, building addon interfaces, or working with UILayout elements.'
+description: >
+  Use when creating custom Blender UI panels, menus, or UIList elements. Prevents the
+  common mistake of using wrong bl_space_type/bl_region_type combinations (panel won't show).
+  Covers bpy.types.Panel, draw() method, UILayout API (row/column/box/split), bl_category,
+  sub-panels, draw_header, menus, pie menus, and UIList.
+  Keywords: Panel, UILayout, bl_space_type, bl_region_type, bl_category, draw, row, column,
+  box, split, sub-panel, UIList, menu, Blender UI.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

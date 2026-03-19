@@ -1,6 +1,12 @@
 ---
 name: blender-syntax-operators
-description: "Defines Blender operator creation patterns including bpy.types.Operator class, execute/invoke/modal methods, poll() functions, bl_idname naming, bl_options flags, return values, operator properties, and context.temp_override. Activates when creating custom Blender operators, registering tools, or handling operator context issues."
+description: >
+  Use when creating custom Blender operators -- bpy.types.Operator subclasses with execute,
+  invoke, or modal methods. Prevents the common mistake of not implementing poll() (causing
+  silent failures) or using wrong bl_idname format. Covers operator lifecycle, bl_options,
+  return values, properties, and context.temp_override (4.0+ replacement for context override).
+  Keywords: Operator, execute, invoke, modal, poll, bl_idname, bl_options, temp_override,
+  REGISTER, UNDO, operator properties, bpy.ops.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

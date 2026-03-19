@@ -1,6 +1,13 @@
 ---
 name: ifcos-core-runtime
-description: "Explains IfcOpenShell Python runtime quirks including C++ binding behavior, entity identity (is vs ==), entity invalidation after removal, by_type() return semantics, thread safety constraints, memory management, PascalCase attribute access, and installation patterns. Activates when debugging IfcOpenShell crashes, entity reference errors, or performance issues."
+description: >
+  Use when debugging IfcOpenShell crashes, entity reference errors, or performance issues.
+  Prevents the common pitfall of comparing entities with == instead of checking .id() or
+  identity, or holding references to entities after removal. Covers C++ binding behavior,
+  entity invalidation, by_type() return semantics, thread safety, memory management,
+  PascalCase attributes, and installation patterns.
+  Keywords: IfcOpenShell runtime, C++ binding, entity invalidation, by_type, thread safety,
+  memory management, PascalCase, installation, entity identity.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

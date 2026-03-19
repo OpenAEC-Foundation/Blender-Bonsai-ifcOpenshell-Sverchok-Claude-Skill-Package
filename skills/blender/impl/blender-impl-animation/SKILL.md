@@ -1,6 +1,12 @@
 ---
 name: blender-impl-animation
-description: 'Provides implementation workflows for Blender animation including construction sequence animation for AEC, camera walkthrough automation, solar study animations, phasing visualization, NLA workflow orchestration, and batch keyframe operations. Activates when creating construction animations, camera paths, or time-based visualizations for architecture.'
+description: >
+  Use when implementing AEC-specific animations -- construction sequences, camera walkthroughs,
+  solar studies, or phasing visualizations in Blender. Prevents the common mistake of
+  keyframing visibility instead of using proper collection visibility for construction phases.
+  Covers NLA workflow orchestration, batch keyframe operations, and time-based visualizations.
+  Keywords: construction animation, camera walkthrough, solar study, phasing, NLA, keyframe,
+  construction sequence, visibility animation, AEC visualization.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

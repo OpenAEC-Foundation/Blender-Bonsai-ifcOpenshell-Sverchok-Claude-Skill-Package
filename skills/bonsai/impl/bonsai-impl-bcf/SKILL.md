@@ -1,6 +1,12 @@
 ---
 name: bonsai-impl-bcf
-description: "Guides implementation of BIM Collaboration Format (BCF) workflows in Bonsai including creating BCF topics, adding viewpoints with camera snapshots, managing comments, importing/exporting BCF files (v2.1 and v3.0), and integrating BCF issue tracking with IFC element references. Activates when working with BCF files, BIM issue tracking, clash report management, or collaboration workflows in Bonsai."
+description: >
+  Use when working with BIM Collaboration Format (BCF) files in Bonsai -- creating topics,
+  adding viewpoints, managing comments, or importing/exporting BCF files (v2.1 and v3.0).
+  Prevents the common mistake of creating viewpoints without proper camera snapshots or
+  missing element references. Covers BCF issue tracking integration with IFC elements.
+  Keywords: BCF, BIM Collaboration Format, viewpoint, topic, comment, clash report,
+  issue tracking, BCF v2.1, BCF v3.0, collaboration.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

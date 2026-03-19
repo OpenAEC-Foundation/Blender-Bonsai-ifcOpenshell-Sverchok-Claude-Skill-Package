@@ -1,6 +1,13 @@
 ---
 name: ifcos-syntax-util
-description: "Documents ifcopenshell.util modules for common IFC operations including element utilities, selector syntax, placement helpers, date/unit conversion, cost/schedule utilities, and shape extraction. Activates when extracting data from IFC models, converting units, querying elements with selectors, or working with IFC property sets."
+description: >
+  Use when extracting data from IFC models using utility functions -- element properties,
+  selector syntax, placement calculations, unit conversion, or cost/schedule data.
+  Prevents the common mistake of manually parsing IFC relationships instead of using
+  ifcopenshell.util helpers. Covers element utilities, selector syntax, placement
+  helpers, date/unit conversion, and shape extraction.
+  Keywords: ifcopenshell.util, selector, placement, unit conversion, element utility,
+  shape extraction, ifcopenshell.util.element, ifcopenshell.util.selector.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

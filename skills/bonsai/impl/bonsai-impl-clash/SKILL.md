@@ -1,6 +1,13 @@
 ---
 name: bonsai-impl-clash
-description: "Guides implementation of clash detection workflows in Bonsai using IfcClash, including defining clash sets with element groups and filters, running intersection tests, reviewing and resolving clashes, smart grouping of results, and integration with BCF for issue tracking. Activates when performing clash detection, interference checking, collision analysis, or spatial coordination in BIM models."
+description: >
+  Use when performing clash detection, interference checking, or spatial coordination in
+  BIM models using Bonsai and IfcClash. Prevents the common mistake of running clash detection
+  without proper element group filters (testing everything against everything). Covers clash
+  set definition, element filtering, smart grouping of results, and BCF integration for
+  issue tracking.
+  Keywords: clash detection, IfcClash, interference, collision, spatial coordination,
+  clash set, element filter, BCF integration, clash report.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

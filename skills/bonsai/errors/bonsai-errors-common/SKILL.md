@@ -1,6 +1,13 @@
 ---
 name: bonsai-errors-common
-description: "Catalogs common Bonsai error patterns including IFC schema violations, spatial hierarchy errors, property set failures, geometry representation issues, operator poll failures, drawing generation errors, and BCF/clash workflow problems. Provides diagnostic decision trees and recovery strategies. Activates when debugging Bonsai errors, troubleshooting BIM workflows, or diagnosing IFC-related failures in Blender."
+description: >
+  Use when debugging Bonsai errors -- IFC schema violations, spatial hierarchy errors,
+  property set failures, geometry representation issues, or operator poll failures.
+  Prevents wasting time on symptoms instead of root causes (e.g., missing IfcOwnerHistory
+  in IFC2X3 causing cryptic errors). Provides diagnostic decision trees and recovery
+  strategies for all common Bonsai failure modes.
+  Keywords: Bonsai error, schema violation, spatial hierarchy error, poll failure,
+  drawing error, BCF error, IFC error, troubleshooting, debug.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

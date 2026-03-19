@@ -1,6 +1,13 @@
 ---
 name: blender-errors-version
-description: "Diagnoses and resolves Blender Python version compatibility errors including AttributeError from removed APIs, ImportError from deprecated modules (bgl in 5.0), breaking changes in operator signatures, and version-specific API differences. Provides migration patterns from 3.x to 4.x to 5.x with complete deprecation timeline and replacement mappings."
+description: >
+  Use when debugging Blender AttributeError from removed APIs, ImportError from deprecated
+  modules (bgl in 5.0), or breaking changes in operator signatures between versions.
+  Prevents silent failures from using APIs that were renamed or removed in newer Blender
+  versions. Provides migration patterns from 3.x to 4.x to 5.x with complete replacement
+  mappings.
+  Keywords: AttributeError, ImportError, deprecated, version error, bgl, migration,
+  breaking change, removed API, 3.x to 4.x, 4.x to 5.x, Blender upgrade.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

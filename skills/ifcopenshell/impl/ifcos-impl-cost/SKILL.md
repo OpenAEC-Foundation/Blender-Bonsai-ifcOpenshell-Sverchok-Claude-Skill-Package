@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-cost
-description: 'Guides IFC cost management using ifcopenshell.api.cost including cost schedules, cost items, cost values, cost quantities, and 5D BIM workflows. Activates when implementing cost estimation in IFC models, creating cost schedules, or linking quantities to cost items.'
+description: >
+  Use when implementing cost estimation or 5D BIM workflows in IFC models -- cost schedules,
+  cost items, cost values, or linking quantities to costs. Prevents the common mistake of
+  creating cost items without linking them to element quantities. Covers ifcopenshell.api.cost
+  module, cost schedules, cost values, and quantity-to-cost linkage.
+  Keywords: cost, 5D BIM, cost schedule, cost item, cost value, quantity, ifcopenshell.api.cost,
+  cost estimation, IfcCostSchedule, IfcCostItem.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

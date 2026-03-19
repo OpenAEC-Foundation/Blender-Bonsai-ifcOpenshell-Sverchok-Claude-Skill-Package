@@ -1,6 +1,13 @@
 ---
 name: bonsai-core-architecture
-description: 'Explains Bonsai (formerly BlenderBIM) addon architecture including native IFC workflow, tool.Ifc.get() for IfcOpenShell file access, bpy.ops.bim.* operator namespace, BIM property panels, IFC-backed custom properties, and the relationship between Blender objects and IFC entities. Activates when working with Bonsai addon, developing Bonsai extensions, or scripting BIM workflows in Blender.'
+description: >
+  Use when developing Bonsai (formerly BlenderBIM) extensions, scripting BIM workflows in
+  Blender, or understanding the Bonsai addon architecture. Prevents the common mistake of
+  using ifcopenshell.open() to access the model instead of tool.Ifc.get() which gives the
+  live Bonsai IFC file. Covers native IFC workflow, bpy.ops.bim.* operators, BIM property
+  panels, and the relationship between Blender objects and IFC entities.
+  Keywords: Bonsai, BlenderBIM, tool.Ifc.get(), bpy.ops.bim, native IFC, addon architecture,
+  IFC-backed properties, BIM authoring.
 version: 'Bonsai v0.8.4 | Minimum Blender: 4.2.0 | Python 3.11'
 ---
 

@@ -1,6 +1,12 @@
 ---
 name: bonsai-impl-drawing
-description: "Implements Bonsai drawing and documentation workflows including creating 2D drawings from IFC models, managing drawing views (plans, sections, elevations), annotation placement, sheet layout composition, SVG generation and export, and titleblock management. Covers the complete documentation pipeline from model views through annotated drawings to printable sheet output."
+description: >
+  Use when generating 2D drawings from IFC models in Bonsai -- plans, sections, elevations,
+  annotations, or sheet layouts. Prevents the common mistake of creating views without proper
+  drawing style configuration (getting empty or unfiltered output). Covers the complete
+  documentation pipeline from model views through annotations to printable SVG sheet output.
+  Keywords: drawing, plan, section, elevation, annotation, sheet, SVG, titleblock,
+  documentation, 2D drawing, Bonsai drawing.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

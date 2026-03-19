@@ -1,6 +1,13 @@
 ---
 name: bonsai-syntax-spatial
-description: "Provides Bonsai spatial structure syntax for creating and managing IFC spatial hierarchy including IfcSite, IfcBuilding, IfcBuildingStorey, and IfcSpace elements. Covers spatial containment (IfcRelContainedInSpatialStructure), spatial decomposition (IfcRelAggregates), and Bonsai-specific spatial tools for navigating and modifying the building structure tree."
+description: >
+  Use when creating or managing IFC spatial hierarchy in Bonsai -- IfcSite, IfcBuilding,
+  IfcBuildingStorey, IfcSpace, and their containment relationships. Prevents the critical
+  mistake of not establishing proper spatial decomposition (IfcRelAggregates) causing
+  elements to be invisible in model viewers. Covers spatial containment, decomposition,
+  and Bonsai-specific spatial navigation tools.
+  Keywords: spatial structure, IfcSite, IfcBuilding, IfcBuildingStorey, IfcSpace,
+  IfcRelContainedInSpatialStructure, IfcRelAggregates, spatial hierarchy.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

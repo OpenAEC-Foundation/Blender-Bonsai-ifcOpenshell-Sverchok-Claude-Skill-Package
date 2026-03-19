@@ -1,6 +1,13 @@
 ---
 name: blender-impl-operators
-description: "Provides implementation patterns for Blender operators including modal operators with timer callbacks, file browser integration, undo/redo support, batch processing operators, progress reporting, and multi-step workflows. Activates when implementing complex Blender operators, modal tools, file dialogs, or batch automation scripts."
+description: >
+  Use when implementing complex Blender operators -- modal operators with timer callbacks,
+  file browsers, batch processing, or multi-step workflows. Prevents the common mistake
+  of blocking the UI thread in long operations instead of using modal + timer pattern.
+  Covers modal operators, file browser integration, undo/redo support, progress reporting,
+  and batch processing operators.
+  Keywords: modal operator, timer callback, file browser, batch processing, progress
+  reporting, undo support, multi-step workflow, INVOKE_DEFAULT.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

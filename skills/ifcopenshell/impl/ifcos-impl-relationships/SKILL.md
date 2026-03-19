@@ -1,6 +1,12 @@
 ---
 name: ifcos-impl-relationships
-description: 'Covers IFC relationship management using ifcopenshell.api including spatial containment, aggregation, type assignment, property set association, material association, void relationships, and nesting. Documents relationship splits between IFC2X3 and IFC4. Activates when managing IFC element relationships, spatial assignments, or type definitions.'
+description: >
+  Use when managing IFC element relationships -- spatial containment, aggregation, type
+  assignment, property association, material association, or void relationships. Prevents
+  the common mistake of creating elements without establishing their spatial containment
+  (orphaned elements). Covers relationship differences between IFC2X3 and IFC4.
+  Keywords: relationship, containment, aggregation, type assignment, IfcRelContainedInSpatialStructure,
+  IfcRelAggregates, IfcRelDefinesByType, void, nesting.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

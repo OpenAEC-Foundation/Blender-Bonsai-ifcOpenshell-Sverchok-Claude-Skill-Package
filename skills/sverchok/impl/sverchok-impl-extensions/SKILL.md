@@ -1,6 +1,12 @@
 ---
 name: sverchok-impl-extensions
-description: 'Covers the Sverchok extension ecosystem and extension development pattern. Includes Sverchok-Extra for advanced geometry (surfaces, fields, solids, SDF), Open3d integration, and a guide to developing and registering custom extensions. Activates when working with SDF nodes, point cloud processing, advanced surface/field/solid operations, or building a custom Sverchok extension add-on.'
+description: >
+  Use when working with Sverchok-Extra (advanced geometry, SDF, surfaces, fields, solids),
+  Open3d integration, or developing custom Sverchok extensions. Prevents the common mistake
+  of importing sverchok_extra nodes without checking addon availability first. Covers
+  extension development, registration, and advanced geometry operations.
+  Keywords: Sverchok-Extra, SDF, surfaces, fields, solids, Open3d, point cloud, extension
+  development, custom extension, advanced geometry.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

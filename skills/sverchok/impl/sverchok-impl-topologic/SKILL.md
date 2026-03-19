@@ -1,6 +1,13 @@
 ---
 name: sverchok-impl-topologic
-description: 'Covers TopologicSverchok for building topology analysis — non-manifold topology operations, CellComplex workflows, space adjacency graphs, dual graphs, and energy simulation integration. Activates when working with TopologicSverchok nodes, building envelope analysis, space adjacency graphs, room connectivity, CellComplex-based BIM workflows, or energy simulation preparation in Blender/Sverchok.'
+description: >
+  Use when working with TopologicSverchok for building topology analysis -- CellComplex
+  workflows, space adjacency graphs, dual graphs, or energy simulation preparation.
+  Prevents the common mistake of using mesh-based operations for topology analysis instead
+  of non-manifold TopologicSverchok operations. Covers CellComplex-based BIM workflows,
+  room connectivity, and envelope analysis.
+  Keywords: TopologicSverchok, CellComplex, adjacency graph, dual graph, topology,
+  non-manifold, room connectivity, energy simulation, building envelope.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.2.0+ and TopologicSverchok v0.8.3+.'
 metadata:

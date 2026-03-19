@@ -1,6 +1,13 @@
 ---
 name: bonsai-impl-modeling
-description: "Implements Bonsai BIM modeling workflows including placing building elements (walls, slabs, columns, beams), assigning IFC types and predefined types, material layer/profile/constituent assignment, parametric modeling with type libraries, and element copy/array operations. Covers the complete element creation pipeline from type selection through geometric representation to spatial assignment."
+description: >
+  Use when placing building elements (walls, slabs, columns, beams) in Bonsai or assigning
+  IFC types and materials. Prevents the common mistake of creating geometry without assigning
+  it to the spatial hierarchy (orphaned elements). Covers the complete element creation
+  pipeline: type selection, geometric representation, material layer/profile/constituent
+  assignment, and spatial containment.
+  Keywords: wall, slab, column, beam, IfcWall, IfcSlab, IFC type, predefined type,
+  material layer, material profile, spatial assignment, BIM modeling.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

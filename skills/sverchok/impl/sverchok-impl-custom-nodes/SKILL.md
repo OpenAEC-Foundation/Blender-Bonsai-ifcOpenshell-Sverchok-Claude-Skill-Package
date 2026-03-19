@@ -1,6 +1,13 @@
 ---
 name: sverchok-impl-custom-nodes
-description: 'Complete guide to developing custom Sverchok nodes including the full node lifecycle, socket creation, property management, BMesh integration, and registration patterns. Use this when writing a custom Sverchok node, creating a new node type, or packaging nodes as an add-on.'
+description: >
+  Use when developing a custom Sverchok node -- creating new node types, packaging as
+  addons, or integrating with BMesh. Prevents the critical mistake of not calling
+  self.outputs[i].sv_set() with correct nesting levels (data silently wrong). Covers
+  full node lifecycle, socket creation, property management, BMesh integration, and
+  registration patterns.
+  Keywords: custom node, SverchCustomTreeNode, sv_get, sv_set, node registration,
+  BMesh integration, node lifecycle, custom Sverchok node, addon.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

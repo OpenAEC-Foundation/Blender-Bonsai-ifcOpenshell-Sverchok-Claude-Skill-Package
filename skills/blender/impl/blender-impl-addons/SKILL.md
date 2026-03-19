@@ -1,6 +1,12 @@
 ---
 name: blender-impl-addons
-description: "Guides complete Blender addon development workflows including project structure for multi-file addons, testing strategies, extension packaging for extensions.blender.org, CI/CD pipelines, dependency management, and addon distribution. Activates when building production Blender addons, packaging extensions, or setting up addon development environments."
+description: >
+  Use when building a production Blender addon -- project structure, testing, CI/CD, or
+  packaging for extensions.blender.org. Prevents the common mistake of hardcoding paths
+  or skipping the extension manifest for Blender 4.2+. Covers multi-file addon structure,
+  testing strategies, dependency management, and distribution workflows.
+  Keywords: addon development, extension packaging, CI/CD, testing, multi-file addon,
+  blender_manifest.toml, distribution, extensions.blender.org.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 4.2+ for extensions, 3.x+ for legacy addons."
 metadata:
