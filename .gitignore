@@ -11,6 +11,9 @@ desktop.ini
 .vscode/
 *.code-workspace
 
+# Private prompt log
+PROMPTS.md
+
 # Temporary
 *.tmp
 *.bak

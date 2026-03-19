@@ -225,7 +225,7 @@ Official documentation, repositories, and reference materials used in this proje
 ### This Project
 | Source | URL | Purpose |
 |--------|-----|---------|
-| This Skill Package | https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package | [BROKEN] This repository (HTTP 404 — may be private/renamed) |
+| This Skill Package | https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package | This repository |
 | OpenAEC Foundation (org) | https://github.com/orgs/OpenAEC-Foundation/repositories | All foundation repositories (36 repos) |
 | OpenAEC Foundation Website | https://open-aec.com/ | Official OpenAEC Foundation website (redirected from openaec-foundation.github.io) |
 
@@ -270,4 +270,4 @@ Official documentation, repositories, and reference materials used in this proje
 | IFC Standard | 2026-03-06 | e-sources-verify | All 13 URLs OK. Added IFC Schema Specifications page. IFC5 Core Project Plan under review |
 | Sverchok | 2026-03-06 | e-sources-verify | All OK. Updated release to v1.4.0 (March 2025). GitHub Pages docs maintained at v1.4.0 |
 | Claude/Anthropic | 2026-03-06 | e-sources-verify, f-consolidator | All 17 URLs OK. Agent Skills spec, skill-creator patterns, progressive disclosure model verified. Claude Opus 4.6 latest |
-| OpenAEC Foundation | 2026-03-06 | e-sources-verify, f-consolidator | Skill Package repo [BROKEN] (404). Website→open-aec.com. 36 repos total. Ecosystem deep-dive: building.py, aec-scripts, monty-ifc-viewer, inb-template, ifcgit-4-nextcloud |
+| OpenAEC Foundation | 2026-03-19 | audit-remediation | Skill Package repo OK (200). Website→open-aec.com. 36 repos total |

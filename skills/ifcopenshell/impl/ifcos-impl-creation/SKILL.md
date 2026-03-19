@@ -490,15 +490,7 @@ ifcopenshell.api.run("pset.assign_pset", model,
 
 ## Visual Alternative: IfcSverchok
 
-For node-based visual IFC creation without writing Python scripts, use **IfcSverchok** — a 31-node bridge inside Sverchok that provides the same IFC creation pipeline as a visual node tree:
-
-- `SvIfcCreateProject` → equivalent to `project.create_file` + `root.create_entity(IfcProject)`
-- `SvIfcCreateEntity` → equivalent to `root.create_entity`
-- `SvIfcApi` → visual wrapper around any `ifcopenshell.api.run()` call
-- Two geometry conversion modes: `SvIfcBMeshToIfcRepr` (Blender mesh) and `SvIfcSverchokToIfcRepr` (Sverchok geometry)
-- Enable `use_bonsai_file` toggle to operate on Bonsai's active IFC file
-
-Refer to: `sverchok-impl-ifcsverchok`
+For node-based visual IFC creation, use **IfcSverchok** (31 nodes). Key nodes: `SvIfcCreateProject`, `SvIfcCreateEntity`, `SvIfcApi`. Refer to: `sverchok-impl-ifcsverchok`
 
 ## Reference Links
 

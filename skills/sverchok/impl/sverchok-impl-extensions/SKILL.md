@@ -492,14 +492,7 @@ All extensions follow the same base install: download zip from GitHub, Blender >
 ---
 
 ## Reference Links
-
-- [references/methods.md](references/methods.md) -- Extension registration API, nodes_index format, dependency management patterns
-- [references/examples.md](references/examples.md) -- Working code examples for extension development, SDF workflows, Open3D integration
-- [references/anti-patterns.md](references/anti-patterns.md) -- Common mistakes when developing or using Sverchok extensions
-
-### Official Sources
-- https://github.com/portnov/sverchok-extra
-- https://github.com/vicdoval/sverchok-open3d
-- https://github.com/victorcalixto/mega-polis
-- https://github.com/ladybug-tools/ladybug-blender
-- https://nortikin.github.io/sverchok/docs/introduction/sverchok_extensions.html
+- [references/methods.md](references/methods.md) -- Extension registration API, nodes_index format, dependency management
+- [references/examples.md](references/examples.md) -- Extension development, SDF workflows, Open3D integration examples
+- [references/anti-patterns.md](references/anti-patterns.md) -- Common extension development mistakes
+- Official: [sverchok-extra](https://github.com/portnov/sverchok-extra), [sverchok-open3d](https://github.com/vicdoval/sverchok-open3d), [Extensions Docs](https://nortikin.github.io/sverchok/docs/introduction/sverchok_extensions.html)

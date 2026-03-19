@@ -492,13 +492,7 @@ def unregister_keymaps():
 ---
 
 ## Reference Links
-
-- [references/methods.md](references/methods.md) — Registration API, manifest schema, build commands
-- [references/examples.md](references/examples.md) — Complete working addon and extension examples
-- [references/anti-patterns.md](references/anti-patterns.md) — Common addon development mistakes
-
-### Official Sources
-
-- https://developer.blender.org/docs/features/extensions/schema/1.0.0/
-- https://developer.blender.org/docs/features/extensions/moderation/guidelines/
-- https://docs.blender.org/api/current/info_overview.html
+- [references/methods.md](references/methods.md) -- Registration API, manifest schema, build commands
+- [references/examples.md](references/examples.md) -- Addon and extension examples
+- [references/anti-patterns.md](references/anti-patterns.md) -- Common addon development mistakes
+- Official: [Extension Schema](https://developer.blender.org/docs/features/extensions/schema/1.0.0/), [Guidelines](https://developer.blender.org/docs/features/extensions/moderation/guidelines/), [API Overview](https://docs.blender.org/api/current/info_overview.html)

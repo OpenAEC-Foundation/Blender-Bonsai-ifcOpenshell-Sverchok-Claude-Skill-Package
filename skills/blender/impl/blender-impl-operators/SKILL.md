@@ -489,14 +489,8 @@ bpy.app.timers.register(_process_queue, persistent=True)
 - [references/anti-patterns.md](references/anti-patterns.md) — Implementation mistakes with explanations and fixes
 
 ### Official Sources
-
-- https://docs.blender.org/api/current/bpy.types.Operator.html
-- https://docs.blender.org/api/current/bpy.app.timers.html
-- https://docs.blender.org/api/current/bpy_extras.io_utils.html
-- https://docs.blender.org/api/current/bpy.types.WindowManager.html
-- https://docs.blender.org/api/current/bpy.types.Timer.html
+- [Operator](https://docs.blender.org/api/current/bpy.types.Operator.html), [Timers](https://docs.blender.org/api/current/bpy.app.timers.html), [IO Utils](https://docs.blender.org/api/current/bpy_extras.io_utils.html), [WindowManager](https://docs.blender.org/api/current/bpy.types.WindowManager.html)
 
 ### Related Skills
-
-- [blender-syntax-operators](../../syntax/blender-syntax-operators/SKILL.md) — Operator class structure, return values, bl_options, naming conventions
-- [blender-core-api](../../core/blender-core-api/SKILL.md) — bpy module structure, context system, data access patterns
+- [blender-syntax-operators](../../syntax/blender-syntax-operators/SKILL.md) -- Operator class structure, return values, bl_options
+- [blender-core-api](../../core/blender-core-api/SKILL.md) -- bpy module structure, context system

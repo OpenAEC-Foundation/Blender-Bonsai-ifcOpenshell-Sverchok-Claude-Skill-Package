@@ -495,8 +495,4 @@ bpy.app.timers.register(my_deferred_function)
 - **bonsai-impl-clash** — Clash detection workflows
 
 ## Sources
-
-- Bonsai Documentation: https://docs.bonsaibim.org
-- IfcOpenShell GitHub: https://github.com/IfcOpenShell/IfcOpenShell
-- OSArch Community: https://community.osarch.org
-- IfcOpenShell API Docs: https://docs.ifcopenshell.org
+- [Bonsai Docs](https://docs.bonsaibim.org), [IfcOpenShell](https://github.com/IfcOpenShell/IfcOpenShell), [OSArch](https://community.osarch.org), [IfcOpenShell API](https://docs.ifcopenshell.org)

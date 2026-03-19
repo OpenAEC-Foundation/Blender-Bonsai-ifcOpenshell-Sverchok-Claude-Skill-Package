@@ -493,13 +493,7 @@ scene.render.fps = 24
 ---
 
 ## Reference Links
-
-- [references/methods.md](references/methods.md) — Complete method signatures for animation workflows
-- [references/examples.md](references/examples.md) — Full working examples for AEC animation scenarios
-- [references/anti-patterns.md](references/anti-patterns.md) — Common implementation mistakes and corrections
-
-### Official Sources
-
-- https://docs.blender.org/api/current/bpy.types.FCurve.html — FCurve, Action, NlaTrack, NlaStrip
-- https://docs.blender.org/api/current/bpy.types.Constraint.html — FollowPath, TrackTo, ChildOf
-- https://docs.blender.org/api/current/bpy.types.BoneCollection.html — 4.0+ bone collections
+- [references/methods.md](references/methods.md) -- Animation method signatures
+- [references/examples.md](references/examples.md) -- AEC animation examples
+- [references/anti-patterns.md](references/anti-patterns.md) -- Common animation mistakes
+- Official: [FCurve/Action/NLA](https://docs.blender.org/api/current/bpy.types.FCurve.html), [Constraints](https://docs.blender.org/api/current/bpy.types.Constraint.html), [BoneCollections 4.0+](https://docs.blender.org/api/current/bpy.types.BoneCollection.html)

@@ -21,6 +21,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 61 skills + Blender MCP + CLAUDE.md + SETUP.md deployed to workshop workspace
 - Decisions D-012 through D-015 (workspace deployment, dual CLAUDE.md, no setup script, Blender MCP only)
 
+## [Unreleased]
+
+### Added
+- Phase 2: Deep Research (next)
+
 ## [1.0.0] - 2026-03-06
 
 ### Added
@@ -40,11 +45,6 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - All 61 skills validated: <500 lines, 3+ reference files, English only, deterministic language
 - 244 reference files (methods.md, examples.md, anti-patterns.md)
 - Zero Dutch content, zero banned hedging language
-
-## [Unreleased]
-
-### Added
-- Phase 2: Deep Research (next)
 
 ## [0.1.0] - 2026-03-05
 
