@@ -156,6 +156,24 @@ Skills were created in parallel via [Open-Agents](https://github.com/OpenAEC-Fou
 | [Open-Agents](https://github.com/OpenAEC-Foundation/Open-Agents) | Multi-agent orchestration tooling |
 | [Impertio AI Ecosystem](https://github.com/OpenAEC-Foundation/Impertio-AI-Ecosystem-Deployment) | General AI workspace lessons |
 
+---
+
+## Companion Skills: Cross-Technology Integration
+
+This package covers Blender, Bonsai, IfcOpenShell, and Sverchok as individual technologies. When you need to **bridge** these tools with other AEC software, install the companion cross-technology package:
+
+> **[Cross-Tech AEC Integration Skills](https://github.com/OpenAEC-Foundation/Cross-Tech-AEC-Claude-Skill-Package)** — 15 skills for technology boundaries
+
+Relevant cross-tech skills for Blender/Bonsai users:
+
+| Skill | Boundary | What it adds |
+|-------|----------|-------------|
+| `crosstech-impl-speckle-blender` | Speckle ↔ Blender | Send/receive BIM data via Speckle, material mapping, Bonsai/IFC through Speckle |
+| `crosstech-impl-freecad-ifc-bridge` | FreeCAD ↔ IFC | Round-trip IFC editing between FreeCAD and IfcOpenShell |
+| `crosstech-core-ifc-schema-bridge` | IFC ↔ All formats | How IFC entities map to Blender objects, Three.js, web-ifc, FreeCAD, Speckle |
+| `crosstech-core-coordinate-systems` | BIM ↔ GIS | CRS transformations, axis conventions (Blender Z-up vs Three.js Y-up) |
+| `crosstech-errors-conversion` | Any ↔ Any | Diagnosing IFC conversion errors across all tools |
+
 ## License
 
 MIT License — see [LICENSE](LICENSE).
