@@ -4,15 +4,47 @@
 
 <p align="center">
   <a href="#installation"><img src="https://img.shields.io/badge/Claude_Code-Ready-27ca40?style=for-the-badge" alt="Claude Code Ready"></a>
+  <a href="#blender-mcp-live-connection-to-blender"><img src="https://img.shields.io/badge/Blender_MCP-Included-FF6B35?style=for-the-badge" alt="Blender MCP Included"></a>
   <a href="#version-compatibility"><img src="https://img.shields.io/badge/Blender-3.x_|_4.x_|_5.x-E87D0D?style=for-the-badge" alt="Blender Versions"></a>
   <a href="#version-compatibility"><img src="https://img.shields.io/badge/IFC-2X3_|_4_|_4X3-6B8FA3?style=for-the-badge" alt="IFC Schema Versions"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge" alt="MIT License"></a>
 </p>
 
 <p align="center">
-  <strong>73 deterministic skills</strong> enabling Claude AI to generate flawless Blender/BIM/IFC/Sverchok code.<br>
+  <strong>73 deterministic skills + Blender MCP integration</strong> enabling Claude AI to generate and execute flawless Blender/BIM/IFC/Sverchok code.<br>
   Built with the <a href="https://github.com/OpenAEC-Foundation/Open-Agents">Open-Agents</a> multi-agent orchestration framework.
 </p>
+
+---
+
+## Blender MCP: Live Connection to Blender
+
+This package includes a pre-configured `.mcp.json` that connects Claude Code directly to a running Blender instance via the [Blender MCP](https://github.com/ahujasid/blender-mcp) server. This means Claude can read your scene, execute Python code in Blender, and take viewport screenshots in real time.
+
+```
+Claude Code ──MCP Protocol──> blender-mcp server ──TCP:9876──> Blender Addon ──bpy──> Blender Scene
+```
+
+| MCP Tool | What it does |
+|----------|-------------|
+| `get_scene_info` | Read current scene state (objects, materials, settings) |
+| `execute_blender_code` | Run Python code directly in Blender |
+| `get_viewport_screenshot` | Capture the 3D viewport as an image |
+| `get_object_info` | Get details of a specific object |
+
+### Quick start (if you already have the prerequisites)
+
+1. Install the [Blender MCP addon](https://github.com/ahujasid/blender-mcp) in Blender (Edit > Preferences > Add-ons > Install from Disk)
+2. In Blender, open the sidebar (`N`), go to the **BlenderMCP** tab, click **"Connect to Claude"**
+3. Start Claude Code in this workspace. The `.mcp.json` is already configured.
+
+### Full setup guide
+
+See **[SETUP.md](SETUP.md)** for complete step-by-step installation instructions covering:
+- Node.js, Claude Code CLI, uv package manager
+- Blender MCP addon installation (the bridge between Claude and Blender)
+- Bonsai/IfcOpenShell/Sverchok addon installation
+- MCP configuration and troubleshooting
 
 ---
 
@@ -64,41 +96,46 @@ See [INDEX.md](INDEX.md) for the full skill catalog with descriptions.
 
 ## Installation
 
+> **First time?** Follow the complete [SETUP.md](SETUP.md) guide. It covers everything from installing Node.js to verifying the Blender MCP connection.
+
 ### Claude Code (CLI)
 
-**Option 1 — Copy skills into your project:**
+**Option 1 — Copy skills + MCP config into your project:**
 ```bash
 # Clone the repository
 git clone https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package.git
 
-# Copy the skills you need into your project
+# Copy skills into your project
 cp -r Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package/skills/blender/ your-project/.claude/skills/blender/
 cp -r Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package/skills/ifcopenshell/ your-project/.claude/skills/ifcopenshell/
+
+# Copy the Blender MCP configuration
+cp Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package/.mcp.json your-project/.mcp.json
 ```
 
-**Option 2 — Reference in CLAUDE.md:**
-```markdown
-# In your project's CLAUDE.md, add:
-When working with Blender/IFC/Bonsai code, load and follow the skills in:
-/path/to/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package/skills/
-```
+**Option 2 — Install via [OpenAEC Workspace Composer](https://github.com/OpenAEC-Foundation/OpenAEC-Workspace-Composer):**
+
+The Workspace Composer sets up a complete workspace with skills and MCP configuration automatically. Select the "Blender/Bonsai" package and the composer handles the rest.
 
 **Option 3 — Install per-package (use only what you need):**
 ```bash
 # Only Blender skills
-cp -r skills/blender/ ~/.claude/skills/blender/
+cp -r skills/blender/ your-project/.claude/skills/blender/
 
 # Only IfcOpenShell skills
-cp -r skills/ifcopenshell/ ~/.claude/skills/ifcopenshell/
+cp -r skills/ifcopenshell/ your-project/.claude/skills/ifcopenshell/
 
 # Only Bonsai skills
-cp -r skills/bonsai/ ~/.claude/skills/bonsai/
+cp -r skills/bonsai/ your-project/.claude/skills/bonsai/
 
 # Only Sverchok skills
-cp -r skills/sverchok/ ~/.claude/skills/sverchok/
+cp -r skills/sverchok/ your-project/.claude/skills/sverchok/
 
 # Cross-technology workflows
-cp -r skills/aec-cross-tech/ ~/.claude/skills/aec-cross-tech/
+cp -r skills/aec-cross-tech/ your-project/.claude/skills/aec-cross-tech/
+
+# Always include the MCP config for Blender connectivity
+cp .mcp.json your-project/.mcp.json
 ```
 
 ---
@@ -138,6 +175,7 @@ Skills were created in parallel via [Open-Agents](https://github.com/OpenAEC-Fou
 
 | Document | Purpose |
 |----------|---------|
+| [SETUP.md](SETUP.md) | Complete setup guide (Blender MCP, addons, Claude Code) |
 | [INDEX.md](INDEX.md) | Full skill catalog with descriptions |
 | [ROADMAP.md](ROADMAP.md) | Project status (single source of truth) |
 | [REQUIREMENTS.md](REQUIREMENTS.md) | What skills must achieve, quality guarantees |
@@ -152,6 +190,8 @@ Skills were created in parallel via [Open-Agents](https://github.com/OpenAEC-Fou
 
 | Project | Role |
 |---------|------|
+| [OpenAEC Workspace Composer](https://github.com/OpenAEC-Foundation/OpenAEC-Workspace-Composer) | One-click workspace setup with skills + MCP |
+| [Blender MCP](https://github.com/ahujasid/blender-mcp) | The MCP server that bridges Claude to Blender |
 | [ERPNext Skill Package](https://github.com/OpenAEC-Foundation/ERPNext_Anthropic_Claude_Development_Skill_Package) | Proven methodology template |
 | [Open-Agents](https://github.com/OpenAEC-Foundation/Open-Agents) | Multi-agent orchestration tooling |
 | [Impertio AI Ecosystem](https://github.com/OpenAEC-Foundation/Impertio-AI-Ecosystem-Deployment) | General AI workspace lessons |
