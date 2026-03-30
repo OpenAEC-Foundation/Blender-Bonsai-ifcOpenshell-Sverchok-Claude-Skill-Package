@@ -180,14 +180,14 @@ only_walls = model.by_type("IfcWall", include_subtypes=False)
 # Schema-agnostic
 wall = model.by_type("IfcWall")[0]
 
-# Named access — PascalCase matching the IFC schema
+# Named access: PascalCase matching the IFC schema
 name = wall.Name                    # str or None
 global_id = wall.GlobalId           # str (22-char encoded GUID)
 description = wall.Description      # str or None
 object_type = wall.ObjectType       # str or None
 owner_history = wall.OwnerHistory   # entity_instance or None
 
-# Positional access — fragile, varies by type and schema
+# Positional access: fragile, varies by type and schema
 name = wall[2]  # AVOID: index 2 = Name for IfcWall, but varies for other types
 
 # Check if attribute has a value (IFC $null → Python None)
@@ -230,7 +230,7 @@ def process_copy(filepath, output_path):
     local_model.write(output_path)
 
 # UNSAFE: Multiple threads writing to the SAME model object
-# This WILL corrupt data or crash — no C++ locks exist
+# This WILL corrupt data or crash: no C++ locks exist
 ```
 
 ### Pattern 7: Memory Management for Large Models
@@ -253,7 +253,7 @@ import gc
 gc.collect()  # Ensures Python wrappers are cleaned up and C++ memory freed
 ```
 
-### Pattern 8: File Lifecycle — Keep File Reference Alive
+### Pattern 8: File Lifecycle: Keep File Reference Alive
 
 ```python
 # Schema-agnostic
@@ -286,7 +286,7 @@ schema = model.schema  # "IFC2X3", "IFC4", "IFC4X3"
 
 # Entities that differ by schema:
 # IFC2X3/IFC4: IfcWallStandardCase exists
-# IFC4X3: IfcWallStandardCase does NOT exist — use IfcWall
+# IFC4X3: IfcWallStandardCase does NOT exist: use IfcWall
 
 # IFC2X3: IfcDoorStyle, IfcWindowStyle
 # IFC4+:  IfcDoorType, IfcWindowType
@@ -331,7 +331,7 @@ conda install -c conda-forge ifcopenshell
 ### Blender Integration
 
 ```bash
-# Bonsai addon bundles ifcopenshell — no separate install needed
+# Bonsai addon bundles ifcopenshell: no separate install needed
 # For standalone install into Blender's Python:
 /path/to/blender/python/bin/python -m pip install ifcopenshell
 ```

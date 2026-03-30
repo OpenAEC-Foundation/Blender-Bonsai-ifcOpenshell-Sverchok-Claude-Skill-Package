@@ -63,28 +63,28 @@ bpy.data
 Use `bpy.data` for direct data manipulation (fast, no undo). Use `bpy.ops` only when undo support or user-facing actions are required.
 
 ```python
-# Blender 3.x/4.x/5.x — CORRECT: direct data access (no context required)
+# Blender 3.x/4.x/5.x: CORRECT: direct data access (no context required)
 obj = bpy.data.objects.get("Cube")
 if obj:
     obj.location = (1.0, 0.0, 0.0)
 
-# Blender 3.x/4.x/5.x — CORRECT: operator when undo is needed
+# Blender 3.x/4.x/5.x: CORRECT: operator when undo is needed
 bpy.ops.object.location_clear()  # Requires correct context
 ```
 
 ### Pattern 2: Context Overrides (version-critical)
 
 ```python
-# Blender 3.x ONLY — BROKEN in 4.0+
+# Blender 3.x ONLY: BROKEN in 4.0+
 override = bpy.context.copy()
 override['active_object'] = obj
 bpy.ops.object.modifier_apply(override, modifier="Subsurf")  # REMOVED in 4.0
 
-# Blender 3.2+ and 4.x/5.x — CORRECT
+# Blender 3.2+ and 4.x/5.x: CORRECT
 with bpy.context.temp_override(object=obj, active_object=obj):
     bpy.ops.object.modifier_apply(modifier="Subsurf")
 
-# Blender 4.x/5.x — Override area for viewport operators
+# Blender 4.x/5.x: Override area for viewport operators
 for window in bpy.context.window_manager.windows:
     for area in window.screen.areas:
         if area.type == 'VIEW_3D':
@@ -96,7 +96,7 @@ for window in bpy.context.window_manager.windows:
 ### Pattern 3: ID Data Block Lifecycle
 
 ```python
-# Blender 3.x/4.x/5.x — create, link, manage user count
+# Blender 3.x/4.x/5.x: create, link, manage user count
 mesh = bpy.data.meshes.new("MyMesh")         # Creates data block
 obj = bpy.data.objects.new("MyObject", mesh) # Creates object referencing mesh
 bpy.context.collection.objects.link(obj)     # REQUIRED: link to scene collection
@@ -111,7 +111,7 @@ bpy.data.meshes.remove(mesh)
 ### Pattern 4: Dependency Graph
 
 ```python
-# Blender 3.x/4.x/5.x — get evaluated (post-modifier) data
+# Blender 3.x/4.x/5.x: get evaluated (post-modifier) data
 depsgraph = bpy.context.evaluated_depsgraph_get()
 obj_eval = obj.evaluated_get(depsgraph)       # Evaluated object
 mesh_eval = obj_eval.to_mesh()                # Evaluated mesh (read-only)
@@ -132,7 +132,7 @@ for instance in depsgraph.object_instances:
 ### Object Selection and Activation
 
 ```python
-# Blender 3.x/4.x/5.x — correct API (2.80+ style)
+# Blender 3.x/4.x/5.x: correct API (2.80+ style)
 obj.select_set(True)                              # NOT obj.select = True
 bpy.context.view_layer.objects.active = obj       # NOT scene.objects.active
 ```
@@ -140,7 +140,7 @@ bpy.context.view_layer.objects.active = obj       # NOT scene.objects.active
 ### RNA Introspection
 
 ```python
-# Blender 3.x/4.x/5.x — inspect properties via RNA
+# Blender 3.x/4.x/5.x: inspect properties via RNA
 obj = bpy.context.active_object
 for prop in obj.bl_rna.properties:
     print(f"{prop.identifier}: {prop.type}")
@@ -186,7 +186,7 @@ if bpy.app.version >= (5, 0, 0):
 ### Creating and Linking Objects
 
 ```python
-# Blender 3.x/4.x/5.x — complete pattern
+# Blender 3.x/4.x/5.x: complete pattern
 mesh = bpy.data.meshes.new("MyMesh")
 verts = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
 faces = [(0, 1, 2, 3)]

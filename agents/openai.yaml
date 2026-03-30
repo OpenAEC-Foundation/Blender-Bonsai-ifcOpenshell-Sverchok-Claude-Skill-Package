@@ -1,0 +1,6 @@
+# OpenAI Codex skill discovery
+name: blender-bonsai-ifcopenshell-sverchok-claude-skill-package
+description: >
+  73 deterministic Claude AI skills for Blender, Bonsai, IfcOpenShell & Sverchok.
+  AEC Python development skill package.
+skills_directory: ./skills

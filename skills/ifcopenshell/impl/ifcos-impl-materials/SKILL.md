@@ -76,7 +76,7 @@ Where to assign the material?
 ### Pattern 1: Create and Assign a Single Material
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.api
 
@@ -92,7 +92,7 @@ ifcopenshell.api.material.assign_material(model,
 ### Pattern 2: Create a Layered Wall Material (IfcMaterialLayerSet)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.api
 
 # Step 1: Create individual materials
@@ -131,7 +131,7 @@ ifcopenshell.api.material.assign_material(model,
 ### Pattern 3: Create a Profiled Beam Material (IfcMaterialProfileSet)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.api
 
 # Step 1: Create material
@@ -160,7 +160,7 @@ ifcopenshell.api.material.assign_material(model,
 ### Pattern 4: Constituent Set for Composite Elements (IFC4+ Only)
 
 ```python
-# IfcOpenShell — IFC4 and IFC4X3 ONLY (NOT IFC2X3)
+# IfcOpenShell: IFC4 and IFC4X3 ONLY (NOT IFC2X3)
 import ifcopenshell.api
 
 # Step 1: Create materials
@@ -188,7 +188,7 @@ ifcopenshell.api.material.assign_material(model,
 ### Pattern 5: Query Material from an Element
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.util.element
 
 # Get material (returns IfcMaterial, IfcMaterialLayerSet, etc.)
@@ -216,7 +216,7 @@ elif material.is_a("IfcMaterialConstituentSet"):
 ### Pattern 6: Add Visual Style to a Material
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.api
 
 # Create a surface style (visual appearance)
@@ -272,14 +272,14 @@ ifcopenshell.api.style.assign_representation_styles(model,
 ### Remove Material from Element
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 ifcopenshell.api.material.unassign_material(model, products=[wall])
 ```
 
 ### Copy a Material with All Properties
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 new_material = ifcopenshell.api.material.copy_material(model,
     material=existing_material)
 # Copies psets and styles. Set items are copied but underlying materials reused.
@@ -288,7 +288,7 @@ new_material = ifcopenshell.api.material.copy_material(model,
 ### Edit Material Properties
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 ifcopenshell.api.material.edit_material(model,
     material=concrete, attributes={"Name": "Concrete C35/45", "Category": "concrete"})
 ```
@@ -296,7 +296,7 @@ ifcopenshell.api.material.edit_material(model,
 ### Reorder Layers in a Layer Set
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 ifcopenshell.api.material.reorder_set_item(model,
     material_set=layer_set, old_index=2, new_index=0)
 ```
@@ -304,7 +304,7 @@ ifcopenshell.api.material.reorder_set_item(model,
 ### Edit Layer Usage (Offset from Reference Line)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Get the usage from the element
 material = ifcopenshell.util.element.get_material(wall)
 if material.is_a("IfcMaterialLayerSetUsage"):
@@ -315,7 +315,7 @@ if material.is_a("IfcMaterialLayerSetUsage"):
 ### Delete Material and Material Set
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # First unassign from all products
 ifcopenshell.api.material.unassign_material(model, products=[wall_type])
 
@@ -345,7 +345,7 @@ ifcopenshell.api.material.remove_material(model, material=brick)
 ### Schema-Aware Material Assignment
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.util.element
 
 if model.schema == "IFC2X3":

@@ -88,7 +88,7 @@ What coordinate space?
 ### Pattern 1: Configure Geometry Settings
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.geom
 
 settings = ifcopenshell.geom.settings()
@@ -112,7 +112,7 @@ settings_fast.set(settings_fast.USE_WORLD_COORDS, True)
 ### Pattern 2: Extract Single Element Geometry
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 import numpy as np
@@ -139,7 +139,7 @@ if shape:
 ### Pattern 3: Batch Process with Iterator
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 import multiprocessing
@@ -166,7 +166,7 @@ if iterator.initialize():
 ### Pattern 4: Filtered Iterator
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Process only walls
 iterator = ifcopenshell.geom.iterator(
     settings, model, multiprocessing.cpu_count(),
@@ -188,7 +188,7 @@ if iterator.initialize():
 ### Pattern 5: Create Representation Context (Required Before Any Geometry Creation)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.api
 
@@ -210,7 +210,7 @@ body = ifcopenshell.api.run("context.add_context", model,
 ### Pattern 6: Create Wall Geometry
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 wall = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWall", name="W-01")
 
@@ -229,7 +229,7 @@ ifcopenshell.api.run("geometry.edit_object_placement", model,
 ### Pattern 7: Create Profile Extrusion (Beam/Column)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 column = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcColumn", name="C-01")
 
@@ -251,7 +251,7 @@ ifcopenshell.api.run("geometry.edit_object_placement", model,
 ### Pattern 8: Create Mesh Geometry (Arbitrary Shape)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 element = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcFurniture", name="Table")
 
@@ -272,7 +272,7 @@ ifcopenshell.api.run("geometry.edit_object_placement", model,
 ### Pattern 9: Object Placement with Transformation Matrix
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import numpy as np
 import ifcopenshell.util.placement
 
@@ -295,7 +295,7 @@ ifcopenshell.api.run("geometry.edit_object_placement", model,
 ### Pattern 10: Boolean Operations (CSG)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Create a wall with an opening (boolean subtraction)
 wall = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWall", name="Wall with Opening")

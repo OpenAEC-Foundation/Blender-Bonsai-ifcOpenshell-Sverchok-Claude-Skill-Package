@@ -78,7 +78,7 @@ What render engine does the task require?
 ALWAYS use this pattern when targeting multiple Blender versions:
 
 ```python
-# Blender 3.x / 4.x / 5.x — Version-safe EEVEE selection
+# Blender 3.x / 4.x / 5.x: Version-safe EEVEE selection
 import bpy
 scene = bpy.context.scene
 
@@ -93,7 +93,7 @@ else:
 ### Pattern 2: Render Settings Configuration
 
 ```python
-# Blender 3.x / 4.x / 5.x — Configure render output
+# Blender 3.x / 4.x / 5.x: Configure render output
 scene = bpy.context.scene
 render = scene.render
 
@@ -121,7 +121,7 @@ render.fps = 24
 ### Pattern 3: Cycles Configuration
 
 ```python
-# Blender 3.x / 4.x / 5.x — Cycles setup
+# Blender 3.x / 4.x / 5.x: Cycles setup
 scene.render.engine = 'CYCLES'
 cycles = scene.cycles
 
@@ -151,7 +151,7 @@ cycles.transparent_max_bounces = 8
 ALWAYS call `get_devices()` before enabling GPU devices:
 
 ```python
-# Blender 3.x / 4.x / 5.x — Cycles GPU configuration
+# Blender 3.x / 4.x / 5.x: Cycles GPU configuration
 prefs = bpy.context.preferences
 cycles_prefs = prefs.addons['cycles'].preferences
 
@@ -169,7 +169,7 @@ for device in cycles_prefs.devices:
 ### Pattern 5: Camera Creation and Configuration
 
 ```python
-# Blender 3.x / 4.x / 5.x — Camera setup
+# Blender 3.x / 4.x / 5.x: Camera setup
 cam_data = bpy.data.cameras.new("RenderCamera")
 cam_obj = bpy.data.objects.new("RenderCamera", cam_data)
 bpy.context.collection.objects.link(cam_obj)  # REQUIRED: link to collection
@@ -194,7 +194,7 @@ cam_obj.rotation_euler = (1.1, 0.0, 0.785)
 ### Pattern 6: Depth of Field
 
 ```python
-# Blender 3.x / 4.x / 5.x — Depth of field
+# Blender 3.x / 4.x / 5.x: Depth of field
 cam_data.dof.use_dof = True
 cam_data.dof.focus_object = bpy.data.objects.get("FocusTarget")
 cam_data.dof.aperture_fstop = 2.8
@@ -211,7 +211,7 @@ cam_data.sensor_height = 24.0  # mm
 ### Render a Still Image
 
 ```python
-# Blender 3.x / 4.x / 5.x — Render and save a still image
+# Blender 3.x / 4.x / 5.x: Render and save a still image
 scene = bpy.context.scene
 scene.render.filepath = "/tmp/output.png"
 scene.render.image_settings.file_format = 'PNG'
@@ -221,7 +221,7 @@ bpy.ops.render.render(write_still=True)  # write_still=True is REQUIRED
 ### Render an Animation
 
 ```python
-# Blender 3.x / 4.x / 5.x — Render animation sequence
+# Blender 3.x / 4.x / 5.x: Render animation sequence
 scene = bpy.context.scene
 scene.frame_start = 1
 scene.frame_end = 250
@@ -232,7 +232,7 @@ bpy.ops.render.render(animation=True)
 ### Batch Render Multiple Cameras
 
 ```python
-# Blender 3.x / 4.x / 5.x — Batch render from all cameras
+# Blender 3.x / 4.x / 5.x: Batch render from all cameras
 import bpy
 
 scene = bpy.context.scene
@@ -262,7 +262,7 @@ bpy.ops.render.render(write_still=True)
 ### Create Light Sources
 
 ```python
-# Blender 3.x / 4.x / 5.x — Light types
+# Blender 3.x / 4.x / 5.x: Light types
 # Point light
 point_data = bpy.data.lights.new("PointLight", type='POINT')
 point_data.energy = 1000.0      # Watts
@@ -301,7 +301,7 @@ spot_data.spot_blend = 0.15    # Soft edge (0=hard, 1=fully soft)
 ### EEVEE-Specific Settings (Version-Dependent)
 
 ```python
-# Blender 4.2+ — EEVEE settings via scene.eevee
+# Blender 4.2+: EEVEE settings via scene.eevee
 eevee = scene.eevee
 
 # Shadows
@@ -322,11 +322,11 @@ eevee.ray_tracing_method = 'SCREEN'  # 'SCREEN' or 'PROBE'
 ### Compositor Node Access (Version-Dependent)
 
 ```python
-# Blender 3.x / 4.x — Compositor node tree
+# Blender 3.x / 4.x: Compositor node tree
 scene.use_nodes = True           # Enable compositor  (DEPRECATED in 5.0)
 tree = scene.node_tree           # Access node tree   (REMOVED in 5.0)
 
-# Blender 5.0+ — Compositor node group
+# Blender 5.0+: Compositor node group
 tree = scene.compositing_node_group  # New accessor
 ```
 

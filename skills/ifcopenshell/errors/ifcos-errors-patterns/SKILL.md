@@ -66,7 +66,7 @@ Error occurred?
 IFC has three major schema versions with different entity names. Using an entity that does not exist in the file's schema raises `RuntimeError`.
 
 ```python
-# IfcOpenShell — schema-agnostic pattern
+# IfcOpenShell: schema-agnostic pattern
 import ifcopenshell
 
 model = ifcopenshell.open("model.ifc")
@@ -212,7 +212,7 @@ wall_id = wall.id()
 wall_name = wall.Name  # Works fine
 
 model.remove(wall)
-# wall is NOW INVALID — the C++ object is destroyed
+# wall is NOW INVALID: the C++ object is destroyed
 
 # WRONG: Using invalidated reference
 print(wall.Name)   # RuntimeError or undefined behavior
@@ -399,7 +399,7 @@ OwnerHistory is REQUIRED on most entities in IFC2X3 but OPTIONAL in IFC4/IFC4X3.
 model = ifcopenshell.file(schema="IFC2X3")
 wall = model.create_entity("IfcWallStandardCase",
     GlobalId=ifcopenshell.guid.new(), Name="Wall")
-# File is INVALID — validators will reject it
+# File is INVALID: validators will reject it
 
 # CORRECT: Use ifcopenshell.api (handles OwnerHistory automatically)
 model = ifcopenshell.file(schema="IFC2X3")

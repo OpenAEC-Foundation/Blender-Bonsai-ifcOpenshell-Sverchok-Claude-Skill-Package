@@ -111,7 +111,7 @@ Use when: creating a Geometry Nodes setup and assigning it to an object.
 ### Modifier Input Helper Pattern
 
 ```python
-# Blender 4.0+ — ALWAYS use this pattern to set modifier inputs
+# Blender 4.0+: ALWAYS use this pattern to set modifier inputs
 def set_geonodes_inputs(modifier, values_dict):
     """Set Geometry Nodes modifier inputs by name.
 
@@ -128,7 +128,7 @@ def set_geonodes_inputs(modifier, values_dict):
 ### Interface Socket Defaults Pattern
 
 ```python
-# Blender 4.0+ — Set defaults, min, max on interface sockets
+# Blender 4.0+: Set defaults, min, max on interface sockets
 def configure_socket_defaults(group, config):
     """Configure socket defaults after creation.
 
@@ -282,7 +282,7 @@ Use when: creating a reusable node group (any type).
 ### Using a Group Inside Another Tree
 
 ```python
-# Blender 4.0+ — Embed a node group inside a tree
+# Blender 4.0+: Embed a node group inside a tree
 group_node = tree.nodes.new('GeometryNodeGroup')  # or 'ShaderNodeGroup'
 group_node.node_tree = bpy.data.node_groups["MyGroup"]
 group_node.location = (x, y)

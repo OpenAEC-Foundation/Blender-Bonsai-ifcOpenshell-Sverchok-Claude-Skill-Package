@@ -21,7 +21,7 @@ metadata:
 > **IFC Schemas**: IFC2X3, IFC4, IFC4X3
 > **Dependencies**: bonsai-core-architecture, bonsai-syntax-properties, ifcos-impl-validation
 
-## Quick Reference — When to Activate
+## Quick Reference: When to Activate
 
 Activate this validator when the user:
 
@@ -46,7 +46,7 @@ Activate this validator when the user:
 
 ---
 
-## Validation Process — Execution Order
+## Validation Process: Execution Order
 
 Execute these phases sequentially. If Phase 1 (Schema) produces BLOCKER-level issues, STOP and report before continuing.
 
@@ -410,7 +410,7 @@ Issue found during validation
 
 ---
 
-## IDS Integration — ifctester Usage Patterns
+## IDS Integration: ifctester Usage Patterns
 
 ### Core Workflow
 

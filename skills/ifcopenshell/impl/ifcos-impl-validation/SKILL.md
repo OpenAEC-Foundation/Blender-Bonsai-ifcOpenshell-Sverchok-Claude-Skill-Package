@@ -72,7 +72,7 @@ What are you validating?
 ### Pattern 1: Basic Schema Validation
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.validate
 import logging
@@ -93,7 +93,7 @@ ifcopenshell.validate.validate(model, logger)
 ### Pattern 2: Programmatic Validation with json_logger
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.validate
 
@@ -117,7 +117,7 @@ else:
 ### Pattern 3: Detect Validation Issues (Pass/Fail Gate)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.validate
 import logging
@@ -142,7 +142,7 @@ else:
 ### Pattern 4: IDS Validation with ifctester
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifctester
 import ifctester.ids
@@ -170,7 +170,7 @@ html_reporter.to_file("validation_report.html")
 ### Pattern 5: Georeferencing Validation
 
 ```python
-# IfcOpenShell — IFC4 / IFC4X3
+# IfcOpenShell: IFC4 / IFC4X3
 import ifcopenshell
 
 model = ifcopenshell.open("building.ifc")
@@ -224,7 +224,7 @@ IDS is a buildingSMART standard (ISO 7817-3) that defines machine-readable infor
 ### Creating IDS Programmatically
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifctester.ids
 
 # Create new IDS document
@@ -299,7 +299,7 @@ ids.to_xml("project_requirements.ids")
 ### Pattern: Property Set Completeness Check
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.element
 
@@ -333,7 +333,7 @@ for error in errors:
 ### Pattern: Spatial Structure Validation
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.element
 
@@ -357,7 +357,7 @@ def validate_spatial_containment(model):
 ### Automated QA Pipeline
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.validate
 import ifctester

@@ -25,7 +25,7 @@ dependencies:
 
 Systematic validation checklist for reviewing Blender Python code. Run this checklist against any Blender Python code to identify errors, deprecations, and anti-patterns.
 
-## Quick Reference — When to Activate
+## Quick Reference: When to Activate
 
 Activate this validator when:
 - Reviewing, auditing, or validating Blender Python scripts

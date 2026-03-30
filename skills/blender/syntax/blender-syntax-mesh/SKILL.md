@@ -126,11 +126,11 @@ mesh.vertices.add(n_verts)
 mesh.loops.add(n_tris * 3)
 mesh.polygons.add(n_tris)
 
-# Vertex coordinates — flat array, length = n_verts * 3
+# Vertex coordinates: flat array, length = n_verts * 3
 coords = np.random.rand(n_verts * 3).astype(np.float32)
 mesh.vertices.foreach_set("co", coords)
 
-# Loop vertex indices — flat array, length = n_tris * 3
+# Loop vertex indices: flat array, length = n_tris * 3
 loop_verts = np.arange(n_tris * 3, dtype=np.int32)
 mesh.loops.foreach_set("vertex_index", loop_verts)
 
@@ -181,7 +181,7 @@ bm = bmesh.from_edit_mesh(obj.data)
 v = bm.verts.new((2, 0, 0))
 bm.verts.ensure_lookup_table()
 
-# Sync changes — do NOT call bm.free()
+# Sync changes: do NOT call bm.free()
 bmesh.update_edit_mesh(obj.data, loop_triangles=True, destructive=True)
 ```
 

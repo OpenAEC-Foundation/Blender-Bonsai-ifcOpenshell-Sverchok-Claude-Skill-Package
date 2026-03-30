@@ -92,7 +92,7 @@ Follow this EXACT order:
 ### Pattern 1: Complete IFC4 Model from Scratch
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 import ifcopenshell
 import ifcopenshell.api
 
@@ -155,7 +155,7 @@ model.write("output.ifc")
 ### Pattern 2: IFC2X3 Model with Required OwnerHistory
 
 ```python
-# IfcOpenShell — IFC2X3
+# IfcOpenShell: IFC2X3
 import ifcopenshell
 import ifcopenshell.api
 
@@ -172,7 +172,7 @@ user = ifcopenshell.api.run("owner.add_person_and_organisation", model,
 application = ifcopenshell.api.run("owner.add_application", model)
 ifcopenshell.api.run("owner.set_user", model, user=user)
 
-# Now create entities — OwnerHistory is automatically attached
+# Now create entities: OwnerHistory is automatically attached
 project = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcProject", name="Legacy Project")
 ifcopenshell.api.run("unit.assign_unit", model)
@@ -195,7 +195,7 @@ ifcopenshell.api.run("aggregate.assign_object", model,
 ### Pattern 3: Spatial Hierarchy with Multiple Storeys
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 # After project, units, and contexts are set up:
 site = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcSite", name="Main Site")
@@ -233,7 +233,7 @@ for storey_obj, elevation in [(basement, -3.0), (ground, 0.0),
 ### Pattern 4: Creating Elements with Type Assignment
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 # Create a wall type with material layers
 wall_type = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWallType", name="WT-200 External")
@@ -276,7 +276,7 @@ ifcopenshell.api.run("type.assign_type", model,
 ### Pattern 5: Creating Openings (Doors and Windows)
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 # Prerequisites: wall exists, body context exists, storey exists
 
 # Create opening element
@@ -305,7 +305,7 @@ ifcopenshell.api.run("spatial.assign_container", model,
 ### Pattern 6: Property Sets and Quantity Sets
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 # Add standard property set to wall
 pset = ifcopenshell.api.run("pset.add_pset", model,
     product=wall, name="Pset_WallCommon")
@@ -342,7 +342,7 @@ ifcopenshell.api.run("pset.edit_pset", model, pset=custom_pset, properties={
 ### Pattern 7: Slab and Column Creation
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 # Slab with polyline footprint
 slab = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcSlab", name="Floor Slab", predefined_type="FLOOR")
@@ -419,7 +419,7 @@ ifcopenshell.api.run("spatial.assign_container", model,
 ### Set Up Geometric Contexts
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 # Root context (REQUIRED before any subcontexts)
 model3d = ifcopenshell.api.run("context.add_context", model,
     context_type="Model")
@@ -445,7 +445,7 @@ plan_body = ifcopenshell.api.run("context.add_context", model,
 ### Position Elements with Transformation Matrix
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 import numpy as np
 
 # Place wall at specific X, Y, Z coordinates
@@ -473,7 +473,7 @@ ifcopenshell.api.run("geometry.edit_object_placement", model,
 ### Shared Property Sets Across Multiple Elements
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 # Create pset on first element
 pset = ifcopenshell.api.run("pset.add_pset", model,
     product=wall1, name="Pset_WallCommon")

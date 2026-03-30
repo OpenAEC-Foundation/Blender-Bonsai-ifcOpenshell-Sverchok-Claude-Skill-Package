@@ -73,7 +73,7 @@ Need environmental analysis?
 
 ---
 
-## Sverchok-Extra — Advanced Geometry Nodes
+## Sverchok-Extra: Advanced Geometry Nodes
 
 **Source**: https://github.com/portnov/sverchok-extra
 **Author**: Ilya Portnov
@@ -180,7 +180,7 @@ Need environmental analysis?
 
 ---
 
-## Sverchok-Open3d — Point Cloud and Mesh Processing
+## Sverchok-Open3d: Point Cloud and Mesh Processing
 
 **Source**: https://github.com/vicdoval/sverchok-open3d
 **Author**: Victor Doval
@@ -231,7 +231,7 @@ Sverchok-Open3d defines custom socket types for Open3D data structures (PointClo
 
 ## Other Extensions
 
-### Mega-Polis — Urban Design and GIS
+### Mega-Polis: Urban Design and GIS
 
 **Source**: https://github.com/victorcalixto/mega-polis
 **Status**: Experimental
@@ -244,7 +244,7 @@ Sverchok-Open3d defines custom socket types for Open3D data structures (PointClo
 | **Generation** | Mesh from coordinates, lat/lon conversion, GeoJSON export |
 | **Visualisation** | Bokeh/Plotly dashboards, Seaborn plots, WebVR/A-Frame |
 
-### Ladybug Tools — Environmental Analysis
+### Ladybug Tools: Environmental Analysis
 
 **Source**: https://github.com/ladybug-tools/ladybug-blender
 **Status**: Alpha (incomplete)
@@ -252,7 +252,7 @@ Sverchok-Open3d defines custom socket types for Open3D data structures (PointClo
 
 Provides Sverchok nodes for weather data analysis, radiation calculations, and comfort analysis. Currently supports only Ladybug nodes (Honeybee, Dragonfly, Butterfly not yet available).
 
-### Sverchok-Bmesh — BMesh Operations
+### Sverchok-Bmesh: BMesh Operations
 
 **Status**: Stable
 **Dependencies**: None (uses Blender's built-in BMesh API)
@@ -263,10 +263,10 @@ Exposes Blender's BMesh operators as Sverchok nodes for advanced mesh editing op
 
 ## Essential Patterns
 
-### Pattern 1: Extension Development — Minimal Skeleton
+### Pattern 1: Extension Development: Minimal Skeleton
 
 ```python
-# __init__.py — Minimum viable Sverchok extension
+# __init__.py: Minimum viable Sverchok extension
 # Blender 4.0+/5.x with Sverchok v1.4.0+
 
 bl_info = {
@@ -328,7 +328,7 @@ my_sverchok_extension/
   json_examples/           # (optional) example .json node trees
 ```
 
-### Pattern 3: Node Registration — 7 Mandatory Elements
+### Pattern 3: Node Registration: 7 Mandatory Elements
 
 Every Sverchok extension node MUST implement these 7 elements:
 

@@ -247,7 +247,7 @@ for fc in cam_obj_action.fcurves:
             kp.interpolation = 'LINEAR'
 ```
 
-### Step 3: Optional — Track To constraint for look-at target
+### Step 3: Optional: Track To constraint for look-at target
 
 ```python
 # Make camera look at a specific point during walkthrough

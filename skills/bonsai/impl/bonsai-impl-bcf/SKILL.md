@@ -110,7 +110,7 @@ What BCF operation do you need?
 ### Pattern 1: BCF Project Lifecycle
 
 ```python
-# Bonsai v0.8.x — Complete BCF project lifecycle
+# Bonsai v0.8.x: Complete BCF project lifecycle
 import bpy
 
 props = bpy.context.scene.BCFProperties
@@ -135,7 +135,7 @@ bpy.ops.bim.unload_bcf_project()
 ### Pattern 2: Load Existing BCF File
 
 ```python
-# Bonsai v0.8.x — Load and inspect BCF file
+# Bonsai v0.8.x: Load and inspect BCF file
 import bpy
 
 # Load BCF file (auto-detects v2.1 or v3.0)
@@ -155,7 +155,7 @@ for topic in props.topics:
 ### Pattern 3: Create Topic with Metadata
 
 ```python
-# Bonsai v0.8.x — Create and configure a BCF topic
+# Bonsai v0.8.x: Create and configure a BCF topic
 import bpy
 
 props = bpy.context.scene.BCFProperties
@@ -182,7 +182,7 @@ bpy.ops.bim.edit_bcf_topic()
 ### Pattern 4: Capture Viewpoint with Camera Snapshot
 
 ```python
-# Bonsai v0.8.x — Capture viewpoint for active topic
+# Bonsai v0.8.x: Capture viewpoint for active topic
 import bpy
 
 # PREREQUISITE: Active camera MUST exist
@@ -206,7 +206,7 @@ bpy.ops.bim.add_bcf_viewpoint()
 ### Pattern 5: Add Comments to a Topic
 
 ```python
-# Bonsai v0.8.x — Add comments to the active BCF topic
+# Bonsai v0.8.x: Add comments to the active BCF topic
 import bpy
 
 props = bpy.context.scene.BCFProperties
@@ -225,7 +225,7 @@ bpy.ops.bim.add_bcf_comment()
 ### Pattern 6: Activate (Restore) a Viewpoint
 
 ```python
-# Bonsai v0.8.x — Restore a saved viewpoint
+# Bonsai v0.8.x: Restore a saved viewpoint
 import bpy
 
 props = bpy.context.scene.BCFProperties
@@ -261,7 +261,7 @@ bpy.ops.bim.activate_bcf_viewpoint(viewpoint_guid="abc-123-def-456")
 ### Version Detection
 
 ```python
-# Bonsai v0.8.x — Detecting BCF version at runtime
+# Bonsai v0.8.x: Detecting BCF version at runtime
 from bonsai.bim.module.bcf.bcfstore import BcfStore
 
 bcfxml = BcfStore.get_bcfxml()
@@ -280,7 +280,7 @@ is_v3 = version_id.startswith("3")
 ### Import BCF from External Tool
 
 ```python
-# Bonsai v0.8.x — Load BCF from Solibri, Navisworks, etc.
+# Bonsai v0.8.x: Load BCF from Solibri, Navisworks, etc.
 import bpy
 
 # Load external BCF file
@@ -304,7 +304,7 @@ for i, topic in enumerate(props.topics):
 ### Export BCF for External Tools
 
 ```python
-# Bonsai v0.8.x — Save BCF for sharing with other BIM tools
+# Bonsai v0.8.x: Save BCF for sharing with other BIM tools
 import bpy
 
 # Save current BCF project
@@ -317,7 +317,7 @@ bpy.ops.bim.save_bcf_project(save_current_bcf=True)
 ### Link BCF Topic to IFC Elements
 
 ```python
-# Bonsai v0.8.x — Reference IFC elements in BCF viewpoint
+# Bonsai v0.8.x: Reference IFC elements in BCF viewpoint
 import bpy
 import bonsai.tool as tool
 
@@ -335,14 +335,14 @@ for global_id in ["2O2Fr$t4X7Zf8NOew3FLOH", "1kTvXnbbzEWu00n_qpFOat"]:
     if obj:
         obj.select_set(True)
 
-# Capture viewpoint — selected elements are recorded as BCF components
+# Capture viewpoint: selected elements are recorded as BCF components
 bpy.ops.bim.add_bcf_viewpoint()
 ```
 
 ### Clash Detection to BCF Workflow
 
 ```python
-# Bonsai v0.8.x — Convert clash results to BCF issues
+# Bonsai v0.8.x: Convert clash results to BCF issues
 import bpy
 
 # Step 1: Run clash detection with BCF output
@@ -361,7 +361,7 @@ bpy.ops.bim.load_bcf_project(filepath="/path/to/clashes.bcf")
 ### Attach Documents and References
 
 ```python
-# Bonsai v0.8.x — Add reference links and documents to a topic
+# Bonsai v0.8.x: Add reference links and documents to a topic
 import bpy
 
 props = bpy.context.scene.BCFProperties
@@ -385,7 +385,7 @@ bpy.ops.bim.add_bcf_bim_snippet()
 ### Add Labels and Related Topics
 
 ```python
-# Bonsai v0.8.x — Organize topics with labels and relations
+# Bonsai v0.8.x: Organize topics with labels and relations
 import bpy
 
 props = bpy.context.scene.BCFProperties
@@ -404,7 +404,7 @@ bpy.ops.bim.add_bcf_related_topic()
 ### Extract Embedded Files
 
 ```python
-# Bonsai v0.8.x — Extract files embedded in BCF topics
+# Bonsai v0.8.x: Extract files embedded in BCF topics
 import bpy
 
 # Extract a header file by index

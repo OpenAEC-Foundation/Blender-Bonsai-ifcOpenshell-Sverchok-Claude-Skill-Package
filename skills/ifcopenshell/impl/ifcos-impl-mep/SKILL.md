@@ -205,7 +205,7 @@ ifcopenshell.api.run("system.assign_system", model,
 ### Pattern 2: Piping Network with Fittings
 
 ```python
-# IFC4 / IFC4X3 — requires completed bootstrap
+# IFC4 / IFC4X3: requires completed bootstrap
 # Create plumbing system
 plumbing = ifcopenshell.api.run("system.add_system", model,
     ifc_class="IfcDistributionSystem")
@@ -272,7 +272,7 @@ ifcopenshell.api.run("system.connect_port", model,
 ### Pattern 4: IFC2X3 System (Backward Compatible)
 
 ```python
-# IFC2X3 — use IfcSystem instead of IfcDistributionSystem
+# IFC2X3: use IfcSystem instead of IfcDistributionSystem
 model = ifcopenshell.api.run("project.create_file", version="IFC2X3")
 # ... bootstrap ...
 
@@ -384,7 +384,7 @@ partner = ifcopenshell.util.system.get_connected_port(d1_out)
 ### Standard Property Sets for Distribution Elements
 
 ```python
-# IFC4 / IFC4X3 — Add MEP-specific properties
+# IFC4 / IFC4X3: Add MEP-specific properties
 # Duct segment properties
 pset = ifcopenshell.api.run("pset.add_pset", model,
     product=duct1, name="Pset_DuctSegmentTypeCommon")

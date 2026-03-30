@@ -81,7 +81,7 @@ ERROR RECEIVED
 
 ---
 
-## 2. Error Patterns — Quick Resolution Table
+## 2. Error Patterns: Quick Resolution Table
 
 ### Blender 4.0 Breaking Errors
 
@@ -177,7 +177,7 @@ ALWAYS check this timeline before using any API. If the current Blender version 
 When a user reports an error without specifying their Blender version, ALWAYS determine the version first:
 
 ```python
-# Blender 3.x / 4.x / 5.x — Print diagnostic info
+# Blender 3.x / 4.x / 5.x: Print diagnostic info
 import bpy
 print(f"Blender: {bpy.app.version}")
 print(f"Python: {bpy.app.version_string}")
@@ -189,7 +189,7 @@ print(f"Cycle: {bpy.app.version_cycle}")
 ALWAYS use `hasattr()` for graceful degradation. NEVER catch `AttributeError` silently.
 
 ```python
-# Blender 3.x / 4.x / 5.x — Version-safe accessor with explicit fallback
+# Blender 3.x / 4.x / 5.x: Version-safe accessor with explicit fallback
 import bpy
 
 def get_bevel_weight(mesh, edge_index):
@@ -208,7 +208,7 @@ def get_bevel_weight(mesh, edge_index):
 For addons targeting multiple Blender versions, use a compatibility module:
 
 ```python
-# Blender 3.x / 4.x / 5.x — compat.py module pattern
+# Blender 3.x / 4.x / 5.x: compat.py module pattern
 import bpy
 
 BLENDER_4 = bpy.app.version >= (4, 0, 0)

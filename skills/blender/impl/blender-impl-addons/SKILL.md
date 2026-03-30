@@ -92,7 +92,7 @@ license = [
     "SPDX:GPL-3.0-or-later",
 ]
 
-# OPTIONAL fields — omit if not needed, NEVER leave empty
+# OPTIONAL fields: omit if not needed, NEVER leave empty
 # blender_version_max = "5.1.0"
 # website = "https://extensions.blender.org/add-ons/my-extension/"
 # copyright = ["2024-2026 Developer Name"]
@@ -125,7 +125,7 @@ paths_exclude_pattern = [
 ### Pattern 3: Extension __init__.py (Blender 4.2+)
 
 ```python
-# NO bl_info dict — metadata lives in blender_manifest.toml
+# NO bl_info dict: metadata lives in blender_manifest.toml
 
 # Reload support for development
 if "bpy" in locals():
@@ -162,7 +162,7 @@ def unregister():
 ### Pattern 4: Legacy Multi-File Addon (Blender 3.x–4.1)
 
 ```python
-# __init__.py — legacy addon with bl_info
+# __init__.py: legacy addon with bl_info
 bl_info = {
     "name": "My Addon",
     "author": "Developer Name",
@@ -206,7 +206,7 @@ def unregister():
         bpy.utils.unregister_class(cls)
 ```
 
-### Pattern 5: Class Naming Convention (REQUIRED — All Versions)
+### Pattern 5: Class Naming Convention (REQUIRED: All Versions)
 
 Blender enforces: `{ADDON}_{TYPE}_{name}` with uppercase prefix and type code.
 
@@ -274,7 +274,7 @@ blender --background --python-expr "import bpy; bpy.ops.preferences.addon_enable
 ### Headless Test Script Pattern
 
 ```python
-# tests/test_addon.py — runs via blender --background --python
+# tests/test_addon.py: runs via blender --background --python
 import sys
 import bpy
 

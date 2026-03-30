@@ -170,13 +170,13 @@ class MyCustomNode(SverchCustomTreeNode, bpy.types.Node):
 # Level 1: data per object (vertices, edges, faces, values)
 # Level 2+: individual data items
 
-# Vertices: [[(x,y,z), (x,y,z), ...]]          — 1 object, N vertices
-# Edges:    [[(i,j), (i,j), ...]]                — 1 object, N edges
-# Faces:    [[(i,j,k,...), ...]]                  — 1 object, N faces
-# Numbers:  [[1.0, 2.0, 3.0]]                    — 1 object, N values
+# Vertices: [[(x,y,z), (x,y,z), ...]]         : 1 object, N vertices
+# Edges:    [[(i,j), (i,j), ...]]               : 1 object, N edges
+# Faces:    [[(i,j,k,...), ...]]                 : 1 object, N faces
+# Numbers:  [[1.0, 2.0, 3.0]]                   : 1 object, N values
 
 # Multiple objects:
-# Vertices: [[(v1), (v2)], [(v3), (v4)]]         — 2 objects
+# Vertices: [[(v1), (v2)], [(v3), (v4)]]        : 2 objects
 # match_long_repeat handles mismatched list lengths between inputs
 from sverchok.data_structure import match_long_repeat
 
@@ -191,7 +191,7 @@ matched = match_long_repeat([verts_list, scale_list])
 ### Pattern 6: Socket Data Cache Operations
 
 ```python
-# Sverchok v1.4.0+ — core/socket_data.py
+# Sverchok v1.4.0+: core/socket_data.py
 # Socket data is stored in a global dict: socket_data_cache[SockId] = data
 # SockId = hash of node.node_id + socket.identifier + direction
 

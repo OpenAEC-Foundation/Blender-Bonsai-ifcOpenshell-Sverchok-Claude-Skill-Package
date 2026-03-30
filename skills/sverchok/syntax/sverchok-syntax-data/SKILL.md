@@ -185,7 +185,7 @@ list_match_func["XREF2"]([a, b])   # [[1,2,3,1,2,3], [10,10,10,20,20,20]]
 ### Pattern 5: SvRecursiveNode Mixin
 
 ```python
-# Sverchok v1.4.0+ — the recommended vectorization approach for custom nodes
+# Sverchok v1.4.0+: the recommended vectorization approach for custom nodes
 from sverchok.utils.nodes_mixins.recursive_nodes import SvRecursiveNode
 
 class SvMyNode(SverchCustomTreeNode, bpy.types.Node, SvRecursiveNode):

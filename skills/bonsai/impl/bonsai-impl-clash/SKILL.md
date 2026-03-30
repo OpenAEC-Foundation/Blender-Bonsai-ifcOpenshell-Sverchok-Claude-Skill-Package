@@ -83,7 +83,7 @@ What will you do with clash results?
 ### Pattern 1: Define a Clash Set
 
 ```python
-# Bonsai v0.8.x — Create and configure a clash set
+# Bonsai v0.8.x: Create and configure a clash set
 import bpy
 
 props = bpy.context.scene.BIMClashProperties
@@ -110,7 +110,7 @@ clash_set.b[0].mode = "i"
 ### Pattern 2: Run Clash Detection
 
 ```python
-# Bonsai v0.8.x — Execute clash detection
+# Bonsai v0.8.x: Execute clash detection
 import bpy
 
 props = bpy.context.scene.BIMClashProperties
@@ -130,7 +130,7 @@ bpy.ops.bim.execute_ifc_clash()
 ### Pattern 3: Review Clash Results
 
 ```python
-# Bonsai v0.8.x — Load and navigate clash results
+# Bonsai v0.8.x: Load and navigate clash results
 import bpy
 
 props = bpy.context.scene.BIMClashProperties
@@ -157,7 +157,7 @@ bpy.ops.bim.hide_clash()
 ### Pattern 4: Use IfcClash Standalone (Without Bonsai)
 
 ```python
-# IfcClash standalone — Bonsai v0.8.x / IfcOpenShell v0.8.x
+# IfcClash standalone: Bonsai v0.8.x / IfcOpenShell v0.8.x
 import ifcclash
 import json
 import logging
@@ -217,7 +217,7 @@ Element filters control which elements participate in clash detection. Each `Cla
 Smart grouping clusters spatially proximate clashes using the OPTICS algorithm to reduce noise and identify systemic patterns:
 
 ```python
-# Bonsai v0.8.x — Smart clash grouping
+# Bonsai v0.8.x: Smart clash grouping
 import bpy
 
 props = bpy.context.scene.BIMClashProperties
@@ -244,7 +244,7 @@ for group in props.smart_clash_groups:
 Clash results integrate directly with BCF (BIM Collaboration Format) for issue tracking:
 
 ```python
-# Bonsai v0.8.x — Clash-to-BCF workflow
+# Bonsai v0.8.x: Clash-to-BCF workflow
 import bpy
 
 props = bpy.context.scene.BIMClashProperties
@@ -266,7 +266,7 @@ bpy.ops.bim.load_bcf_project(filepath="/path/to/clashes.bcf")
 ### Export and Import Clash Set Configurations
 
 ```python
-# Bonsai v0.8.x — Save/restore clash set definitions
+# Bonsai v0.8.x: Save/restore clash set definitions
 import bpy
 
 # Export current clash set configuration to JSON
@@ -287,7 +287,7 @@ The `ClashDecorator` renders clash points as a viewport overlay:
 - Uses GPU shaders (`UNIFORM_COLOR`, `POLYLINE_UNIFORM_COLOR`)
 
 ```python
-# Bonsai v0.8.x — Clash visualization properties
+# Bonsai v0.8.x: Clash visualization properties
 props = bpy.context.scene.BIMClashProperties
 
 # P1 and P2 coordinates (set by select_clash operator)

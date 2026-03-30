@@ -104,7 +104,7 @@ What spatial operation do you need?
 ### Pattern 1: Build Complete Spatial Hierarchy
 
 ```python
-# Bonsai v0.8.x — Build spatial hierarchy from scratch
+# Bonsai v0.8.x: Build spatial hierarchy from scratch
 # Requires: active Bonsai project in Blender
 import bpy
 import ifcopenshell
@@ -141,7 +141,7 @@ ifcopenshell.api.run("aggregate.assign_object", model,
 ### Pattern 2: Assign Element to Container
 
 ```python
-# Bonsai v0.8.x — Place wall in a storey
+# Bonsai v0.8.x: Place wall in a storey
 wall = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWall", name="Wall 001")
 
@@ -153,7 +153,7 @@ ifcopenshell.api.run("spatial.assign_container", model,
 ### Pattern 3: Multi-Storey Element Reference
 
 ```python
-# Bonsai v0.8.x — Column spanning two storeys
+# Bonsai v0.8.x: Column spanning two storeys
 column = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcColumn", name="Column C1")
 
@@ -169,7 +169,7 @@ ifcopenshell.api.run("spatial.reference_structure", model,
 ### Pattern 4: Query Spatial Information
 
 ```python
-# Bonsai v0.8.x — Query spatial relationships
+# Bonsai v0.8.x: Query spatial relationships
 import ifcopenshell.util.element
 
 # Get container of an element
@@ -188,7 +188,7 @@ parts = ifcopenshell.util.element.get_parts(building)
 ### Pattern 5: Bonsai Operators for Spatial Operations
 
 ```python
-# Bonsai v0.8.x — Using Bonsai operators (inside Blender)
+# Bonsai v0.8.x: Using Bonsai operators (inside Blender)
 import bpy
 
 # Set default container for new elements

@@ -86,7 +86,7 @@ In Blender 4.0+, the `2D_`/`3D_` distinction is removed. A single `'UNIFORM_COLO
 ### Pattern 1: Basic Line Drawing with POLYLINE Shader
 
 ```python
-# Blender 4.0+/5.x — Draw colored lines in 3D viewport
+# Blender 4.0+/5.x: Draw colored lines in 3D viewport
 import bpy
 import gpu
 from gpu_extras.batch import batch_for_shader
@@ -117,7 +117,7 @@ _handle = bpy.types.SpaceView3D.draw_handler_add(draw_lines, (), 'WINDOW', 'POST
 ### Pattern 2: Filled Triangles with UNIFORM_COLOR
 
 ```python
-# Blender 4.0+/5.x — Draw a filled quad (two triangles)
+# Blender 4.0+/5.x: Draw a filled quad (two triangles)
 import gpu
 from gpu_extras.batch import batch_for_shader
 
@@ -137,7 +137,7 @@ def draw_filled():
 ### Pattern 3: Draw Handler Registration/Removal
 
 ```python
-# Blender 3.x/4.x/5.x — Proper handler lifecycle in an addon
+# Blender 3.x/4.x/5.x: Proper handler lifecycle in an addon
 import bpy
 
 _draw_handle = None
@@ -166,7 +166,7 @@ def unregister():
 ### Pattern 4: Version-Compatible Shader Selection
 
 ```python
-# Blender 3.x/4.x/5.x — Version-safe shader selection
+# Blender 3.x/4.x/5.x: Version-safe shader selection
 import bpy
 import gpu
 
@@ -186,7 +186,7 @@ def get_flat_shader():
 ### Pattern 5: Offscreen Rendering
 
 ```python
-# Blender 4.x/5.x — Render to offscreen buffer
+# Blender 4.x/5.x: Render to offscreen buffer
 import gpu
 
 offscreen = gpu.types.GPUOffScreen(512, 512)
@@ -202,7 +202,7 @@ offscreen.free()  # ALWAYS free when done
 ### Pattern 6: GPU State Management
 
 ```python
-# Blender 3.5+/4.x/5.x — Full state management pattern
+# Blender 3.5+/4.x/5.x: Full state management pattern
 import gpu
 
 def draw_with_state():
@@ -232,7 +232,7 @@ def draw_with_state():
 ### Drawing 2D Overlays (POST_PIXEL)
 
 ```python
-# Blender 4.0+/5.x — 2D HUD overlay in pixel coordinates
+# Blender 4.0+/5.x: 2D HUD overlay in pixel coordinates
 import bpy
 import gpu
 from gpu_extras.batch import batch_for_shader
@@ -258,7 +258,7 @@ _handle = bpy.types.SpaceView3D.draw_handler_add(
 ### Drawing Textured Quads
 
 ```python
-# Blender 4.0+/5.x — Draw image texture in viewport
+# Blender 4.0+/5.x: Draw image texture in viewport
 import gpu
 from gpu_extras.batch import batch_for_shader
 
@@ -279,7 +279,7 @@ def draw_image(texture):
 ### Per-Vertex Colored Geometry
 
 ```python
-# Blender 4.0+/5.x — Smooth colored triangle
+# Blender 4.0+/5.x: Smooth colored triangle
 import gpu
 from gpu_extras.batch import batch_for_shader
 
@@ -295,7 +295,7 @@ batch.draw(shader)
 ### Loading Image as GPU Texture
 
 ```python
-# Blender 4.0+/5.x — Load image to GPU texture (replaces bgl texture binding)
+# Blender 4.0+/5.x: Load image to GPU texture (replaces bgl texture binding)
 import bpy
 import gpu
 

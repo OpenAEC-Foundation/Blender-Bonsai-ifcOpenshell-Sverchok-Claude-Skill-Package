@@ -115,7 +115,7 @@ blender -b --python-exit-code 1 -P script.py
 ### Argument Parsing Pattern
 
 ```python
-# Blender 3.x/4.x/5.x — Parse arguments after '--' separator
+# Blender 3.x/4.x/5.x: Parse arguments after '--' separator
 import sys, argparse
 
 def get_args():
@@ -134,7 +134,7 @@ def get_args():
 ## Section 2: Background Mode
 
 ```python
-# Blender 3.x/4.x/5.x — Detect and guard
+# Blender 3.x/4.x/5.x: Detect and guard
 import bpy
 
 if bpy.app.background:
@@ -157,7 +157,7 @@ if bpy.app.background:
 ### bpy as a Module (Alternative)
 
 ```python
-# Outside Blender — pip install bpy (match Blender's Python version)
+# Outside Blender: pip install bpy (match Blender's Python version)
 import bpy
 bpy.ops.wm.read_homefile(use_empty=True)
 # Same capabilities and limitations as --background
@@ -170,7 +170,7 @@ bpy.ops.wm.read_homefile(use_empty=True)
 ### Version-Safe I/O Pattern
 
 ```python
-# Blender 3.x/4.x/5.x — Version-safe OBJ/STL
+# Blender 3.x/4.x/5.x: Version-safe OBJ/STL
 import bpy
 
 def export_obj(filepath, **kwargs):
@@ -218,7 +218,7 @@ def export_stl(filepath, **kwargs):
 ## Section 4: Batch Rendering
 
 ```python
-# Blender 3.x/4.x/5.x — Scripted render
+# Blender 3.x/4.x/5.x: Scripted render
 import bpy
 
 scene = bpy.context.scene
@@ -280,7 +280,7 @@ else:
 ### bpy.data.libraries.load() (Preferred for Scripts)
 
 ```python
-# Blender 3.x/4.x/5.x — Batch append from .blend files
+# Blender 3.x/4.x/5.x: Batch append from .blend files
 import bpy, os, glob
 
 for blend_path in glob.glob("/path/to/assets/*.blend"):
@@ -294,7 +294,7 @@ for blend_path in glob.glob("/path/to/assets/*.blend"):
 ### Append/Link via Operators
 
 ```python
-# Blender 3.x/4.x/5.x — Append single object
+# Blender 3.x/4.x/5.x: Append single object
 import bpy, os
 
 source = "/path/to/library.blend"

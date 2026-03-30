@@ -127,7 +127,7 @@ When workflows involve parametric, generative, or data-driven geometry (arrays, 
 ### Pattern 1: Standalone IFC Creation (No Blender)
 
 ```python
-# Context: Standalone Python — IfcOpenShell only
+# Context: Standalone Python: IfcOpenShell only
 # Version: IFC4 | IfcOpenShell 0.8.x
 import ifcopenshell
 import ifcopenshell.api

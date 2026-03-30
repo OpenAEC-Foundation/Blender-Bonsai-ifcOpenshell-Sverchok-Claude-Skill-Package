@@ -121,7 +121,7 @@ What do you need to do?
 ### Pattern 1: Two Equivalent Invocation Styles
 
 ```python
-# IfcOpenShell v0.8+ — both styles produce identical results
+# IfcOpenShell v0.8+: both styles produce identical results
 
 import ifcopenshell
 import ifcopenshell.api
@@ -140,7 +140,7 @@ wall = ifcopenshell.api.root.create_entity(model, ifc_class="IfcWall", name="Wal
 ### Pattern 2: Complete Project Bootstrap
 
 ```python
-# IfcOpenShell — IFC4 (change version/schema for IFC2X3 or IFC4X3)
+# IfcOpenShell: IFC4 (change version/schema for IFC2X3 or IFC4X3)
 import ifcopenshell
 import ifcopenshell.api
 
@@ -181,7 +181,7 @@ ifcopenshell.api.run("aggregate.assign_object", model,
 ### Pattern 3: Create Element with Full Data
 
 ```python
-# IfcOpenShell — IFC4 (requires completed bootstrap above)
+# IfcOpenShell: IFC4 (requires completed bootstrap above)
 
 # Create wall type
 wall_type = ifcopenshell.api.run("root.create_entity", model,
@@ -273,7 +273,7 @@ ifcopenshell.api.run("pset.edit_pset", model, pset=pset, properties={
 ### Edit Attributes Directly
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 ifcopenshell.api.run("attribute.edit_attributes", model,
     product=wall, attributes={"Name": "Wall 001", "Description": "External bearing wall"})
 ```
@@ -281,7 +281,7 @@ ifcopenshell.api.run("attribute.edit_attributes", model,
 ### Create and Assign Opening
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 opening = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcOpeningElement", name="Door Opening")
 ifcopenshell.api.run("void.add_opening", model, opening=opening, element=wall)
@@ -295,7 +295,7 @@ ifcopenshell.api.run("void.add_filling", model, opening=opening, element=door)
 ### Assign Classification
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 classification = ifcopenshell.api.run("classification.add_classification", model,
     classification="Uniclass 2015")
 ifcopenshell.api.run("classification.add_reference", model,
@@ -306,7 +306,7 @@ ifcopenshell.api.run("classification.add_reference", model,
 ### Add Visual Style
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 style = ifcopenshell.api.run("style.add_style", model, name="Concrete Grey")
 ifcopenshell.api.run("style.add_surface_style", model, style=style,
     attributes={"SurfaceColour": {"Red": 0.7, "Green": 0.7, "Blue": 0.7}})
@@ -317,10 +317,10 @@ ifcopenshell.api.run("style.assign_representation_styles", model,
 ### Safe Element Removal
 
 ```python
-# IfcOpenShell — all schema versions
-# ALWAYS use root.remove_product — it cleans up ALL relationships
+# IfcOpenShell: all schema versions
+# ALWAYS use root.remove_product: it cleans up ALL relationships
 ifcopenshell.api.run("root.remove_product", model, product=wall)
-# NEVER use model.remove(wall) for products — it leaves dangling references
+# NEVER use model.remove(wall) for products: it leaves dangling references
 ```
 
 ---

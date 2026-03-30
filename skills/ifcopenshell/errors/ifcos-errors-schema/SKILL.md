@@ -69,7 +69,7 @@ Error when using IFC entity or attribute?
 
 ## Essential Error Patterns
 
-### Error 1: Entity Not Found — Schema Version Mismatch
+### Error 1: Entity Not Found: Schema Version Mismatch
 
 **Symptom**: `RuntimeError` when calling `model.by_type()` or `model.create_entity()` with an entity name that does not exist in the file's schema.
 

@@ -166,7 +166,7 @@ IfcRelationship (abstract)
 ### Pattern 1: Build Spatial Hierarchy (Aggregation)
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 import ifcopenshell
 import ifcopenshell.api
 
@@ -194,7 +194,7 @@ ifcopenshell.api.run("aggregate.assign_object", model,
 ### Pattern 2: Contain Elements in Spatial Structure
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 wall = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWall", name="Wall 001")
 
@@ -206,7 +206,7 @@ ifcopenshell.api.run("spatial.assign_container", model,
 ### Pattern 3: Assign Type to Occurrences
 
 ```python
-# IfcOpenShell — IFC4
+# IfcOpenShell: IFC4
 wall_type = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWallType", name="Standard Wall 200mm")
 
@@ -218,7 +218,7 @@ ifcopenshell.api.run("type.assign_type", model,
 ### Pattern 4: Add Property Set
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # pset.add_pset creates IfcRelDefinesByProperties automatically
 pset = ifcopenshell.api.run("pset.add_pset", model,
     product=wall, name="Pset_WallCommon")
@@ -233,7 +233,7 @@ ifcopenshell.api.run("pset.edit_pset", model,
 ### Pattern 5: Assign Material
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 material = ifcopenshell.api.run("material.add_material", model,
     name="Concrete")
 
@@ -245,7 +245,7 @@ ifcopenshell.api.run("material.assign_material", model,
 ### Pattern 6: Create Opening and Fill It
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 opening = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcOpeningElement", name="Door Opening")
 
@@ -264,13 +264,13 @@ ifcopenshell.api.run("void.add_filling", model,
 ### Pattern 7: Nest Components
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 sink = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcSanitaryTerminal", name="Kitchen Sink")
 faucet = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcValve", name="Faucet")
 
-# Creates IfcRelNests — faucet is nested in sink
+# Creates IfcRelNests: faucet is nested in sink
 ifcopenshell.api.run("nest.assign_object", model,
     related_objects=[faucet], relating_object=sink)
 ```
@@ -282,7 +282,7 @@ ifcopenshell.api.run("nest.assign_object", model,
 ### Version-Safe Queries Using ifcopenshell.util.element
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.util.element
 
 # Get spatial container of element
@@ -311,7 +311,7 @@ parent = ifcopenshell.util.element.get_aggregate(storey)
 ### Direct Inverse Attribute Queries
 
 ```python
-# IfcOpenShell — IFC4+
+# IfcOpenShell: IFC4+
 # Aggregation children
 for rel in building.IsDecomposedBy:
     for child in rel.RelatedObjects:
@@ -360,13 +360,13 @@ for rel in sink.IsNestedBy:
 ### IFC2X3 Inverse Attribute Differences
 
 ```python
-# IfcOpenShell — IFC2X3 ONLY
-# Type assignment — NO IsTypedBy inverse in IFC2X3
+# IfcOpenShell: IFC2X3 ONLY
+# Type assignment: NO IsTypedBy inverse in IFC2X3
 for rel in wall.IsDefinedBy:
     if rel.is_a("IfcRelDefinesByType"):
         print(f"Type: {rel.RelatingType.Name}")
 
-# Aggregation/Nesting — shared inverse in IFC2X3
+# Aggregation/Nesting: shared inverse in IFC2X3
 for rel in building.IsDecomposedBy:
     # Returns IfcRelDecomposes instances (includes both aggregation and nesting)
     if rel.is_a("IfcRelAggregates"):
@@ -382,7 +382,7 @@ for rel in building.IsDecomposedBy:
 ## Removing Relationships
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 
 # Remove spatial containment
 ifcopenshell.api.run("spatial.unassign_container", model, products=[wall])
@@ -412,7 +412,7 @@ ifcopenshell.api.run("spatial.dereference_structure", model,
 ## Version-Safe Type Query Pattern
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 def get_element_type_safe(element):
     """Get element type across all IFC versions."""
     schema = element.wrapped_data.file.schema

@@ -142,7 +142,7 @@ Is from_socket a lenient type?
 ### Pattern 1: Read and Write Socket Data in process()
 
 ```python
-# Sverchok v1.4.0+ — inside a custom node's process() method
+# Sverchok v1.4.0+: inside a custom node's process() method
 def process(self):
     # Read input — ALWAYS provide default to handle unconnected socket
     verts_in = self.inputs['Vertices'].sv_get(default=[[]])
@@ -164,7 +164,7 @@ def process(self):
 ### Pattern 2: Replace a Socket Type at Runtime
 
 ```python
-# Sverchok v1.4.0+ — inside sv_update() or sv_init()
+# Sverchok v1.4.0+: inside sv_update() or sv_init()
 def sv_update(self):
     # ALWAYS call sv_forget() before replace_socket()
     old_socket = self.inputs.get('Data')
@@ -200,7 +200,7 @@ if sock.is_linked:
 ### Pattern 4: Set Socket Processing Flags
 
 ```python
-# Sverchok v1.4.0+ — define allowed flags in sv_init()
+# Sverchok v1.4.0+: define allowed flags in sv_init()
 def sv_init(self, context):
     sock = self.inputs.new('SvVerticesSocket', 'Vertices')
     # Enable which processing flags the user can toggle in the UI
@@ -214,10 +214,10 @@ def sv_init(self, context):
     # See: sverchok-syntax-data for how flags transform data
 ```
 
-### Pattern 5: Implicit Conversion — Field Sockets
+### Pattern 5: Implicit Conversion: Field Sockets
 
 ```python
-# Sverchok v1.4.0+ — SvScalarFieldSocket and SvVectorFieldSocket
+# Sverchok v1.4.0+: SvScalarFieldSocket and SvVectorFieldSocket
 # use FieldImplicitConversionPolicy automatically
 
 # When a SvStringsSocket (numbers) is connected to SvScalarFieldSocket:
@@ -288,7 +288,7 @@ def process(self):
 
 ## Implicit Conversion Policies
 
-### DefaultImplicitConversionPolicy — Explicit Conversions
+### DefaultImplicitConversionPolicy: Explicit Conversions
 
 | From | To | Conversion Applied |
 |---|---|---|
@@ -307,7 +307,7 @@ lenient_socket_types = {
 }
 ```
 
-### FieldImplicitConversionPolicy — Additional Field Conversions
+### FieldImplicitConversionPolicy: Additional Field Conversions
 
 Used by `SvScalarFieldSocket` and `SvVectorFieldSocket`.
 
@@ -322,7 +322,7 @@ Falls through to `DefaultImplicitConversionPolicy` for all other type pairs.
 ### Policy Assignment Per Socket
 
 ```python
-# Sverchok v1.4.0+ — source: core/sockets.py
+# Sverchok v1.4.0+: source: core/sockets.py
 class SvVerticesSocket:
     default_conversion_name = ConversionPolicies.DEFAULT.conversion_name
     # → 'DefaultImplicitConversionPolicy'

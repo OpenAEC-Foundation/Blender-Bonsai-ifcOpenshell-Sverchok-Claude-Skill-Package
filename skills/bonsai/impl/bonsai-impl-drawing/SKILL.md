@@ -14,7 +14,7 @@ metadata:
   version: "1.0"
 ---
 
-# Bonsai Drawing and Documentation — Implementation Guide
+# Bonsai Drawing and Documentation: Implementation Guide
 
 > **Version**: Bonsai v0.8.x | Blender 4.2+ | Python 3.11
 > **Module path**: `bonsai.bim.module.drawing` — NEVER `blenderbim.bim.module.drawing`
@@ -81,7 +81,7 @@ Each drawing is backed by:
 ### 4.1 Step 1: Create a Drawing
 
 ```python
-# Bonsai v0.8.x — Add a plan view drawing
+# Bonsai v0.8.x: Add a plan view drawing
 import bpy
 
 bpy.ops.bim.add_drawing(
@@ -98,7 +98,7 @@ bpy.ops.bim.add_drawing(
 **Core function** (`bonsai/core/drawing.py`):
 
 ```python
-# Bonsai v0.8.x — add_drawing creates:
+# Bonsai v0.8.x: add_drawing creates:
 # 1. Unique drawing name from target_view
 # 2. Camera matrix from target_view + location_hint
 # 3. IfcAnnotation via ifcopenshell.api.run("root.create_entity")
@@ -111,7 +111,7 @@ bpy.ops.bim.add_drawing(
 ### 4.2 Step 2: Configure Camera Properties
 
 ```python
-# Bonsai v0.8.x — Camera/drawing configuration
+# Bonsai v0.8.x: Camera/drawing configuration
 # Access via camera object's BIMCameraProperties
 
 # Scale options (metric):
@@ -136,7 +136,7 @@ bpy.ops.bim.add_drawing(
 ### 4.3 Step 3: Add Annotations
 
 ```python
-# Bonsai v0.8.x — Add annotations to the active drawing
+# Bonsai v0.8.x: Add annotations to the active drawing
 import bpy
 
 # PREREQUISITE: MUST have active drawing (camera view)
@@ -178,7 +178,7 @@ bpy.ops.bim.add_annotation(
 ### 4.4 Step 4: Generate SVG Drawing
 
 ```python
-# Bonsai v0.8.x — Generate SVG from active drawing
+# Bonsai v0.8.x: Generate SVG from active drawing
 bpy.ops.bim.create_drawing(
     sync=True,         # Pre-sync IFC data (ALWAYS recommended)
     print_all=False,   # False = active drawing only; True = all checked drawings
@@ -215,7 +215,7 @@ CreateDrawing Pipeline (bim.create_drawing):
 ### 4.5 Step 5: Compose Sheets
 
 ```python
-# Bonsai v0.8.x — Sheet composition pipeline
+# Bonsai v0.8.x: Sheet composition pipeline
 
 # Step 1: Create sheet with titleblock
 bpy.ops.bim.add_sheet()
@@ -246,7 +246,7 @@ bpy.ops.bim.create_sheets()
 ### 4.6 Step 6: Export and Open
 
 ```python
-# Bonsai v0.8.x — Open generated outputs
+# Bonsai v0.8.x: Open generated outputs
 bpy.ops.bim.open_drawing()   # Open SVG with system viewer
 bpy.ops.bim.open_sheet()     # Open sheet with system viewer
 bpy.ops.bim.open_layout()    # Open SVG layout file

@@ -86,7 +86,7 @@ Need data from an element?
 ### Pattern 1: Query Elements by IFC Class
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 
 model = ifcopenshell.open("model.ifc")
@@ -110,7 +110,7 @@ beams = model.by_type("IfcBeam")
 ### Pattern 2: Query by ID and GUID
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.guid
 
@@ -133,7 +133,7 @@ ifc_guid = ifcopenshell.guid.compress(standard_uuid)  # → 22-char GUID
 ### Pattern 3: Entity Attribute Access and Type Checking
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 wall = model.by_type("IfcWall")[0]
 
 # Direct attribute access
@@ -159,7 +159,7 @@ info = wall.get_info()
 ### Pattern 4: Inverse References
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 wall = model.by_type("IfcWall")[0]
 
 # Get ALL entities that REFERENCE this wall
@@ -188,7 +188,7 @@ for rel in model.get_inverse(wall):
 This is the fundamental pattern for extracting properties from ANY IFC element. It traverses: `IsDefinedBy` → `IfcRelDefinesByProperties` → `IfcPropertySet` → `HasProperties` → `wrappedValue`.
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # UNIVERSAL PATTERN: Works with IfcOpenShell, Bonsai, web-ifc
 def extract_properties(element):
     """Extract all property sets and their values from an IFC element."""
@@ -212,10 +212,10 @@ for pset_name, props in all_props.items():
         print(f"  {name}: {value}")
 ```
 
-### Pattern 6: Recommended — Use util.element Helpers
+### Pattern 6: Recommended: Use util.element Helpers
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.util.element
 
 wall = model.by_type("IfcWall")[0]
@@ -256,7 +256,7 @@ children = ifcopenshell.util.element.get_decomposition(building)
 ### Iterating Over All Entities
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Iterate over ALL entities
 for entity in model:
     pass
@@ -274,7 +274,7 @@ for ifc_type, count in type_counts.most_common(20):
 ### Finding Openings in a Wall
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 def get_openings(model, wall):
     """Get opening elements that void a wall."""
     openings = []
@@ -287,7 +287,7 @@ def get_openings(model, wall):
 ### CSS-like Element Selection
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.util.selector
 
 # Select walls by class
@@ -305,7 +305,7 @@ ground_elements = ifcopenshell.util.selector.filter_elements(
 ### Error Handling for Lookups
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # by_id and by_guid raise RuntimeError if not found
 try:
     entity = model.by_id(999999)

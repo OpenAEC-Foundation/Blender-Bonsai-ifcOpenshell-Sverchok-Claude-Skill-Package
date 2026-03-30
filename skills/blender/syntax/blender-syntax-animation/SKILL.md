@@ -71,7 +71,7 @@ Need to animate a property?
 ### Pattern 1: Keyframe Insertion
 
 ```python
-# Blender 3.x/4.x/5.x — insert keyframes on animatable properties
+# Blender 3.x/4.x/5.x: insert keyframes on animatable properties
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -105,7 +105,7 @@ obj.keyframe_insert(data_path="rotation_euler", frame=1, group="Transform")
 ### Pattern 2: FCurve Access and Manipulation
 
 ```python
-# Blender 3.x/4.x/5.x — direct FCurve manipulation
+# Blender 3.x/4.x/5.x: direct FCurve manipulation
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -143,7 +143,7 @@ fcurve.update()
 ### Pattern 3: Drivers
 
 ```python
-# Blender 3.x/4.x/5.x — add driver to a property
+# Blender 3.x/4.x/5.x: add driver to a property
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -175,7 +175,7 @@ driver.expression = "ctrl_z * 2.0"
 ### Pattern 4: NLA System
 
 ```python
-# Blender 3.x/4.x/5.x — NLA workflow
+# Blender 3.x/4.x/5.x: NLA workflow
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -201,7 +201,7 @@ if action is not None:
 ### Pattern 5: Bone Collections (4.0+)
 
 ```python
-# Blender 4.0+/5.x — bone collections replace bone layers and bone groups
+# Blender 4.0+/5.x: bone collections replace bone layers and bone groups
 import bpy
 
 armature_data = bpy.data.armatures.new("MyArmature")
@@ -240,7 +240,7 @@ control_col.color_tag = 'THEME01'  # THEME01..THEME20 or COLOR_01..COLOR_20
 ### Pattern 6: Shape Keys
 
 ```python
-# Blender 3.x/4.x/5.x — shape keys for parametric deformation
+# Blender 3.x/4.x/5.x: shape keys for parametric deformation
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -268,7 +268,7 @@ key_block.keyframe_insert(data_path="value", frame=30)
 ### Timeline Control
 
 ```python
-# Blender 3.x/4.x/5.x — scene timeline settings
+# Blender 3.x/4.x/5.x: scene timeline settings
 import bpy
 
 scene = bpy.context.scene
@@ -288,7 +288,7 @@ fps = scene.render.fps / scene.render.fps_base
 ### Reading FCurve Data
 
 ```python
-# Blender 3.x/4.x/5.x — iterate and query FCurves
+# Blender 3.x/4.x/5.x: iterate and query FCurves
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -305,7 +305,7 @@ if obj.animation_data and obj.animation_data.action:
 ### FCurve Modifiers
 
 ```python
-# Blender 3.x/4.x/5.x — add modifiers to FCurves
+# Blender 3.x/4.x/5.x: add modifiers to FCurves
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -327,7 +327,7 @@ cycles.mode_after = 'REPEAT'
 ### Constraints
 
 ```python
-# Blender 3.x/4.x/5.x — add constraints to objects
+# Blender 3.x/4.x/5.x: add constraints to objects
 import bpy
 
 obj = bpy.data.objects.get("Cube")
@@ -360,10 +360,10 @@ if armature:
 
 ## Version Migration: Bone Layers to Bone Collections
 
-### Blender 3.x (Legacy — BROKEN in 4.0+)
+### Blender 3.x (Legacy: BROKEN in 4.0+)
 
 ```python
-# BROKEN in 4.0+ — DO NOT USE
+# BROKEN in 4.0+: DO NOT USE
 # bone.layers[0] = True              # REMOVED
 # bone.layers[16] = True             # REMOVED
 # pose_bone_group = pose.bone_groups.new(name="Controls")  # REMOVED
@@ -373,7 +373,7 @@ if armature:
 ### Blender 4.0+ (Current)
 
 ```python
-# Blender 4.0+/5.x — bone collections API
+# Blender 4.0+/5.x: bone collections API
 armature = bpy.data.armatures["MyArmature"]
 
 # Create collections

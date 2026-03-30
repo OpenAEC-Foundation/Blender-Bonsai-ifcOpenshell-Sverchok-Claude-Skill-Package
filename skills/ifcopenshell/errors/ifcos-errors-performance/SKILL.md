@@ -71,7 +71,7 @@ File size?
 ### Pattern 1: Geometry Iterator (Batch Processing)
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 import multiprocessing
@@ -97,7 +97,7 @@ if iterator.initialize():
 ### Pattern 2: Filtered Geometry Processing
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 import multiprocessing
@@ -105,7 +105,7 @@ import multiprocessing
 model = ifcopenshell.open("large_model.ifc")
 settings = ifcopenshell.geom.settings()
 
-# Process only walls — reduces memory and time
+# Process only walls: reduces memory and time
 walls = model.by_type("IfcWall")
 iterator = ifcopenshell.geom.iterator(
     settings, model, multiprocessing.cpu_count(),
@@ -123,7 +123,7 @@ if iterator.initialize():
 ### Pattern 3: Efficient Property Extraction (No Geometry)
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.util.element
 
@@ -144,7 +144,7 @@ for rel in pset_rels:
 ### Pattern 4: Batch API Operations
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.api
 
@@ -166,7 +166,7 @@ ifcopenshell.api.run("type.assign_type", model,
 ### Pattern 5: Memory Management for Large Files
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.util.element
 import gc
@@ -194,7 +194,7 @@ def extract_wall_data(filepath):
 ### Pattern 6: Sequential Type Processing for Very Large Files
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 import gc
@@ -275,7 +275,7 @@ for etype in element_types:
 ### Profiling IFC Operations
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import time
 
@@ -317,7 +317,7 @@ print(f"Geometry: {count} shapes in {geom_time:.2f}s "
 ### Controlling Thread Count for Memory
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 import multiprocessing
@@ -346,7 +346,7 @@ iterator = ifcopenshell.geom.iterator(
 ### Subprocess Isolation for Very Large Files
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import subprocess
 import json
 
@@ -383,7 +383,7 @@ data = json.loads(result.stdout)
 ### Disabling Expensive Geometry Operations
 
 ```python
-# IfcOpenShell v0.8+ — all schema versions
+# IfcOpenShell v0.8+: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 

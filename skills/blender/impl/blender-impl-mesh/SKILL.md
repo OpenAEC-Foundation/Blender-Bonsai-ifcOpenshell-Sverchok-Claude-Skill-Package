@@ -256,7 +256,7 @@ def get_evaluated_mesh_data(obj):
 Use to display IFC model geometry in Blender viewport. Combines IfcOpenShell geometry processing with foreach_set for performance.
 
 ```python
-# Blender 3.x/4.x/5.x — requires ifcopenshell
+# Blender 3.x/4.x/5.x: requires ifcopenshell
 import bpy
 import numpy as np
 import ifcopenshell

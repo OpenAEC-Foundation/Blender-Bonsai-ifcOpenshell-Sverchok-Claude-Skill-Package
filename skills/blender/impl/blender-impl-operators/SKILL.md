@@ -321,7 +321,7 @@ wm.progress_end()                  # Finish — ALWAYS call, even on error
 # In modal() during processing:
 context.area.header_text_set(f"Processing: {i}/{total} ({i/total*100:.0f}%)")
 
-# On completion or cancel — ALWAYS restore:
+# On completion or cancel: ALWAYS restore:
 context.area.header_text_set(None)
 ```
 

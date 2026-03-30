@@ -15,13 +15,13 @@ metadata:
   version: "1.0"
 ---
 
-# Bonsai Common Errors — Diagnostic & Recovery Guide
+# Bonsai Common Errors: Diagnostic & Recovery Guide
 
 > **Version**: Bonsai v0.8.x | Blender 4.2.0+ | Python 3.11
 > **Module path**: `bonsai.*` — NEVER `blenderbim.*`
 > **Dependencies**: bonsai-core-architecture, bonsai-syntax-elements
 
-## Quick Reference — Error Decision Tree
+## Quick Reference: Error Decision Tree
 
 ```
 Bonsai error encountered?
@@ -454,11 +454,11 @@ bpy.ops.bim.execute_ifc_clash()
 
 **Fix**: After direct API modifications:
 ```python
-# For property changes — purge data cache
+# For property changes: purge data cache
 from bonsai.bim.module.pset.data import PsetData
 PsetData.purge()
 
-# For geometry changes — trigger representation update
+# For geometry changes: trigger representation update
 bpy.ops.bim.update_representation(obj=obj.name)
 ```
 

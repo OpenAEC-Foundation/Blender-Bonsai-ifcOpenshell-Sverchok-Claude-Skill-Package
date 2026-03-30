@@ -101,7 +101,7 @@ What scheduling operation do you need?
 ### Pattern 1: Full Schedule Bootstrap
 
 ```python
-# IFC4 — Complete construction schedule from scratch
+# IFC4: Complete construction schedule from scratch
 import ifcopenshell
 import ifcopenshell.api
 
@@ -156,17 +156,17 @@ model.write("schedule.ifc")
 ### Pattern 2: Hierarchical Work Breakdown Structure
 
 ```python
-# IFC4 — WBS with parent/child task nesting
+# IFC4: WBS with parent/child task nesting
 schedule = ifcopenshell.api.run("sequence.add_work_schedule", model,
     name="Phase 1", predefined_type="PLANNED")
 
-# Root task (summary — NO time data)
+# Root task (summary: NO time data)
 phase_struct = ifcopenshell.api.run("sequence.add_task", model,
     work_schedule=schedule,
     name="Structural Works",
     identification="1")
 
-# Subtasks (leaf tasks — GET time data)
+# Subtasks (leaf tasks: GET time data)
 formwork = ifcopenshell.api.run("sequence.add_task", model,
     parent_task=phase_struct,
     name="Formwork",
@@ -199,7 +199,7 @@ ifcopenshell.api.run("sequence.assign_sequence", model,
 ### Pattern 3: Work Calendar Setup
 
 ```python
-# IFC4 — Standard 5-day work week with holidays
+# IFC4: Standard 5-day work week with holidays
 calendar = ifcopenshell.api.run("sequence.add_work_calendar", model,
     name="Standard 5-Day Week")
 
@@ -227,10 +227,10 @@ exception = ifcopenshell.api.run("sequence.add_work_time", model,
     time_type="ExceptionTimes")
 ```
 
-### Pattern 4: 4D BIM — Linking Tasks to Products
+### Pattern 4: 4D BIM: Linking Tasks to Products
 
 ```python
-# IFC4 — Connect tasks to building elements for 4D visualization
+# IFC4: Connect tasks to building elements for 4D visualization
 wall = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWall", name="Exterior Wall A")
 slab = ifcopenshell.api.run("root.create_entity", model,
@@ -251,7 +251,7 @@ ifcopenshell.api.run("sequence.assign_process", model,
 ### Pattern 5: Gantt Chart Data Extraction
 
 ```python
-# IFC4 — Extract scheduling data for Gantt chart rendering
+# IFC4: Extract scheduling data for Gantt chart rendering
 import ifcopenshell
 import ifcopenshell.util.sequence
 
@@ -294,7 +294,7 @@ def extract_task_data(task, indent=0):
 ### Pattern 6: Critical Path Analysis
 
 ```python
-# IFC4 — Calculate critical path and floats
+# IFC4: Calculate critical path and floats
 ifcopenshell.api.run("sequence.recalculate_schedule", model,
     work_schedule=schedule)
 
@@ -314,7 +314,7 @@ for task in model.by_type("IfcTask"):
 ### Add Lag Time Between Tasks
 
 ```python
-# IFC4 — Add 2-day lag after concrete pour (curing time)
+# IFC4: Add 2-day lag after concrete pour (curing time)
 seq = ifcopenshell.api.run("sequence.assign_sequence", model,
     relating_process=pour_task,
     related_process=next_task,
@@ -329,7 +329,7 @@ ifcopenshell.api.run("sequence.assign_lag_time", model,
 ### Modify Existing Task
 
 ```python
-# IFC4 — Update task attributes
+# IFC4: Update task attributes
 ifcopenshell.api.run("sequence.edit_task", model,
     task=task,
     attributes={
@@ -343,14 +343,14 @@ ifcopenshell.api.run("sequence.edit_task", model,
 ### Remove Task (Cascading Delete)
 
 ```python
-# IFC4 — Removes task, all subtasks, and all relationships
+# IFC4: Removes task, all subtasks, and all relationships
 ifcopenshell.api.run("sequence.remove_task", model, task=task)
 ```
 
 ### Work Plan with Multiple Schedules
 
 ```python
-# IFC4 — Group schedules under a work plan
+# IFC4: Group schedules under a work plan
 plan = ifcopenshell.api.run("sequence.add_work_plan", model,
     name="Master Construction Plan")
 

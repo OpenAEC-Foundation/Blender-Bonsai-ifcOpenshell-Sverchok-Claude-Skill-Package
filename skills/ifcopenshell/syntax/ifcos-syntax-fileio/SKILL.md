@@ -64,7 +64,7 @@ Need to output IFC data?
 ### Pattern 1: Open an Existing IFC File
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 
 model = ifcopenshell.open("/path/to/model.ifc")
@@ -75,7 +75,7 @@ print(f"Entities: {len(model)}")
 ### Pattern 2: Create a New IFC File (Production)
 
 ```python
-# IfcOpenShell — IFC4 (change version= for IFC2X3 or IFC4X3)
+# IfcOpenShell: IFC4 (change version= for IFC2X3 or IFC4X3)
 import ifcopenshell
 import ifcopenshell.api
 
@@ -91,7 +91,7 @@ context = ifcopenshell.api.run("context.add_context", model,
 ### Pattern 3: Create a New IFC File (Bare Minimum)
 
 ```python
-# IfcOpenShell — IFC4 (specify schema= for other versions)
+# IfcOpenShell: IFC4 (specify schema= for other versions)
 import ifcopenshell
 
 model = ifcopenshell.file(schema="IFC4")
@@ -102,7 +102,7 @@ model = ifcopenshell.file(schema="IFC4")
 ### Pattern 4: Write IFC to Disk
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 model.write("/path/to/output.ifc")
 
 # Write as compressed ZIP
@@ -115,14 +115,14 @@ model.write("/path/to/output.ifcXML")
 ### Pattern 5: Serialize IFC to String
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 ifc_string = model.to_string()
 ```
 
 ### Pattern 6: Transaction Management (Undo/Redo)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 model.begin_transaction()
 
 wall = model.create_entity("IfcWall",
@@ -140,7 +140,7 @@ model.redo()
 ### Pattern 7: Transfer Entity Between Files
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 source = ifcopenshell.open("source.ifc")
 target = ifcopenshell.file(schema=source.schema)
 
@@ -152,7 +152,7 @@ target.write("target.ifc")
 ### Pattern 8: Remove Entity from File
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 wall = model.by_type("IfcWall")[0]
 model.remove(wall)
 # WARNING: All attributes referencing this entity become null ($).
@@ -166,7 +166,7 @@ model.remove(wall)
 ### Opening Files
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 
 # Standard file open
@@ -192,7 +192,7 @@ for entity in model:
 ### Creating Files
 
 ```python
-# IfcOpenShell — IFC4 (change version/schema for other versions)
+# IfcOpenShell: IFC4 (change version/schema for other versions)
 import ifcopenshell
 import ifcopenshell.api
 
@@ -215,7 +215,7 @@ model_specific = ifcopenshell.file(schema_version=(4, 0, 2, 1))  # IFC4 ADD2 TC1
 ### Writing Files
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Standard STEP format
 model.write("output.ifc")
 
@@ -238,7 +238,7 @@ ifc_text = model.to_string()
 ### Adding and Removing Entities
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 
 # Add entity from another file (copies entity + all dependencies)
@@ -254,7 +254,7 @@ model.remove(wall)
 ### Transaction Management
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 
 # Basic transaction
 model.begin_transaction()
@@ -280,7 +280,7 @@ model.set_history_size(128)
 ### Error Handling
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 
 try:
@@ -294,7 +294,7 @@ except ifcopenshell.Error:
 ### Accessing File Metadata
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 model = ifcopenshell.open("model.ifc")
 
 # Schema information

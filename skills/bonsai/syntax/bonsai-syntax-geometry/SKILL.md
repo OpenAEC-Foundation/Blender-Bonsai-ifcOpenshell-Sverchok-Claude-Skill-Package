@@ -222,7 +222,7 @@ ifcopenshell.api.run("geometry.remove_representation", model,
     representation=representation)
 ```
 
-### ShapeBuilder — Parametric Geometry
+### ShapeBuilder: Parametric Geometry
 
 ```python
 from ifcopenshell.util.shape_builder import ShapeBuilder
@@ -268,7 +268,7 @@ When calling `bpy.ops.bim.update_representation(ifc_representation_class="...")`
 | `"IfcExtrudedAreaSolid/IfcMaterialProfileSetUsage"` | Profile from material set |
 | `""` (empty/omitted) | Tessellation/Brep (mesh as-is) |
 
-## MappedItems — Type Geometry Sharing
+## MappedItems: Type Geometry Sharing
 
 When `type.assign_type` is called, geometry on the `IfcTypeProduct` is shared to all instances via `IfcMappedItem`. Each instance references the type's `IfcRepresentationMap` with its own transformation.
 
@@ -279,7 +279,7 @@ When `type.assign_type` is called, geometry on the `IfcTypeProduct` is shared to
 ifcopenshell.api.run("geometry.assign_representation", model,
     product=wall_type, representation=representation)
 
-# Assign type to occurrence — geometry is automatically mapped
+# Assign type to occurrence: geometry is automatically mapped
 ifcopenshell.api.run("type.assign_type", model,
     related_objects=[wall], relating_type=wall_type)
 ```

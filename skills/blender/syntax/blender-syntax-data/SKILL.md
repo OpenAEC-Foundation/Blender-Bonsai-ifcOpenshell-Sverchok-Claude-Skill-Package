@@ -116,7 +116,7 @@ Two independent visibility systems exist:
 | `layer_collection.hide_viewport` | Per view layer | Hidden in viewport only |
 
 ```python
-# Blender 3.x/4.x/5.x — per-view-layer visibility
+# Blender 3.x/4.x/5.x: per-view-layer visibility
 view_layer = bpy.context.view_layer
 layer_col = view_layer.layer_collection.children["Building_A"]
 layer_col.exclude = True        # Exclude from this view layer entirely
@@ -159,10 +159,10 @@ lc = find_layer_collection(bpy.context.view_layer.layer_collection, "Building_A"
 
 ## §2 Library Linking and Appending
 
-### bpy.data.libraries.load() — Recommended Method
+### bpy.data.libraries.load(): Recommended Method
 
 ```python
-# Blender 3.x/4.x/5.x — Link (read-only reference)
+# Blender 3.x/4.x/5.x: Link (read-only reference)
 filepath = "/path/to/library.blend"
 
 with bpy.data.libraries.load(filepath, link=True) as (data_src, data_dst):
@@ -170,14 +170,14 @@ with bpy.data.libraries.load(filepath, link=True) as (data_src, data_dst):
     # data_dst.<type> accepts list of names to load
     data_dst.collections = ["BuildingModule_A"]
 
-# ALWAYS check for None — missing names return None
+# ALWAYS check for None: missing names return None
 for col in data_dst.collections:
     if col is not None:
         bpy.context.scene.collection.children.link(col)
 ```
 
 ```python
-# Blender 3.x/4.x/5.x — Append (full local copy)
+# Blender 3.x/4.x/5.x: Append (full local copy)
 with bpy.data.libraries.load(filepath, link=False) as (data_src, data_dst):
     data_dst.objects = ["Column_Type_A"]
     data_dst.materials = ["Concrete_Exposed"]
@@ -190,7 +190,7 @@ for obj in data_dst.objects:
 ### Operator Method (Alternative)
 
 ```python
-# Blender 3.x/4.x/5.x — link via operator
+# Blender 3.x/4.x/5.x: link via operator
 bpy.ops.wm.link(
     filepath=filepath + "/Collection/BuildingModule_A",
     directory=filepath + "/Collection/",
@@ -228,7 +228,7 @@ Library overrides replace proxies (removed in 4.0). They create local editable c
 ### Create Override
 
 ```python
-# Blender 4.0+ — create library override from linked object
+# Blender 4.0+: create library override from linked object
 import bpy
 
 # Step 1: Link data
@@ -244,7 +244,7 @@ linked_obj = bpy.data.objects["LinkedBuilding"]
 bpy.context.view_layer.objects.active = linked_obj
 linked_obj.select_set(True)
 
-# Creates local override — object is now editable
+# Creates local override: object is now editable
 bpy.ops.object.make_override_library()
 ```
 
@@ -277,7 +277,7 @@ if obj.override_library:
 ### Resync Overrides
 
 ```python
-# Blender 4.0+ — resync after source library changes
+# Blender 4.0+: resync after source library changes
 bpy.ops.object.override_library_resync()
 ```
 
@@ -288,7 +288,7 @@ bpy.ops.object.override_library_resync()
 ### Mark and Configure Assets
 
 ```python
-# Blender 3.x/4.x/5.x — mark any ID data block as asset
+# Blender 3.x/4.x/5.x: mark any ID data block as asset
 import bpy
 
 obj = bpy.data.objects["Column_Type_A"]
@@ -324,7 +324,7 @@ obj.asset_clear()
 | Blender 5.0+ | `context.asset` | `AssetRepresentation` only — `asset_file_handle` gone |
 
 ```python
-# Blender 4.0+ — access active asset in asset browser
+# Blender 4.0+: access active asset in asset browser
 asset = bpy.context.asset  # AssetRepresentation or None
 if asset:
     print(asset.name)
@@ -337,7 +337,7 @@ if asset:
 Catalog management has NO direct data API. Two approaches:
 
 ```python
-# Approach 1: Operators (limited — no name/UUID control)
+# Approach 1: Operators (limited: no name/UUID control)
 bpy.ops.asset.catalog_new()
 bpy.ops.asset.catalog_delete()
 bpy.ops.asset.catalogs_save()
@@ -366,7 +366,7 @@ mat = bpy.data.materials.new("MyMaterial")
 bpy.context.collection.objects.link(obj)
 ```
 
-### Fake Users — Prevent Orphan Cleanup
+### Fake Users: Prevent Orphan Cleanup
 
 Data blocks with zero users are removed on file save. Use `use_fake_user` to prevent this.
 
@@ -396,7 +396,7 @@ bpy.ops.outliner.orphans_purge(do_local_ids=True, do_linked_ids=True, do_recursi
 ### Batch Data Block Operations
 
 ```python
-# Blender 3.x/4.x/5.x — iterate and filter data blocks
+# Blender 3.x/4.x/5.x: iterate and filter data blocks
 for mat in bpy.data.materials:
     if mat.users == 0 and not mat.use_fake_user:
         bpy.data.materials.remove(mat)
@@ -410,7 +410,7 @@ for mat in orphans:
 ### Write Data to External File
 
 ```python
-# Blender 3.x/4.x/5.x — save specific data blocks to a new .blend
+# Blender 3.x/4.x/5.x: save specific data blocks to a new .blend
 data_blocks = {bpy.data.objects["Column_A"], bpy.data.materials["Concrete"]}
 bpy.data.libraries.write("/path/to/output.blend", data_blocks)
 

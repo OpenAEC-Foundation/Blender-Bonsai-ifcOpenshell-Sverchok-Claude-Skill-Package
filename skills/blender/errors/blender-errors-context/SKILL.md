@@ -18,7 +18,7 @@ dependencies:
   - blender-core-api
 ---
 
-# Blender Context Errors — Diagnosis and Resolution
+# Blender Context Errors: Diagnosis and Resolution
 
 ## Purpose
 
@@ -124,7 +124,7 @@ if bpy.ops.object.mode_set.poll():
 **BREAKING CHANGE in Blender 4.0:** Dictionary-based context overrides are REMOVED.
 
 ```python
-# Blender 3.x ONLY — REMOVED in 4.0
+# Blender 3.x ONLY: REMOVED in 4.0
 override = bpy.context.copy()
 override['area'] = area
 override['region'] = region
@@ -281,10 +281,10 @@ bm.verts.ensure_lookup_table()
 # ... perform edits ...
 
 bmesh.update_edit_mesh(obj.data)
-# Do NOT call bm.free() for from_edit_mesh — Blender manages it
+# Do NOT call bm.free() for from_edit_mesh: Blender manages it
 
 bpy.ops.object.mode_set(mode='OBJECT')
-# bm is now INVALID — do not use
+# bm is now INVALID: do not use
 ```
 
 ---
@@ -392,7 +392,7 @@ thread.start()
 
 ---
 
-## 6. Quick Reference — Error Message Index
+## 6. Quick Reference: Error Message Index
 
 | Error Message | Section | Resolution |
 |---------------|---------|------------|

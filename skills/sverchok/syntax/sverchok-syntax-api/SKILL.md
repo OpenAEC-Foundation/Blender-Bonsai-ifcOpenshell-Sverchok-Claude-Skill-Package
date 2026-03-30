@@ -89,7 +89,7 @@ Need to automate Sverchok from Python?
 # Blender 4.0+/5.x with Sverchok v1.4.0+
 import bpy
 
-# Create a new Sverchok tree (uses bpy.data — see blender-core-api skill)
+# Create a new Sverchok tree (uses bpy.data: see blender-core-api skill)
 tree = bpy.data.node_groups.new("MyParametricTree", 'SverchCustomTreeType')
 
 # ALWAYS use init_tree() to suppress updates during construction
@@ -120,7 +120,7 @@ tree.force_update()
 # Blender 4.0+/5.x with Sverchok v1.4.0+
 import bpy
 
-# List all Sverchok trees (bpy.data.node_groups — see blender-core-api skill)
+# List all Sverchok trees (bpy.data.node_groups: see blender-core-api skill)
 sv_trees = [
     ng for ng in bpy.data.node_groups
     if ng.bl_idname == 'SverchCustomTreeType'
@@ -262,7 +262,7 @@ verts = [[(0,0,0), (1,0,0)], [(2,0,0), (3,0,0), (4,0,0)]]
 scales = [[2.0]]  # 1 object, but 2 objects of verts
 
 matched = match_long_repeat([verts, scales])
-# scales becomes [[2.0], [2.0]] — repeated to match 2 objects
+# scales becomes [[2.0], [2.0]]: repeated to match 2 objects
 
 # fullList: in-place extend a list to minimum length
 my_list = [1.0, 2.0]

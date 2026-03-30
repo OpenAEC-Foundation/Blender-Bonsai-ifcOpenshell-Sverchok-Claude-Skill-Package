@@ -88,7 +88,7 @@ What do you want to do with the profile?
 ### Pattern 1: Create a Parametric I-Beam Profile
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.api
 
@@ -114,7 +114,7 @@ ifcopenshell.api.profile.edit_profile(model,
 ### Pattern 2: Create a Rectangular Profile
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 rect_profile = ifcopenshell.api.profile.add_parameterised_profile(model,
     ifc_class="IfcRectangleProfileDef")
 ifcopenshell.api.profile.edit_profile(model,
@@ -129,7 +129,7 @@ ifcopenshell.api.profile.edit_profile(model,
 ### Pattern 3: Create a Circular Hollow Section
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 chs_profile = ifcopenshell.api.profile.add_parameterised_profile(model,
     ifc_class="IfcCircleHollowProfileDef")
 ifcopenshell.api.profile.edit_profile(model,
@@ -144,7 +144,7 @@ ifcopenshell.api.profile.edit_profile(model,
 ### Pattern 4: Create an Arbitrary Profile from Coordinates
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Custom L-shaped profile (non-standard dimensions)
 custom_profile = ifcopenshell.api.profile.add_arbitrary_profile(model,
     profile=[
@@ -161,7 +161,7 @@ custom_profile = ifcopenshell.api.profile.add_arbitrary_profile(model,
 ### Pattern 5: Create a Profile with Voids
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 hollow_profile = ifcopenshell.api.profile.add_arbitrary_profile_with_voids(model,
     outer_profile=[
         (0.0, 0.0), (0.5, 0.0), (0.5, 0.5), (0.0, 0.5)
@@ -175,7 +175,7 @@ hollow_profile = ifcopenshell.api.profile.add_arbitrary_profile_with_voids(model
 ### Pattern 6: Profile-Based Extrusion (3D Geometry)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Requires representation context from project bootstrap
 model3d = ifcopenshell.api.run("context.add_context", model, context_type="Model")
 body = ifcopenshell.api.run("context.add_context", model,
@@ -197,7 +197,7 @@ ifcopenshell.api.run("geometry.edit_object_placement", model, product=column)
 ### Pattern 7: Material Profile Set (Profile + Material for Structural Elements)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.api
 
 # Step 1: Create material
@@ -276,7 +276,7 @@ The `profile_type` parameter in `add_parameterised_profile` accepts:
 ### Copy a Profile
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 copied_profile = ifcopenshell.api.profile.copy_profile(model, profile=i_profile)
 # Returns a new profile with identical dimensions, disconnected from original elements
 ```
@@ -284,7 +284,7 @@ copied_profile = ifcopenshell.api.profile.copy_profile(model, profile=i_profile)
 ### Modify Profile Dimensions
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # Change I-beam dimensions (e.g., upgrade from HEA 200 to HEA 300)
 ifcopenshell.api.profile.edit_profile(model,
     profile=i_profile,
@@ -301,7 +301,7 @@ ifcopenshell.api.profile.edit_profile(model,
 ### Remove a Profile
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 # ALWAYS ensure profile is not referenced by geometry or material sets first
 ifcopenshell.api.profile.remove_profile(model, profile=unused_profile)
 ```
@@ -309,7 +309,7 @@ ifcopenshell.api.profile.remove_profile(model, profile=unused_profile)
 ### Query Profile from a Structural Element
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell.util.element
 
 mat = ifcopenshell.util.element.get_material(beam, should_skip_usage=True)

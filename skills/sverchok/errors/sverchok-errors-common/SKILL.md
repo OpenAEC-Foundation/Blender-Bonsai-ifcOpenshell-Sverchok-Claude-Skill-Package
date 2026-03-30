@@ -76,10 +76,10 @@ IfcSverchok-specific issues?
 Wrong nesting level causes downstream nodes to misinterpret data structure. Each vertex is treated as a separate object instead of part of one object.
 
 ```python
-# WRONG: Flat vertex list — each vertex becomes a separate "object"
+# WRONG: Flat vertex list: each vertex becomes a separate "object"
 self.outputs['Vertices'].sv_set([(0,0,0), (1,0,0)])
 
-# CORRECT: Object-wrapped vertex list — one object with 2 vertices
+# CORRECT: Object-wrapped vertex list: one object with 2 vertices
 self.outputs['Vertices'].sv_set([[(0,0,0), (1,0,0)]])
 ```
 
@@ -90,7 +90,7 @@ self.outputs['Vertices'].sv_set([[(0,0,0), (1,0,0)]])
 Property changes do not trigger node re-evaluation. The node appears stuck on its initial value.
 
 ```python
-# WRONG: No update callback — property changes are ignored
+# WRONG: No update callback: property changes are ignored
 my_prop: FloatProperty(name='Scale', default=1.0)
 
 # CORRECT: updateNode dispatches PropertyEvent to the update system
@@ -139,7 +139,7 @@ result = [sublist + [999] for sublist in data]  # New list, original untouched
 Using Python's `zip()` silently truncates data to the shortest input. Sverchok's convention is to repeat the last element of shorter lists.
 
 ```python
-# WRONG: zip() truncates to shortest — data is silently lost
+# WRONG: zip() truncates to shortest: data is silently lost
 for v, s in zip(verts, scale):
     ...
 
@@ -171,7 +171,7 @@ Blender crashes when undoing operations in IfcSverchok node trees. This is a kno
 AI generates flat number lists instead of the required nested structure.
 
 ```python
-# AI MISTAKE: Returning flat list — downstream nodes fail or misinterpret
+# AI MISTAKE: Returning flat list: downstream nodes fail or misinterpret
 result = [1, 2, 3]
 self.outputs['Numbers'].sv_set(result)  # WRONG
 
@@ -201,7 +201,7 @@ AI uses Python's standard `__init__` instead of Sverchok's `sv_init` lifecycle m
 def __init__(self):
     self.inputs.new(...)  # WRONG — will fail or be ignored
 
-# CORRECT: Use sv_init — called once when node is created
+# CORRECT: Use sv_init: called once when node is created
 def sv_init(self, context):
     self.inputs.new('SvStringsSocket', 'Data')
     self.outputs.new('SvStringsSocket', 'Result')

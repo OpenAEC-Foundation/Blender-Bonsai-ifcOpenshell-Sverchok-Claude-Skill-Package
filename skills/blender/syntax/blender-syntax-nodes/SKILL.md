@@ -159,7 +159,7 @@ obj = bpy.context.active_object
 modifier = obj.modifiers.new(name="GeoNodes", type='NODES')
 modifier.node_group = bpy.data.node_groups["MyNodeGroup"]
 
-# Set modifier input values — MUST find identifier first
+# Set modifier input values: MUST find identifier first
 for item in modifier.node_group.interface.items_tree:
     if item.item_type == 'SOCKET' and item.in_out == 'INPUT':
         if item.name == "Scale":

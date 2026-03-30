@@ -99,7 +99,7 @@ What data do you need from an IFC element?
 ### Pattern 1: Extract All Properties from an Element
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.element
 
@@ -129,7 +129,7 @@ is_external = ifcopenshell.util.element.get_pset(
 ### Pattern 2: Navigate Element Relationships
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.element
 
@@ -159,7 +159,7 @@ children = ifcopenshell.util.element.get_decomposition(building)
 ### Pattern 3: Filter Elements with Selector Queries
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.selector
 
@@ -204,7 +204,7 @@ non_slabs = ifcopenshell.util.selector.filter_elements(
 ### Pattern 4: Unit Conversion
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.unit
 
@@ -232,7 +232,7 @@ value_mm = ifcopenshell.util.unit.convert(
 ### Pattern 5: Get Element Placement
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.placement
 
@@ -258,7 +258,7 @@ elevation = ifcopenshell.util.placement.get_storey_elevation(storey)
 ### Pattern 6: Date Conversion
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.date
 from datetime import datetime
@@ -293,7 +293,7 @@ ifc_date = ifcopenshell.util.date.datetime2ifc(
 ### Classification Lookup
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.classification
 
@@ -309,7 +309,7 @@ for ref in refs:
 ### Cost Item Lookup
 
 ```python
-# IfcOpenShell — IFC4/IFC4X3 (cost entities not in IFC2X3)
+# IfcOpenShell: IFC4/IFC4X3 (cost entities not in IFC2X3)
 import ifcopenshell
 import ifcopenshell.util.cost
 
@@ -325,7 +325,7 @@ for item in cost_items:
 ### Schedule Task Lookup
 
 ```python
-# IfcOpenShell — IFC4/IFC4X3
+# IfcOpenShell: IFC4/IFC4X3
 import ifcopenshell
 import ifcopenshell.util.sequence
 
@@ -342,7 +342,7 @@ for schedule in schedules:
 ### Attribute Schema Introspection
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.attribute
 
@@ -360,7 +360,7 @@ items = ifcopenshell.util.attribute.get_enum_items(enum_attr)
 ### Geometry Extraction (Requires Processed Shapes)
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.geom
 import ifcopenshell.util.shape
@@ -386,7 +386,7 @@ top_z = ifcopenshell.util.shape.get_top_elevation(shape.geometry)
 ### Copy/Duplicate Elements
 
 ```python
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import ifcopenshell
 import ifcopenshell.util.element
 

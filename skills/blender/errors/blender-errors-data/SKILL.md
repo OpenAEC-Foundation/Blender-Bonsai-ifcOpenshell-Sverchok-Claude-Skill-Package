@@ -90,12 +90,12 @@ Got ReferenceError: StructRNA of type X has been removed?
 When a data block is removed via `bpy.data.<collection>.remove()`, ANY Python variable still pointing to that data raises `ReferenceError` on access.
 
 ```python
-# Blender 3.x/4.x/5.x — BROKEN
+# Blender 3.x/4.x/5.x: BROKEN
 mesh = bpy.data.meshes.new("TempMesh")
 bpy.data.meshes.remove(mesh)
 print(mesh.name)  # ReferenceError: StructRNA of type Mesh has been removed
 
-# Blender 3.x/4.x/5.x — CORRECT
+# Blender 3.x/4.x/5.x: CORRECT
 mesh = bpy.data.meshes.new("TempMesh")
 mesh_name = mesh.name  # Save name before removal if needed
 bpy.data.meshes.remove(mesh)
@@ -105,7 +105,7 @@ mesh = None  # Explicitly clear the reference
 **Cascading removal**: Removing an object does NOT automatically remove its data. Removing a mesh does NOT automatically remove objects using it. Track dependencies manually.
 
 ```python
-# Blender 3.x/4.x/5.x — Safe removal of object AND its data
+# Blender 3.x/4.x/5.x: Safe removal of object AND its data
 obj = bpy.data.objects.get("MyObject")
 if obj:
     mesh = obj.data
@@ -128,12 +128,12 @@ When undo or redo occurs, Blender rebuilds the entire data model from its undo h
 - Any operator with built-in undo support that the user subsequently undoes
 
 ```python
-# Blender 3.x/4.x/5.x — BROKEN: reference held across undo
+# Blender 3.x/4.x/5.x: BROKEN: reference held across undo
 obj = bpy.data.objects["Cube"]
 bpy.ops.ed.undo()
 obj.location.x = 1.0  # ReferenceError or crash
 
-# Blender 3.x/4.x/5.x — CORRECT: store name, re-fetch
+# Blender 3.x/4.x/5.x: CORRECT: store name, re-fetch
 obj_name = bpy.data.objects["Cube"].name
 bpy.ops.ed.undo()
 obj = bpy.data.objects.get(obj_name)
@@ -150,11 +150,11 @@ See [references/examples.md](references/examples.md) for the `SafeObjectRef` wra
 Blender enforces unique names within each `bpy.data` collection. When you create a data block with a name that already exists, Blender silently appends `.001`, `.002`, etc.
 
 ```python
-# Blender 3.x/4.x/5.x — BROKEN: assuming exact name
+# Blender 3.x/4.x/5.x: BROKEN: assuming exact name
 bpy.data.meshes.new(name="MyMesh")
 mesh = bpy.data.meshes["MyMesh"]  # KeyError if "MyMesh" already existed — it became "MyMesh.001"
 
-# Blender 3.x/4.x/5.x — CORRECT: capture return value
+# Blender 3.x/4.x/5.x: CORRECT: capture return value
 mesh = bpy.data.meshes.new(name="MyMesh")  # Returns the actual data block
 print(mesh.name)  # May be "MyMesh.001" — use this variable, never look up by name
 ```
@@ -168,7 +168,7 @@ print(mesh.name)  # May be "MyMesh.001" — use this variable, never look up by 
 `CollectionProperty` elements are stored in a contiguous C array. Calling `.add()` or `.remove()` may re-allocate the entire array, invalidating ALL Python references to existing elements.
 
 ```python
-# Blender 3.x/4.x/5.x — BROKEN: stale pointer after re-allocation
+# Blender 3.x/4.x/5.x: BROKEN: stale pointer after re-allocation
 items = bpy.context.scene.my_collection
 first_item = items.add()
 first_item.name = "First"
@@ -178,7 +178,7 @@ for i in range(100):
 
 first_item.name = "Updated"  # CRASH or undefined behavior — pointer is invalid
 
-# Blender 3.x/4.x/5.x — CORRECT: re-fetch by index after modifications
+# Blender 3.x/4.x/5.x: CORRECT: re-fetch by index after modifications
 items = bpy.context.scene.my_collection
 items.add()
 items[len(items) - 1].name = "First"
@@ -196,12 +196,12 @@ items[0].name = "Updated"  # Safe — accessed by index, not stale pointer
 File load and revert rebuild the entire data model, identical to undo invalidation. References obtained before the file operation are invalid.
 
 ```python
-# Blender 3.x/4.x/5.x — BROKEN
+# Blender 3.x/4.x/5.x: BROKEN
 obj = bpy.data.objects["Wall"]
 bpy.ops.wm.open_mainfile(filepath="/path/to/other.blend")
 print(obj.name)  # ReferenceError — entire data model was replaced
 
-# Blender 3.x/4.x/5.x — CORRECT: use load_post handler
+# Blender 3.x/4.x/5.x: CORRECT: use load_post handler
 from bpy.app.handlers import persistent
 
 @persistent
@@ -220,15 +220,15 @@ bpy.app.handlers.load_post.append(on_file_loaded)
 Blender 5.0 separates system-defined properties (RNA properties defined via `bpy.props`) from user-defined custom properties. Dict-like access to system properties is removed.
 
 ```python
-# Blender 4.x — Works (but deprecated)
+# Blender 4.x: Works (but deprecated)
 value = bpy.context.scene["cycles"]  # Accesses Cycles settings via dict syntax
 del obj["my_rna_prop"]               # Resets RNA property via dict deletion
 
-# Blender 5.0+ — BROKEN
+# Blender 5.0+: BROKEN
 value = bpy.context.scene["cycles"]  # KeyError — system props not in dict
 del obj["my_rna_prop"]               # Fails for RNA-defined properties
 
-# Blender 5.0+ — CORRECT
+# Blender 5.0+: CORRECT
 value = bpy.context.scene.cycles     # Access via attribute
 obj.property_unset("my_rna_prop")    # Reset RNA property to default
 
@@ -241,7 +241,7 @@ del obj["my_custom_prop"]            # Works in 3.x/4.x/5.x
 **Migration for legacy files**: Blender 5.0 auto-duplicates old IDProperties into system storage when opening pre-5.0 files. Clean up with:
 
 ```python
-# Blender 5.0+ — Cleanup duplicated IDProperties from legacy files
+# Blender 5.0+: Cleanup duplicated IDProperties from legacy files
 for ob in bpy.data.objects:
     sys_props = ob.bl_system_properties_get()
     # Migrate values if needed, then remove old custom prop duplicates
@@ -254,13 +254,13 @@ for ob in bpy.data.objects:
 Switching between Edit Mode and Object Mode re-allocates mesh data arrays. References to `mesh.vertices`, `mesh.polygons`, `mesh.edges`, and UV layers obtained before the switch are invalid.
 
 ```python
-# Blender 3.x/4.x/5.x — BROKEN
+# Blender 3.x/4.x/5.x: BROKEN
 verts = bpy.context.active_object.data.vertices
 bpy.ops.object.mode_set(mode='EDIT')
 bpy.ops.object.mode_set(mode='OBJECT')
 print(verts[0].co)  # Crash or stale data — verts pointer is invalid
 
-# Blender 3.x/4.x/5.x — CORRECT: re-fetch after mode switch
+# Blender 3.x/4.x/5.x: CORRECT: re-fetch after mode switch
 bpy.ops.object.mode_set(mode='EDIT')
 bpy.ops.object.mode_set(mode='OBJECT')
 verts = bpy.context.active_object.data.vertices  # Re-fetch

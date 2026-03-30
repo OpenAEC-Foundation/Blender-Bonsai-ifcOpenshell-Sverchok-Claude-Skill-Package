@@ -99,7 +99,7 @@ from mathutils import Vector, Matrix, Quaternion, Euler
 
 **Matrix multiplication order** (right-to-left application):
 ```python
-# Blender 3.x/4.x/5.x — Scale → Rotate → Translate
+# Blender 3.x/4.x/5.x: Scale → Rotate → Translate
 transform = translation_matrix @ rotation_matrix @ scale_matrix
 point_transformed = transform @ point_vector
 ```
@@ -107,7 +107,7 @@ point_transformed = transform @ point_vector
 ### Pattern 2: Thread-Safe bpy Access
 
 ```python
-# Blender 3.x/4.x/5.x — CORRECT thread-safe pattern
+# Blender 3.x/4.x/5.x: CORRECT thread-safe pattern
 import threading, queue, bpy
 
 execution_queue = queue.Queue()
@@ -135,7 +135,7 @@ threading.Thread(target=worker, daemon=True).start()
 ### Pattern 3: Safe Reference Handling (Undo-Proof)
 
 ```python
-# Blender 3.x/4.x/5.x — ALWAYS store names, NEVER store bpy references
+# Blender 3.x/4.x/5.x: ALWAYS store names, NEVER store bpy references
 obj_name = bpy.context.active_object.name  # Store name
 
 # ... undo may happen here ...
@@ -148,7 +148,7 @@ if obj is None:
 ### Pattern 4: Application Handlers with @persistent
 
 ```python
-# Blender 3.x/4.x/5.x — Handler registration
+# Blender 3.x/4.x/5.x: Handler registration
 from bpy.app.handlers import persistent
 import bpy
 
@@ -196,7 +196,7 @@ if bpy.app.timers.is_registered(periodic_check):
 ### Pattern 6: Message Bus Subscriptions
 
 ```python
-# Blender 3.x/4.x/5.x — Property change notifications
+# Blender 3.x/4.x/5.x: Property change notifications
 import bpy
 
 owner = object()  # Subscription owner (identity-compared)
@@ -234,7 +234,7 @@ bpy.msgbus.clear_by_owner(owner)
 
 ## Spatial Query Structures
 
-### KDTree — Nearest-Neighbor Queries
+### KDTree: Nearest-Neighbor Queries
 
 ```python
 # Blender 3.x/4.x/5.x
@@ -251,7 +251,7 @@ results = kd.find_n((5.0, 3.0, 0.0), 10)           # 10 nearest
 results = kd.find_range((5.0, 3.0, 0.0), 2.0)      # Within radius
 ```
 
-### BVHTree — Ray Casting and Surface Queries
+### BVHTree: Ray Casting and Surface Queries
 
 ```python
 # Blender 3.x/4.x/5.x
@@ -284,7 +284,7 @@ blender -b scene.blend -P script.py -- --custom-arg value
 ```
 
 ```python
-# Blender 3.x/4.x/5.x — detect background mode
+# Blender 3.x/4.x/5.x: detect background mode
 if bpy.app.background:
     # CANNOT: viewport ops, UI drawing, modal operators, GPU ops
     # CAN: render, data manipulation, file I/O, bpy.data access
@@ -308,7 +308,7 @@ if bpy.app.background:
 ## bl_math Utility Functions
 
 ```python
-# Blender 3.x/4.x/5.x — float-only utilities (also work in driver expressions)
+# Blender 3.x/4.x/5.x: float-only utilities (also work in driver expressions)
 import bl_math
 
 bl_math.lerp(0.0, 10.0, 0.25)           # → 2.5

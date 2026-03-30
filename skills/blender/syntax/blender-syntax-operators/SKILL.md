@@ -269,7 +269,7 @@ class MYCAT_OT_delete_all(bpy.types.Operator):
 ### Calling Operators from Scripts
 
 ```python
-# Direct call — uses current context
+# Direct call: uses current context
 bpy.ops.mesh.primitive_cube_add(size=2.0, location=(0, 0, 1))
 
 # With context override (Blender 4.0+)
@@ -324,7 +324,7 @@ The class name format: `CATEGORY_OT_operator_name` — category uppercase, rest 
 class MESH_OT_add_custom(bpy.types.Operator):
     bl_idname = "mesh.add_custom"        # lowercase.lowercase
 
-# WRONG — bl_idname has uppercase:
+# WRONG: bl_idname has uppercase:
 class MESH_OT_add_custom(bpy.types.Operator):
     bl_idname = "Mesh.AddCustom"         # WILL FAIL at registration
 ```

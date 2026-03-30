@@ -14,14 +14,14 @@ metadata:
   version: "1.0"
 ---
 
-# Blender Core Versions — Python API Version Matrix
+# Blender Core Versions: Python API Version Matrix
 
 ## 1. Quick Reference
 
 ### Version Detection
 
 ```python
-# Blender 3.x / 4.x / 5.x — ALWAYS use tuple comparison for version checks
+# Blender 3.x / 4.x / 5.x: ALWAYS use tuple comparison for version checks
 import bpy
 major, minor, patch = bpy.app.version  # e.g., (4, 2, 0)
 
@@ -91,7 +91,7 @@ See [references/methods.md](references/methods.md) for complete version detectio
 ALWAYS use `bpy.app.version` tuple comparison. NEVER parse `bpy.app.version_string`.
 
 ```python
-# Blender 3.x / 4.x / 5.x — Version-safe conditional pattern
+# Blender 3.x / 4.x / 5.x: Version-safe conditional pattern
 import bpy
 
 if bpy.app.version >= (5, 0, 0):
@@ -110,7 +110,7 @@ else:
 ALWAYS prefer `hasattr()` checks over version comparisons when testing for a specific API.
 
 ```python
-# Blender 3.x / 4.x / 5.x — Feature detection pattern
+# Blender 3.x / 4.x / 5.x: Feature detection pattern
 import bpy
 
 # Prefer feature detection over version check
@@ -134,11 +134,11 @@ else:
 ### Context Override Pattern
 
 ```python
-# Blender 3.x — LEGACY context override (BROKEN in 4.0+)
+# Blender 3.x: LEGACY context override (BROKEN in 4.0+)
 override = {"object": obj, "active_object": obj}
 bpy.ops.object.modifier_apply(override, modifier="Boolean")
 
-# Blender 4.0+ — temp_override (REQUIRED)
+# Blender 4.0+: temp_override (REQUIRED)
 with bpy.context.temp_override(object=obj, active_object=obj):
     bpy.ops.object.modifier_apply(modifier="Boolean")
 
@@ -155,11 +155,11 @@ def apply_modifier(obj, modifier_name):
 ### Node Group Interface Pattern
 
 ```python
-# Blender 3.x — LEGACY (BROKEN in 4.0+)
+# Blender 3.x: LEGACY (BROKEN in 4.0+)
 node_group.inputs.new("NodeSocketFloat", "Width")
 node_group.outputs.new("NodeSocketGeometry", "Geometry")
 
-# Blender 4.0+ — interface API (REQUIRED)
+# Blender 4.0+: interface API (REQUIRED)
 node_group.interface.new_socket(
     name="Width", in_out='INPUT', socket_type='NodeSocketFloat'
 )
@@ -171,9 +171,9 @@ node_group.interface.new_socket(
 ### EEVEE Identifier Pattern
 
 ```python
-# Blender 3.x — 'BLENDER_EEVEE'
-# Blender 4.2–4.x — 'BLENDER_EEVEE_NEXT'
-# Blender 5.0+ — 'BLENDER_EEVEE' (changed back)
+# Blender 3.x: 'BLENDER_EEVEE'
+# Blender 4.2–4.x: 'BLENDER_EEVEE_NEXT'
+# Blender 5.0+: 'BLENDER_EEVEE' (changed back)
 import bpy
 
 def get_eevee_identifier():
@@ -191,7 +191,7 @@ scene.render.engine = get_eevee_identifier()
 ### Extension Manifest Pattern
 
 ```python
-# Blender 3.x / 4.0 / 4.1 — bl_info dict in __init__.py
+# Blender 3.x / 4.0 / 4.1: bl_info dict in __init__.py
 bl_info = {
     "name": "My Addon",
     "blender": (4, 0, 0),
@@ -200,7 +200,7 @@ bl_info = {
     "description": "My addon description",
 }
 
-# Blender 4.2+ — blender_manifest.toml (REQUIRED for extensions)
+# Blender 4.2+: blender_manifest.toml (REQUIRED for extensions)
 # File: blender_manifest.toml
 # schema_version = "1.0.0"
 # id = "my_addon"
@@ -215,13 +215,13 @@ bl_info = {
 ### GPU Drawing Pattern (BGL → gpu Migration)
 
 ```python
-# Blender 3.x — bgl module (BROKEN in 5.0)
+# Blender 3.x: bgl module (BROKEN in 5.0)
 import bgl
 bgl.glEnable(bgl.GL_BLEND)
 bgl.glLineWidth(2)
 shader = gpu.shader.from_builtin('3D_UNIFORM_COLOR')
 
-# Blender 4.0+ — gpu module (REQUIRED for 5.0+)
+# Blender 4.0+: gpu module (REQUIRED for 5.0+)
 import gpu
 gpu.state.blend_set('ALPHA')
 gpu.state.line_width_set(2.0)
@@ -235,12 +235,12 @@ gpu.state.line_width_set(1.0)
 ### Compositor Access Pattern
 
 ```python
-# Blender 3.x / 4.x — scene.node_tree
+# Blender 3.x / 4.x: scene.node_tree
 scene = bpy.context.scene
 scene.use_nodes = True
 comp_tree = scene.node_tree
 
-# Blender 5.0+ — compositing_node_group
+# Blender 5.0+: compositing_node_group
 scene = bpy.context.scene
 comp_tree = bpy.data.node_groups.new("MyComp", 'CompositorNodeTree')
 scene.compositing_node_group = comp_tree
@@ -249,11 +249,11 @@ scene.compositing_node_group = comp_tree
 ### Slotted Actions Pattern (4.4+)
 
 ```python
-# Blender 3.x / 4.0–4.3 — Legacy action.fcurves
+# Blender 3.x / 4.0–4.3: Legacy action.fcurves
 action = bpy.data.actions.new("MyAction")
 fcurve = action.fcurves.new(data_path="location", index=0)
 
-# Blender 4.4+ — Slotted Actions (legacy removed in 5.0)
+# Blender 4.4+: Slotted Actions (legacy removed in 5.0)
 action = bpy.data.actions.new("MyAction")
 slot = action.slots.new()
 layer = action.layers.new(name="Layer")
@@ -264,7 +264,7 @@ fcurve = channelbag.fcurves.new(data_path="location", index=0)
 
 ---
 
-## 3. Common Operations — Migration Checklists
+## 3. Common Operations: Migration Checklists
 
 ### 3.x → 4.0 Migration Checklist
 

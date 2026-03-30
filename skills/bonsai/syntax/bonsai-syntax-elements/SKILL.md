@@ -111,7 +111,7 @@ What do you have?
 ### Pattern 1: Get the Live IFC File
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 
 # Method A: via tool.Ifc (preferred in Bonsai tool/core code)
 import bonsai.tool as tool
@@ -133,7 +133,7 @@ if model is None:
 ### Pattern 2: Blender Object → IFC Entity
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 import bpy
 import bonsai.tool as tool
 
@@ -152,7 +152,7 @@ else:
 ### Pattern 3: IFC Entity → Blender Object
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 import bonsai.tool as tool
 
 model = tool.Ifc.get()
@@ -169,7 +169,7 @@ else:
 ### Pattern 4: Query Elements by Type
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 import bonsai.tool as tool
 
 model = tool.Ifc.get()
@@ -194,7 +194,7 @@ walls_only = model.by_type("IfcWall", include_subtypes=False)
 ### Pattern 5: Look Up by GlobalId or Step ID
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 import bonsai.tool as tool
 from bonsai.bim.ifc import IfcStore
 
@@ -216,7 +216,7 @@ obj = IfcStore.guid_map.get("2O2Fr$t4X7Zf8NOew3FLOH")
 ### Pattern 6: Navigate Entity Relationships
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 import bonsai.tool as tool
 import ifcopenshell.util.element
 
@@ -247,7 +247,7 @@ if material:
 ### Pattern 7: Iterate Over All Elements with Blender Objects
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 import bonsai.tool as tool
 from bonsai.bim.ifc import IfcStore
 
@@ -268,7 +268,7 @@ for wall in model.by_type("IfcWall"):
 ### Pattern 8: Check if Object is IFC-Linked
 
 ```python
-# Bonsai v0.8.x — inside Blender context
+# Bonsai v0.8.x: inside Blender context
 import bpy
 
 obj = bpy.context.active_object
@@ -366,7 +366,7 @@ except RuntimeError:
 
 ---
 
-## ifcopenshell.util.element — Relationship Navigation
+## ifcopenshell.util.element: Relationship Navigation
 
 | Function | Signature | Returns | Description |
 |----------|-----------|---------|-------------|
@@ -385,7 +385,7 @@ except RuntimeError:
 ### Select All Elements of a Type in Viewport
 
 ```python
-# Bonsai v0.8.x — select all IfcDoor objects in Blender viewport
+# Bonsai v0.8.x: select all IfcDoor objects in Blender viewport
 import bpy
 import bonsai.tool as tool
 
@@ -403,7 +403,7 @@ for door in model.by_type("IfcDoor"):
 ### Get Property Value from Active Object
 
 ```python
-# Bonsai v0.8.x — read FireRating from active object
+# Bonsai v0.8.x: read FireRating from active object
 import bpy
 import bonsai.tool as tool
 import ifcopenshell.util.element
@@ -420,7 +420,7 @@ if entity:
 ### List All Elements in a Storey
 
 ```python
-# Bonsai v0.8.x — list all elements contained in first storey
+# Bonsai v0.8.x: list all elements contained in first storey
 import bonsai.tool as tool
 import ifcopenshell.util.element
 

@@ -91,7 +91,7 @@ Image Editor sidebar?
 ### Pattern 1: Minimal Panel
 
 ```python
-# Blender 3.x/4.x/5.x — minimum viable panel
+# Blender 3.x/4.x/5.x: minimum viable panel
 import bpy
 
 class MY_PT_example(bpy.types.Panel):
@@ -115,7 +115,7 @@ def unregister():
 ### Pattern 2: Panel with poll() and draw_header()
 
 ```python
-# Blender 3.x/4.x/5.x — conditional visibility + header checkbox
+# Blender 3.x/4.x/5.x: conditional visibility + header checkbox
 class MY_PT_conditional(bpy.types.Panel):
     bl_label = "Object Info"
     bl_idname = "MY_PT_conditional"
@@ -144,7 +144,7 @@ class MY_PT_conditional(bpy.types.Panel):
 ### Pattern 3: Sub-Panels (Parent-Child Hierarchy)
 
 ```python
-# Blender 3.x/4.x/5.x — sub-panel via bl_parent_id
+# Blender 3.x/4.x/5.x: sub-panel via bl_parent_id
 class MY_PT_parent(bpy.types.Panel):
     bl_label = "Main Settings"
     bl_idname = "MY_PT_parent"
@@ -171,7 +171,7 @@ class MY_PT_child_a(bpy.types.Panel):
 ### Pattern 4: Collapsible Sections with layout.panel() (Blender 4.1+)
 
 ```python
-# Blender 4.1+ ONLY — collapsible section WITHOUT separate class registration
+# Blender 4.1+ ONLY: collapsible section WITHOUT separate class registration
 class MY_PT_modern(bpy.types.Panel):
     bl_label = "Modern Panel"
     bl_idname = "MY_PT_modern"
@@ -191,10 +191,10 @@ class MY_PT_modern(bpy.types.Panel):
             body.prop(context.active_object, "location")
 ```
 
-### Pattern 5: UILayout API — Common Elements
+### Pattern 5: UILayout API: Common Elements
 
 ```python
-# Blender 3.x/4.x/5.x — UILayout methods
+# Blender 3.x/4.x/5.x: UILayout methods
 def draw(self, context):
     layout = self.layout
     obj = context.active_object
@@ -251,7 +251,7 @@ def draw(self, context):
 ### Pattern 6: Menu Definition
 
 ```python
-# Blender 3.x/4.x/5.x — custom menu
+# Blender 3.x/4.x/5.x: custom menu
 class MY_MT_example(bpy.types.Menu):
     bl_label = "My Menu"
     bl_idname = "MY_MT_example"
@@ -284,7 +284,7 @@ bpy.types.VIEW3D_MT_object.remove(draw_my_menu_item)
 ### Pattern 7: UIList
 
 ```python
-# Blender 3.x/4.x/5.x — custom list widget
+# Blender 3.x/4.x/5.x: custom list widget
 class MY_UL_items(bpy.types.UIList):
     bl_idname = "MY_UL_items"
 
@@ -318,7 +318,7 @@ class MY_UL_items(bpy.types.UIList):
 ### Pattern 8: Properties Editor Panel
 
 ```python
-# Blender 3.x/4.x/5.x — panel in Properties editor
+# Blender 3.x/4.x/5.x: panel in Properties editor
 class MY_PT_object_props(bpy.types.Panel):
     bl_label = "Custom Properties"
     bl_idname = "MY_PT_object_props"
@@ -405,7 +405,7 @@ class MY_PT_object_props(bpy.types.Panel):
 ### Adding Popover Panels
 
 ```python
-# Blender 3.x/4.x/5.x — popover panel (floating panel from header button)
+# Blender 3.x/4.x/5.x: popover panel (floating panel from header button)
 class MY_PT_popover(bpy.types.Panel):
     bl_label = "Popover Settings"
     bl_idname = "MY_PT_popover"
@@ -423,7 +423,7 @@ class MY_PT_popover(bpy.types.Panel):
 ### Pie Menus
 
 ```python
-# Blender 3.x/4.x/5.x — pie menu
+# Blender 3.x/4.x/5.x: pie menu
 class MY_MT_pie(bpy.types.Menu):
     bl_label = "My Pie Menu"
     bl_idname = "MY_MT_pie"
@@ -442,7 +442,7 @@ class MY_MT_pie(bpy.types.Menu):
 ### Dynamic Panel Content
 
 ```python
-# Blender 3.x/4.x/5.x — panel content based on selection
+# Blender 3.x/4.x/5.x: panel content based on selection
 def draw(self, context):
     layout = self.layout
     obj = context.active_object

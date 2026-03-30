@@ -25,7 +25,7 @@ Systematic migration process for Blender Python code across major versions. This
 
 ---
 
-## 1. Quick Reference — Migration Paths
+## 1. Quick Reference: Migration Paths
 
 ### Supported Migration Paths
 
@@ -197,7 +197,7 @@ Apply changes from the relevant migration checklists below. Process ONE version 
 
 ---
 
-## 4. Decision Tree — Compatibility Shims vs Clean Migration
+## 4. Decision Tree: Compatibility Shims vs Clean Migration
 
 ```
 MIGRATION STRATEGY DECISION
@@ -230,7 +230,7 @@ NEVER use compatibility shims when:
 ### Compatibility Module Pattern
 
 ```python
-# compat.py — Version-safe compatibility layer
+# compat.py: Version-safe compatibility layer
 import bpy
 
 BLENDER_4 = bpy.app.version >= (4, 0, 0)

@@ -85,7 +85,7 @@ Need Bonsai integration?
 
 ## Essential Patterns
 
-### Pattern 1: SvIfcStore — Transient File Management
+### Pattern 1: SvIfcStore: Transient File Management
 
 ```python
 # IfcOpenShell 0.8.x / IfcSverchok
@@ -121,11 +121,11 @@ Key behaviors:
 - `get_file()` lazily creates a boilerplate IFC4 file on first access
 - Only ONE file exists at a time — no multi-file workflows
 
-### Pattern 2: SvIfcCore — Double-Nested Input Processing
+### Pattern 2: SvIfcCore: Double-Nested Input Processing
 
 ```python
 # IfcOpenShell 0.8.x / IfcSverchok
-# SvIfcCore applies zip_long_repeat TWICE — different from standard Sverchok.
+# SvIfcCore applies zip_long_repeat TWICE: different from standard Sverchok.
 
 from sverchok.data_structure import zip_long_repeat
 
@@ -206,9 +206,9 @@ Why double-nested: Sverchok data is `[[obj1_data], [obj2_data]]`. The first zip 
 # OR use Blender Objects In node
 
 # Step 2: Convert to IFC Representation
-# [SvIfcSverchokToIfcRepr] — from Sverchok vertices/edges/faces
-# [SvIfcBMeshToIfcRepr]    — from Blender mesh objects
-# [SvIfcSbRepresentation]  — from ShapeBuilder geometry
+# [SvIfcSverchokToIfcRepr]: from Sverchok vertices/edges/faces
+# [SvIfcBMeshToIfcRepr]   : from Blender mesh objects
+# [SvIfcSbRepresentation] : from ShapeBuilder geometry
 
 # Step 3: Create IFC Entities
 # [SvIfcCreateEntity]
@@ -220,7 +220,7 @@ Why double-nested: Sverchok data is `[[obj1_data], [obj2_data]]`. The first zip 
 # [SvIfcAddSpatialElement]
 #   IfcClass = "IfcBuildingStorey"
 #   Elements = (from Step 3)
-# Or skip — ensure_hirarchy() auto-completes on export
+# Or skip: ensure_hirarchy() auto-completes on export
 
 # Step 5: Add Properties (Optional)
 # [SvIfcAddPset]
@@ -252,13 +252,13 @@ Why double-nested: Sverchok data is `[[obj1_data], [obj2_data]]`. The first zip 
 # SvIfcSbRepresentation wraps into IfcShapeRepresentation
 
 # Available ShapeBuilder nodes:
-# SvIfcSbRectangle — rectangle profile
-# SvIfcSbExtrude   — extrusion along axis
-# SvIfcSbRepresentation — wraps to shape representation
-# SvSbMesh         — creates IFC mesh from vertices/polygons
-# SvSbPolyline     — creates IFC polyline from vertices
-# SvSbShapeOutput  — converts IFC shape back to Sverchok geometry
-# SvIfcSbTest      — debug/testing node
+# SvIfcSbRectangle: rectangle profile
+# SvIfcSbExtrude  : extrusion along axis
+# SvIfcSbRepresentation: wraps to shape representation
+# SvSbMesh        : creates IFC mesh from vertices/polygons
+# SvSbPolyline    : creates IFC polyline from vertices
+# SvSbShapeOutput : converts IFC shape back to Sverchok geometry
+# SvIfcSbTest     : debug/testing node
 ```
 
 ### Pattern 7: Automatic Hierarchy Completion (ensure_hirarchy)
@@ -279,7 +279,7 @@ Why double-nested: Sverchok data is `[[obj1_data], [obj2_data]]`. The first zip 
 # ensure_hirarchy() fills in Project/Site/Building automatically.
 
 # NOTE: The function is named "ensure_hirarchy" (typo preserved from source).
-# Do NOT attempt to call "ensure_hierarchy" — the correct name has no second 'e'.
+# Do NOT attempt to call "ensure_hierarchy": the correct name has no second 'e'.
 ```
 
 ---

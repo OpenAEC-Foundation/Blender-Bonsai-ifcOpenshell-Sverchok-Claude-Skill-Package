@@ -413,13 +413,13 @@ for wall in walls_to_remove:
 
 ```python
 # BEFORE (WARNING):
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 for wall in model.by_type("IfcWall"):
     shape = ifcopenshell.geom.create_shape(settings, wall)
     process(shape)
 
 # AFTER:
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 import multiprocessing
 walls = model.by_type("IfcWall")
 iterator = ifcopenshell.geom.iterator(
@@ -436,11 +436,11 @@ if iterator.initialize():
 
 ```python
 # BEFORE (BLOCKER):
-# IfcOpenShell — assumes single schema
+# IfcOpenShell: assumes single schema
 elements = model.by_type("IfcBuildingElement")
 
 # AFTER:
-# IfcOpenShell — all schema versions
+# IfcOpenShell: all schema versions
 schema = model.schema
 if schema == "IFC4X3":
     elements = model.by_type("IfcBuiltElement")

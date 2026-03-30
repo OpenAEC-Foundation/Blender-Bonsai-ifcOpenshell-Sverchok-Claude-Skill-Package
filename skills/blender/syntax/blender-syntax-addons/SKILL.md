@@ -65,7 +65,7 @@ Creating a Blender addon?
 The `bl_info` dict MUST be at module-level in `__init__.py`. Blender parses it statically (no Python execution), so it MUST NOT use variables or expressions.
 
 ```python
-# Blender 3.x/4.0/4.1 — REQUIRED in __init__.py (or single-file addon)
+# Blender 3.x/4.0/4.1: REQUIRED in __init__.py (or single-file addon)
 bl_info = {
     "name": "My Addon",
     "author": "Developer Name",
@@ -87,7 +87,7 @@ Valid `category` values: `3D View`, `Add Mesh`, `Add Curve`, `Animation`, `Compo
 Extensions use `blender_manifest.toml` instead of `bl_info`. The `__init__.py` contains ONLY `register()`/`unregister()` — no `bl_info` dict.
 
 ```toml
-# blender_manifest.toml — REQUIRED for extensions (Blender 4.2+)
+# blender_manifest.toml: REQUIRED for extensions (Blender 4.2+)
 schema_version = "1.0.0"
 
 id = "my_addon"
@@ -123,7 +123,7 @@ tags = ["Object", "Scene"]
 ### Pattern 3: Register / Unregister Lifecycle
 
 ```python
-# Blender 3.x/4.x/5.x — REQUIRED functions
+# Blender 3.x/4.x/5.x: REQUIRED functions
 import bpy
 
 classes = (
@@ -193,7 +193,7 @@ bl_info = {
     "version": (1, 0, 0),
 }
 
-# Reload support — REQUIRED for F8 / addon toggle without restart
+# Reload support: REQUIRED for F8 / addon toggle without restart
 if "bpy" in locals():
     import importlib
     importlib.reload(operators)
@@ -313,7 +313,7 @@ Extension guidelines for extensions.blender.org:
 ### Pattern 8: User-Writable Storage (4.2+)
 
 ```python
-# Blender 4.2+ — get a writable directory for addon data
+# Blender 4.2+: get a writable directory for addon data
 import os
 user_dir = bpy.utils.extension_path_user(__package__, create=True)
 config_path = os.path.join(user_dir, "config.json")
@@ -326,7 +326,7 @@ config_path = os.path.join(user_dir, "config.json")
 ### Detect Addon vs Extension Context
 
 ```python
-# Blender 3.x/4.x/5.x — check if running as extension
+# Blender 3.x/4.x/5.x: check if running as extension
 import os
 
 def is_extension():

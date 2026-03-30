@@ -9,6 +9,11 @@ description: >
   Keywords: Bonsai, BlenderBIM, tool.Ifc.get(), bpy.ops.bim, native IFC, addon architecture,
   IFC-backed properties, BIM authoring.
 version: 'Bonsai v0.8.4 | Minimum Blender: 4.2.0 | Python 3.11'
+license: MIT
+compatibility: "Designed for Claude Code. Requires Blender 4.2.0+ with Bonsai v0.8.4+ and Python 3.11."
+metadata:
+  author: OpenAEC-Foundation
+  version: "1.0"
 ---
 
 # Bonsai Core Architecture
@@ -92,7 +97,7 @@ structural   style        system       tester      type
 unit         void         web
 ```
 
-### Demo Module — Reference Implementation
+### Demo Module: Reference Implementation
 
 The `demo` module (`bim/module/demo/`) is a heavily commented reference implementation for new contributors. It demonstrates the full module pattern including all optional files. Enable it in `bonsai/bim/__init__.py`.
 
@@ -149,7 +154,7 @@ class BIM_OT_assign_container(bpy.types.Operator):
 4. **ALWAYS** include `"UNDO"` in `bl_options` for IFC-modifying operators.
 5. Operator namespace is `bpy.ops.bim.*` — ALWAYS use this prefix.
 
-## IfcStore — Central State Manager
+## IfcStore: Central State Manager
 
 `IfcStore` (`bonsai/bim/ifc.py`) is a **static class** — the single source of truth for all IFC state:
 
@@ -179,7 +184,7 @@ if model is None:
 walls = model.by_type("IfcWall")
 ```
 
-## `tool.Ifc` — High-Level IFC Access
+## `tool.Ifc`: High-Level IFC Access
 
 | Method | Purpose | Returns |
 |--------|---------|---------|
@@ -294,12 +299,12 @@ Bonsai uses three abstraction levels for IFC operations:
 ### Preferred: `ifcopenshell.api.run()`
 
 ```python
-# ALWAYS use the API for mutations — maintains IFC graph integrity
+# ALWAYS use the API for mutations: maintains IFC graph integrity
 wall = ifcopenshell.api.run("root.create_entity", model,
     ifc_class="IfcWall", name="Wall-001")
 
 # NEVER modify attributes directly
-# wall.Name = "Bad"  # WRONG — bypasses relationship management
+# wall.Name = "Bad"  # WRONG: bypasses relationship management
 ```
 
 ## Blender Registration

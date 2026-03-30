@@ -15,7 +15,7 @@ metadata:
   version: "1.0"
 ---
 
-# Bonsai QTO (Quantity Takeoff) — Implementation Skill
+# Bonsai QTO (Quantity Takeoff): Implementation Skill
 
 > **Bonsai v0.8.x** | Module: `bonsai.bim.module.qto` | NEVER use `blenderbim.bim.module.qto`
 
@@ -209,10 +209,10 @@ Rules map IFC classes to standard quantity sets and calculator functions. Stored
 | `CalculateSingleQuantity` | `bim.calculate_single_quantity` | One quantity via specific calculator function |
 | `PerformQuantityTakeOff` | `bim.perform_quantity_take_off` | Batch QTO using rules |
 
-### PerformQuantityTakeOff — Primary Batch Operator
+### PerformQuantityTakeOff: Primary Batch Operator
 
 ```python
-# Bonsai v0.8.x — Batch quantity takeoff
+# Bonsai v0.8.x: Batch quantity takeoff
 import bpy
 
 bpy.ops.bim.perform_quantity_take_off(
@@ -222,10 +222,10 @@ bpy.ops.bim.perform_quantity_take_off(
 
 **Behavior**: Processes selected objects. If no objects selected, processes ALL `IfcElement` instances matching the rule's IFC class filter.
 
-### CalculateSingleQuantity — Targeted Calculation
+### CalculateSingleQuantity: Targeted Calculation
 
 ```python
-# Bonsai v0.8.x — Single quantity calculation
+# Bonsai v0.8.x: Single quantity calculation
 bpy.ops.bim.calculate_single_quantity(
     calculator="Blender",
     qto_name="Qto_WallBaseQuantities",
@@ -239,7 +239,7 @@ bpy.ops.bim.calculate_single_quantity(
 QTO integrates with Bonsai cost management:
 
 ```python
-# Bonsai v0.8.x — QTO-Cost linkage
+# Bonsai v0.8.x: QTO-Cost linkage
 # tool.Qto.get_related_cost_item_quantities(product) returns:
 # [{"cost_item": <IfcCostItem>, "quantities": [<matched quantity properties>]}]
 ```
@@ -255,7 +255,7 @@ Unit conversion: `tool.Qto.convert_to_project_units()` handles measurement syste
 | `Shapely` | `get_contact_area()` | 2D polygon intersection |
 | `ifcopenshell.api.geometry` | Gross calculations | Shape generation with opening control |
 
-## 9. Gross vs. Net — Critical Distinction
+## 9. Gross vs. Net: Critical Distinction
 
 ```
 Gross quantities:

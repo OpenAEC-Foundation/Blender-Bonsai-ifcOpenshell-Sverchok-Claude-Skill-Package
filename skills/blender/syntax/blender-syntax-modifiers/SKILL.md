@@ -72,14 +72,14 @@ Need deformation?
 ### Pattern 1: Add a Modifier
 
 ```python
-# Blender 3.x/4.x/5.x — add modifier to an object
+# Blender 3.x/4.x/5.x: add modifier to an object
 import bpy
 
 obj = bpy.data.objects.get("Wall")
 if obj is None:
     raise RuntimeError("Object 'Wall' not found")
 
-# Add modifier — returns the new Modifier object
+# Add modifier: returns the new Modifier object
 mod = obj.modifiers.new(name="MyArray", type='ARRAY')
 # name: display name (Blender may append .001 if duplicate)
 # type: modifier type enum string (see table above)
@@ -92,7 +92,7 @@ mod.relative_offset_displace = (1.0, 0.0, 0.0)
 ### Pattern 2: Remove a Modifier
 
 ```python
-# Blender 3.x/4.x/5.x — remove modifier by reference or name
+# Blender 3.x/4.x/5.x: remove modifier by reference or name
 import bpy
 
 obj = bpy.data.objects.get("Wall")
@@ -112,7 +112,7 @@ for mod in obj.modifiers[:]:  # Copy list — modifiers change during removal
 Applying a modifier permanently bakes its effect into the mesh. This is an IRREVERSIBLE operation. ALWAYS requires Object Mode.
 
 ```python
-# Blender 3.2+/4.x/5.x — apply modifier using temp_override
+# Blender 3.2+/4.x/5.x: apply modifier using temp_override
 import bpy
 
 obj = bpy.data.objects.get("Wall")
@@ -125,14 +125,14 @@ if bpy.context.mode != 'OBJECT':
 with bpy.context.temp_override(object=obj, active_object=obj):
     bpy.ops.object.modifier_apply(modifier="MyArray")
 
-# Apply ALL modifiers (copy list — stack changes during apply)
+# Apply ALL modifiers (copy list: stack changes during apply)
 with bpy.context.temp_override(object=obj, active_object=obj):
     for mod in obj.modifiers[:]:
         bpy.ops.object.modifier_apply(modifier=mod.name)
 ```
 
 ```python
-# Blender < 3.2 ONLY (legacy — do NOT use for new code)
+# Blender < 3.2 ONLY (legacy: do NOT use for new code)
 override = bpy.context.copy()
 override['object'] = obj
 override['active_object'] = obj
@@ -144,7 +144,7 @@ bpy.ops.object.modifier_apply(override, modifier="MyArray")
 Use this to read the post-modifier mesh WITHOUT permanently applying modifiers.
 
 ```python
-# Blender 3.x/4.x/5.x — read evaluated mesh data
+# Blender 3.x/4.x/5.x: read evaluated mesh data
 import bpy
 
 obj = bpy.data.objects.get("Wall")
@@ -164,10 +164,10 @@ finally:
     obj_eval.to_mesh_clear()  # ALWAYS clean up
 ```
 
-### Pattern 5: Geometry Nodes Modifier — Assign and Configure Inputs
+### Pattern 5: Geometry Nodes Modifier: Assign and Configure Inputs
 
 ```python
-# Blender 4.0+ — assign node group and set input values
+# Blender 4.0+: assign node group and set input values
 import bpy
 
 obj = bpy.data.objects.get("Building")
@@ -179,7 +179,7 @@ if node_group is None:
     raise RuntimeError("Node group 'AEC_WallGenerator' not found")
 mod.node_group = node_group
 
-# Find input identifiers by name (REQUIRED — identifiers are NOT names)
+# Find input identifiers by name (REQUIRED: identifiers are NOT names)
 def get_gn_input_identifier(modifier, input_name):
     """Return the Socket_N identifier for a named GN input."""
     for item in modifier.node_group.interface.items_tree:
@@ -200,7 +200,7 @@ bpy.context.view_layer.update()
 ```
 
 ```python
-# Blender 4.0+ — list all GN modifier inputs
+# Blender 4.0+: list all GN modifier inputs
 for item in mod.node_group.interface.items_tree:
     if item.item_type == 'SOCKET' and item.in_out == 'INPUT':
         identifier = item.identifier   # e.g., "Socket_2"
@@ -213,14 +213,14 @@ for item in mod.node_group.interface.items_tree:
 ### Pattern 6: Reorder Modifiers
 
 ```python
-# Blender 4.0+/5.x — move modifier to specific position
+# Blender 4.0+/5.x: move modifier to specific position
 import bpy
 
 obj = bpy.data.objects.get("Wall")
 with bpy.context.temp_override(object=obj):
     bpy.ops.object.modifier_move_to_index(modifier="Boolean", index=0)
 
-# Blender 3.x/4.x/5.x — move up/down by one position
+# Blender 3.x/4.x/5.x: move up/down by one position
 with bpy.context.temp_override(object=obj):
     bpy.ops.object.modifier_move_up(modifier="Boolean")
     bpy.ops.object.modifier_move_down(modifier="Array")
@@ -230,10 +230,10 @@ with bpy.context.temp_override(object=obj):
 
 ## Common Operations
 
-### Array Modifier — Repetitive AEC Elements
+### Array Modifier: Repetitive AEC Elements
 
 ```python
-# Blender 3.x/4.x/5.x — create array of columns
+# Blender 3.x/4.x/5.x: create array of columns
 import bpy
 
 obj = bpy.data.objects.get("Column")
@@ -257,10 +257,10 @@ mod.fit_type = 'FIT_CURVE'
 mod.curve = bpy.data.objects.get("ArrayPath")
 ```
 
-### Boolean Modifier — Wall Openings
+### Boolean Modifier: Wall Openings
 
 ```python
-# Blender 3.x/4.x/5.x — create opening in wall
+# Blender 3.x/4.x/5.x: create opening in wall
 import bpy
 
 wall = bpy.data.objects.get("Wall")
@@ -277,10 +277,10 @@ opening.hide_set(True)
 opening.hide_render = True
 ```
 
-### Solidify Modifier — Wall Thickness
+### Solidify Modifier: Wall Thickness
 
 ```python
-# Blender 3.x/4.x/5.x — add thickness to planar geometry
+# Blender 3.x/4.x/5.x: add thickness to planar geometry
 import bpy
 
 obj = bpy.data.objects.get("WallSurface")
@@ -295,7 +295,7 @@ mod.use_quality_normals = True   # Better normals on complex geometry
 ### Copy Modifier Settings Between Objects
 
 ```python
-# Blender 3.x/4.x/5.x — copy all modifiers from source to target
+# Blender 3.x/4.x/5.x: copy all modifiers from source to target
 import bpy
 
 source = bpy.data.objects.get("SourceWall")
@@ -313,7 +313,7 @@ with bpy.context.temp_override(
 ### Check if Modifier Exists Before Operating
 
 ```python
-# Blender 3.x/4.x/5.x — safe modifier access
+# Blender 3.x/4.x/5.x: safe modifier access
 import bpy
 
 obj = bpy.data.objects.get("Wall")

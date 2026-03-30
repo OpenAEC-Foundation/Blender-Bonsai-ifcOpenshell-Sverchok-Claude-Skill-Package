@@ -22,7 +22,7 @@ dependencies:
 
 Systematic validation checklist for reviewing Sverchok node code. Run this checklist against any Sverchok Python code to identify errors, anti-patterns, and correctness issues. Targets Sverchok v1.4.0 on Blender 4.0+.
 
-## Quick Reference — When to Activate
+## Quick Reference: When to Activate
 
 Activate this validator when:
 - Reviewing, auditing, or validating Sverchok node scripts

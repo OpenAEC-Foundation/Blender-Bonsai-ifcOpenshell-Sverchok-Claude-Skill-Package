@@ -86,7 +86,7 @@ obj.property_unset("my_rna_prop")
 ### Pattern 1: Basic Property Declaration
 
 ```python
-# Blender 3.x/4.x/5.x — annotation syntax REQUIRED
+# Blender 3.x/4.x/5.x: annotation syntax REQUIRED
 class MyOperator(bpy.types.Operator):
     bl_idname = "object.my_operator"
     bl_label = "My Operator"
@@ -117,7 +117,7 @@ def unregister():
 ### Pattern 3: Nested PropertyGroups
 
 ```python
-# Blender 3.x/4.x/5.x — registration order is CRITICAL
+# Blender 3.x/4.x/5.x: registration order is CRITICAL
 class SubSettings(bpy.types.PropertyGroup):
     value: bpy.props.FloatProperty(name="Value", default=0.0)
 
@@ -219,7 +219,7 @@ class MySettings(bpy.types.PropertyGroup):
 ### Pattern 8: Get/Set Transform (Blender 5.0+)
 
 ```python
-# Blender 5.0+ ONLY — faster than get/set, uses internal storage
+# Blender 5.0+ ONLY: faster than get/set, uses internal storage
 def clamp_transform(self, new_value, curr_value, is_set):
     """Transform value before storing."""
     return max(0.0, min(new_value, 100.0))
@@ -239,7 +239,7 @@ class MySettings(bpy.types.PropertyGroup):
 ### Pattern 9: ENUM_FLAG (Multi-Select)
 
 ```python
-# Blender 3.x/4.x/5.x — numbers MUST be powers of 2
+# Blender 3.x/4.x/5.x: numbers MUST be powers of 2
 my_flags: bpy.props.EnumProperty(
     name="Axes",
     items=[
@@ -255,7 +255,7 @@ my_flags: bpy.props.EnumProperty(
 ### Pattern 10: PointerProperty with Poll
 
 ```python
-# Blender 3.x/4.x/5.x — filter selectable objects
+# Blender 3.x/4.x/5.x: filter selectable objects
 def filter_mesh_objects(self, obj):
     return obj.type == 'MESH'
 

@@ -97,14 +97,14 @@ What do you need to do with properties?
 ### Pattern 1: Create and Edit a Property Set
 
 ```python
-# Bonsai v0.8.x / IfcOpenShell v0.8+ — IFC4
+# Bonsai v0.8.x / IfcOpenShell v0.8+: IFC4
 import ifcopenshell
 import ifcopenshell.api
 
 model = ifcopenshell.open("project.ifc")
 wall = model.by_type("IfcWall")[0]
 
-# Step 1: Create pset (idempotent — returns existing if name matches)
+# Step 1: Create pset (idempotent: returns existing if name matches)
 pset = ifcopenshell.api.run("pset.add_pset", model,
     product=wall, name="Pset_WallCommon")
 
@@ -121,7 +121,7 @@ ifcopenshell.api.run("pset.edit_pset", model, pset=pset, properties={
 ### Pattern 2: Create and Edit a Quantity Set
 
 ```python
-# Bonsai v0.8.x / IfcOpenShell v0.8+ — IFC4
+# Bonsai v0.8.x / IfcOpenShell v0.8+: IFC4
 qto = ifcopenshell.api.run("pset.add_qto", model,
     product=wall, name="Qto_WallBaseQuantities")
 
@@ -185,7 +185,7 @@ ifcopenshell.api.run("pset.remove_pset", model, product=wall, pset=pset)
 ### Pattern 5: Property Set Templates
 
 ```python
-# Bonsai v0.8.x / IfcOpenShell v0.8+ — IFC4
+# Bonsai v0.8.x / IfcOpenShell v0.8+: IFC4
 
 # Create a custom pset template
 template = ifcopenshell.api.run("pset_template.add_pset_template", model,

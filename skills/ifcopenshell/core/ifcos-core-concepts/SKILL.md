@@ -155,10 +155,10 @@ wall.is_a("IfcSlab")     # False (different subtype)
 
 NEVER compare `is_a()` return values as strings for inheritance checks:
 ```python
-# WRONG — misses subtypes
+# WRONG: misses subtypes
 if wall.is_a() == "IfcBuildingElement":  # Fails: wall.is_a() returns "IfcWall"
 
-# CORRECT — checks full inheritance chain
+# CORRECT: checks full inheritance chain
 if wall.is_a("IfcBuildingElement"):  # True for all building element subtypes
 ```
 
@@ -200,7 +200,7 @@ Every IfcRoot entity references an IfcOwnerHistory that records who created/modi
 **IFC4/IFC4X3:** OwnerHistory is OPTIONAL.
 
 ```python
-# Schema: IFC2X3 — OwnerHistory REQUIRED
+# Schema: IFC2X3: OwnerHistory REQUIRED
 owner_history = ifcopenshell.api.run("owner.create_owner_history", model)
 wall = model.createIfcWall(
     ifcopenshell.guid.new(),
@@ -208,7 +208,7 @@ wall = model.createIfcWall(
     "MyWall"
 )
 
-# Schema: IFC4, IFC4X3 — OwnerHistory OPTIONAL
+# Schema: IFC4, IFC4X3: OwnerHistory OPTIONAL
 wall = model.createIfcWall(
     ifcopenshell.guid.new(),
     None,  # ALLOWED in IFC4+

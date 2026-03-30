@@ -63,7 +63,7 @@ Connecting texture to Principled BSDF?
 ### Pattern 1: Create and Assign a Material
 
 ```python
-# Blender 3.x/4.x/5.x — create material and assign to object
+# Blender 3.x/4.x/5.x: create material and assign to object
 import bpy
 
 mat = bpy.data.materials.new(name="MyMaterial")
@@ -79,7 +79,7 @@ else:
 ### Pattern 2: Build a Complete Node Tree
 
 ```python
-# Blender 3.x/4.x/5.x — node tree from scratch
+# Blender 3.x/4.x/5.x: node tree from scratch
 mat = bpy.data.materials.new("NodeMaterial")
 mat.use_nodes = True
 tree = mat.node_tree
@@ -101,7 +101,7 @@ tree.links.new(principled.outputs["BSDF"], output.inputs["Surface"])
 ### Pattern 3: Version-Safe Principled BSDF Input Access
 
 ```python
-# Blender 3.x/4.0+ — handle renamed sockets
+# Blender 3.x/4.0+: handle renamed sockets
 import bpy
 
 def set_principled_value(node, socket_3x, socket_4x, value):
@@ -125,7 +125,7 @@ set_principled_value(principled, "Emission", "Emission Color", (1, 1, 1, 1))
 ### Pattern 4: Texture Node with UV Mapping
 
 ```python
-# Blender 3.x/4.x/5.x — image texture with UV coordinates
+# Blender 3.x/4.x/5.x: image texture with UV coordinates
 tree = mat.node_tree
 
 tex_coord = tree.nodes.new('ShaderNodeTexCoord')
@@ -148,10 +148,10 @@ tree.links.new(tex_node.outputs["Color"], principled.inputs["Base Color"])
 ### Pattern 5: Alpha/Transparency Setup (Version-Dependent)
 
 ```python
-# Blender 4.2+ — EEVEE transparency
+# Blender 4.2+: EEVEE transparency
 mat.surface_render_method = 'BLENDED'  # 4.2+ ONLY
 
-# Blender 3.x / 4.0-4.1 — EEVEE transparency
+# Blender 3.x / 4.0-4.1: EEVEE transparency
 # mat.blend_method = 'BLEND'  # REMOVED in 4.2
 
 # Version-safe pattern
@@ -189,7 +189,7 @@ else:
 ### Assign Material to Specific Faces
 
 ```python
-# Blender 3.x/4.x/5.x — multi-material assignment
+# Blender 3.x/4.x/5.x: multi-material assignment
 import bpy
 
 obj = bpy.context.active_object
@@ -211,7 +211,7 @@ for polygon in obj.data.polygons:
 ### Add Material Slot via Operator
 
 ```python
-# Blender 3.x/4.x/5.x — operator-based slot management
+# Blender 3.x/4.x/5.x: operator-based slot management
 import bpy
 
 obj = bpy.context.active_object
@@ -232,7 +232,7 @@ bpy.ops.object.material_slot_remove()
 When `use_nodes = True` is set on a new material, Blender creates a default Principled BSDF and Material Output automatically.
 
 ```python
-# Blender 3.x/4.x/5.x — access default nodes without clearing
+# Blender 3.x/4.x/5.x: access default nodes without clearing
 mat = bpy.data.materials.new("QuickMaterial")
 mat.use_nodes = True
 principled = mat.node_tree.nodes.get("Principled BSDF")
@@ -242,7 +242,7 @@ principled = mat.node_tree.nodes.get("Principled BSDF")
 ### UV Layer Management
 
 ```python
-# Blender 3.x/4.x/5.x — UV layer access
+# Blender 3.x/4.x/5.x: UV layer access
 mesh = obj.data
 
 # List UV layers
@@ -269,7 +269,7 @@ for loop_idx in range(len(mesh.loops)):
 ### Load and Configure Image Textures
 
 ```python
-# Blender 3.x/4.x/5.x — image loading
+# Blender 3.x/4.x/5.x: image loading
 import bpy
 
 # Load from file (reuse existing if already loaded)
@@ -293,7 +293,7 @@ img.colorspace_settings.name = 'sRGB'       # For diffuse/color textures
 ### Normal Map Setup
 
 ```python
-# Blender 3.x/4.x/5.x — normal map node chain
+# Blender 3.x/4.x/5.x: normal map node chain
 tree = mat.node_tree
 
 normal_tex = tree.nodes.new('ShaderNodeTexImage')
@@ -309,7 +309,7 @@ tree.links.new(normal_map.outputs["Normal"], principled.inputs["Normal"])
 ### Remove All Materials from Object
 
 ```python
-# Blender 3.x/4.x/5.x — clear all material slots
+# Blender 3.x/4.x/5.x: clear all material slots
 obj.data.materials.clear()
 ```
 

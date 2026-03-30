@@ -69,7 +69,7 @@ Choosing SNLite vs Functor B?
 
 ---
 
-## SNLite — Socket Declaration Syntax
+## SNLite: Socket Declaration Syntax
 
 ### Declaration Format
 
@@ -214,7 +214,7 @@ SNLite templates are located in `node_scripts/SNLite_templates/` with categories
 
 ---
 
-## SN Functor B — Structured Scripting
+## SN Functor B: Structured Scripting
 
 ### Three-Function Architecture
 
@@ -270,7 +270,7 @@ Access in `process`: `scale = self.float_00`
 
 ---
 
-## Formula Mk5 — Expression Evaluation
+## Formula Mk5: Expression Evaluation
 
 ### Basic Usage
 
@@ -311,7 +311,7 @@ When enabled, math functions use NumPy array variants (`sin` → `np.sin`), enab
 
 ---
 
-## Profile Mk3 — SVG-like 2D Profiles
+## Profile Mk3: SVG-like 2D Profiles
 
 ### DSL Command Reference
 
