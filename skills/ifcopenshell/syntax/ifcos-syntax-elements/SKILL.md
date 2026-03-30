@@ -6,8 +6,7 @@ description: >
   manually traversing relationships instead of using the universal property extraction
   pattern (IsDefinedBy -> HasProperties). Covers get_info(), is_a(), GUID utilities,
   and attribute access patterns.
-  Keywords: by_type, by_id, by_guid, get_info, is_a, inverse, IsDefinedBy, HasProperties,
-  IFC query, element traversal, property extraction.
+  Keywords: by_type, by_id, by_guid, get_info, is_a, inverse, IsDefinedBy, HasProperties, IFC query, element traversal, property extraction, find all walls, get element by GlobalId, list elements.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

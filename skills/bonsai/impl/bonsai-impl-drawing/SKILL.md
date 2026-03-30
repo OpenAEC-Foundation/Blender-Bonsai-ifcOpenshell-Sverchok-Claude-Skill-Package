@@ -5,8 +5,7 @@ description: >
   annotations, or sheet layouts. Prevents the common mistake of creating views without proper
   drawing style configuration (getting empty or unfiltered output). Covers the complete
   documentation pipeline from model views through annotations to printable SVG sheet output.
-  Keywords: drawing, plan, section, elevation, annotation, sheet, SVG, titleblock,
-  documentation, 2D drawing, Bonsai drawing.
+  Keywords: drawing, plan, section, elevation, annotation, sheet, SVG, titleblock, documentation, 2D drawing, Bonsai drawing, create floor plan, generate section view, print drawings.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

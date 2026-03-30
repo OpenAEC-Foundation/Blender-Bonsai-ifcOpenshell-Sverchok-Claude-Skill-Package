@@ -5,8 +5,7 @@ description: >
   the breaking change of using old Principled BSDF input names (e.g., "Subsurface" renamed
   to "Subsurface Weight" in 4.0). Covers material creation, node tree setup, Principled BSDF
   input mapping, UV assignment, texture loading, and material slot management.
-  Keywords: material, shader, Principled BSDF, node tree, texture, UV map, material_slot,
-  ShaderNodeBsdfPrincipled, node links, Blender materials.
+  Keywords: material, shader, Principled BSDF, node tree, texture, UV map, material_slot, ShaderNodeBsdfPrincipled, node links, Blender materials, assign material to object, create material from code, change color.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

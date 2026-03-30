@@ -6,8 +6,7 @@ description: >
   Prevents silent failures from using APIs that were renamed or removed in newer Blender
   versions. Provides migration patterns from 3.x to 4.x to 5.x with complete replacement
   mappings.
-  Keywords: AttributeError, ImportError, deprecated, version error, bgl, migration,
-  breaking change, removed API, 3.x to 4.x, 4.x to 5.x, Blender upgrade.
+  Keywords: AttributeError, ImportError, deprecated, version error, bgl, migration, breaking change, removed API, 3.x to 4.x, 4.x to 5.x, Blender upgrade, module has no attribute, addon not compatible.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

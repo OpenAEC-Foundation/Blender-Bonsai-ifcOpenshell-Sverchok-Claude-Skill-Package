@@ -6,8 +6,7 @@ description: >
   hierarchy (Project > Site > Building > Storey). Covers entity hierarchy from IfcRoot to
   IfcElement, spatial structure, ownership model, placement system, representation system,
   and relationships across IFC2X3, IFC4, and IFC4X3 schemas.
-  Keywords: IFC data model, entity hierarchy, spatial structure, IfcRoot, IfcElement,
-  IfcProject, placement, representation, IFC schema, BIM fundamentals.
+  Keywords: IFC data model, entity hierarchy, spatial structure, IfcRoot, IfcElement, IfcProject, placement, representation, IFC schema, BIM fundamentals, what is IFC, IFC for beginners.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

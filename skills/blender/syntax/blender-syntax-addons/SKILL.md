@@ -6,8 +6,7 @@ description: >
   in Blender 5.0+ where only the manifest format is supported. Covers register/unregister
   lifecycle, multi-file addon structure, AddonPreferences, class naming, and extension
   packaging for extensions.blender.org.
-  Keywords: addon, extension, bl_info, blender_manifest.toml, register, unregister,
-  AddonPreferences, packaging, extensions.blender.org.
+  Keywords: addon, extension, bl_info, blender_manifest.toml, register, unregister, AddonPreferences, packaging, extensions.blender.org, addon boilerplate, how to register addon, addon preferences panel.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

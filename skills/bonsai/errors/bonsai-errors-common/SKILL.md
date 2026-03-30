@@ -6,8 +6,7 @@ description: >
   Prevents wasting time on symptoms instead of root causes (e.g., missing IfcOwnerHistory
   in IFC2X3 causing cryptic errors). Provides diagnostic decision trees and recovery
   strategies for all common Bonsai failure modes.
-  Keywords: Bonsai error, schema violation, spatial hierarchy error, poll failure,
-  drawing error, BCF error, IFC error, troubleshooting, debug.
+  Keywords: Bonsai error, schema violation, spatial hierarchy error, poll failure, drawing error, BCF error, IFC error, troubleshooting, debug, Bonsai not working, Bonsai crashes, element not showing.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

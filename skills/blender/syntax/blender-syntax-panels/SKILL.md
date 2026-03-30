@@ -5,8 +5,7 @@ description: >
   common mistake of using wrong bl_space_type/bl_region_type combinations (panel won't show).
   Covers bpy.types.Panel, draw() method, UILayout API (row/column/box/split), bl_category,
   sub-panels, draw_header, menus, pie menus, and UIList.
-  Keywords: Panel, UILayout, bl_space_type, bl_region_type, bl_category, draw, row, column,
-  box, split, sub-panel, UIList, menu, Blender UI.
+  Keywords: Panel, UILayout, bl_space_type, bl_region_type, bl_category, draw, row, column, box, split, sub-panel, UIList, menu, Blender UI, create panel, add UI to sidebar, custom panel.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

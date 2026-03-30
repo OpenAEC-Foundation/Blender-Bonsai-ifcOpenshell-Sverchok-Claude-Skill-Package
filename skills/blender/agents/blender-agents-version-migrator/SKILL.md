@@ -6,8 +6,7 @@ description: >
   renames, removed functions, changed parameters, extension system migration, BGL to GPU
   module conversion, and bone collection migration. Prevents incomplete migrations that
   compile but fail at runtime.
-  Keywords: migration, porting, upgrade, version, 3.x to 4.x, 4.x to 5.x, API rename,
-  bgl to gpu, extension migration, bl_info to manifest, bone collection.
+  Keywords: migration, porting, upgrade, version, 3.x to 4.x, 4.x to 5.x, API rename, bgl to gpu, extension migration, bl_info to manifest, bone collection, script stopped working after update, upgrade addon to new Blender.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

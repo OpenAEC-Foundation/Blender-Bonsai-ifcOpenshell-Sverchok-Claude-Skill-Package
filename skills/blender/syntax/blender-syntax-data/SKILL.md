@@ -5,8 +5,7 @@ description: >
   or the asset system. Prevents the common mistake of not handling fake users when removing
   data blocks, or using append when link+override is needed. Covers bpy.data collections,
   BlendDataLibraries, library overrides, asset system, and data transfer between files.
-  Keywords: bpy.data, collections, library overrides, linked library, asset system,
-  append, link, fake user, data block, BlendDataLibraries.
+  Keywords: bpy.data, collections, library overrides, linked library, asset system, append, link, fake user, data block, BlendDataLibraries, organize objects, link from other file, asset browser.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

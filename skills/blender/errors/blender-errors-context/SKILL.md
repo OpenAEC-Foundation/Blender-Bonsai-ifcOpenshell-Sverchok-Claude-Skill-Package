@@ -6,8 +6,7 @@ description: >
   or accessing context attributes from wrong areas (e.g., timer callbacks, draw handlers).
   Covers context override removal in 4.0+, temp_override migration, and context-dependent
   attribute access patterns.
-  Keywords: RuntimeError, restricted context, poll failure, context override, temp_override,
-  bpy.ops error, wrong context, modal context, Blender context error.
+  Keywords: RuntimeError, restricted context, poll failure, context override, temp_override, bpy.ops error, wrong context, modal context, Blender context error, operator not available, cannot call operator.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

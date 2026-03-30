@@ -5,8 +5,7 @@ description: >
   the version pitfall of using 'BLENDER_EEVEE' (renamed to 'BLENDER_EEVEE_NEXT' in 4.2).
   Covers render engine selection (EEVEE/Cycles/Workbench), output format setup, camera
   configuration, batch rendering, and scene.render.* settings.
-  Keywords: render, EEVEE, Cycles, Workbench, render settings, output format, camera,
-  batch render, scene.render, BLENDER_EEVEE_NEXT, resolution.
+  Keywords: render, EEVEE, Cycles, Workbench, render settings, output format, camera, batch render, scene.render, BLENDER_EEVEE_NEXT, resolution, render from script, set render resolution, save image.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

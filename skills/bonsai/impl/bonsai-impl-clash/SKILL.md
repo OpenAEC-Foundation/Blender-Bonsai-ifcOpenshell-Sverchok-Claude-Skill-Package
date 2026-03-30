@@ -6,8 +6,7 @@ description: >
   without proper element group filters (testing everything against everything). Covers clash
   set definition, element filtering, smart grouping of results, and BCF integration for
   issue tracking.
-  Keywords: clash detection, IfcClash, interference, collision, spatial coordination,
-  clash set, element filter, BCF integration, clash report.
+  Keywords: clash detection, IfcClash, interference, collision, spatial coordination, clash set, element filter, BCF integration, clash report, find collisions, elements overlap, pipes through walls.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

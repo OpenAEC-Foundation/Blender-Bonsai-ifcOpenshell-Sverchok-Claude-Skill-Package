@@ -7,8 +7,7 @@ description: >
   mixing IfcStore.get_file() with ifcopenshell.open() in the same context, or calling Bonsai
   operators outside a Bonsai-loaded session. Provides decision trees for technology selection,
   workflow sequencing, and bridge patterns between tools.
-  Keywords: cross-technology, workflow orchestration, BIM pipeline, technology selection,
-  Blender IfcOpenShell Bonsai integration, multi-step AEC, bridge pattern.
+  Keywords: cross-technology, workflow orchestration, BIM pipeline, technology selection, Blender IfcOpenShell Bonsai integration, multi-step AEC, bridge pattern, which tool should I use, combine Blender and IFC, multi-tool workflow, how to connect tools.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

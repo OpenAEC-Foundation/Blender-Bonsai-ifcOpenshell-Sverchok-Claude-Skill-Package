@@ -5,8 +5,7 @@ description: >
   processing IFC geometry for visualization. Prevents the performance mistake of calling
   create_shape() per element instead of using the geometry iterator. Covers geometry settings,
   create_shape(), geometry iterator, extrusion/CSG/BRep creation, and coordinate transforms.
-  Keywords: geometry, create_shape, geometry iterator, mesh extraction, extrusion, CSG, BRep,
-  IfcShapeRepresentation, coordinates, 3D, visualization.
+  Keywords: geometry, create_shape, geometry iterator, mesh extraction, extrusion, CSG, BRep, IfcShapeRepresentation, coordinates, 3D, visualization, get vertices from IFC, extract mesh, convert IFC to 3D.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

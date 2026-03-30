@@ -5,8 +5,7 @@ description: >
   Prevents the #1 Sverchok error: wrong data nesting levels (vertices MUST be level 3
   [[[x,y,z]]], edges level 2, matrices level 1). Covers nesting requirements for all data
   types and the 5 list matching modes (cross, repeat, cycle, match_short, match_long).
-  Keywords: nesting level, data structure, list matching, vertices level 3, edges level 2,
-  flatten, data corruption, Sverchok data, list length mismatch.
+  Keywords: nesting level, data structure, list matching, vertices level 3, edges level 2, flatten, data corruption, Sverchok data, list length mismatch, wrong nesting, data too deep, flatten list.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

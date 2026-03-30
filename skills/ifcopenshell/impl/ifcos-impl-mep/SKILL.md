@@ -5,8 +5,7 @@ description: >
   electrical circuits, distribution elements, ports, and connections. Prevents the common
   mistake of not creating ports for flow connections between elements. Covers IfcSystem,
   IfcDistributionElement, flow segments, fittings, and MEP property sets.
-  Keywords: MEP, HVAC, piping, electrical, IfcSystem, IfcDistributionElement, port,
-  connection, flow segment, fitting, mechanical, plumbing.
+  Keywords: MEP, HVAC, piping, electrical, IfcSystem, IfcDistributionElement, port, connection, flow segment, fitting, mechanical, plumbing, duct, ventilation, connect pipes.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

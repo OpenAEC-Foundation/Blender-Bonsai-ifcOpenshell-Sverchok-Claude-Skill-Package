@@ -5,8 +5,7 @@ description: >
   NLA strips, drivers, or armature operations. Prevents the breaking change pitfall of using
   bone.layers (removed in 4.0) instead of BoneCollection. Covers keyframe_insert, FCurve
   access, Action data blocks, NLA system, driver expressions, and timeline control.
-  Keywords: keyframe, FCurve, Action, NLA, BoneCollection, armature, driver, animation,
-  bone layers, timeline, bpy.ops.anim.
+  Keywords: keyframe, FCurve, Action, NLA, BoneCollection, armature, driver, animation, bone layers, timeline, bpy.ops.anim, set keyframe from script, animate object, move object over time.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

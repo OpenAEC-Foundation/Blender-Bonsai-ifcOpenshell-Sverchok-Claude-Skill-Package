@@ -5,8 +5,7 @@ description: >
   automated checks covering data nesting correctness, updateNode callbacks, list matching
   patterns, socket consistency, import validation, and IfcSverchok compliance. Prevents
   shipping node code with silent data corruption or missing update triggers.
-  Keywords: Sverchok validation, code review, data nesting check, updateNode check,
-  socket consistency, import validation, IfcSverchok compliance, code quality.
+  Keywords: Sverchok validation, code review, data nesting check, updateNode check, socket consistency, import validation, IfcSverchok compliance, code quality, my node has errors, check node code.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

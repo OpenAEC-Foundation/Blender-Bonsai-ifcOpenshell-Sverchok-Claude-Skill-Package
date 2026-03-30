@@ -5,8 +5,7 @@ description: >
   cost items, cost values, or linking quantities to costs. Prevents the common mistake of
   creating cost items without linking them to element quantities. Covers ifcopenshell.api.cost
   module, cost schedules, cost values, and quantity-to-cost linkage.
-  Keywords: cost, 5D BIM, cost schedule, cost item, cost value, quantity, ifcopenshell.api.cost,
-  cost estimation, IfcCostSchedule, IfcCostItem.
+  Keywords: cost, 5D BIM, cost schedule, cost item, cost value, quantity, ifcopenshell.api.cost, cost estimation, IfcCostSchedule, IfcCostItem, budget, pricing, bill of quantities.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

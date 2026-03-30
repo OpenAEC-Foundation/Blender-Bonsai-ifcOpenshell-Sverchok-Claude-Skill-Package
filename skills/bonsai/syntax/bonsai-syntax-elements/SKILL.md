@@ -6,8 +6,7 @@ description: >
   Prevents the common mistake of using ifcopenshell.open() instead of tool.Ifc.get() to
   access the live Bonsai file. Covers element-to-object mapping, IfcStore retrieval, and
   the Bonsai data bridge between bpy.types.Object and IFC entities.
-  Keywords: tool.Ifc.get(), IfcStore, element mapping, Blender object to IFC, IFC entity,
-  selected element, data bridge, Bonsai elements.
+  Keywords: tool.Ifc.get(), IfcStore, element mapping, Blender object to IFC, IFC entity, selected element, data bridge, Bonsai elements, get IFC from selected, which element is this.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

@@ -5,8 +5,7 @@ description: >
   or when migrating scripts between Blender versions. Prevents breakage from renamed APIs,
   removed modules (bgl in 5.0), and changed function signatures. Provides the complete
   breaking changes matrix, deprecation timeline, and version-safe coding patterns.
-  Keywords: Blender version, migration, deprecated, breaking change, bgl removal,
-  bpy.app.version, version compatibility, 3.x, 4.x, 5.x, API changes.
+  Keywords: Blender version, migration, deprecated, breaking change, bgl removal, bpy.app.version, version compatibility, 3.x, 4.x, 5.x, API changes, which Blender version, what changed in Blender 4.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

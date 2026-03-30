@@ -5,8 +5,7 @@ description: >
   packaging for extensions.blender.org. Prevents the common mistake of hardcoding paths
   or skipping the extension manifest for Blender 4.2+. Covers multi-file addon structure,
   testing strategies, dependency management, and distribution workflows.
-  Keywords: addon development, extension packaging, CI/CD, testing, multi-file addon,
-  blender_manifest.toml, distribution, extensions.blender.org.
+  Keywords: addon development, extension packaging, CI/CD, testing, multi-file addon, blender_manifest.toml, distribution, extensions.blender.org, how to make a Blender addon, publish addon, package addon.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 4.2+ for extensions, 3.x+ for legacy addons."
 metadata:

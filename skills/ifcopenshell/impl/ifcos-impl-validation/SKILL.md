@@ -5,8 +5,7 @@ description: >
   rules. Prevents the common mistake of only checking schema validity without verifying
   property set completeness or spatial hierarchy correctness. Covers ifcopenshell.validate,
   ifctester for IDS validation, georeference validation, and custom validation pipelines.
-  Keywords: validation, IDS, ifctester, ifcopenshell.validate, schema compliance, quality
-  assurance, property set check, spatial hierarchy check, IFC validation.
+  Keywords: validation, IDS, ifctester, ifcopenshell.validate, schema compliance, quality assurance, property set check, spatial hierarchy check, IFC validation, check model quality, find missing properties.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

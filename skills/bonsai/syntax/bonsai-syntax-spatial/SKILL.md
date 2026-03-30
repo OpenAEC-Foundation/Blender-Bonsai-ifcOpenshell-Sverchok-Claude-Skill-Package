@@ -6,8 +6,7 @@ description: >
   mistake of not establishing proper spatial decomposition (IfcRelAggregates) causing
   elements to be invisible in model viewers. Covers spatial containment, decomposition,
   and Bonsai-specific spatial navigation tools.
-  Keywords: spatial structure, IfcSite, IfcBuilding, IfcBuildingStorey, IfcSpace,
-  IfcRelContainedInSpatialStructure, IfcRelAggregates, spatial hierarchy.
+  Keywords: spatial structure, IfcSite, IfcBuilding, IfcBuildingStorey, IfcSpace, IfcRelContainedInSpatialStructure, IfcRelAggregates, spatial hierarchy, add storey, create building structure.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

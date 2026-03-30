@@ -5,8 +5,7 @@ description: >
   profile sets (beams/columns), or constituent sets (IFC4+). Prevents the common mistake
   of using IfcMaterialConstituentSet in IFC2X3 (not available). Covers IfcMaterial,
   IfcMaterialLayerSet, IfcMaterialProfileSet, material properties, and presentation.
-  Keywords: material, IfcMaterial, layer set, profile set, constituent set, material
-  assignment, IfcMaterialLayerSet, IfcMaterialProfileSet, material properties.
+  Keywords: material, IfcMaterial, layer set, profile set, constituent set, material assignment, IfcMaterialLayerSet, IfcMaterialProfileSet, material properties, assign material, wall layers.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

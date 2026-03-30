@@ -6,8 +6,7 @@ description: >
   quantities instead of using QtoCalculator for automated base quantity extraction from
   geometry. Covers IfcElementQuantity sets, bulk quantity operations, and the complete
   QTO pipeline from geometry analysis to export.
-  Keywords: quantity takeoff, QTO, IfcElementQuantity, area, volume, length, weight,
-  QtoCalculator, base quantities, cost estimation.
+  Keywords: quantity takeoff, QTO, IfcElementQuantity, area, volume, length, weight, QtoCalculator, base quantities, cost estimation, calculate area, how much material, measure building.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

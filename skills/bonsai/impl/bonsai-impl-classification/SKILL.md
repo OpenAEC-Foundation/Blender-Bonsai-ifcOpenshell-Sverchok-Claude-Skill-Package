@@ -5,8 +5,7 @@ description: >
   NL-SfB, or CCI. Prevents the common mistake of assigning classifications without importing
   the classification library first. Covers bSDD integration, IfcClassificationReference
   assignment, bulk classification operations, and cross-referencing between systems.
-  Keywords: classification, Uniclass, OmniClass, NL-SfB, CCI, bSDD, IfcClassificationReference,
-  bulk classification, classification library.
+  Keywords: classification, Uniclass, OmniClass, NL-SfB, CCI, bSDD, IfcClassificationReference, bulk classification, classification library, classify elements, tag elements, assign class code.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

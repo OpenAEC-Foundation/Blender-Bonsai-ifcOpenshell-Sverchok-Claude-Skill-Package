@@ -6,8 +6,7 @@ description: >
   common mistake of using viewport operators in background mode (no UI context available).
   Covers command-line rendering, file I/O automation (OBJ/FBX/STL/USD/glTF), scene
   assembly, and CI/CD pipeline integration.
-  Keywords: batch rendering, headless, blender --background, automation, file conversion,
-  OBJ, FBX, STL, USD, glTF, pipeline, command-line.
+  Keywords: batch rendering, headless, blender --background, automation, file conversion, OBJ, FBX, STL, USD, glTF, pipeline, command-line, STEP import, CAD format, convert file format, export to web.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

@@ -6,8 +6,7 @@ description: >
   of blocking the UI thread in long operations instead of using modal + timer pattern.
   Covers modal operators, file browser integration, undo/redo support, progress reporting,
   and batch processing operators.
-  Keywords: modal operator, timer callback, file browser, batch processing, progress
-  reporting, undo support, multi-step workflow, INVOKE_DEFAULT.
+  Keywords: modal operator, timer callback, file browser, batch processing, progress reporting, undo support, multi-step workflow, INVOKE_DEFAULT, make custom button, add menu item, create toolbar button.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

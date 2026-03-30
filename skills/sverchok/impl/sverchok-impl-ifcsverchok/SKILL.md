@@ -6,8 +6,7 @@ description: >
   purged on every full tree update -- use use_bonsai_file to persist). Covers the 31
   specialized nodes, two geometry conversion modes, the 6-step IFC generation workflow,
   and Bonsai integration.
-  Keywords: IfcSverchok, SvIfcStore, IFC from Sverchok, geometry to IFC, Bonsai integration,
-  transient file, use_bonsai_file, IFC generation, node-based BIM.
+  Keywords: IfcSverchok, SvIfcStore, IFC from Sverchok, geometry to IFC, Bonsai integration, transient file, use_bonsai_file, IFC generation, node-based BIM, parametric IFC, generate IFC from nodes.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+, Bonsai addon, and IfcOpenShell 0.8.x.'
 metadata:

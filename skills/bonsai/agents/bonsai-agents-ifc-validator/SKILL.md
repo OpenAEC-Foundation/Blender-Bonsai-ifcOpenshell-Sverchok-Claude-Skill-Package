@@ -6,8 +6,7 @@ description: >
   geometry validity, classification correctness, and IDS (Information Delivery Specification)
   conformance using ifctester. Prevents shipping models with missing spatial containment
   or incomplete property sets.
-  Keywords: IFC validation, audit, quality check, spatial hierarchy, property set, IDS,
-  ifctester, model quality, Bonsai validation, compliance.
+  Keywords: IFC validation, audit, quality check, spatial hierarchy, property set, IDS, ifctester, model quality, Bonsai validation, compliance, check my IFC file, is my model correct, find errors.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

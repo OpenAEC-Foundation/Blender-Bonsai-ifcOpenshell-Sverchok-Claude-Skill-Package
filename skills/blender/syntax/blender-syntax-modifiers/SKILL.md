@@ -6,8 +6,7 @@ description: >
   mesh data before applying modifiers (getting unmodified geometry) instead of using
   depsgraph.evaluated_get(). Covers modifier stack, Geometry Nodes input identifiers,
   common AEC modifiers (Array, Boolean, Solidify), and evaluated mesh access.
-  Keywords: modifier, Array, Boolean, Solidify, Geometry Nodes, depsgraph, evaluated_get,
-  modifier.apply, modifier stack, input identifier.
+  Keywords: modifier, Array, Boolean, Solidify, Geometry Nodes, depsgraph, evaluated_get, modifier.apply, modifier stack, input identifier, add modifier from code, apply modifier Python, boolean cut.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

@@ -5,8 +5,7 @@ description: >
   systematic checks for deprecated API usage, context errors, version compatibility issues,
   threading violations, data reference invalidation, incorrect operator calls, and addon
   structure compliance. Prevents shipping code with silent version-dependent failures.
-  Keywords: code review, validation, audit, deprecated API, context error, version
-  compatibility, threading, addon structure, code quality, Blender Python.
+  Keywords: code review, validation, audit, deprecated API, context error, version compatibility, threading, addon structure, code quality, Blender Python, my addon has errors, check my code, why does my script fail.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Python 3.x."
 metadata:

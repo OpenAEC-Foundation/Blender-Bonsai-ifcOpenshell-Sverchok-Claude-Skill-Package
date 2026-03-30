@@ -6,8 +6,7 @@ description: >
   17 most common Sverchok mistakes including wrong data nesting, forgetting deepcopy=True
   on sv_get() when mutating data, and missing updateNode on bpy.props. Covers diagnostic
   patterns and fixes for each error type.
-  Keywords: Sverchok error, data nesting, updateNode, deepcopy, sv_get, socket mutation,
-  IfcSverchok error, silent corruption, debugging, common mistakes.
+  Keywords: Sverchok error, data nesting, updateNode, deepcopy, sv_get, socket mutation, IfcSverchok error, silent corruption, debugging, common mistakes, wrong output, data disappears, nesting mismatch.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

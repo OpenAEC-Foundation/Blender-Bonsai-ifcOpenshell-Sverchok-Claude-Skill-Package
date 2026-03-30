@@ -6,8 +6,7 @@ description: >
   attribute modification vs api.run), entity reference invalidation, performance anti-patterns,
   and IFC standard compliance. Prevents shipping code that works on one schema but fails
   on another.
-  Keywords: code review, validation, audit, IfcOpenShell, API usage, schema compatibility,
-  entity reference, performance, code quality.
+  Keywords: code review, validation, audit, IfcOpenShell, API usage, schema compatibility, entity reference, performance, code quality, check my IFC script, review IfcOpenShell code.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

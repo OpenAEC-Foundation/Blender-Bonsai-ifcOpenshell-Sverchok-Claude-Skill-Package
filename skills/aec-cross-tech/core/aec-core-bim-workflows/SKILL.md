@@ -7,8 +7,7 @@ description: >
   unit and context setup before creating geometry, or directly modifying IFC attributes instead
   of using ifcopenshell.api.run(). Covers property set management across tools, spatial hierarchy
   patterns, and version compatibility for IFC2X3/IFC4/IFC4X3.
-  Keywords: BIM workflow, IFC creation, model validation, property extraction, batch processing,
-  spatial hierarchy, cross-technology, IfcOpenShell Bonsai Blender, pset management.
+  Keywords: BIM workflow, IFC creation, model validation, property extraction, batch processing, spatial hierarchy, cross-technology, IfcOpenShell Bonsai Blender, pset management, how to create IFC model, step by step BIM, get properties from IFC.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

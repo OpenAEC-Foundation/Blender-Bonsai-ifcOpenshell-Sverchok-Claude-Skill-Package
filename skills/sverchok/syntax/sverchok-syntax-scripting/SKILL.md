@@ -6,8 +6,7 @@ description: >
   wrong socket declaration syntax in SNLite (must use specific type identifiers like 'v'
   for vertices, 's' for strings). Covers all scripting nodes, built-in aliases, special
   functions, and the template system.
-  Keywords: SNLite, Formula, Profile, scripting node, SN Functor B, socket declaration,
-  type identifier, custom Python, Sverchok scripting.
+  Keywords: SNLite, Formula, Profile, scripting node, SN Functor B, socket declaration, type identifier, custom Python, Sverchok scripting, write Python in Sverchok, script node, inline code.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

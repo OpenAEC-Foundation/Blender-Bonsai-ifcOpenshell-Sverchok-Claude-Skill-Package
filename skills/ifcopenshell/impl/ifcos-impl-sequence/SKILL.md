@@ -5,8 +5,7 @@ description: >
   tasks, task dependencies, and Gantt chart data extraction. Prevents the common mistake of
   not linking tasks to elements (no 4D visualization possible). Covers ifcopenshell.api.sequence,
   work schedules, task time relationships, and construction sequence modeling.
-  Keywords: schedule, 4D BIM, work schedule, task, Gantt, timeline, construction sequence,
-  IfcWorkSchedule, IfcTask, task dependency.
+  Keywords: schedule, 4D BIM, work schedule, task, Gantt, timeline, construction sequence, IfcWorkSchedule, IfcTask, task dependency, construction planning, project timeline, phase planning.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

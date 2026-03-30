@@ -5,8 +5,7 @@ description: >
   adding viewpoints, managing comments, or importing/exporting BCF files (v2.1 and v3.0).
   Prevents the common mistake of creating viewpoints without proper camera snapshots or
   missing element references. Covers BCF issue tracking integration with IFC elements.
-  Keywords: BCF, BIM Collaboration Format, viewpoint, topic, comment, clash report,
-  issue tracking, BCF v2.1, BCF v3.0, collaboration.
+  Keywords: BCF, BIM Collaboration Format, viewpoint, topic, comment, clash report, issue tracking, BCF v2.1, BCF v3.0, collaboration, share issues, report problem in model, BIM issue.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender with Bonsai addon."
 metadata:

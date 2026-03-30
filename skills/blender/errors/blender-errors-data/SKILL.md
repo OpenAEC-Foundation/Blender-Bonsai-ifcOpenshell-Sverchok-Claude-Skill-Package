@@ -5,8 +5,7 @@ description: >
   references, or stale ID pointers. Prevents the common crash of caching bpy.data references
   across undo/redo operations (references become invalid). Covers safe data access patterns,
   ID reference caching pitfalls, data lifecycle management, and bpy.data collections.
-  Keywords: ReferenceError, undo, stale reference, bpy.data, ID pointer, data invalidation,
-  removed object, data lifecycle, StructRNA, Blender crash.
+  Keywords: ReferenceError, undo, stale reference, bpy.data, ID pointer, data invalidation, removed object, data lifecycle, StructRNA, Blender crash, object disappeared after undo, StructRNA has been removed.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

@@ -5,8 +5,7 @@ description: >
   C-channels, rectangles, circles, or arbitrary polyline profiles. Prevents the common mistake
   of defining profiles without proper placement (profile origin misalignment). Covers
   parametric profiles, arbitrary profiles, profile-based extrusions, and material profile sets.
-  Keywords: profile, IfcProfileDef, I-beam, C-channel, rectangle, circle, extrusion,
-  cross-section, material profile set, structural profile.
+  Keywords: profile, IfcProfileDef, I-beam, C-channel, rectangle, circle, extrusion, cross-section, material profile set, structural profile, steel section, HEA, IPE, create beam profile.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

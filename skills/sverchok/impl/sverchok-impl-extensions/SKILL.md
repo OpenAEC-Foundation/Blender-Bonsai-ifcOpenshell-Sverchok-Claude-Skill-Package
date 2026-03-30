@@ -5,8 +5,7 @@ description: >
   Open3d integration, or developing custom Sverchok extensions. Prevents the common mistake
   of importing sverchok_extra nodes without checking addon availability first. Covers
   extension development, registration, and advanced geometry operations.
-  Keywords: Sverchok-Extra, SDF, surfaces, fields, solids, Open3d, point cloud, extension
-  development, custom extension, advanced geometry.
+  Keywords: Sverchok-Extra, SDF, surfaces, fields, solids, Open3d, point cloud, extension development, custom extension, advanced geometry, signed distance field, 3D scan, mesh from points.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

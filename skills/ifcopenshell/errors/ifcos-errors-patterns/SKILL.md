@@ -5,8 +5,7 @@ description: >
   from wrong PascalCase, TypeError from wrong parameter types, or entity invalidation after
   removal. Prevents wasting time on symptoms by providing a diagnostic decision tree for
   common error patterns. Covers error messages, root causes, and recovery strategies.
-  Keywords: RuntimeError, AttributeError, TypeError, invalid entity, PascalCase error,
-  entity removed, IfcOpenShell error, debugging, exception handling.
+  Keywords: RuntimeError, AttributeError, TypeError, invalid entity, PascalCase error, entity removed, IfcOpenShell error, debugging, exception handling, script throws error, wrong attribute name.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

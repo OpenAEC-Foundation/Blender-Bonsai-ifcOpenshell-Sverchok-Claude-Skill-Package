@@ -6,8 +6,7 @@ description: >
   mistake of creating geometry without specifying the representation context (Body/Axis/
   FootPrint). Covers IfcExtrudedAreaSolid, IfcShapeRepresentation, and the relationship
   between Blender mesh data and IFC geometric representations.
-  Keywords: IFC geometry, extrusion, IfcExtrudedAreaSolid, IfcShapeRepresentation, boolean,
-  geometry context, Body, Axis, mesh to IFC, profile.
+  Keywords: IFC geometry, extrusion, IfcExtrudedAreaSolid, IfcShapeRepresentation, boolean, geometry context, Body, Axis, mesh to IFC, profile, create 3D shape in IFC, geometry not showing.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

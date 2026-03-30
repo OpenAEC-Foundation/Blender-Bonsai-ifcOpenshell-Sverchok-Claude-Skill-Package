@@ -6,8 +6,7 @@ description: >
   Prevents the common mistake of manually parsing IFC relationships instead of using
   ifcopenshell.util helpers. Covers element utilities, selector syntax, placement
   helpers, date/unit conversion, and shape extraction.
-  Keywords: ifcopenshell.util, selector, placement, unit conversion, element utility,
-  shape extraction, ifcopenshell.util.element, ifcopenshell.util.selector.
+  Keywords: ifcopenshell.util, selector, placement, unit conversion, element utility, shape extraction, ifcopenshell.util.element, ifcopenshell.util.selector, get element location, filter elements.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

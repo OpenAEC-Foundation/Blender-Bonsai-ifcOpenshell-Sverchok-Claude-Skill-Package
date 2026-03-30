@@ -5,8 +5,7 @@ description: >
   (IFC2X3/IFC4/IFC4X3), unit configuration, georeference setup, or project templates.
   Prevents the common mistake of not setting units before creating geometry (defaulting to
   incorrect units). Covers the complete project lifecycle from creation to delivery.
-  Keywords: IFC project, schema selection, IFC2X3, IFC4, IFC4X3, units, georeference,
-  coordinate reference system, project template, Bonsai project.
+  Keywords: IFC project, schema selection, IFC2X3, IFC4, IFC4X3, units, georeference, coordinate reference system, project template, Bonsai project, CRS, EPSG, WGS84, map coordinates, start new project.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

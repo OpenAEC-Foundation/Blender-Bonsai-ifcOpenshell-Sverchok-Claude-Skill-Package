@@ -6,8 +6,7 @@ description: >
   Prevents the common mistake of not using node_tree.interface for Geometry Nodes
   modifier inputs (4.0+). Covers creating node groups, linking nodes, custom node
   groups, and AEC-specific node setups.
-  Keywords: Geometry Nodes, Shader Nodes, node group, parametric modeling, procedural,
-  node tree, modifier inputs, material generation, node_tree.interface.
+  Keywords: Geometry Nodes, Shader Nodes, node group, parametric modeling, procedural, node tree, modifier inputs, material generation, node_tree.interface, create geometry nodes from Python, procedural facade.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

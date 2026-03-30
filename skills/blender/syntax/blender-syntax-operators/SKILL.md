@@ -5,8 +5,7 @@ description: >
   invoke, or modal methods. Prevents the common mistake of not implementing poll() (causing
   silent failures) or using wrong bl_idname format. Covers operator lifecycle, bl_options,
   return values, properties, and context.temp_override (4.0+ replacement for context override).
-  Keywords: Operator, execute, invoke, modal, poll, bl_idname, bl_options, temp_override,
-  REGISTER, UNDO, operator properties, bpy.ops.
+  Keywords: Operator, execute, invoke, modal, poll, bl_idname, bl_options, temp_override, REGISTER, UNDO, operator properties, bpy.ops, create custom operator, add button, operator CANCELLED.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

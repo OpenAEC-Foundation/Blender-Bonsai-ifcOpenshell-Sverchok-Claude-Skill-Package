@@ -6,8 +6,7 @@ description: >
   Prevents the common mistake of using mesh-based operations for topology analysis instead
   of non-manifold TopologicSverchok operations. Covers CellComplex-based BIM workflows,
   room connectivity, and envelope analysis.
-  Keywords: TopologicSverchok, CellComplex, adjacency graph, dual graph, topology,
-  non-manifold, room connectivity, energy simulation, building envelope.
+  Keywords: TopologicSverchok, CellComplex, adjacency graph, dual graph, topology, non-manifold, room connectivity, energy simulation, building envelope, daylight analysis, solar, space adjacency.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.2.0+ and TopologicSverchok v0.8.3+.'
 metadata:

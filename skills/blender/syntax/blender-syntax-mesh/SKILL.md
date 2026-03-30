@@ -5,8 +5,7 @@ description: >
   BMesh operations, or bulk data access. Prevents the performance mistake of accessing
   vertices one-by-one instead of using foreach_get/foreach_set for bulk operations. Covers
   from_pydata, BMesh creation/editing, UV layers, vertex attributes, normals, and loops.
-  Keywords: mesh, vertices, edges, faces, BMesh, from_pydata, foreach_get, foreach_set,
-  UV layer, vertex colors, normals, bpy.types.Mesh.
+  Keywords: mesh, vertices, edges, faces, BMesh, from_pydata, foreach_get, foreach_set, UV layer, vertex colors, normals, bpy.types.Mesh, read vertex positions, edit mesh data, access face normals.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

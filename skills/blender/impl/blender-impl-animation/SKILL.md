@@ -5,8 +5,7 @@ description: >
   solar studies, or phasing visualizations in Blender. Prevents the common mistake of
   keyframing visibility instead of using proper collection visibility for construction phases.
   Covers NLA workflow orchestration, batch keyframe operations, and time-based visualizations.
-  Keywords: construction animation, camera walkthrough, solar study, phasing, NLA, keyframe,
-  construction sequence, visibility animation, AEC visualization.
+  Keywords: construction animation, camera walkthrough, solar study, phasing, NLA, keyframe, construction sequence, visibility animation, AEC visualization, animate building, show build sequence, camera fly-through.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

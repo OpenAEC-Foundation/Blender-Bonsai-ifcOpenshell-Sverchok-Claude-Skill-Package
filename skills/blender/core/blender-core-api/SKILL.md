@@ -6,7 +6,7 @@ description: >
   of accessing context attributes outside their valid scope or calling operators without
   checking poll(). Covers bpy.data, bpy.context, bpy.ops, depsgraph evaluation, and
   RNA property access patterns across Blender 3.x/4.x/5.x.
-  Keywords: bpy, Blender Python, RNA, context, depsgraph, operator, bpy.data, bpy.ops.
+  Keywords: bpy, Blender Python, RNA, context, depsgraph, operator, bpy.data, bpy.ops, how to start scripting Blender, Blender Python basics, access objects in scene, get selected object.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

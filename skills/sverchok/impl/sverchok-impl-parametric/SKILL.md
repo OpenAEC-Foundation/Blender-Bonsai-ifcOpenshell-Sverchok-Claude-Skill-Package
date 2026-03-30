@@ -6,8 +6,7 @@ description: >
   mistake of not using matrix transforms for element placement (using vertex offsets instead,
   which breaks with rotation). Covers matrix-based transforms, Blender object integration,
   and data-driven geometry generation.
-  Keywords: parametric design, structural grid, facade panel, stairs, roof, terrain,
-  matrix transform, data-driven, AEC geometry, Sverchok parametric.
+  Keywords: parametric design, structural grid, facade panel, stairs, roof, terrain, matrix transform, data-driven, AEC geometry, Sverchok parametric, generate stairs, create facade, parametric building.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

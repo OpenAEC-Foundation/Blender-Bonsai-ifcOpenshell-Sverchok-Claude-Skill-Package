@@ -6,8 +6,7 @@ description: >
   using ifcopenshell.open() to access the model instead of tool.Ifc.get() which gives the
   live Bonsai IFC file. Covers native IFC workflow, bpy.ops.bim.* operators, BIM property
   panels, and the relationship between Blender objects and IFC entities.
-  Keywords: Bonsai, BlenderBIM, tool.Ifc.get(), bpy.ops.bim, native IFC, addon architecture,
-  IFC-backed properties, BIM authoring.
+  Keywords: Bonsai, BlenderBIM, tool.Ifc.get(), bpy.ops.bim, native IFC, addon architecture, IFC-backed properties, BIM authoring, how does Bonsai work, Bonsai internals, Bonsai API.
 version: 'Bonsai v0.8.4 | Minimum Blender: 4.2.0 | Python 3.11'
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 4.2.0+ with Bonsai v0.8.4+ and Python 3.11."

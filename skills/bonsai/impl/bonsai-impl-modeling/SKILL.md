@@ -6,8 +6,7 @@ description: >
   it to the spatial hierarchy (orphaned elements). Covers the complete element creation
   pipeline: type selection, geometric representation, material layer/profile/constituent
   assignment, and spatial containment.
-  Keywords: wall, slab, column, beam, IfcWall, IfcSlab, IFC type, predefined type,
-  material layer, material profile, spatial assignment, BIM modeling.
+  Keywords: wall, slab, column, beam, IfcWall, IfcSlab, IFC type, predefined type, material layer, material profile, spatial assignment, BIM modeling, make a wall, create building elements, add floor.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

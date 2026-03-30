@@ -6,8 +6,7 @@ description: >
   bpy operations instead of bpy.app.timers, or caching bpy.data references across undo
   boundaries. Covers Vector/Matrix/Quaternion, KDTree, BVHTree, @persistent handlers,
   bpy.msgbus subscriptions, and background mode limitations.
-  Keywords: mathutils, threading, undo, ReferenceError, bpy.app.timers, @persistent,
-  bpy.msgbus, KDTree, BVHTree, background mode, Blender crash.
+  Keywords: mathutils, threading, undo, ReferenceError, bpy.app.timers, @persistent, bpy.msgbus, KDTree, BVHTree, background mode, Blender crash, startup script, auto-run, run on open, Blender freezes.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

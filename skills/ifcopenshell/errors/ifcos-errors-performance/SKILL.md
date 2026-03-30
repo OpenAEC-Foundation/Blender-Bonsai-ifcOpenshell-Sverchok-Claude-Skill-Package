@@ -5,8 +5,7 @@ description: >
   Prevents the #1 performance mistake: calling create_shape() per element instead of using
   the geometry iterator for batch processing. Covers geometry iterator, by_type caching,
   batch patterns, memory management, multiprocessing strategies, and profiling.
-  Keywords: performance, large IFC, geometry iterator, create_shape, batch processing,
-  memory, multiprocessing, optimization, slow, 100MB, profiling.
+  Keywords: performance, large IFC, geometry iterator, create_shape, batch processing, memory, multiprocessing, optimization, slow, 100MB, profiling, IFC file too large, takes too long, out of memory.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

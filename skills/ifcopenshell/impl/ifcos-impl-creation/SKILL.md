@@ -5,8 +5,7 @@ description: >
   slabs, columns, openings, property sets, and type assignments. Prevents the critical mistake
   of skipping IfcOwnerHistory (required in IFC2X3) or not establishing spatial containment.
   Covers the complete creation workflow using ifcopenshell.api from project to element level.
-  Keywords: IFC creation, create project, spatial structure, IfcWall, IfcSlab, IfcColumn,
-  IfcOwnerHistory, api.run, root.create_entity, model from scratch.
+  Keywords: IFC creation, create project, spatial structure, IfcWall, IfcSlab, IfcColumn, IfcOwnerHistory, api.run, root.create_entity, model from scratch, create IFC file, new IFC project.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

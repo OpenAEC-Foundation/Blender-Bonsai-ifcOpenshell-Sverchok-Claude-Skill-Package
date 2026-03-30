@@ -6,8 +6,7 @@ description: >
   identity, or holding references to entities after removal. Covers C++ binding behavior,
   entity invalidation, by_type() return semantics, thread safety, memory management,
   PascalCase attributes, and installation patterns.
-  Keywords: IfcOpenShell runtime, C++ binding, entity invalidation, by_type, thread safety,
-  memory management, PascalCase, installation, entity identity.
+  Keywords: IfcOpenShell runtime, C++ binding, entity invalidation, by_type, thread safety, memory management, PascalCase, installation, entity identity, install IfcOpenShell, pip install ifcopenshell.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

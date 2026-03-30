@@ -6,8 +6,7 @@ description: >
   performance mistake of creating vertices one-by-one instead of using from_pydata or
   BMesh batch operations. Covers mesh creation, BMesh algorithms, foreach_get/set
   optimization, and mesh analysis tools.
-  Keywords: mesh generation, from_pydata, BMesh, parametric, building geometry, mesh
-  analysis, foreach_get, foreach_set, vertices, AEC mesh, custom mesh tool.
+  Keywords: mesh generation, from_pydata, BMesh, parametric, building geometry, mesh analysis, foreach_get, foreach_set, vertices, AEC mesh, custom mesh tool, create mesh from code, generate 3D shape.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

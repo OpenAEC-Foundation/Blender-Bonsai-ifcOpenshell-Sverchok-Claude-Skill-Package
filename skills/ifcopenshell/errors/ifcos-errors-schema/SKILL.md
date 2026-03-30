@@ -5,8 +5,7 @@ description: >
   Prevents the common mistake of using IFC4-only entities (e.g., IfcMaterialConstituentSet)
   in IFC2X3 files. Covers entity availability differences, attribute type changes,
   ifcpatch for schema migration, and common SchemaError debugging.
-  Keywords: SchemaError, IFC2X3, IFC4, IFC4X3, schema migration, ifcpatch, entity not found,
-  schema compatibility, IFC version.
+  Keywords: SchemaError, IFC2X3, IFC4, IFC4X3, schema migration, ifcpatch, entity not found, schema compatibility, IFC version, wrong schema, convert IFC version.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

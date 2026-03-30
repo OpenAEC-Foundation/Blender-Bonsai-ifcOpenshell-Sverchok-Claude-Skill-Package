@@ -5,8 +5,7 @@ description: >
   Prevents the common mistake of not using transactions for multi-step operations
   (no undo on failure). Covers ifcopenshell.open(), file.create(), file.write(),
   transaction management with undo/redo, and schema selection.
-  Keywords: ifcopenshell.open, file.write, create file, IFC file, transaction,
-  undo, redo, serialize, IFC I/O, file operations.
+  Keywords: ifcopenshell.open, file.write, create file, IFC file, transaction, undo, redo, serialize, IFC I/O, file operations, open IFC file, save IFC, read IFC in Python.
 license: MIT
 compatibility: "Designed for Claude Code. Requires IfcOpenShell Python library."
 metadata:

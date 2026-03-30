@@ -5,8 +5,7 @@ description: >
   Nodes. Prevents the breaking change of using node.inputs/outputs by index instead of
   NodeTreeInterface (4.0+) for node group I/O. Covers node creation, linking, group
   management, and the NodeTreeInterface API migration.
-  Keywords: node tree, Geometry Nodes, Shader Nodes, Compositor, NodeTreeInterface,
-  node_group, links, nodes.new, node sockets, procedural geometry.
+  Keywords: node tree, Geometry Nodes, Shader Nodes, Compositor, NodeTreeInterface, node_group, links, nodes.new, node sockets, procedural geometry, create nodes from Python, connect nodes, add node.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

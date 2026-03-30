@@ -6,8 +6,7 @@ description: >
   mistake of not using update callbacks (changes not reflected in UI) or returning stale
   items from dynamic EnumProperty. Covers all bpy.props types, subtypes, units, getters/
   setters, and CollectionProperty patterns.
-  Keywords: bpy.props, PropertyGroup, BoolProperty, IntProperty, FloatProperty, EnumProperty,
-  PointerProperty, CollectionProperty, update callback, dynamic enum.
+  Keywords: bpy.props, PropertyGroup, BoolProperty, IntProperty, FloatProperty, EnumProperty, PointerProperty, CollectionProperty, update callback, dynamic enum, add custom property, user input, settings.
 license: MIT
 compatibility: "Designed for Claude Code. Requires Blender 3.x/4.x/5.x with Python."
 metadata:

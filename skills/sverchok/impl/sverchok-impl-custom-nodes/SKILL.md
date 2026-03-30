@@ -6,8 +6,7 @@ description: >
   self.outputs[i].sv_set() with correct nesting levels (data silently wrong). Covers
   full node lifecycle, socket creation, property management, BMesh integration, and
   registration patterns.
-  Keywords: custom node, SverchCustomTreeNode, sv_get, sv_set, node registration,
-  BMesh integration, node lifecycle, custom Sverchok node, addon.
+  Keywords: custom node, SverchCustomTreeNode, sv_get, sv_set, node registration, BMesh integration, node lifecycle, custom Sverchok node, addon, make my own node, create Sverchok plugin.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:

@@ -5,8 +5,7 @@ description: >
   in Bonsai. Prevents the common mistake of creating property sets without associating them
   to elements via IfcRelDefinesByProperties. Covers IfcPropertySingleValue, IfcPropertyEnumeratedValue,
   IfcQuantityArea/Length/Volume, predefined pset templates, and bulk property management.
-  Keywords: property set, Pset, Qto, IfcPropertySingleValue, IfcPropertyEnumeratedValue,
-  IfcRelDefinesByProperties, custom properties, bulk property, pset template.
+  Keywords: property set, Pset, Qto, IfcPropertySingleValue, IfcPropertyEnumeratedValue, IfcRelDefinesByProperties, custom properties, bulk property, pset template, add property, read pset values.
 license: MIT
 compatibility: Designed for Claude Code. Requires Python 3.x.
 metadata:

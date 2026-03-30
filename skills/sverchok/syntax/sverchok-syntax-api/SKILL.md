@@ -5,8 +5,7 @@ description: >
   sockets, setting parameters, or running batch parametric studies. Prevents the common
   mistake of not calling process_from_nodes() after modifying parameters (tree won't update).
   Covers node creation, socket connections, parameter sweeps, and batch processing.
-  Keywords: Sverchok API, programmatic, node creation, socket connection, batch processing,
-  parameter sweep, process_from_nodes, automation, Python scripting.
+  Keywords: Sverchok API, programmatic, node creation, socket connection, batch processing, parameter sweep, process_from_nodes, automation, Python scripting, create nodes from code, automate Sverchok.
 license: MIT
 compatibility: 'Designed for Claude Code. Requires Blender 4.0+/5.x with Sverchok v1.4.0+.'
 metadata:
